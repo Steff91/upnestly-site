@@ -28,10 +28,11 @@ const columns = [
   },
 ];
 
+// LinkedIn always shows (falls back to "#" until the URL is set); GitHub only once a URL exists.
 const socials = [
-  { href: site.linkedin, label: 'LinkedIn', icon: 'linkedin' as const },
-  { href: site.github, label: 'GitHub', icon: 'github' as const },
-].filter((s) => s.href.startsWith('http'));
+  { href: site.linkedin.startsWith('http') ? site.linkedin : '#', label: 'LinkedIn', icon: 'linkedin' as const },
+  ...(site.github.startsWith('http') ? [{ href: site.github, label: 'GitHub', icon: 'github' as const }] : []),
+];
 ---
 
 <footer class="relative overflow-hidden bg-ink text-white">

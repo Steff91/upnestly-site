@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
@@ -58,6 +59,7 @@ const schema = {
   </head>
   <body>
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
+    <TopBar />
     <Header />
     <main id="main">
       <slot />

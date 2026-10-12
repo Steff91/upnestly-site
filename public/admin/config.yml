@@ -24,6 +24,8 @@ collections:
           - { name: country, label: Country, widget: string }
           - { name: languages, label: Languages, widget: list }
           - { name: auditUrl, label: Audit booking link (mailto or Calendly), widget: string }
+          - { name: topbarMessage, label: Top bar message, widget: string }
+          - { name: hours, label: Working hours (top bar), widget: string }
           - { name: legalName, label: Legal entity name, widget: string }
           - { name: address, label: Street and number, widget: string }
           - { name: postalCode, label: Postal code, widget: string }

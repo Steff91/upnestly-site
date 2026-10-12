@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+
+// LinkedIn shows as soon as the URL is set in site.json (CMS → Settings → Site & contact).
+const linkedin = site.linkedin.startsWith('http') ? site.linkedin : '#';
+---
+
+<div class="bg-brand-deep text-[13px] text-night-text">
+  <div class="container-site flex min-h-10 items-center justify-between gap-6">
+    <a href="/#contact" class="hidden items-center gap-2 text-night-text no-underline hover:text-white md:inline-flex">
+      <span class="size-1.5 rounded-full bg-night-accent" aria-hidden="true"></span>
+      {site.topbarMessage}
+      <Icon name="arrow" size={14} />
+    </a>
+
+    <div class="flex w-full items-center justify-between gap-5 md:w-auto md:justify-end">
+      <span class="hidden items-center gap-2 lg:inline-flex">
+        <Icon name="clock" size={14} class="text-night-accent" />
+        {site.hours}
+      </span>
+      <a href={`mailto:${site.email}`} class="inline-flex min-h-10 items-center gap-2 text-night-text no-underline hover:text-white">
+        <Icon name="mail" size={15} class="text-night-accent" />
+        {site.email}
+      </a>
+      <a href={linkedin} aria-label="Upnestly on LinkedIn" class="-mr-3 inline-flex size-10 items-center justify-center text-night-text hover:text-white">
+        <Icon name="linkedin" size={15} />
+      </a>
+    </div>
+  </div>
+</div>

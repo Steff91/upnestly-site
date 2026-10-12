@@ -80,4 +80,5 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
 - [ ] Booking link for the audit
+- [ ] LinkedIn URL in `site.json` (top bar and footer link to `#` until then)
 - [ ] Company details in `site.json` (imprint, footer) and a GDPR-reviewed privacy policy (`src/pages/privacy.astro`); then remove `noindex` from both legal pages
