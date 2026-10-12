@@ -1,32 +1,118 @@
 {
-  "customFrom": "[€X]",
+  "customFrom": "€X,XXX",
   "useCases": [
-    { "title": "Product catalogue", "text": "Supplier data turned into product pages: descriptions, translations, attributes and SEO fields — published straight to your shop.", "tag": "E-commerce" },
-    { "title": "Multilingual content", "text": "First drafts and translations between English and German, finished by an editor in the right tone of voice.", "tag": "Content" },
-    { "title": "Lead handling", "text": "Form enquiries qualified, enriched and routed to the right person in your CRM — within minutes, not days.", "tag": "Sales" },
-    { "title": "Inbox & support", "text": "Incoming messages sorted by topic and urgency, with reply drafts your team checks and sends.", "tag": "Support" },
-    { "title": "Reporting", "text": "A weekly summary of traffic, ads and sales pulled from GA4 and your ad accounts, delivered by email or Slack.", "tag": "Operations" },
-    { "title": "Documents to data", "text": "PDFs, spec sheets and invoices turned into structured data your systems can use.", "tag": "Back office" }
+    {
+      "title": "Product catalogue",
+      "text": "Supplier data turned into product pages: descriptions, translations, attributes and SEO fields — published straight to your shop.",
+      "tag": "E-commerce"
+    },
+    {
+      "title": "Multilingual content",
+      "text": "First drafts and translations between English and German, finished by an editor in the right tone of voice.",
+      "tag": "Content"
+    },
+    {
+      "title": "Lead handling",
+      "text": "Form enquiries qualified, enriched and routed to the right person in your CRM — within minutes, not days.",
+      "tag": "Sales"
+    },
+    {
+      "title": "Inbox & support",
+      "text": "Incoming messages sorted by topic and urgency, with reply drafts your team checks and sends.",
+      "tag": "Support"
+    },
+    {
+      "title": "Reporting",
+      "text": "A weekly summary of traffic, ads and sales pulled from GA4 and your ad accounts, delivered by email or Slack.",
+      "tag": "Operations"
+    },
+    {
+      "title": "Documents to data",
+      "text": "PDFs, spec sheets and invoices turned into structured data your systems can use.",
+      "tag": "Back office"
+    }
   ],
   "pipeline": [
-    { "step": "Input", "text": "Supplier CSV, scraped product data, images" },
-    { "step": "AI step", "text": "LLM writes descriptions, translates EN ↔ DE, fills SEO fields" },
-    { "step": "Human review", "text": "An editor checks facts, tone and claims before anything is published", "human": true },
-    { "step": "Publish", "text": "Products created in the shop via API, with images and attributes" },
-    { "step": "Measure", "text": "Time per product and output volume tracked against the manual process" }
+    {
+      "step": "Input",
+      "text": "Supplier CSV, scraped product data, images"
+    },
+    {
+      "step": "AI step",
+      "text": "LLM writes descriptions, translates EN ↔ DE, fills SEO fields"
+    },
+    {
+      "step": "Human review",
+      "text": "An editor checks facts, tone and claims before anything is published",
+      "human": true
+    },
+    {
+      "step": "Publish",
+      "text": "Products created in the shop via API, with images and attributes"
+    },
+    {
+      "step": "Measure",
+      "text": "Time per product and output volume tracked against the manual process"
+    }
   ],
   "process": [
-    { "title": "Discovery", "text": "We map one process with your team and estimate the hours it could save." },
-    { "title": "Prototype", "text": "A working version on real data within 1–2 weeks." },
-    { "title": "Pilot", "text": "It runs alongside your team, with a human checkpoint on every output." },
-    { "title": "Rollout & handover", "text": "Live in production, documented and handed over — no lock-in." }
+    {
+      "title": "Discovery",
+      "text": "We map one process with your team and estimate the hours it could save."
+    },
+    {
+      "title": "Prototype",
+      "text": "A working version on real data within 1–2 weeks."
+    },
+    {
+      "title": "Pilot",
+      "text": "It runs alongside your team, with a human checkpoint on every output."
+    },
+    {
+      "title": "Rollout & handover",
+      "text": "Live in production, documented and handed over — no lock-in."
+    }
   ],
-  "tools": ["Claude API", "OpenAI API", "n8n", "Make", "Zapier", "WooCommerce API", "Shopify API", "Google Workspace", "HubSpot"],
+  "tools": [
+    "Claude API",
+    "OpenAI API",
+    "n8n",
+    "Make",
+    "Zapier",
+    "WooCommerce API",
+    "Shopify API",
+    "Google Workspace",
+    "HubSpot"
+  ],
   "faq": [
-    { "q": "What if the AI gets something wrong?", "a": "That is why every workflow has a human checkpoint. Nothing customer-facing goes live without someone on your team or ours approving it, and we tune prompts and rules as errors show up." },
-    { "q": "Do we have to change our tools?", "a": "Usually not. We connect to the shop, CRM, inbox and spreadsheets you already use. If a tool has no API, we tell you up front." },
-    { "q": "Who owns the workflows?", "a": "You do. Workflows run in accounts in your name where possible, and every one is documented and handed over." },
-    { "q": "How long does a first automation take?", "a": "A focused automation is typically live within two to four weeks: one week of discovery, one to two weeks for a prototype on real data, then a short pilot." },
-    { "q": "Which processes are a bad fit for AI?", "a": "Tasks that happen rarely, need judgement on every single case, or where one mistake is very expensive. We’ll say so in the opportunity check rather than build something you don’t need." }
-  ]
+    {
+      "q": "Is our data used to train AI models?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam."
+    },
+    {
+      "q": "What does the EU AI Act mean for these automations?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam."
+    },
+    {
+      "q": "What if the AI gets something wrong?",
+      "a": "That is why every workflow has a human checkpoint. Nothing customer-facing goes live without someone on your team or ours approving it, and we tune prompts and rules as errors show up."
+    },
+    {
+      "q": "Do we have to change our tools?",
+      "a": "Usually not. We connect to the shop, CRM, inbox and spreadsheets you already use. If a tool has no API, we tell you up front."
+    },
+    {
+      "q": "Who owns the workflows?",
+      "a": "You do. Workflows run in accounts in your name where possible, and every one is documented and handed over."
+    },
+    {
+      "q": "How long does a first automation take?",
+      "a": "A focused automation is typically live within two to four weeks: one week of discovery, one to two weeks for a prototype on real data, then a short pilot."
+    },
+    {
+      "q": "Which processes are a bad fit for AI?",
+      "a": "Tasks that happen rarely, need judgement on every single case, or where one mistake is very expensive. We’ll say so in the opportunity check rather than build something you don’t need."
+    }
+  ],
+  "result": "Lorem ipsum dolor sit amet: XX min per product before, X min after — XXX hours saved across the catalogue."
 }
