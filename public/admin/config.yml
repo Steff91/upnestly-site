@@ -59,6 +59,48 @@ collections:
                   - { name: label, label: Label (Build / Grow / Run), widget: string }
                   - { name: items, label: Items, widget: list }
 
+  - name: services
+    label: Services
+    folder: src/content/services
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: order, label: Order, widget: number, value_type: int }
+      - { name: discipline, label: Discipline, widget: select, options: [Build, Grow, Run] }
+      - { name: excerpt, label: Short description (cards), widget: text }
+      - { name: metaTitle, label: Meta title, widget: string }
+      - { name: metaDescription, label: Meta description, widget: text }
+      - { name: heroTitle, label: H1, widget: string }
+      - { name: heroText, label: Hero text, widget: text }
+      - { name: painsTitle, label: Pains heading, widget: string, required: false }
+      - name: pains
+        label: Pains
+        widget: list
+        fields: [{ name: title, label: Title, widget: string }, { name: text, label: Text, widget: text }]
+      - { name: deliverablesTitle, label: Deliverables heading, widget: string, required: false }
+      - name: deliverables
+        label: What we do
+        widget: list
+        fields: [{ name: title, label: Title, widget: string }, { name: text, label: Text, widget: text }]
+      - name: inPlans
+        label: In each plan
+        widget: object
+        fields:
+          - { name: essentials, label: Essentials, widget: text }
+          - { name: growth, label: Growth, widget: text }
+          - { name: scale, label: Scale, widget: text }
+      - name: steps
+        label: How we work
+        widget: list
+        fields: [{ name: title, label: Title, widget: string }, { name: text, label: Text, widget: text }]
+      - { name: tools, label: Tools, widget: list, required: false }
+      - { name: relatedWork, label: Related case study (file name), widget: string, required: false }
+      - name: faq
+        label: FAQ
+        widget: list
+        fields: [{ name: q, label: Question, widget: string }, { name: a, label: Answer, widget: text }]
+
   - name: work
     label: Case studies
     folder: src/content/work

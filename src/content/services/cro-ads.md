@@ -1,0 +1,60 @@
+---
+title: "CRO & paid ads"
+order: 3
+discipline: Grow
+excerpt: "A/B tests, landing pages and Google & Meta campaigns tied to revenue."
+metaTitle: "CRO & Google / Meta Ads Management | Upnestly"
+metaDescription: "Conversion optimization, A/B testing and Google & Meta ads management on one monthly plan — measured against leads and revenue, not clicks."
+heroTitle: "Conversion optimization & paid ads that pay for themselves"
+heroText: "More traffic only helps if it turns into leads and sales. We find where visitors drop off, test fixes on your site and run campaigns we can tie to revenue — in English and German."
+painsTitle: "Sound familiar?"
+pains:
+  - title: "Traffic is up, leads aren’t"
+    text: "Visits grow every month, but enquiries and orders stay flat — and nobody can say where people give up."
+  - title: "Ads spend, nobody knows what works"
+    text: "Campaigns run, the budget goes out, but reporting stops at clicks and impressions instead of customers."
+  - title: "Design decisions by gut feeling"
+    text: "Pages change because someone liked a new layout, not because data showed it converts better."
+deliverablesTitle: "What we do"
+deliverables:
+  - title: "Funnel & tracking audit"
+    text: "GA4, conversion events and ad pixels set up correctly, so every number in the report can be trusted."
+  - title: "Heatmaps & session recordings"
+    text: "We watch how real visitors use your key pages to find friction before guessing at fixes."
+  - title: "A/B tests"
+    text: "One clear hypothesis per test, run until the result is reliable — then shipped or dropped."
+  - title: "Landing pages"
+    text: "Pages built for one campaign and one action, designed and developed by the same team."
+  - title: "Google Ads management"
+    text: "Search and Performance Max campaigns, keyword and negative-keyword work, budget pacing."
+  - title: "Meta Ads management"
+    text: "Prospecting and retargeting on Facebook and Instagram, creative testing and audience setup."
+  - title: "Monthly revenue report"
+    text: "What we tested, what we learned and what it brought — in leads, sales and cost per acquisition."
+inPlans:
+  essentials: "Tracking checked and kept healthy, conversion numbers in your monthly report."
+  growth: "One CRO test per month and management of one ad channel — Google or Meta."
+  scale: "Two CRO tests per month, Google and Meta campaigns, and a quarterly strategy review."
+steps:
+  - title: "Measure"
+    text: "Fix tracking first, then map the funnel from first visit to enquiry or order."
+  - title: "Prioritise"
+    text: "Rank ideas by expected impact and effort, so the first tests are the ones most likely to pay off."
+  - title: "Test & run"
+    text: "Launch A/B tests and campaigns, watch them weekly and stop what doesn’t work early."
+  - title: "Report & repeat"
+    text: "Monthly results against revenue, then the next round of tests and budget changes."
+tools: ["Google Analytics 4", "Google Tag Manager", "Google Ads", "Meta Ads", "Microsoft Clarity", "Looker Studio"]
+relatedWork: outdoor-retail-shop
+faq:
+  - q: "How long does an A/B test run?"
+    a: "Usually two to four weeks, depending on traffic. We stop a test only when the result is reliable — ending early on a lucky week is how bad decisions get made."
+  - q: "Is ad spend included in the plan?"
+    a: "No. You pay Google and Meta directly with your own card, so the accounts and the budget always stay yours. Our plan covers the management."
+  - q: "Do you need access to our ad accounts?"
+    a: "Yes, as users on your existing accounts. If you don’t have accounts yet, we create them in your name — never ours."
+  - q: "Our site doesn’t get much traffic. Does CRO still make sense?"
+    a: "With very low traffic, classic A/B tests take too long. We then start with tracking, user recordings and best-practice fixes, and introduce testing once volume allows."
+  - q: "Which platforms can you test on?"
+    a: "WordPress, WooCommerce, Shopify, Webflow, Magento and custom sites. The setup differs per platform, the process doesn’t."
+---

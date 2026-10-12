@@ -25,7 +25,8 @@ src/
   data/site.json            # name, email, audit link
   data/plans.json           # pricing plans (editable in the CMS)
   data/nav.ts               # header navigation
-  content/work/*.md         # case studies on the homepage
+  content/services/*.md     # one file per service → /services/<file-name>/
+  content/work/*.md         # case studies (homepage, service pages)
   content.config.ts         # collection schema
   components/
     sections/               # homepage sections: Hero, Platforms, Services, Pricing,
@@ -35,6 +36,8 @@ src/
   styles/global.css         # brand tokens (@theme) and shared components
   layouts/Legal.astro       # imprint & privacy layout
   pages/index.astro, imprint.astro, privacy.astro, 404.astro, admin/
+  pages/services/index.astro      # services hub with plan comparison table
+  pages/services/[slug].astro     # shared template for all service pages (Service, Breadcrumb, FAQ schema)
 public/
   admin/config.yml          # Sveltia CMS
   logo/                     # logo PNGs exported from the brand standards PDF
@@ -56,6 +59,7 @@ The navy in the logo files (`#090E50`) is darker than the standards' RGB value u
 ## Content editing
 
 - Text in `[BRACKETS]` is placeholder content to replace.
+- Services: CMS → *Services*, or edit `src/content/services/*.md`. `cro-ads.md` is the fully written example; the others still contain `[bracketed]` placeholders.
 - Case studies: CMS → *Case studies*, or add a Markdown file to `src/content/work/`.
 - Plans and prices: CMS → *Settings → Plans & pricing*.
 - Audit button: set `auditUrl` to a booking link (e.g. Calendly) instead of `mailto:`.
@@ -77,6 +81,7 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 
 - [ ] Real numbers: case study results; confirm plan prices in `src/data/plans.json`
 - [ ] Project screenshots for case studies
+- [ ] Fill service pages: development, seo-content, hosting-care, ai-automation (pains, steps, FAQ, hosting details)
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
 - [ ] Booking link for the audit

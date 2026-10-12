@@ -6,18 +6,21 @@ const services = [
     title: 'Development, design & AI automation',
     text: 'Your site is never “done”. We keep shipping new pages and features, fix what breaks and maintain the platform — WordPress, Shopify, Webflow, Magento or custom code.',
     items: ['New pages, features & UX improvements', 'Platform maintenance & bug fixes', 'AI automations & integrations'],
+    links: [{ href: '/services/development/', label: 'Development & design' }, { href: '/services/ai-automation/', label: 'AI automation' }],
   },
   {
     n: '02 — Grow',
     title: 'Content, search, ads & CRO',
     text: 'Multilingual content, SEO that ranks in Google and gets cited by AI search, campaigns tied to revenue — and a site that turns that traffic into leads and sales.',
     items: ['Content in English & German', 'SEO & AI search (GEO)', 'Google & Meta ads, reporting', 'Conversion optimization (CRO) & A/B testing'],
+    links: [{ href: '/services/seo-content/', label: 'SEO & content' }, { href: '/services/cro-ads/', label: 'CRO & paid ads' }],
   },
   {
     n: '03 — Run',
     title: 'Hosting, security & care',
     text: 'Managed EU hosting for self-hosted sites; on Shopify and Webflow we look after apps, themes and backups. Handled by a senior systems engineer, not a ticket queue.',
     items: ['Managed EU hosting or platform care', 'Updates, backups, uptime monitoring', 'Security & GDPR documentation'],
+    links: [{ href: '/services/hosting-care/', label: 'Hosting & care' }],
   },
 ];
 ---
@@ -38,13 +41,16 @@ const services = [
           <ul class="m-0 flex flex-col gap-2 pl-[18px] text-[15px]">
             {s.items.map((item) => <li>{item}</li>)}
           </ul>
+          <p class="m-0 mt-auto flex flex-wrap gap-x-5 gap-y-1 border-t border-line-soft pt-4 text-[15px] font-semibold">
+            {s.links.map((l) => <a href={l.href} class="inline-flex items-center gap-1.5">{l.label} <span aria-hidden="true">→</span></a>)}
+          </p>
         </article>
       ))}
     </div>
 
     <p class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-body" data-reveal>
       <span class="rounded-full bg-tint px-3 py-1 label text-brand">Included in every plan</span>
-      All three disciplines, every month. <a href="#pricing" class="font-semibold">See plans</a>
+      All three disciplines, every month. <a href="#pricing" class="font-semibold">See plans</a> · <a href="/services/" class="font-semibold">All services</a>
     </p>
   </div>
 </section>
