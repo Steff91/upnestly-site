@@ -55,11 +55,11 @@ const planCols = [
         </div>
         <div class="grid min-w-0 flex-[2_1_560px] grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5">
           {services.filter((s) => s.data.discipline === d.name).map((s, i) => (
-            <a href={`/services/${s.id}/`} class="group flex flex-col gap-3 rounded-[20px] border border-line bg-white p-8 no-underline hover:border-brand" data-reveal style={`--i:${i}`}>
+            <a href={`/services/${s.id}/`} class="card-hover group flex flex-col gap-3 rounded-[20px] border border-line bg-white p-8 no-underline" data-reveal style={`--i:${i}`}>
               <span class="text-[22px] font-extrabold text-ink">{s.data.title}</span>
               <span class="text-[15px] leading-[1.6] text-body">{s.data.excerpt}</span>
               <span class="mt-auto inline-flex items-center gap-2 pt-2 text-[15px] font-semibold text-brand">
-                Learn more <Icon name="arrow" size={16} class="transition-transform group-hover:translate-x-1" />
+                Learn more <Icon name="arrow" size={16} class="transition-transform duration-300 ease-out group-hover:translate-x-1" />
               </span>
             </a>
           ))}

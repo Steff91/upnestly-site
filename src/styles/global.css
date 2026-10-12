@@ -77,6 +77,7 @@
   .btn-light { @apply bg-white text-ink; }
   .btn-light:hover { @apply text-brand; }
 
+
   .placeholder {
     @apply flex items-center justify-center bg-tint-strong text-center text-[13px] font-medium text-dim;
   }
@@ -96,7 +97,25 @@
   }
 }
 
+/* Clickable cards: lift, soft shadow and brand border on hover.
+   Uses `translate` (not `transform`) so it works alongside the reveal-on-scroll animation. */
+.card-hover {
+  transition: translate .3s ease-out, box-shadow .3s ease-out, border-color .3s ease-out;
+}
+.card-hover:hover, .card-hover:focus-within {
+  translate: 0 -4px;
+  border-color: var(--color-brand);
+  box-shadow: 0 18px 40px -22px rgb(45 50 125 / 0.45);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .card-hover[data-reveal] {
+    transition: opacity .6s ease, transform .6s ease, translate .3s ease-out, box-shadow .3s ease-out, border-color .3s ease-out;
+    transition-delay: calc(var(--i, 0) * 90ms), calc(var(--i, 0) * 90ms), 0s, 0s, 0s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .card-hover, .card-hover:hover, .card-hover:focus-within { transition: none !important; translate: none !important; }
   .btn, .btn:hover { transition: none; transform: none; }
 }
