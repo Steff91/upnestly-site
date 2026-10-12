@@ -45,7 +45,7 @@ steps:
   - title: "Report & repeat"
     text: "Monthly results against revenue, then the next round of tests and budget changes."
 tools: ["Google Analytics 4", "Google Tag Manager", "Google Ads", "Meta Ads", "Microsoft Clarity", "Looker Studio"]
-relatedWork: outdoor-retail-shop
+relatedWork: project-one
 faq:
   - q: "How long does an A/B test run?"
     a: "Usually two to four weeks, depending on traffic. We stop a test only when the result is reliable — ending early on a lucky week is how bad decisions get made."

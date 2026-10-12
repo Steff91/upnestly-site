@@ -28,7 +28,7 @@ src/
   data/ai.json              # /services/ai-automation/: use cases, pipeline, process, tools, FAQ, Custom price
   data/nav.ts               # header navigation
   content/services/*.md     # one file per service → /services/<file-name>/
-  content/work/*.md         # case studies (homepage, service pages)
+  content/work/*.md         # case studies → /work/<file-name>/ (featured ones on the homepage)
   content.config.ts         # collection schema
   components/
     sections/               # homepage sections: Hero, Platforms, Services, Pricing,
@@ -40,6 +40,7 @@ src/
   pages/index.astro, imprint.astro, privacy.astro, 404.astro, admin/
   pages/pricing.astro             # full pricing page (monthly/annual toggle, comparison table)
   pages/services/index.astro      # services hub with plan comparison table
+  pages/work/index.astro, [slug].astro  # work overview (discipline filter) + case study template
   pages/services/ai-automation.astro  # dedicated AI page (pipeline, savings calculator) — excluded from [slug]
   pages/services/[slug].astro     # shared template for all service pages (Service, Breadcrumb, FAQ schema)
 public/
@@ -84,7 +85,7 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 ## TODO
 
 - [ ] Real numbers: case study results; confirm plan prices in `src/data/plans.json`
-- [ ] Project screenshots for case studies
+- [ ] Replace the six lorem-ipsum case studies in `src/content/work/` with real projects and screenshots
 - [ ] AI page: Custom AI project price (`ai.json → customFrom`), catalogue results, FAQ on model training and the EU AI Act
 - [ ] Fill service pages: development, seo-content, hosting-care (pains, steps, FAQ, hosting details)
 - [ ] Confirm final navy (logo file vs. standards)

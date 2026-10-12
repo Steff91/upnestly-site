@@ -1,24 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-import Placeholder from '../Placeholder.astro';
+import WorkCard from '../WorkCard.astro';
 
-const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const work = (await getCollection('work', (e) => e.data.featured)).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 ---
 
 <section id="work">
   <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
-    <h2 class="h-section" data-reveal>Selected work</h2>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
-      {work.map((w, i) => (
-        <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
-          <Placeholder label="Project screenshot" src={w.data.image} alt={w.data.imageAlt} class="h-[260px]" />
-          <div class="flex flex-col gap-2.5 p-7">
-            <p class="m-0 label text-brand">{w.data.meta}</p>
-            <h3 class="m-0 text-[22px] font-bold">{w.data.url ? <a href={w.data.url} class="text-ink">{w.data.title}</a> : w.data.title}</h3>
-            <p class="m-0 text-[15px] leading-[1.6] text-body">{w.data.summary}</p>
-          </div>
-        </article>
-      ))}
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="h-section" data-reveal>Selected work</h2>
+      <a href="/work/" class="font-semibold" data-reveal>All work →</a>
+    </div>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6">
+      {work.map((entry, i) => <WorkCard entry={entry} index={i} />)}
     </div>
   </div>
 </section>

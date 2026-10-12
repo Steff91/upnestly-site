@@ -39,7 +39,7 @@ steps:
   - title: "Hand over"
     text: "[Text.]"
 tools: ["Claude API", "OpenAI API", "n8n", "WooCommerce REST API", "Shopify API"]
-relatedWork: outdoor-retail-shop
+relatedWork: project-one
 faq:
   - q: "[Is our data used to train AI models?]"
     a: "[Answer.]"

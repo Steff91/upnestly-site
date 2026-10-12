@@ -39,7 +39,7 @@ steps:
   - title: "[Step 3 — e.g. release]"
     text: "[How changes go live.]"
 tools: ["WordPress", "WooCommerce", "Shopify", "Webflow", "Magento", "Astro", "Git"]
-relatedWork: swiss-edtech-platform
+relatedWork: project-two
 faq:
   - q: "[What happens to unused hours?]"
     a: "[Answer — plans currently say unused hours roll over for one month.]"

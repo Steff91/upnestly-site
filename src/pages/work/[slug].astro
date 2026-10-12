@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import BrandMark from '../../components/BrandMark.astro';
+import Icon from '../../components/Icon.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import Contact from '../../components/sections/Contact.astro';
+
+export async function getStaticPaths() {
+  const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return work.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: work[(i + 1) % work.length], after: work[(i + 2) % work.length] },
+  }));
+}
+
+const { entry, next, after } = Astro.props;
+const w = entry.data;
+const serviceFor = { Build: '/services/development/', Grow: '/services/seo-content/', Run: '/services/hosting-care/' } as const;
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: new URL('/work/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: w.title, item: pageUrl },
+  ],
+};
+---
+
+<Base title={`${w.title} — Case Study | Upnestly`} description={w.summary}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-48 -right-24 hidden w-[600px] opacity-[0.07] lg:block" />
+    <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
+      <nav aria-label="Breadcrumb" class="label text-dim" data-reveal>
+        <a href="/work/" class="text-dim no-underline hover:text-brand">Work</a>
+        <span aria-hidden="true" class="mx-2">/</span>
+        <span class="text-brand">{w.client}</span>
+      </nav>
+      <h1 class="h-hero max-w-[900px]" data-reveal style="--i:1">{w.headline}</h1>
+      <ul class="m-0 flex list-none flex-wrap gap-2 p-0" data-reveal style="--i:2">
+        {[w.industry, w.platform, ...(w.plan ? [`${w.plan} plan`] : []), ...w.disciplines].map((tag) => (
+          <li class="rounded-full border border-line bg-white px-3.5 py-1.5 text-[14px] font-semibold text-body">{tag}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Results -->
+  {w.results.length > 0 && (
+    <section class="bg-ink text-white">
+      <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-8 py-14">
+        {w.results.map((r, i) => (
+          <div class="flex flex-col gap-1" data-reveal style={`--i:${i}`}>
+            <span class="text-[52px] font-extrabold leading-none tracking-[-0.03em]">{r.value}</span>
+            <span class="text-[15px] text-night-text">{r.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Hero image -->
+  <section class="pt-16">
+    <div class="container-site" data-reveal>
+      <Placeholder label="Main project screenshot" src={w.image} alt={w.imageAlt} class="h-[clamp(240px,40vw,520px)] rounded-[20px]" />
+    </div>
+  </section>
+
+  <!-- Challenge + approach -->
+  <section>
+    <div class="container-site flex flex-wrap gap-x-16 gap-y-12 py-20">
+      <div class="flex min-w-0 flex-[1_1_340px] flex-col gap-4" data-reveal>
+        <p class="eyebrow m-0">The challenge</p>
+        <p class="m-0 text-[20px] font-semibold leading-[1.5] text-ink">{w.challenge}</p>
+        {w.url && <a href={w.url} class="mt-2 inline-flex w-fit items-center gap-1.5 font-semibold">Visit the site <Icon name="arrow" size={16} /></a>}
+      </div>
+      <div class="flex min-w-0 flex-[1_1_440px] flex-col gap-5">
+        <p class="eyebrow m-0" data-reveal>What we did</p>
+        {w.approach.map((a, i) => (
+          <div class="flex flex-col gap-2 rounded-[20px] bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
+            <a href={serviceFor[a.discipline]} class="label w-fit text-brand no-underline">{a.discipline}</a>
+            <p class="m-0 text-[15px] leading-[1.65] text-body">{a.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  {w.gallery.length > 0 && (
+    <section class="bg-tint">
+      <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-5 py-16">
+        {w.gallery.map((g, i) => (
+          <div data-reveal style={`--i:${i}`}>
+            <Placeholder label={g.alt} src={g.src} alt={g.alt} class="h-[240px] rounded-2xl" />
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Testimonial -->
+  {w.testimonial && (
+    <section>
+      <div class="container-site py-20">
+        <figure class="m-0 flex max-w-[900px] flex-col gap-6" data-reveal>
+          <span class="text-[72px] font-extrabold leading-[0.5] text-night-accent" aria-hidden="true">“</span>
+          <blockquote class="m-0 text-[clamp(22px,2.4vw,30px)] font-semibold leading-[1.4] text-ink">{w.testimonial.quote}</blockquote>
+          <figcaption class="flex flex-col">
+            <span class="font-bold text-ink">{w.testimonial.name}</span>
+            <span class="text-[15px] text-muted">{w.testimonial.role}</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )}
+
+  <!-- Tools -->
+  {w.tools.length > 0 && (
+    <section class="border-y border-line-soft">
+      <div class="container-site flex flex-wrap items-center gap-x-7 gap-y-3 py-8">
+        <span class="label text-dim">Stack</span>
+        {w.tools.map((t) => <span class="text-[16px] font-bold text-body">{t}</span>)}
+      </div>
+    </section>
+  )}
+
+  <!-- More work -->
+  <section>
+    <div class="container-site flex flex-col gap-8 py-20">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h2 class="h-section" data-reveal>More work</h2>
+        <a href="/work/" class="font-semibold" data-reveal>All projects →</a>
+      </div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
+        {[next, after].filter((e) => e && e.id !== entry.id).map((e, i) => <WorkCard entry={e!} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</Base>

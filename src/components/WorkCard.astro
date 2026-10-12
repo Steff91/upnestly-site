@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Placeholder from './Placeholder.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  index?: number;
+}
+const { entry, index = 0 } = Astro.props;
+const w = entry.data;
+const lead = w.results[0];
+---
+
+<article
+  class="work-card group relative flex flex-col overflow-hidden rounded-[20px] border border-line bg-white transition-colors hover:border-brand"
+  data-disciplines={w.disciplines.join(' ')}
+  data-reveal
+  style={`--i:${index % 3}`}
+>
+  <Placeholder label="Project screenshot" src={w.image} alt={w.imageAlt} class="h-[240px]" />
+  <div class="flex flex-1 flex-col gap-3 p-7">
+    <p class="label m-0 text-brand">{w.meta}</p>
+    <h3 class="m-0 text-[22px] font-extrabold leading-tight">
+      <a href={`/work/${entry.id}/`} class="text-ink no-underline after:absolute after:inset-0 after:content-['']">{w.title}</a>
+    </h3>
+    <p class="m-0 text-[15px] leading-[1.6] text-body">{w.summary}</p>
+    <div class="mt-auto flex items-end justify-between gap-4 border-t border-line-soft pt-4">
+      {lead && (
+        <p class="m-0 flex flex-col">
+          <span class="text-[26px] font-extrabold leading-none tracking-[-0.02em] text-brand">{lead.value}</span>
+          <span class="text-[13px] text-muted">{lead.label}</span>
+        </p>
+      )}
+      <span class="inline-flex items-center gap-1.5 text-[15px] font-semibold text-brand">
+        Case study <Icon name="arrow" size={16} class="transition-transform group-hover:translate-x-1" />
+      </span>
+    </div>
+  </div>
+</article>
