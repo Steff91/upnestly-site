@@ -14,12 +14,8 @@ const others = (await getCollection('services'))
   .filter((o) => o.id !== 'ai-automation')
   .sort((a, b) => a.data.order - b.data.order);
 
-const checkHref = site.auditUrl.startsWith('mailto:')
-  ? `mailto:${site.email}?subject=${encodeURIComponent('AI opportunity check')}`
-  : site.auditUrl;
-const quoteHref = site.auditUrl.startsWith('mailto:')
-  ? `mailto:${site.email}?subject=${encodeURIComponent('Custom AI project')}`
-  : site.auditUrl;
+const checkHref = '/audit/?plan=ai';
+const quoteHref = '/contact/?plan=custom';
 const price = (name: string) => plans.plans.find((p) => p.name === name)?.price ?? '';
 
 const principles = [

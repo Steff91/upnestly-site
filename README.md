@@ -68,7 +68,7 @@ The navy in the logo files (`#090E50`) is darker than the standards' RGB value u
 - Services: CMS → *Services*, or edit `src/content/services/*.md`. `cro-ads.md` is the fully written example; the others still contain `[bracketed]` placeholders.
 - Case studies: CMS → *Case studies*, or add a Markdown file to `src/content/work/`.
 - Plans and prices: CMS → *Settings → Plans & pricing*.
-- Audit button: set `auditUrl` to a booking link (e.g. Calendly) instead of `mailto:`.
+- Forms: `/audit/` and `/contact/` share `InquiryForm.astro`. Links preselect the interest with `?plan=audit|ai|essentials|growth|scale|custom` and `&billing=annual`.
 
 ## Deploy
 
@@ -92,7 +92,8 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 - [ ] Fill service pages: development, seo-content, hosting-care (pains, steps, FAQ, hosting details)
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
-- [ ] Booking link for the audit
+- [ ] Form endpoint: set `site.json → formAction` (e.g. Formspree / Web3Forms) and point its success redirect to `/thank-you/`. Until then the form opens the visitor's email app, prefilled
+- [ ] Audit & contact pages: response time, report turnaround, how the call is booked ([bracketed] text)
 - [ ] Confirm VAT handling for EU clients (pricing terms), annual discount and add-on rates
 - [ ] LinkedIn URL in `site.json` (top bar and footer link to `#` until then)
 - [ ] Company details in `site.json` (imprint, footer) and a GDPR-reviewed privacy policy (`src/pages/privacy.astro`); then remove `noindex` from both legal pages

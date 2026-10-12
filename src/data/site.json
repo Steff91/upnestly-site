@@ -5,8 +5,13 @@
   "email": "info@upnestly.net",
   "city": "Belgrade",
   "country": "Serbia",
-  "languages": ["English", "Deutsch"],
-  "auditUrl": "mailto:info@upnestly.net?subject=Free%20audit",
+  "languages": [
+    "English",
+    "Deutsch"
+  ],
+  "auditUrl": "/audit/",
+  "contactUrl": "/contact/",
+  "formAction": "",
   "topbarMessage": "Free 20-minute audit: conversion, SEO & automation",
   "hours": "Mon–Fri, 9–17 Belgrade time (CET)",
   "legalName": "[Legal entity name]",

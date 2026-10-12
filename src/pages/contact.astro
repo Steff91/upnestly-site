@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../components/Icon.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import site from '../data/site.json';
+
+const linkedin = site.linkedin.startsWith('http') ? site.linkedin : '#';
+---
+
+<Base
+  title="Contact & Get Started | Upnestly"
+  description="Start a monthly plan, request a quote for a custom project or just ask a question. We reply in English or German."
+>
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-48 -right-24 hidden w-[600px] opacity-[0.06] lg:block" />
+    <div class="container-site relative flex flex-wrap gap-12 py-18 lg:py-22">
+      <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-8">
+        <div class="flex flex-col gap-5">
+          <p class="eyebrow m-0" data-reveal>Contact</p>
+          <h1 class="h-hero" data-reveal style="--i:1">Let’s get started.</h1>
+          <p class="m-0 max-w-[520px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
+            Pick a plan, ask for a quote or just ask a question. You’ll hear back from the person who will lead your project.
+          </p>
+        </div>
+
+        <ul class="m-0 flex list-none flex-col gap-4 p-0 text-[16px] text-body" data-reveal style="--i:3">
+          <li class="flex items-center gap-3"><Icon name="mail" size={18} class="shrink-0 text-brand" /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li class="flex items-center gap-3"><Icon name="clock" size={18} class="shrink-0 text-brand" />{site.hours}</li>
+          <li class="flex items-center gap-3"><Icon name="globe" size={18} class="shrink-0 text-brand" />{site.languages.join(' · ')}</li>
+          <li class="flex items-center gap-3"><Icon name="pin" size={18} class="shrink-0 text-brand" />{site.city}, {site.country}</li>
+          <li class="flex items-center gap-3"><Icon name="linkedin" size={18} class="shrink-0 text-brand" /><a href={linkedin}>LinkedIn</a></li>
+        </ul>
+
+        <div class="flex flex-col gap-2 rounded-2xl border border-line bg-white p-6" data-reveal style="--i:4">
+          <p class="m-0 font-bold text-ink">What happens next</p>
+          <p class="m-0 text-[15px] leading-[1.6] text-body">We reply [within one business day], set up a short call and send a written proposal. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+
+      <div class="min-w-0 flex-[1_1_520px]" data-reveal style="--i:2">
+        <div class="rounded-[24px] bg-white p-7 sm:p-9">
+          <InquiryForm preset="growth" submitLabel="Send enquiry" />
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

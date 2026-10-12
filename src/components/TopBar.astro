@@ -8,7 +8,7 @@ const linkedin = site.linkedin.startsWith('http') ? site.linkedin : '#';
 
 <div class="bg-brand-deep text-[13px] text-night-text">
   <div class="container-site flex min-h-10 items-center justify-between gap-6">
-    <a href="/#contact" class="hidden items-center gap-2 text-night-text no-underline hover:text-white md:inline-flex">
+    <a href={site.auditUrl} class="hidden items-center gap-2 text-night-text no-underline hover:text-white md:inline-flex">
       <span class="size-1.5 rounded-full bg-night-accent" aria-hidden="true"></span>
       {site.topbarMessage}
       <Icon name="arrow" size={14} />

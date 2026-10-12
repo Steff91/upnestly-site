@@ -1,0 +1,138 @@
+---
+// Inquiry form used on /audit/ and /contact/.
+// - Preselects the interest from ?plan=… (falls back to `preset`), and billing from ?billing=annual.
+// - Posts to site.formAction (e.g. a Formspree / Web3Forms endpoint) when set.
+//   Until then it opens the visitor's email app with everything prefilled, so no enquiry is lost.
+import { interestOptions, billablePlans, platformOptions } from '../data/inquiry';
+import site from '../data/site.json';
+import pricing from '../data/pricing.json';
+
+interface Props {
+  preset?: string;
+  submitLabel?: string;
+}
+const { preset = 'audit', submitLabel = 'Send' } = Astro.props;
+const field = 'w-full rounded-xl border border-line bg-white px-4 py-3 text-[16px] text-ink outline-none transition-colors focus:border-brand';
+const labelCls = 'text-[14px] font-semibold text-ink';
+---
+
+<form
+  class="inquiry-form flex flex-col gap-5"
+  method="post"
+  action={site.formAction || undefined}
+  data-preset={preset}
+  data-billable={billablePlans.join(' ')}
+  data-email={site.email}
+  data-thanks="/thank-you/"
+>
+  <div class="flex flex-col gap-2">
+    <label for="f-interest" class={labelCls}>What are you interested in?</label>
+    <select id="f-interest" name="interest" class={field} required>
+      {interestOptions.map((o) => <option value={o.value} selected={o.value === preset}>{o.label}</option>)}
+    </select>
+  </div>
+
+  <fieldset class="billing-field m-0 flex flex-col gap-2 border-0 p-0" hidden>
+    <legend class:list={[labelCls, 'mb-2']}>Billing</legend>
+    <div class="flex flex-wrap gap-2">
+      <label class="cursor-pointer">
+        <input type="radio" name="billing" value="monthly" checked class="peer sr-only" />
+        <span class="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[15px] font-semibold text-body peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">Monthly</span>
+      </label>
+      <label class="cursor-pointer">
+        <input type="radio" name="billing" value="annual" class="peer sr-only" />
+        <span class="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[15px] font-semibold text-body peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">Annual — save {pricing.annualDiscount}%</span>
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div class="flex flex-col gap-2">
+      <label for="f-name" class={labelCls}>Name</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" required class={field} />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="f-email" class={labelCls}>Work email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required class={field} />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="f-company" class={labelCls}>Company</label>
+      <input id="f-company" name="company" type="text" autocomplete="organization" class={field} />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="f-website" class={labelCls}>Website</label>
+      <input id="f-website" name="website" type="text" inputmode="url" placeholder="example.com" class={field} />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label for="f-platform" class={labelCls}>Platform</label>
+    <select id="f-platform" name="platform" class={field}>
+      <option value="" selected>Select a platform</option>
+      {platformOptions.map((p) => <option value={p}>{p}</option>)}
+    </select>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label for="f-message" class={labelCls}>What would you like to improve?</label>
+    <textarea id="f-message" name="message" rows="5" class={field} placeholder="More leads from the site, a faster shop, automating product data…"></textarea>
+  </div>
+
+  <!-- Honeypot: humans never see or fill this -->
+  <div class="hidden" aria-hidden="true">
+    <label for="f-company-url">Leave this empty</label>
+    <input id="f-company-url" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <label class="flex items-start gap-3 text-[14px] leading-snug text-body">
+    <input type="checkbox" name="consent" required class="mt-0.5 size-5 shrink-0 accent-[#2D327D]" />
+    <span>I agree that Upnestly may use these details to reply to my enquiry. See the <a href="/privacy/">privacy policy</a>.</span>
+  </label>
+
+  <button type="submit" class="btn btn-primary w-full sm:w-fit">{submitLabel}</button>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.inquiry-form').forEach((form) => {
+    const select = form.querySelector<HTMLSelectElement>('select[name="interest"]');
+    const billing = form.querySelector<HTMLFieldSetElement>('.billing-field');
+    const billable = (form.dataset.billable ?? '').split(' ');
+    const params = new URLSearchParams(location.search);
+
+    const plan = params.get('plan');
+    if (select && plan && [...select.options].some((o) => o.value === plan)) select.value = plan;
+    if (params.get('billing') === 'annual') {
+      const annual = form.querySelector<HTMLInputElement>('input[name="billing"][value="annual"]');
+      if (annual) annual.checked = true;
+    }
+
+    const syncBilling = () => {
+      if (billing && select) billing.hidden = !billable.includes(select.value);
+    };
+    select?.addEventListener('change', syncBilling);
+    syncBilling();
+
+    // No form endpoint yet: open the visitor's email app with the enquiry prefilled.
+    if (!form.getAttribute('action')) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        if (data.get('_gotcha')) return;
+        const interest = select?.selectedOptions[0]?.text ?? '';
+        const lines = [
+          `Interest: ${interest}`,
+          ...(billing && !billing.hidden ? [`Billing: ${data.get('billing')}`] : []),
+          `Name: ${data.get('name')}`,
+          `Email: ${data.get('email')}`,
+          `Company: ${data.get('company') || '-'}`,
+          `Website: ${data.get('website') || '-'}`,
+          `Platform: ${data.get('platform') || '-'}`,
+          '',
+          String(data.get('message') || ''),
+        ];
+        location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Upnestly — ${interest}`)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      });
+    }
+  });
+</script>

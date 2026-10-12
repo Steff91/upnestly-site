@@ -3,17 +3,13 @@
 import Icon from './Icon.astro';
 import data from '../data/plans.json';
 import pricing from '../data/pricing.json';
-import site from '../data/site.json';
+import { planHref } from '../data/inquiry';
 
 interface Props {
   toggle?: boolean;
 }
 const { toggle = false } = Astro.props;
 
-const quoteHref = (plan: string) =>
-  site.auditUrl.startsWith('mailto:')
-    ? `mailto:${site.email}?subject=${encodeURIComponent(`Upnestly — ${plan} plan`)}`
-    : site.auditUrl;
 
 const discount = pricing.annualDiscount;
 const toNumber = (price: string) => Number(price.replace(/[^\d]/g, ''));
@@ -79,7 +75,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
           ))}
         </div>
 
-        <a href={quoteHref(plan.name)} class:list={['btn mt-auto w-full', plan.featured ? 'btn-light' : 'btn-primary']}>{plan.cta}</a>
+        <a href={planHref(plan.name)} data-plan-link class:list={['btn mt-auto w-full', plan.featured ? 'btn-light' : 'btn-primary']}>{plan.cta}</a>
       </article>
     ))}
   </div>
@@ -98,7 +94,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
           </li>
         ))}
       </ul>
-      <a href={quoteHref(custom.name)} class="btn btn-outline shrink-0">{custom.cta}</a>
+      <a href={planHref(custom.name)} class="btn btn-outline shrink-0">{custom.cta}</a>
     </aside>
   )}
 </div>
@@ -116,6 +112,13 @@ const custom = data.plans.find((p) => p.name === 'Custom');
     buttons.forEach((btn) =>
       btn.addEventListener('click', () => {
         root.dataset.billing = btn.dataset.setBilling;
+        // Carry the billing choice into the contact form
+        root.querySelectorAll<HTMLAnchorElement>('[data-plan-link]').forEach((a) => {
+          const url = new URL(a.href);
+          if (btn.dataset.setBilling === 'annual') url.searchParams.set('billing', 'annual');
+          else url.searchParams.delete('billing');
+          a.href = url.pathname + url.search;
+        });
         buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
       }),
     );
