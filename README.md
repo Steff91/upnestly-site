@@ -79,7 +79,9 @@ Until launch, every build is hidden from search engines and AI crawlers:
 - every page carries `<meta name="robots" content="noindex, nofollow, …">`
 - `/robots.txt` disallows everything, and the sitemap is empty
 
-To launch, set the GitHub repository **variable** `SITE_LIVE` to `true` and redeploy. Password protection is done on the server (Plesk → *Password-Protected Directories*), not in the code.
+- a **“Coming soon” password screen** covers every page (default password `upnestly2026`; override with the `PREVIEW_PASSWORD` build variable). Once entered, the browser remembers it. This is for sharing previews — not real security, the content is still in the HTML.
+
+To launch, set the GitHub repository **variable** `SITE_LIVE` to `true` and redeploy — the gate, noindex and robots block all switch off. Password protection is done on the server (Plesk → *Password-Protected Directories*), not in the code.
 
 ## Deploy
 

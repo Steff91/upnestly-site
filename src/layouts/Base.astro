@@ -4,6 +4,8 @@ import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import PreviewGate from '../components/PreviewGate.astro';
+import { previewGateOn, previewHash } from '../lib/preview';
 import site from '../data/site.json';
 
 interface Props {
@@ -59,10 +61,17 @@ const schema = {
     <meta property="og:locale" content="en_GB" />
     <meta name="theme-color" content="#2D327D" />
     <script is:inline>document.documentElement.classList.add('js');</script>
+    {previewGateOn && (
+      <script is:inline define:vars={{ previewHash }}>
+        try { if (localStorage.getItem('upn-preview') !== previewHash) document.documentElement.classList.add('gated'); }
+        catch { document.documentElement.classList.add('gated'); }
+      </script>
+    )}
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <slot name="head" />
   </head>
   <body>
+    {previewGateOn && <PreviewGate />}
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
     <TopBar />
     <Header />

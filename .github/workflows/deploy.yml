@@ -26,6 +26,7 @@ jobs:
         env:
           # Leave unset (or anything but "true") while the site is in preview: noindex everywhere, robots.txt blocks all.
           PUBLIC_SITE_LIVE: ${{ vars.SITE_LIVE }}
+          PREVIEW_PASSWORD: ${{ secrets.PREVIEW_PASSWORD }}
 
       - name: Rsync to server
         if: env.HAS_SSH == 'true'
