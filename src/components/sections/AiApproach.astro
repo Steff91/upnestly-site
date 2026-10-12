@@ -1,0 +1,26 @@
+---
+const principles = [
+  { title: 'Human-reviewed', text: 'Nothing generated goes live without an editor’s sign-off.' },
+  { title: 'GDPR-aware', text: 'EU hosting options and documented data flows for every workflow.' },
+  { title: 'Measured', text: 'Hours saved and output volume tracked from day one.' },
+  { title: 'Yours to keep', text: 'Workflows documented and handed over, no lock-in.' },
+];
+---
+
+<section id="ai" class="bg-ink text-white">
+  <div class="container-site flex flex-wrap gap-14 py-24 lg:py-26">
+    <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-5" data-reveal>
+      <p class="eyebrow m-0 !text-night-accent">How we use AI</p>
+      <h2 class="h-section">AI does the volume. People own the result.</h2>
+      <p class="m-0 text-[17px] leading-[1.6] text-night-text">Every AI system we build has a human checkpoint, clear data handling and a measurable goal. You get speed without generic output.</p>
+    </div>
+    <div class="grid min-w-0 flex-[1_1_520px] grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">
+      {principles.map((p, i) => (
+        <div class="flex flex-col gap-2 rounded-2xl border border-night-line p-6" data-reveal style={`--i:${i}`}>
+          <h3 class="m-0 text-[18px] font-bold">{p.title}</h3>
+          <p class="m-0 text-[15px] leading-[1.55] text-night-text">{p.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

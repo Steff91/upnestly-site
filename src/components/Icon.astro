@@ -1,0 +1,33 @@
+---
+// Stroke icons (Lucide-style, ISC) as inline SVG.
+const paths = {
+  arrow: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
+  close: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+  chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/>',
+} as const;
+
+interface Props {
+  name: keyof typeof paths;
+  size?: number;
+  class?: string;
+}
+const { name, size = 20, class: className } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  class={className}
+  set:html={paths[name]}
+/>

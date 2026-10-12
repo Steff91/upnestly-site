@@ -1,0 +1,18 @@
+---
+// Image slot. Pass `src` once real images exist; until then renders a labelled placeholder.
+interface Props {
+  label: string;
+  src?: string;
+  alt?: string;
+  class?: string;
+}
+const { label, src, alt = '', class: className = '' } = Astro.props;
+---
+
+{src ? (
+  <div class:list={['overflow-hidden', className]}>
+    <img src={src} alt={alt} loading="lazy" class="h-full w-full object-cover" />
+  </div>
+) : (
+  <div class:list={['placeholder', className]}>[{label}]</div>
+)}

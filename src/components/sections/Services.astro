@@ -1,0 +1,58 @@
+---
+const services = [
+  {
+    n: '01 — Build',
+    title: 'Websites, shops & AI automation',
+    text: 'Design and development on WordPress, Shopify, Webflow, Magento or custom code — plus AI workflows that take manual work off your team.',
+    items: ['UX/UI design & development', 'E-commerce & multilingual sites', 'AI pipelines & integrations'],
+    footer: 'Project-based · fixed scope',
+    dark: false,
+  },
+  {
+    n: '02 — Grow',
+    title: 'Content, search, ads & CRO',
+    text: 'Multilingual content, SEO that ranks in Google and gets cited by AI search, campaigns tied to revenue — and a site that turns that traffic into leads and sales.',
+    items: ['Content in English & German', 'SEO & AI search (GEO)', 'Google & Meta ads, reporting', 'Conversion optimization (CRO) & A/B testing'],
+    footer: 'Monthly growth plan',
+    dark: true,
+  },
+  {
+    n: '03 — Run',
+    title: 'Hosting, security & care',
+    text: 'Managed EU hosting, updates, backups and monitoring — handled by a senior systems engineer, not a ticket queue.',
+    items: ['Managed hosting in the EU', 'Updates, backups, monitoring', 'Security & GDPR documentation'],
+    footer: 'Monthly care plan',
+    dark: false,
+  },
+];
+---
+
+<section id="services">
+  <div class="container-site flex flex-col gap-12 py-24 lg:py-26">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 class="h-section max-w-[640px]" data-reveal>Build. Grow. Run. One team for the whole lifecycle.</h2>
+      <p class="lead max-w-[440px]" data-reveal style="--i:1">Most businesses juggle a developer, a marketing agency and a hosting company. We are all three — so nothing gets lost between vendors.</p>
+    </div>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
+      {services.map((s, i) => (
+        <article
+          class:list={[
+            'flex flex-col gap-4.5 rounded-[20px] border p-9',
+            s.dark ? 'border-ink bg-ink text-white' : 'border-line',
+          ]}
+          data-reveal
+          style={`--i:${i}`}
+        >
+          <p class:list={['m-0 font-mono text-[13px]', s.dark ? 'text-night-accent' : 'text-brand']}>{s.n}</p>
+          <h3 class="m-0 text-[26px] font-extrabold leading-tight tracking-[-0.01em]">{s.title}</h3>
+          <p class:list={['m-0 text-[15px] leading-[1.6]', s.dark ? 'text-night-text' : 'text-body']}>{s.text}</p>
+          <ul class="m-0 flex flex-col gap-2 pl-[18px] text-[15px]">
+            {s.items.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class:list={['m-0 mt-auto border-t pt-4 text-[14px]', s.dark ? 'border-night-line text-night-text' : 'border-line-soft text-muted']}>{s.footer}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

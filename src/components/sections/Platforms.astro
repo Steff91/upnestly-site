@@ -1,0 +1,10 @@
+---
+const platforms = ['WordPress', 'WooCommerce', 'Shopify', 'Webflow', 'Magento', 'Custom code'];
+---
+
+<section aria-label="Platforms we work with" class="border-b border-line-soft">
+  <div class="container-site flex flex-wrap items-center gap-x-9 gap-y-3 py-8">
+    <span class="font-mono text-[12px] uppercase tracking-[0.08em] text-dim">Platform-agnostic</span>
+    {platforms.map((p) => <span class="text-[18px] font-bold text-body">{p}</span>)}
+  </div>
+</section>

@@ -1,0 +1,11 @@
+---
+// Raster logo exported from the brand standards PDF. Swap for the designer's SVG when available.
+interface Props {
+  variant?: 'color' | 'white';
+  class?: string;
+}
+const { variant = 'color', class: className = 'h-9 w-auto' } = Astro.props;
+const src = variant === 'white' ? '/logo/upnestly-white.png' : '/logo/upnestly.png';
+---
+
+<img src={src} alt="Upnestly" width="564" height="160" class={className} />

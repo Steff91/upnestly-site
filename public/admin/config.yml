@@ -1,0 +1,44 @@
+# Sveltia CMS (Decap-compatible). Login method for the GitHub backend:
+# verify the current options in the Sveltia docs before handing over.
+backend:
+  name: github
+  repo: Steff91/upnestly-site
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: settings
+    label: Settings
+    files:
+      - name: site
+        label: Site & contact
+        file: src/data/site.json
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: description, label: Meta description, widget: text }
+          - { name: email, label: Email, widget: string }
+          - { name: city, label: City, widget: string }
+          - { name: country, label: Country, widget: string }
+          - { name: languages, label: Languages, widget: list }
+          - { name: auditUrl, label: Audit booking link (mailto or Calendly), widget: string }
+          - { name: retainerPrice, label: Retainer price label, widget: string }
+          - { name: retainerHours, label: Retainer dev hours / month, widget: string }
+          - { name: linkedin, label: LinkedIn URL, widget: string, required: false }
+          - { name: github, label: GitHub URL, widget: string, required: false }
+
+  - name: work
+    label: Case studies
+    folder: src/content/work
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: order, label: Order, widget: number, value_type: int }
+      - { name: meta, label: "Meta line (industry · platform · …)", widget: string }
+      - { name: summary, label: Summary, widget: text }
+      - { name: image, label: Screenshot, widget: image, required: false }
+      - { name: imageAlt, label: Screenshot alt text, widget: string, required: false }
+      - { name: url, label: Link (optional), widget: string, required: false }

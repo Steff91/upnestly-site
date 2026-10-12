@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Placeholder from '../Placeholder.astro';
+
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="work">
+  <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
+    <h2 class="h-section" data-reveal>Selected work</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
+      {work.map((w, i) => (
+        <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
+          <Placeholder label="Project screenshot" src={w.data.image} alt={w.data.imageAlt} class="h-[260px]" />
+          <div class="flex flex-col gap-2.5 p-7">
+            <p class="m-0 font-mono text-[12px] uppercase tracking-[0.06em] text-brand">{w.data.meta}</p>
+            <h3 class="m-0 text-[22px] font-bold">{w.data.url ? <a href={w.data.url} class="text-ink">{w.data.title}</a> : w.data.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.6] text-body">{w.data.summary}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

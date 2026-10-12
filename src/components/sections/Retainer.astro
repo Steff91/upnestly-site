@@ -1,0 +1,36 @@
+---
+import site from '../../data/site.json';
+
+const included = [
+  { tag: 'Build', text: `${site.retainerHours} development & design hours for new features, pages and AI automations` },
+  { tag: 'Grow', text: 'Content, SEO, campaigns and conversion testing in English and German' },
+  { tag: 'Run', text: 'Managed EU hosting, updates, backups and monitoring' },
+];
+---
+
+<section id="retainer" class="px-6 pb-24">
+  <div class="mx-auto flex max-w-[1240px] flex-wrap items-center gap-12 rounded-[28px] border-2 border-brand p-8 sm:p-14">
+    <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-4.5" data-reveal>
+      <p class="eyebrow m-0">The Upnestly retainer</p>
+      <h2 class="h-section">One monthly fee. Three senior specialists on your side.</h2>
+      <p class="lead">Instead of hiring a developer, a marketer and a sysadmin — or managing three vendors — you get a team that builds, grows and runs your site every month.</p>
+      <p class="m-0 flex flex-wrap items-baseline gap-2.5">
+        <span class="text-[32px] font-extrabold text-ink">{site.retainerPrice}</span>
+        <span class="text-[16px] text-muted">/ month · cancel monthly</span>
+      </p>
+    </div>
+
+    <ul class="m-0 flex min-w-0 flex-[1_1_380px] list-none flex-col gap-3 p-0" data-reveal style="--i:1">
+      {included.map((row) => (
+        <li class="flex gap-3.5 rounded-[14px] bg-tint-soft px-5 py-4.5">
+          <span class="w-12 shrink-0 pt-0.5 font-mono text-[13px] font-medium text-brand">{row.tag}</span>
+          <span class="text-[15px] leading-normal">{row.text}</span>
+        </li>
+      ))}
+      <li class="flex gap-3.5 rounded-[14px] bg-brand px-5 py-4.5 text-white">
+        <span class="w-12 shrink-0 pt-0.5 font-mono text-[13px] font-medium">+</span>
+        <span class="text-[15px] leading-normal">Monthly report and a call with the whole team</span>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { nav } from '../data/nav';
+import site from '../data/site.json';
+---
+
+<header class="sticky top-0 z-40 border-b border-line-soft bg-white/95 backdrop-blur">
+  <div class="container-site flex items-center justify-between gap-6 py-4">
+    <a href="/" class="flex shrink-0 items-center" aria-label="Upnestly — home">
+      <Logo class="h-8 w-auto sm:h-9" />
+    </a>
+
+    <nav aria-label="Main" class="hidden items-center gap-7 text-[15px] font-medium lg:flex">
+      {nav.map((item) => (
+        <a href={item.href} class="text-ink no-underline hover:text-brand">{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={site.auditUrl} class="btn btn-primary hidden !px-5 !py-3 !text-[15px] sm:inline-flex">Book a free audit</a>
+
+      <details class="relative lg:hidden" data-mobile-menu>
+        <summary class="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-line text-ink [&::-webkit-details-marker]:hidden" aria-label="Open menu">
+          <Icon name="menu" />
+        </summary>
+        <nav aria-label="Mobile" class="absolute right-0 top-14 flex w-64 flex-col gap-1 rounded-2xl border border-line bg-white p-3 shadow-lg">
+          {nav.map((item) => (
+            <a href={item.href} class="rounded-xl px-4 py-3 font-medium text-ink no-underline hover:bg-tint-soft">{item.label}</a>
+          ))}
+          <a href={site.auditUrl} class="btn btn-primary mt-2">Book a free audit</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

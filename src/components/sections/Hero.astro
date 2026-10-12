@@ -1,0 +1,43 @@
+---
+import site from '../../data/site.json';
+
+// Example month on the retainer — illustrates the offer, not a claim about a specific client.
+const month = [
+  { tag: 'Build', text: 'New landing page for a seasonal campaign' },
+  { tag: 'Grow', text: 'Two articles in English & German, A/B test on the pricing page' },
+  { tag: 'Run', text: 'Updates, daily backups and uptime monitoring' },
+];
+---
+
+<section id="top" class="bg-tint">
+  <div class="container-site flex flex-wrap items-center gap-14 py-20 lg:py-24">
+    <div class="flex min-w-0 flex-[999_1_560px] flex-col gap-7">
+      <p class="eyebrow m-0" data-reveal>{site.tagline} · Based in {site.city}, working worldwide</p>
+      <h1 class="h-hero" data-reveal style="--i:1">Websites, search and automation that keep working after launch.</h1>
+      <p class="m-0 max-w-[620px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
+        We build on the platform that fits your business — WordPress, Shopify, Webflow, Magento or custom code — and connect it to AI workflows that cut manual work. Senior people, human-reviewed output, no AI slop.
+      </p>
+      <div class="flex flex-wrap gap-3.5" data-reveal style="--i:3">
+        <a href={site.auditUrl} class="btn btn-primary">Book a free audit</a>
+        <a href="#retainer" class="btn btn-outline">How the retainer works</a>
+      </div>
+    </div>
+
+    <aside class="flex min-w-0 flex-[1_1_360px] flex-col gap-4 rounded-[20px] border border-line bg-white p-7" aria-labelledby="month-title" data-reveal style="--i:2">
+      <p id="month-title" class="m-0 font-mono text-[12px] uppercase tracking-[0.08em] text-dim">Example month on the retainer</p>
+      <ul class="m-0 flex list-none flex-col gap-2.5 p-0">
+        {month.map((row) => (
+          <li class="flex items-start gap-3.5 rounded-xl bg-tint-soft px-4 py-3.5">
+            <span class="w-12 shrink-0 pt-0.5 font-mono text-[13px] font-medium text-brand">{row.tag}</span>
+            <span class="text-[15px] font-semibold leading-snug">{row.text}</span>
+          </li>
+        ))}
+        <li class="flex items-start gap-3.5 rounded-xl bg-brand px-4 py-3.5 text-white">
+          <span class="w-12 shrink-0 pt-0.5 font-mono text-[13px] font-medium">Report</span>
+          <span class="text-[15px] font-semibold leading-snug">Results and next month’s plan, on one call</span>
+        </li>
+      </ul>
+      <p class="m-0 text-[14px] leading-normal text-muted">Three specialists, one monthly fee, one point of contact.</p>
+    </aside>
+  </div>
+</section>

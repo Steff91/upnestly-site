@@ -1,0 +1,16 @@
+---
+import Logo from './Logo.astro';
+import site from '../data/site.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line-soft">
+  <div class="container-site flex flex-wrap items-center justify-between gap-4 py-10 text-[14px] text-muted">
+    <Logo class="h-7 w-auto" />
+    <span>
+      <a href={`mailto:${site.email}`} class="text-muted hover:text-brand">{site.email}</a>
+      · {site.city}, {site.country} · {site.languages.join(' · ')}
+    </span>
+    <span>© {year} {site.name}</span>
+  </div>
+</footer>

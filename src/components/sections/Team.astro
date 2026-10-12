@@ -1,0 +1,31 @@
+---
+import Icon from '../Icon.astro';
+
+const team = [
+  { stat: '[X]+ yrs', title: 'Development, design & AI', text: 'Built and maintained platforms for SaaS companies and agencies across Europe.' },
+  { stat: 'EN · DE', title: 'Content & marketing', text: 'Philologist with in-house marketing experience at a major European retailer, writing for every market you sell in.' },
+  { stat: '25+ yrs', title: 'Infrastructure & DevOps', text: 'Senior systems engineer running production servers since the early 2000s.' },
+];
+---
+
+<section id="team">
+  <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 class="h-section max-w-[680px]" data-reveal>Three senior specialists. No juniors, no handoffs.</h2>
+      <p class="lead max-w-[440px]" data-reveal style="--i:1">Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work.</p>
+    </div>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
+      {team.map((m, i) => (
+        <div class="flex flex-col gap-3 rounded-[20px] bg-tint-soft p-8" data-reveal style={`--i:${i}`}>
+          <p class="m-0 text-[44px] font-extrabold tracking-[-0.02em] text-brand">{m.stat}</p>
+          <h3 class="m-0 text-[19px] font-bold">{m.title}</h3>
+          <p class="m-0 text-[15px] leading-[1.6] text-body">{m.text}</p>
+        </div>
+      ))}
+    </div>
+    <div class="flex flex-wrap items-center gap-4 rounded-2xl border border-line px-7 py-6" data-reveal>
+      <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-white"><Icon name="chat" /></span>
+      <p class="m-0 min-w-0 flex-[1_1_320px] text-[16px] leading-normal"><strong>One point of contact for everything.</strong> One project lead, one invoice, one contract — in English or German.</p>
+    </div>
+  </div>
+</section>
