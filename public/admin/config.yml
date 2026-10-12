@@ -24,10 +24,32 @@ collections:
           - { name: country, label: Country, widget: string }
           - { name: languages, label: Languages, widget: list }
           - { name: auditUrl, label: Audit booking link (mailto or Calendly), widget: string }
-          - { name: retainerPrice, label: Retainer price label, widget: string }
-          - { name: retainerHours, label: Retainer dev hours / month, widget: string }
           - { name: linkedin, label: LinkedIn URL, widget: string, required: false }
           - { name: github, label: GitHub URL, widget: string, required: false }
+
+      - name: plans
+        label: Plans & pricing
+        file: src/data/plans.json
+        fields:
+          - { name: title, label: Section title, widget: string }
+          - { name: intro, label: Intro, widget: text }
+          - { name: footnote, label: Footnote (VAT, term, …), widget: text }
+          - name: plans
+            label: Plans
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: price, label: Price, widget: string }
+              - { name: period, label: Period, widget: string, required: false }
+              - { name: blurb, label: Who it's for, widget: text }
+              - { name: featured, label: Highlight, widget: boolean, default: false }
+              - { name: cta, label: Button text, widget: string }
+              - name: groups
+                label: Included
+                widget: list
+                fields:
+                  - { name: label, label: Label (Build / Grow / Run), widget: string }
+                  - { name: items, label: Items, widget: list }
 
   - name: work
     label: Case studies

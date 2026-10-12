@@ -1,0 +1,57 @@
+{
+  "title": "One team, one monthly fee. Pick the pace.",
+  "intro": "Every plan includes all three disciplines — development, growth and hosting — handled by the same three senior people.",
+  "footnote": "Prices excl. VAT. Ad spend is billed directly by Google or Meta. Minimum term 3 months, then cancel monthly. Unused development hours roll over for one month.",
+  "plans": [
+    {
+      "name": "Essentials",
+      "price": "€990",
+      "period": "/ month",
+      "blurb": "For a company site that needs to stay fast, secure and up to date.",
+      "featured": false,
+      "cta": "Start with Essentials",
+      "groups": [
+        { "label": "Build", "items": ["8 h development & design per month", "Fixes, small features, content updates"] },
+        { "label": "Grow", "items": ["1 article per month (EN or DE)", "Technical SEO monitoring", "Monthly report"] },
+        { "label": "Run", "items": ["Managed EU hosting", "Updates, daily backups, uptime monitoring", "Response within 2 business days"] }
+      ]
+    },
+    {
+      "name": "Growth",
+      "price": "€1,990",
+      "period": "/ month",
+      "blurb": "For businesses that use their site to win leads or sales.",
+      "featured": true,
+      "cta": "Start with Growth",
+      "groups": [
+        { "label": "Build", "items": ["16 h development & design per month", "Includes AI automations"] },
+        { "label": "Grow", "items": ["2 articles per month in EN & DE", "SEO & AI search (GEO)", "Google or Meta ads management", "1 CRO test per month"] },
+        { "label": "Run", "items": ["Everything in Essentials", "Performance optimization, staging site", "Next-business-day response"] }
+      ]
+    },
+    {
+      "name": "Scale",
+      "price": "€3,490",
+      "period": "/ month",
+      "blurb": "For shops and multi-market sites with an ongoing roadmap.",
+      "featured": false,
+      "cta": "Start with Scale",
+      "groups": [
+        { "label": "Build", "items": ["32 h development, design & AI per month", "Feature roadmap, planned quarterly"] },
+        { "label": "Grow", "items": ["4 articles per month in EN & DE", "Google and Meta ads", "2 CRO tests per month", "Quarterly strategy review"] },
+        { "label": "Run", "items": ["Everything in Growth", "Security hardening, GDPR documentation", "4-hour response on business days"] }
+      ]
+    },
+    {
+      "name": "Custom",
+      "price": "Let’s talk",
+      "period": "",
+      "blurb": "New builds, migrations, large shops or AI projects — as a fixed-price project or a tailored retainer.",
+      "featured": false,
+      "cta": "Get a quote",
+      "groups": [
+        { "label": "Examples", "items": ["New website or shop, redesign", "Migration between platforms", "Custom AI pipelines & integrations", "More hours, languages or markets"] }
+      ]
+    }
+  ]
+}

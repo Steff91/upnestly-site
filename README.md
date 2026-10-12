@@ -22,12 +22,13 @@ npm run preview
 
 ```
 src/
-  data/site.json            # name, email, audit link, retainer price/hours
+  data/site.json            # name, email, audit link
+  data/plans.json           # pricing plans (editable in the CMS)
   data/nav.ts               # header navigation
   content/work/*.md         # case studies on the homepage
   content.config.ts         # collection schema
   components/
-    sections/               # homepage sections: Hero, Platforms, Services, Retainer,
+    sections/               # homepage sections: Hero, Platforms, Services, Pricing,
                             # AiApproach, Work, Process, Team, Contact
     Header, Footer, Logo, Icon, Placeholder
   layouts/Base.astro        # <head>, ProfessionalService JSON-LD, reveal-on-scroll
@@ -55,7 +56,7 @@ The navy in the logo files (`#090E50`) is darker than the standards' RGB value u
 
 - Text in `[BRACKETS]` is placeholder content to replace.
 - Case studies: CMS → *Case studies*, or add a Markdown file to `src/content/work/`.
-- Retainer price and hours: CMS → *Settings → Site & contact*.
+- Plans and prices: CMS → *Settings → Plans & pricing*.
 - Audit button: set `auditUrl` to a booking link (e.g. Calendly) instead of `mailto:`.
 
 ## Deploy
@@ -73,7 +74,7 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 
 ## TODO
 
-- [ ] Real numbers: years of experience, retainer price and hours, case study results
+- [ ] Real numbers: years of experience, case study results; confirm plan prices in `src/data/plans.json`
 - [ ] Project screenshots for case studies
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)

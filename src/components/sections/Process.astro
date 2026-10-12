@@ -1,15 +1,15 @@
 ---
 const steps = [
-  { when: 'Week 1', title: 'Audit & scope', text: 'Free audit, fixed scope, fixed price.' },
-  { when: 'Weeks 2–6', title: 'Build on staging', text: 'Weekly demos you can click through.' },
-  { when: 'Launch', title: 'Go live & train', text: 'Migration, redirects, editor training.' },
-  { when: 'Monthly', title: 'Retainer', text: 'Hosting, updates, content, SEO, CRO and ads.' },
+  { when: 'Week 1', title: 'Free audit', text: 'We review your site and recommend the plan that fits.' },
+  { when: 'Week 2', title: 'Onboarding', text: 'Hosting move, access, tracking and a baseline report.' },
+  { when: 'Month 1', title: 'First sprint', text: 'Quick wins across development, SEO and conversion.' },
+  { when: 'Every month', title: 'Report & plan', text: 'Results, next priorities and one call with the whole team.' },
 ];
 ---
 
 <section class="bg-tint">
   <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
-    <h2 class="h-section" data-reveal>How a project runs</h2>
+    <h2 class="h-section" data-reveal>How working with us starts</h2>
     <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
       {steps.map((s, i) => (
         <li class="flex flex-col gap-2.5 rounded-2xl bg-white p-7" data-reveal style={`--i:${i}`}>
