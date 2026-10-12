@@ -45,8 +45,11 @@ const filters = ['All', 'Build', 'Grow', 'Run'] as const;
 </Base>
 
 <style>
-  .filter-btn { color: var(--color-body); background: #fff; }
+  .filter-btn { color: var(--color-body); background: #fff; cursor: pointer; transition: background-color .3s ease-out, border-color .3s ease-out, color .3s ease-out; }
+  .filter-btn:hover { background: var(--color-tint); border-color: var(--color-brand); color: var(--color-brand); }
   .filter-btn[aria-pressed='true'] { background: var(--color-brand); border-color: var(--color-brand); color: #fff; }
+  .filter-btn[aria-pressed='true']:hover { background: var(--color-brand-deep); color: #fff; }
+  @media (prefers-reduced-motion: reduce) { .filter-btn { transition: none; } }
 </style>
 
 <script>

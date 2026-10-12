@@ -26,7 +26,7 @@
         {[40, 60, 80].map((v) => (
           <label class="cursor-pointer">
             <input type="radio" name="share" value={v} checked={v === 60} class="peer sr-only" />
-            <span class="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[15px] font-semibold text-body peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">{v}%</span>
+            <span class="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-5 text-[15px] font-semibold text-body transition-[background-color,border-color,color] duration-300 ease-out hover:border-brand hover:bg-tint hover:text-brand peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-checked:hover:bg-brand-deep peer-checked:hover:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">{v}%</span>
           </label>
         ))}
       </div>

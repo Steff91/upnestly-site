@@ -102,8 +102,11 @@ const custom = data.plans.find((p) => p.name === 'Custom');
 <style>
   .plan-cards[data-billing='monthly'] .price-annual,
   .plan-cards[data-billing='annual'] .price-monthly { display: none; }
-  .billing-btn { color: var(--color-body); }
+  .billing-btn { color: var(--color-body); cursor: pointer; transition: background-color .3s ease-out, color .3s ease-out; }
+  .billing-btn:hover { background: var(--color-tint); color: var(--color-brand); }
   .billing-btn[aria-pressed='true'] { background: var(--color-brand); color: #fff; }
+  .billing-btn[aria-pressed='true']:hover { background: var(--color-brand-deep); color: #fff; }
+  @media (prefers-reduced-motion: reduce) { .billing-btn { transition: none; } }
 </style>
 
 <script>
