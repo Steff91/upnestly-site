@@ -8,14 +8,18 @@ const steps = [
 ---
 
 <section class="bg-tint">
-  <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
+  <div class="container-site flex flex-col gap-12 py-24 lg:py-26">
     <h2 class="h-section" data-reveal>How working with us starts</h2>
-    <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
+    <ol class="relative m-0 grid list-none gap-8 p-0 lg:grid-cols-4 lg:gap-6">
+      <span class="absolute left-5 top-5 bottom-5 w-0.5 rounded bg-[#C9CDEA] lg:bottom-auto lg:left-5 lg:right-[calc(25%-20px)] lg:h-0.5 lg:w-auto" aria-hidden="true"></span>
       {steps.map((s, i) => (
-        <li class="flex flex-col gap-2.5 rounded-2xl bg-white p-7" data-reveal style={`--i:${i}`}>
-          <span class="label text-brand">{s.when}</span>
-          <h3 class="m-0 text-[19px] font-bold">{s.title}</h3>
-          <p class="m-0 text-[15px] leading-[1.55] text-body">{s.text}</p>
+        <li class="relative flex gap-5 lg:flex-col lg:gap-5" data-reveal style={`--i:${i}`}>
+          <span class:list={['relative z-[1] flex size-10 shrink-0 items-center justify-center rounded-full text-[15px] font-extrabold ring-[6px] ring-tint', i === 0 ? 'bg-brand text-white' : 'border-2 border-brand bg-white text-brand']}>{i + 1}</span>
+          <div class="flex flex-col gap-2 pt-1.5 lg:pt-0">
+            <span class="label text-brand">{s.when}</span>
+            <h3 class="m-0 text-[19px] font-bold">{s.title}</h3>
+            <p class="m-0 max-w-[300px] text-[15px] leading-[1.55] text-body">{s.text}</p>
+          </div>
         </li>
       ))}
     </ol>

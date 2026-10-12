@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import PreviewGate from '../components/PreviewGate.astro';
+import MobileCta from '../components/MobileCta.astro';
 import { previewGateOn, previewHash } from '../lib/preview';
 import site from '../data/site.json';
 
@@ -79,6 +80,7 @@ const schema = {
       <slot />
     </main>
     <Footer />
+    <MobileCta />
     <CookieBanner />
 
     <script>
@@ -123,10 +125,6 @@ const schema = {
           }
         });
       });
-
-      // Mobile menu: close after picking a link.
-      const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
-      menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.removeAttribute('open')));
     </script>
   </body>
 </html>

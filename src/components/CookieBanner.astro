@@ -14,11 +14,11 @@
   aria-modal="false"
   aria-labelledby="cookie-title"
   aria-describedby="cookie-text"
-  class="fixed inset-x-4 bottom-4 z-[60] max-w-[480px] rounded-[20px] border border-line bg-white p-6 shadow-[0_24px_60px_-24px_rgb(23_22_58/0.45)] sm:bottom-6 sm:left-6 sm:right-auto"
+  class="fixed inset-x-0 bottom-0 z-[60] max-h-[85vh] overflow-y-auto rounded-t-[20px] border-t border-line bg-white px-5 pt-4 pb-[max(16px,env(safe-area-inset-bottom))] shadow-[0_-12px_40px_-20px_rgb(23_22_58/0.35)] sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[480px] sm:rounded-[20px] sm:border sm:p-6 sm:shadow-[0_24px_60px_-24px_rgb(23_22_58/0.45)]"
   hidden
 >
-  <p id="cookie-title" class="m-0 text-[18px] font-extrabold text-ink">Cookies</p>
-  <p id="cookie-text" class="mt-2 mb-0 text-[15px] leading-relaxed text-body">
+  <p id="cookie-title" class="m-0 text-[16px] font-extrabold text-ink sm:text-[18px]">Cookies</p>
+  <p id="cookie-text" class="mt-1.5 mb-0 text-[14px] leading-snug text-body sm:mt-2 sm:text-[15px] sm:leading-relaxed">
     We only use what’s necessary to run this site. With your permission we’d also use analytics to improve it. <a href="/cookies/">Cookie policy</a>
   </p>
 
@@ -37,10 +37,10 @@
     </label>
   </form>
 
-  <div class="mt-5 flex flex-wrap items-center gap-2.5">
-    <button type="button" class="btn btn-primary cursor-pointer border-0 !px-5 !py-3 !text-[15px]" data-cookie-accept>Accept all</button>
-    <button type="button" class="btn btn-outline cursor-pointer !px-5 !py-3 !text-[15px]" data-cookie-necessary>Necessary only</button>
-    <button type="button" class="cursor-pointer border-0 bg-transparent px-2 py-2 text-[15px] font-semibold text-brand underline-offset-4 transition-colors duration-300 hover:text-brand-deep hover:underline" data-cookie-settings>Settings</button>
+  <div class="mt-3.5 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-2.5">
+    <button type="button" class="btn btn-primary flex-1 cursor-pointer whitespace-nowrap border-0 !px-4 !py-2.5 !text-[15px] sm:flex-none sm:!px-5 sm:!py-3" data-cookie-accept>Accept all</button>
+    <button type="button" class="btn btn-outline flex-1 cursor-pointer whitespace-nowrap !px-4 !py-2.5 !text-[15px] sm:flex-none sm:!px-5 sm:!py-3" data-cookie-necessary>Necessary only</button>
+    <button type="button" class="basis-full cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-[14px] font-semibold sm:basis-auto sm:px-2 sm:py-2 sm:text-[15px] text-brand underline-offset-4 transition-colors duration-300 hover:text-brand-deep hover:underline" data-cookie-settings>Settings</button>
     <button type="button" class="btn btn-outline cursor-pointer !px-5 !py-3 !text-[15px]" data-cookie-save hidden>Save choice</button>
   </div>
 </div>

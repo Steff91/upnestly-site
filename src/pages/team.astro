@@ -16,7 +16,6 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
 >
   <!-- Hero -->
   <section class="relative overflow-hidden bg-tint">
-    <BrandMark variant="blue" class="-bottom-48 -right-24 hidden w-[600px] opacity-[0.07] lg:block" />
     <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
       <p class="eyebrow m-0" data-reveal>Team</p>
       <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">Three senior specialists. No juniors, no handoffs.</h1>
@@ -31,7 +30,14 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
     <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 py-20">
       {team.members.map((m, i) => (
         <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
-          <Placeholder label="Portrait" src={m.photo || undefined} alt={m.name} class="aspect-[4/5] w-full" />
+          {m.photo ? (
+            <Placeholder label="Portrait" src={m.photo} alt={m.name} class="aspect-[4/5] w-full" />
+          ) : (
+            <div class="flex items-center gap-4 bg-tint px-8 pt-8 pb-6" aria-hidden="true">
+              <span class="flex size-16 items-center justify-center rounded-full bg-brand text-[20px] font-extrabold text-white">{m.discipline.slice(0, 1)}</span>
+              <span class="label text-brand">{m.discipline}</span>
+            </div>
+          )}
           <div class="flex flex-1 flex-col gap-4 p-8">
             <div class="flex items-start justify-between gap-4">
               <div class="flex flex-col gap-1">
@@ -62,7 +68,7 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
 
   <!-- How we work -->
   <section class="relative overflow-hidden bg-ink text-white">
-    <BrandMark class="-bottom-40 -left-48 w-[600px] opacity-[0.05]" />
+    <BrandMark class="-bottom-40 -left-48 w-[600px] opacity-[0.10]" />
     <div class="container-site relative flex flex-wrap gap-14 py-22">
       <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-4" data-reveal>
         <p class="eyebrow m-0 !text-night-accent">How we work together</p>

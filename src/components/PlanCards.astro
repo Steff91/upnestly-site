@@ -31,7 +31,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
   )}
 
   <p class="m-0 -mb-2 text-[13px] font-medium text-dim lg:hidden">Swipe to compare plans →</p>
-  <div class="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-3 pt-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0">
+  <div class="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-3 pt-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0" data-plan-track>
     {plans.map((plan, i) => (
       <article
         class:list={['relative flex w-[86%] shrink-0 snap-start flex-col gap-6 rounded-[20px] p-8 sm:w-[60%] md:w-[46%] lg:w-auto lg:p-9', plan.featured ? 'bg-ink text-white' : 'bg-white']}
@@ -39,7 +39,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
         style={`--i:${i}`}
       >
         {plan.featured && (
-          <span class="absolute -top-3 left-8 rounded-full bg-night-accent px-3 py-1 text-[11.5px] font-bold uppercase tracking-[0.1em] text-ink lg:left-9">Most chosen</span>
+          <span class="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.1em] text-brand shadow-[0_6px_18px_-6px_rgb(23_22_58/0.5)] ring-1 ring-ink/10 lg:left-9"><span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>Most chosen</span>
         )}
         <div class="flex flex-col gap-2">
           <h3 class="m-0 text-[24px] font-extrabold">{plan.name}</h3>
@@ -80,6 +80,12 @@ const custom = data.plans.find((p) => p.name === 'Custom');
     ))}
   </div>
 
+  <div class="-mt-1 flex items-center justify-center gap-2 lg:hidden" data-plan-dots>
+    {plans.map((plan, i) => (
+      <button type="button" class="plan-dot cursor-pointer border-0 p-0" aria-label={`Show ${plan.name}`} aria-current={i === 0 ? 'true' : undefined} data-dot={i}></button>
+    ))}
+  </div>
+
   {custom && (
     <aside class="flex flex-wrap items-center gap-x-12 gap-y-6 rounded-[20px] border-2 border-dashed border-[#B9BEDF] bg-white/60 p-9" aria-labelledby="custom-plan" data-reveal>
       <div class="flex min-w-0 flex-[1_1_320px] flex-col gap-2">
@@ -106,11 +112,27 @@ const custom = data.plans.find((p) => p.name === 'Custom');
   .billing-btn:hover { background: var(--color-tint); color: var(--color-brand); }
   .billing-btn[aria-pressed='true'] { background: var(--color-brand); color: #fff; }
   .billing-btn[aria-pressed='true']:hover { background: var(--color-brand-deep); color: #fff; }
-  @media (prefers-reduced-motion: reduce) { .billing-btn { transition: none; } }
+  .plan-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--color-line); transition: width .3s ease-out, background-color .3s ease-out; }
+  .plan-dot[aria-current='true'] { width: 24px; background: var(--color-brand); }
+  @media (prefers-reduced-motion: reduce) { .billing-btn, .plan-dot { transition: none; } }
 </style>
 
 <script>
   document.querySelectorAll<HTMLElement>('.plan-cards').forEach((root) => {
+    // Mobile carousel: dots follow the swipe and jump to a card on tap.
+    const track = root.querySelector<HTMLElement>('[data-plan-track]');
+    const cards = track ? [...track.children] as HTMLElement[] : [];
+    const dots = root.querySelectorAll<HTMLButtonElement>('[data-dot]');
+    if (track && dots.length) {
+      const setDot = (n: number) => dots.forEach((d, i) => (i === n ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current')));
+      track.addEventListener('scroll', () => {
+        const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        setDot(atEnd ? cards.length - 1 : Math.round(track.scrollLeft / step));
+      }, { passive: true });
+      dots.forEach((d, i) => d.addEventListener('click', () => cards[i]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })));
+    }
+
     const buttons = root.querySelectorAll<HTMLButtonElement>('[data-set-billing]');
     buttons.forEach((btn) =>
       btn.addEventListener('click', () => {

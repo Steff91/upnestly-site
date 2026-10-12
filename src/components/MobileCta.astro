@@ -1,0 +1,42 @@
+---
+// Sticky "Book a free audit" bar on small screens (where the header button is hidden).
+// Appears after the hero, hides near the page's own CTA band and footer, and on the form pages.
+import site from '../data/site.json';
+
+const path = Astro.url.pathname;
+const skip = ['/audit/', '/contact/', '/thank-you/'].some((p) => path.startsWith(p));
+---
+
+{!skip && (
+  <div class="mobile-cta fixed inset-x-0 bottom-0 z-30 border-t border-line-soft bg-white/95 px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))] backdrop-blur sm:hidden" data-mobile-cta data-show="false" aria-hidden="true">
+    <a href={site.auditUrl} class="btn btn-primary w-full" tabindex="-1">Book a free audit</a>
+  </div>
+)}
+
+<style>
+  .mobile-cta { translate: 0 110%; transition: translate .35s cubic-bezier(.2,.7,.2,1); }
+  .mobile-cta[data-show='true'] { translate: 0 0; }
+  @media (prefers-reduced-motion: reduce) { .mobile-cta { transition: none; } }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-mobile-cta]');
+  if (bar) {
+    const link = bar.querySelector('a')!;
+    const blockers = document.querySelectorAll('#contact, footer');
+    const visible = new Set<Element>();
+    const update = () => {
+      const show = window.scrollY > 560 && visible.size === 0;
+      bar.dataset.show = String(show);
+      bar.setAttribute('aria-hidden', String(!show));
+      link.tabIndex = show ? 0 : -1;
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      update();
+    });
+    blockers.forEach((el) => io.observe(el));
+    addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>

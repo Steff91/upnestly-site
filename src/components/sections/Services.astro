@@ -1,4 +1,6 @@
 ---
+import Icon from '../Icon.astro';
+
 // The three disciplines. All of them are ongoing monthly work — none is a one-off.
 const services = [
   {
@@ -38,8 +40,13 @@ const services = [
           <p class="m-0 label text-brand">{s.n}</p>
           <h3 class="m-0 text-[26px] font-extrabold leading-tight tracking-[-0.01em]">{s.title}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-body">{s.text}</p>
-          <ul class="m-0 flex flex-col gap-2 pl-[18px] text-[15px]">
-            {s.items.map((item) => <li>{item}</li>)}
+          <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[15px] leading-snug">
+            {s.items.map((item) => (
+              <li class="flex gap-2.5">
+                <Icon name="check" size={16} class="mt-0.5 shrink-0 text-brand" />
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
           <p class="m-0 mt-auto flex flex-wrap gap-x-5 gap-y-1 border-t border-line-soft pt-4 text-[15px] font-semibold">
             {s.links.map((l) => <a href={l.href} class="inline-flex items-center gap-1.5">{l.label} <span aria-hidden="true">→</span></a>)}
