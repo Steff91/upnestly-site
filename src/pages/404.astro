@@ -1,15 +1,26 @@
 ---
+// One 404 page for both languages: German visitors (/de/…) get the German text via a tiny script.
 import Base from '../layouts/Base.astro';
 import BrandMark from '../components/BrandMark.astro';
 ---
 
-<Base title="Page not found — Upnestly">
+<Base title="Page not found — Upnestly" noindex>
   <section class="relative overflow-hidden bg-tint">
     <BrandMark variant="blue" class="-right-20 top-1/2 w-[520px] -translate-y-1/2 opacity-[0.08]" />
-    <div class="container-site relative flex flex-col items-start gap-6 py-32">
+    <div class="container-site relative flex flex-col items-start gap-6 py-32" data-404>
       <p class="eyebrow m-0">404</p>
-      <h1 class="h-hero">This page flew away.</h1>
-      <a href="/" class="btn btn-primary">Back to the homepage</a>
+      <h1 class="h-hero" data-de="Diese Seite ist davongeflogen.">This page flew away.</h1>
+      <a href="/" class="btn btn-primary" data-de="Zur Startseite" data-de-href="/de/">Back to the homepage</a>
     </div>
   </section>
 </Base>
+
+<script>
+  if (location.pathname.startsWith('/de/')) {
+    document.documentElement.lang = 'de';
+    document.querySelectorAll<HTMLElement>('[data-404] [data-de]').forEach((el) => {
+      el.textContent = el.dataset.de ?? el.textContent;
+      if (el instanceof HTMLAnchorElement && el.dataset.deHref) el.href = el.dataset.deHref;
+    });
+  }
+</script>

@@ -1,0 +1,50 @@
+{
+  "members": [
+    {
+      "name": "[Vorname Nachname]",
+      "role": "Entwicklung, Design & KI",
+      "discipline": "Build",
+      "years": "8+ Jahre",
+      "photo": "",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "focus": ["WordPress & WooCommerce", "Shopify & Webflow", "Custom Code (Astro)", "KI-Automatisierung", "Technisches SEO"],
+      "linkedin": ""
+    },
+    {
+      "name": "[Vorname Nachname]",
+      "role": "Content & Marketing",
+      "discipline": "Grow",
+      "years": "8+ Jahre",
+      "photo": "",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "focus": ["Content auf Deutsch & Englisch", "SEO & KI-Suche", "Google Ads & Meta Ads", "Conversion-Optimierung"],
+      "linkedin": ""
+    },
+    {
+      "name": "[Vorname Nachname]",
+      "role": "Infrastruktur & DevOps",
+      "discipline": "Run",
+      "years": "25+ Jahre",
+      "photo": "",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "focus": ["Linux-Server", "Managed Hosting in der EU", "Security-Hardening", "Backups & Monitoring"],
+      "linkedin": ""
+    }
+  ],
+  "howWeWork": [
+    { "title": "Eine Projektleitung", "text": "Eine Person verantwortet Ihr Projekt, plant den Monat und ist Ihr fester Ansprechpartner." },
+    { "title": "Wöchentlicher Abgleich, monatlicher Call", "text": "Wir drei stimmen uns jede Woche ab. Einmal im Monat erhalten Sie einen Report und einen Call mit dem ganzen Team." },
+    { "title": "Alles dokumentiert", "text": "Entscheidungen, Zugänge und Workflows sind schriftlich festgehalten – nichts hängt am Gedächtnis einer einzelnen Person." },
+    { "title": "Ihre Zeitzone", "text": "Wir arbeiten nach MEZ – zur selben Zeit wie Berlin, Wien und Zürich." }
+  ],
+  "values": [
+    { "title": "Nur Senior-Level", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." },
+    { "title": "Ehrliche Beratung", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." },
+    { "title": "Messbare Ergebnisse", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." },
+    { "title": "Kein Lock-in", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." }
+  ],
+  "network": {
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wenn ein Projekt mehr braucht, holen wir bewährte Spezialisten dazu, mit denen wir bereits gearbeitet haben – unter unserer Leitung, auf unsere Rechnung.",
+    "items": ["[Fotografie & Video]", "[Brand- & Corporate Design]", "[Texte in weiteren Sprachen]", "[Spezialist]"]
+  }
+}

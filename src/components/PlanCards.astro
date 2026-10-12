@@ -1,19 +1,25 @@
 ---
 // Three monthly plans + the Custom CTA. With `toggle`, shows a Monthly / Annual switch (annual = discounted monthly price, billed yearly).
 import Icon from './Icon.astro';
-import data from '../data/plans.json';
-import pricing from '../data/pricing.json';
+import { getPlans, getPricing } from '../i18n/data';
 import { planHref } from '../data/inquiry';
+import { getLang, formatPrice, priceNumber } from '../i18n';
 
 interface Props {
   toggle?: boolean;
 }
 const { toggle = false } = Astro.props;
+const lang = getLang(Astro.url);
+const data = getPlans(lang);
+const pricing = getPricing(lang);
+const t = {
+  en: { period: 'Billing period', monthly: 'Monthly', annual: 'Annual', save: `Save ${pricing.annualDiscount}% with annual billing`, swipe: 'Swipe to compare plans →', featured: 'Most chosen', yearly: 'Billed yearly', billedMonthly: 'Billed monthly', show: 'Show' },
+  de: { period: 'Abrechnungszeitraum', monthly: 'Monatlich', annual: 'Jährlich', save: `${pricing.annualDiscount} % sparen bei jährlicher Zahlung`, swipe: 'Wischen, um Pläne zu vergleichen →', featured: 'Am beliebtesten', yearly: 'Jährliche Abrechnung', billedMonthly: 'Monatliche Abrechnung', show: 'Zeige' },
+}[lang];
 
 
 const discount = pricing.annualDiscount;
-const toNumber = (price: string) => Number(price.replace(/[^\d]/g, ''));
-const annualPrice = (price: string) => `€${Math.round(toNumber(price) * (1 - discount / 100)).toLocaleString('en-US')}`;
+const annualPrice = (price: string) => formatPrice(Math.round(priceNumber(price) * (1 - discount / 100)), lang);
 
 const plans = data.plans.filter((p) => p.name !== 'Custom');
 const custom = data.plans.find((p) => p.name === 'Custom');
@@ -22,15 +28,15 @@ const custom = data.plans.find((p) => p.name === 'Custom');
 <div class="plan-cards flex flex-col gap-5" data-billing="monthly">
   {toggle && (
     <div class="flex flex-wrap items-center gap-4" data-reveal>
-      <div class="inline-flex rounded-full border border-line bg-white p-1" role="group" aria-label="Billing period">
-        <button type="button" class="billing-btn min-h-11 rounded-full px-5 text-[15px] font-semibold" data-set-billing="monthly" aria-pressed="true">Monthly</button>
-        <button type="button" class="billing-btn min-h-11 rounded-full px-5 text-[15px] font-semibold" data-set-billing="annual" aria-pressed="false">Annual</button>
+      <div class="inline-flex rounded-full border border-line bg-white p-1" role="group" aria-label={t.period}>
+        <button type="button" class="billing-btn min-h-11 rounded-full px-5 text-[15px] font-semibold" data-set-billing="monthly" aria-pressed="true">{t.monthly}</button>
+        <button type="button" class="billing-btn min-h-11 rounded-full px-5 text-[15px] font-semibold" data-set-billing="annual" aria-pressed="false">{t.annual}</button>
       </div>
-      <span class="rounded-full bg-night-accent/40 px-3 py-1 text-[13px] font-semibold text-brand-deep">Save {discount}% with annual billing</span>
+      <span class="rounded-full bg-night-accent/40 px-3 py-1 text-[13px] font-semibold text-brand-deep">{t.save}</span>
     </div>
   )}
 
-  <p class="m-0 -mb-2 text-[13px] font-medium text-dim lg:hidden">Swipe to compare plans →</p>
+  <p class="m-0 -mb-2 text-[13px] font-medium text-dim lg:hidden">{t.swipe}</p>
   <div class="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-3 pt-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0" data-plan-track>
     {plans.map((plan, i) => (
       <article
@@ -39,7 +45,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
         style={`--i:${i}`}
       >
         {plan.featured && (
-          <span class="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.1em] text-brand shadow-[0_6px_18px_-6px_rgb(23_22_58/0.5)] ring-1 ring-ink/10 lg:left-9"><span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>Most chosen</span>
+          <span class="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.1em] text-brand shadow-[0_6px_18px_-6px_rgb(23_22_58/0.5)] ring-1 ring-ink/10 lg:left-9"><span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>{t.featured}</span>
         )}
         <div class="flex flex-col gap-2">
           <h3 class="m-0 text-[24px] font-extrabold">{plan.name}</h3>
@@ -53,8 +59,8 @@ const custom = data.plans.find((p) => p.name === 'Custom');
           </p>
           {toggle && (
             <p class:list={['m-0 min-h-[1.5em] text-[13px]', plan.featured ? 'text-night-text' : 'text-muted']}>
-              <span class="price-annual">Billed yearly · <s>{plan.price}</s></span>
-              <span class="price-monthly">Billed monthly</span>
+              <span class="price-annual">{t.yearly} · <s>{plan.price}</s></span>
+              <span class="price-monthly">{t.billedMonthly}</span>
             </p>
           )}
         </div>
@@ -75,14 +81,14 @@ const custom = data.plans.find((p) => p.name === 'Custom');
           ))}
         </div>
 
-        <a href={planHref(plan.name)} data-plan-link class:list={['btn mt-auto w-full', plan.featured ? 'btn-light' : 'btn-primary']}>{plan.cta}</a>
+        <a href={planHref(plan.name, lang)} data-plan-link class:list={['btn mt-auto w-full', plan.featured ? 'btn-light' : 'btn-primary']}>{plan.cta}</a>
       </article>
     ))}
   </div>
 
   <div class="-mt-1 flex items-center justify-center gap-2 lg:hidden" data-plan-dots>
     {plans.map((plan, i) => (
-      <button type="button" class="plan-dot cursor-pointer border-0 p-0" aria-label={`Show ${plan.name}`} aria-current={i === 0 ? 'true' : undefined} data-dot={i}></button>
+      <button type="button" class="plan-dot cursor-pointer border-0 p-0" aria-label={`${t.show} ${plan.name}`} aria-current={i === 0 ? 'true' : undefined} data-dot={i}></button>
     ))}
   </div>
 
@@ -100,7 +106,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
           </li>
         ))}
       </ul>
-      <a href={planHref(custom.name)} class="btn btn-outline shrink-0">{custom.cta}</a>
+      <a href={planHref(custom.name, lang)} class="btn btn-outline shrink-0">{custom.cta}</a>
     </aside>
   )}
 </div>

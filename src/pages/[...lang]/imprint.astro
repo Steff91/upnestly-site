@@ -1,0 +1,113 @@
+---
+// Imprint / Impressum. Company details come from src/data/site.json (CMS → Settings → Site & contact).
+import Legal from '../../layouts/Legal.astro';
+import { getSite } from '../../i18n/data';
+import { getLang, langParams } from '../../i18n';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const site = getSite(lang);
+---
+
+{lang === 'de' ? (
+  <Legal title="Impressum" description="Rechtliche Angaben zu Upnestly: Unternehmensdaten, Registrierung, Steuernummer und verantwortliche Person." updated="[DATUM]" noindex>
+    <blockquote>
+      <p><strong>Beispieltext.</strong> Ersetzen Sie alle Angaben in [Klammern] und lassen Sie das Impressum vor dem Livegang anhand der Anforderungen Ihrer Zielmärkte prüfen (z. B. § 5 DDG in Deutschland, § 5 ECG in Österreich).</p>
+    </blockquote>
+
+    <h2>Angaben zum Unternehmen</h2>
+    <dl>
+      <dt>Firma</dt>
+      <dd>{site.legalName}</dd>
+      <dt>Anschrift</dt>
+      <dd>{site.address}<br />{site.postalCode} {site.city}<br />{site.country}</dd>
+      <dt>Vertreten durch</dt>
+      <dd>{site.representedBy}</dd>
+    </dl>
+
+    <h2>Kontakt</h2>
+    <dl>
+      <dt>E-Mail</dt>
+      <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+      <dt>Telefon</dt>
+      <dd>{site.phone}</dd>
+    </dl>
+
+    <h2>Registereintrag</h2>
+    <dl>
+      <dt>Register</dt>
+      <dd>{site.register}</dd>
+      <dt>Registernummer (MB)</dt>
+      <dd>{site.registrationNumber}</dd>
+      <dt>Steuer- / USt-IdNr. (PIB)</dt>
+      <dd>{site.vatId}</dd>
+    </dl>
+
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>{site.responsiblePerson}, Anschrift wie oben.</p>
+
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>[Beispiel:] Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Unsere Leistungen richten sich an Unternehmen.</p>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>Wir erstellen die Inhalte dieser Website mit Sorgfalt, können aber keine Gewähr dafür übernehmen, dass sie jederzeit vollständig, richtig und aktuell sind. [Beispieltext – an Ihre Rechtsberatung anpassen.]</p>
+
+    <h2>Haftung für Links</h2>
+    <p>Diese Website enthält Links zu externen Websites. Auf deren Inhalte haben wir keinen Einfluss und übernehmen dafür keine Haftung. Für die Inhalte verlinkter Seiten ist stets der jeweilige Anbieter verantwortlich. Werden uns rechtswidrige Inhalte bekannt, entfernen wir den Link umgehend.</p>
+
+    <h2>Urheberrecht</h2>
+    <p>Texte, Bilder, Grafiken und das Upnestly-Logo auf dieser Website sind urheberrechtlich geschützt. Eine Vervielfältigung oder Verwendung bedarf unserer vorherigen schriftlichen Zustimmung, soweit das Gesetz nichts anderes erlaubt. Materialien aus Fallstudien werden mit Erlaubnis unserer Kunden gezeigt.</p>
+  </Legal>
+) : (
+  <Legal title="Imprint / Impressum" description="Legal information about Upnestly: company details, registration, VAT ID and responsible person." updated="[DATE]" noindex>
+    <blockquote>
+      <p><strong>Example text.</strong> Replace everything in [brackets] and have the imprint checked against the requirements of your target markets (e.g. § 5 DDG in Germany, § 5 ECG in Austria) before the site goes live.</p>
+    </blockquote>
+
+    <h2>Company</h2>
+    <dl>
+      <dt>Company name</dt>
+      <dd>{site.legalName}</dd>
+      <dt>Address</dt>
+      <dd>{site.address}<br />{site.postalCode} {site.city}<br />{site.country}</dd>
+      <dt>Represented by</dt>
+      <dd>{site.representedBy}</dd>
+    </dl>
+
+    <h2>Contact</h2>
+    <dl>
+      <dt>Email</dt>
+      <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+      <dt>Phone</dt>
+      <dd>{site.phone}</dd>
+    </dl>
+
+    <h2>Registration</h2>
+    <dl>
+      <dt>Register</dt>
+      <dd>{site.register}</dd>
+      <dt>Registration number (MB)</dt>
+      <dd>{site.registrationNumber}</dd>
+      <dt>Tax / VAT ID (PIB)</dt>
+      <dd>{site.vatId}</dd>
+    </dl>
+
+    <h2>Responsible for content</h2>
+    <p>{site.responsiblePerson}, address as above.</p>
+
+    <h2>Consumer dispute resolution</h2>
+    <p>[Example:] We are not obliged and not willing to take part in dispute resolution proceedings before a consumer arbitration board. Our services are aimed at businesses.</p>
+
+    <h2>Liability for content</h2>
+    <p>We create the content of this website with care, but cannot guarantee that it is complete, correct and up to date at all times. [Example text — adjust to your legal advice.]</p>
+
+    <h2>Liability for links</h2>
+    <p>This website contains links to external websites. We have no influence on their content and accept no liability for it. The respective provider is always responsible for the content of linked pages. If we become aware of unlawful content, we will remove the link promptly.</p>
+
+    <h2>Copyright</h2>
+    <p>Texts, images, graphics and the Upnestly logo on this website are protected by copyright. Copying or using them requires our prior written permission, unless the law allows otherwise. Case study materials are shown with the permission of our clients.</p>
+  </Legal>
+)}

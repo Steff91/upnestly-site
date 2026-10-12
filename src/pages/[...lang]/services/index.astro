@@ -1,0 +1,158 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BrandMark from '../../../components/BrandMark.astro';
+import Icon from '../../../components/Icon.astro';
+import Platforms from '../../../components/sections/Platforms.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import { getPlans, getSite } from '../../../i18n/data';
+import { getLang, langParams, localize } from '../../../i18n';
+import { getLocalized, slugOf } from '../../../i18n/content';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const site = getSite(lang);
+const plans = getPlans(lang);
+const services = (await getLocalized('services', lang)).sort((a, b) => a.data.order - b.data.order);
+const href = (s: (typeof services)[number]) => localize(`/services/${slugOf(s)}/`, lang);
+
+const t = {
+  en: {
+    metaTitle: 'Services — Development, SEO, CRO, AI & Hosting | Upnestly',
+    metaDescription: 'Website development, SEO and content, CRO and paid ads, AI automation and managed hosting — all included in one monthly plan from one senior team.',
+    eyebrow: 'Services', title: 'Everything your website needs, from one team.',
+    text: 'Five services, three disciplines, one monthly plan. Every plan includes all of them — what changes is the pace.',
+    audit: 'Book a free audit', inPlan: 'What’s in each plan', more: 'Learn more',
+    aiEyebrow: 'AI across all three', aiText: 'AI writes the first draft, enriches the catalogue and runs the checks. People review, decide and own the result.', aiCta: 'AI automation',
+    compareLead: 'Every service is in every plan. The plan sets how much of it you get each month.', caption: 'Services included in each plan', service: 'Service', perMonth: '/ month', full: 'See full plans & pricing →',
+    disciplines: [
+      { name: 'Build', title: 'Development, design & AI', text: 'Your site keeps improving every month — new pages, features, fixes and automations.' },
+      { name: 'Grow', title: 'Search, content & conversion', text: 'More of the right visitors, and more of them turning into leads and sales.' },
+      { name: 'Run', title: 'Hosting, security & care', text: 'Fast, secure and up to date, without you having to ask.' },
+    ],
+  },
+  de: {
+    metaTitle: 'Leistungen — Entwicklung, SEO, CRO, KI & Hosting | Upnestly',
+    metaDescription: 'Website-Entwicklung, SEO und Content, CRO und Werbeanzeigen, KI-Automatisierung und Managed Hosting – alles in einem Monatsplan aus einem Senior-Team.',
+    eyebrow: 'Leistungen', title: 'Alles, was Ihre Website braucht – aus einem Team.',
+    text: 'Fünf Leistungen, drei Disziplinen, ein Monatsplan. Jeder Plan enthält alle – was sich ändert, ist das Tempo.',
+    audit: 'Kostenlosen Audit buchen', inPlan: 'Was in jedem Plan steckt', more: 'Mehr erfahren',
+    aiEyebrow: 'KI in allen drei Bereichen', aiText: 'KI schreibt den ersten Entwurf, reichert den Katalog an und führt die Prüfungen durch. Menschen prüfen, entscheiden und verantworten das Ergebnis.', aiCta: 'KI-Automatisierung',
+    compareLead: 'Jede Leistung ist in jedem Plan enthalten. Der Plan legt fest, wie viel davon Sie pro Monat bekommen.', caption: 'Leistungen in jedem Plan', service: 'Leistung', perMonth: '/ Monat', full: 'Alle Pläne & Preise ansehen →',
+    disciplines: [
+      { name: 'Build', title: 'Entwicklung, Design & KI', text: 'Ihre Website wird jeden Monat besser – neue Seiten, Features, Fixes und Automatisierungen.' },
+      { name: 'Grow', title: 'Suche, Content & Conversion', text: 'Mehr passende Besucher – und mehr davon werden zu Leads und Kunden.' },
+      { name: 'Run', title: 'Hosting, Sicherheit & Betreuung', text: 'Schnell, sicher und aktuell, ohne dass Sie nachfragen müssen.' },
+    ],
+  },
+}[lang];
+const disciplines = t.disciplines;
+
+const price = (name: string) => plans.plans.find((p) => p.name === name)?.price ?? '';
+const planCols = [
+  { key: 'essentials', name: 'Essentials', price: price('Essentials') },
+  { key: 'growth', name: 'Growth', price: price('Growth') },
+  { key: 'scale', name: 'Scale', price: price('Scale') },
+] as const;
+---
+
+<Base title={t.metaTitle} description={t.metaDescription}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
+    <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
+      <p class="eyebrow m-0" data-reveal>{t.eyebrow}</p>
+      <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">{t.title}</h1>
+      <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
+        {t.text}
+      </p>
+      <div class="flex flex-wrap gap-3.5" data-reveal style="--i:3">
+        <a href={site.auditUrl} class="btn btn-primary">{t.audit}</a>
+        <a href="#compare" class="btn btn-outline">{t.inPlan}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disciplines -->
+  {disciplines.map((d, di) => (
+    <section class:list={[di > 0 && 'border-t border-line-soft']}>
+      <div class="container-site flex flex-wrap gap-x-14 gap-y-8 py-18">
+        <div class="flex min-w-0 flex-[1_1_320px] flex-col gap-3" data-reveal>
+          <p class="eyebrow m-0">0{di + 1} — {d.name}</p>
+          <h2 class="h-section">{d.title}</h2>
+          <p class="lead">{d.text}</p>
+        </div>
+        <div class="grid min-w-0 flex-[2_1_560px] grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5">
+          {services.filter((s) => s.data.discipline === d.name).map((s, i) => (
+            <a href={href(s)} class="card-hover group flex flex-col gap-3 rounded-[20px] border border-line bg-white p-8 no-underline" data-reveal style={`--i:${i}`}>
+              <span class="text-[22px] font-extrabold text-ink">{s.data.title}</span>
+              <span class="text-[15px] leading-[1.6] text-body">{s.data.excerpt}</span>
+              <span class="mt-auto inline-flex items-center gap-2 pt-2 text-[15px] font-semibold text-brand">
+                {t.more} <Icon name="arrow" size={16} class="transition-transform duration-300 ease-out group-hover:translate-x-1" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- AI strip -->
+  <section class="relative overflow-hidden bg-ink text-white">
+    <BrandMark class="-bottom-32 -left-40 w-[520px] opacity-[0.10]" />
+    <div class="container-site relative flex flex-wrap items-center justify-between gap-8 py-16">
+      <div class="flex min-w-0 flex-[1_1_520px] flex-col gap-3" data-reveal>
+        <p class="eyebrow m-0 !text-night-accent">{t.aiEyebrow}</p>
+        <p class="m-0 text-[22px] font-bold leading-snug">{t.aiText}</p>
+      </div>
+      <a href={localize('/services/ai-automation/', lang)} class="btn btn-light">{t.aiCta}</a>
+    </div>
+  </section>
+
+  <!-- Compare -->
+  <section id="compare" class="bg-tint">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <h2 class="h-section max-w-[620px]" data-reveal>{t.inPlan}</h2>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.compareLead}</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-[20px] border border-line bg-white" data-reveal>
+        <table class="w-full min-w-[820px] border-collapse text-left text-[15px]">
+          <caption class="sr-only">{t.caption}</caption>
+          <thead>
+            <tr class="border-b border-line">
+              <th scope="col" class="w-[22%] p-6 align-bottom"><span class="label text-dim">{t.service}</span></th>
+              {planCols.map((p) => (
+                <th scope="col" class:list={['p-6 align-bottom', p.key === 'growth' && 'bg-tint-soft']}>
+                  <span class="block text-[19px] font-extrabold text-ink">{p.name}</span>
+                  <span class="text-[14px] font-semibold text-muted">{p.price} {t.perMonth}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {services.map((s) => (
+              <tr class="border-b border-line-soft last:border-b-0">
+                <th scope="row" class="p-6 align-top">
+                  <a href={href(s)} class="font-bold text-ink hover:text-brand">{s.data.title}</a>
+                  <span class="label mt-1 block text-brand">{s.data.discipline}</span>
+                </th>
+                {planCols.map((p) => (
+                  <td class:list={['p-6 align-top leading-[1.55] text-body', p.key === 'growth' && 'bg-tint-soft']}>{s.data.inPlans[p.key]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <a href={localize('/pricing/', lang)} class="w-fit font-semibold" data-reveal>{t.full}</a>
+    </div>
+  </section>
+
+  <Platforms />
+  <div class="h-24"></div>
+  <Contact />
+</Base>

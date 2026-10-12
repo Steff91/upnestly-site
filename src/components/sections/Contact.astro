@@ -1,6 +1,14 @@
 ---
 import BrandMark from '../BrandMark.astro';
-import site from '../../data/site.json';
+import { getSite } from '../../i18n/data';
+import { getLang } from '../../i18n';
+
+const lang = getLang(Astro.url);
+const site = getSite(lang);
+const t = {
+  en: { title: 'Get a free 20-minute audit.', text: 'We review your site’s conversion funnel, search visibility and one process we could automate — and send you a short written report. No obligation.', cta: 'Book the audit' },
+  de: { title: 'Holen Sie sich einen kostenlosen 20-Minuten-Audit.', text: 'Wir prüfen den Conversion-Funnel Ihrer Website, die Sichtbarkeit in Suchmaschinen und einen Prozess, den wir automatisieren könnten – und schicken Ihnen einen kurzen schriftlichen Bericht. Unverbindlich.', cta: 'Audit buchen' },
+}[lang];
 ---
 
 <section id="contact" class="px-6 pb-24">
@@ -8,10 +16,10 @@ import site from '../../data/site.json';
     <BrandMark class="-right-24 -top-16 w-[420px] opacity-[0.16] sm:-right-10 sm:w-[480px]" />
     <div class="relative flex flex-wrap items-center justify-between gap-10 px-8 py-14 sm:px-14 sm:py-18">
       <div class="flex min-w-0 flex-[1_1_480px] flex-col gap-4">
-        <h2 class="h-section">Get a free 20-minute audit.</h2>
-        <p class="m-0 max-w-[620px] text-[17px] leading-[1.6] text-[#E1E3F7]">We review your site’s conversion funnel, search visibility and one process we could automate — and send you a short written report. No obligation.</p>
+        <h2 class="h-section">{t.title}</h2>
+        <p class="m-0 max-w-[620px] text-[17px] leading-[1.6] text-[#E1E3F7]">{t.text}</p>
       </div>
-      <a href={site.auditUrl} class="btn btn-light !px-7 !py-4 !text-[17px] !font-bold">Book the audit</a>
+      <a href={site.auditUrl} class="btn btn-light !px-7 !py-4 !text-[17px] !font-bold">{t.cta}</a>
     </div>
   </div>
 </section>

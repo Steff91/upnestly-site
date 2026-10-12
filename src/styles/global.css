@@ -63,6 +63,9 @@
     font-size: clamp(30px, 3.4vw, 44px);
   }
 
+  /* German compounds ("Datenschutzerklärung") can be wider than a phone screen: allow hyphenation there. */
+  :lang(de) :is(.h-hero, .h-section, h1, h2, h3) { overflow-wrap: break-word; hyphens: auto; }
+
   .lead { @apply m-0 text-[17px] leading-[1.6] text-body; }
 
   .btn {

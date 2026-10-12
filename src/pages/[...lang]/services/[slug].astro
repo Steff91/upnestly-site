@@ -1,25 +1,49 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import BrandMark from '../../components/BrandMark.astro';
-import Icon from '../../components/Icon.astro';
-import Placeholder from '../../components/Placeholder.astro';
-import Contact from '../../components/sections/Contact.astro';
-import site from '../../data/site.json';
-import plans from '../../data/plans.json';
+import Base from '../../../layouts/Base.astro';
+import BrandMark from '../../../components/BrandMark.astro';
+import Icon from '../../../components/Icon.astro';
+import Placeholder from '../../../components/Placeholder.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import { getPlans, getSite } from '../../../i18n/data';
+import type { CollectionEntry } from 'astro:content';
+import { defaultLang, getLang, langs, localize } from '../../../i18n';
+import { getLocalized, slugOf } from '../../../i18n/content';
 
 export async function getStaticPaths() {
-  // AI automation has its own page (src/pages/services/ai-automation.astro); its .md still feeds the hub cards and plan table.
-  const services = (await getCollection('services')).filter((s) => s.id !== 'ai-automation');
-  return services.map((service) => ({ params: { slug: service.id }, props: { service } }));
+  // AI automation has its own page (ai-automation.astro); its .md still feeds the hub cards and plan table.
+  const paths: { params: { lang?: string; slug: string }; props: { service: CollectionEntry<'services'> } }[] = [];
+  for (const lang of langs) {
+    for (const service of await getLocalized('services', lang)) {
+      if (slugOf(service) === 'ai-automation') continue;
+      paths.push({ params: { lang: lang === defaultLang ? undefined : lang, slug: slugOf(service) }, props: { service } });
+    }
+  }
+  return paths;
 }
 
 const { service } = Astro.props;
+const lang = getLang(Astro.url);
+const site = getSite(lang);
+const plans = getPlans(lang);
 const s = service.data;
-const work = s.relatedWork ? await getEntry('work', s.relatedWork) : undefined;
-const others = (await getCollection('services'))
+const work = s.relatedWork ? (await getLocalized('work', lang)).find((w) => slugOf(w) === s.relatedWork) : undefined;
+const others = (await getLocalized('services', lang))
   .filter((o) => o.id !== service.id)
   .sort((a, b) => a.data.order - b.data.order);
+const t = {
+  en: {
+    home: 'Home', services: 'Services', breadcrumb: 'Breadcrumb', audit: 'Book a free audit', fits: 'How it fits your plan',
+    plansTitle: 'Included in every plan — at a different pace.', plansLead: 'You don’t buy this on its own. It runs alongside development, growth and hosting on one monthly plan.',
+    perMonth: '/ month', compareAll: 'Compare all plans →', how: 'How we work', step: 'Step', tools: 'Tools we use',
+    screenshot: 'Project screenshot', related: 'Related work', readCase: 'Read the case study →', faq: 'Questions we get', also: 'Also in every plan',
+  },
+  de: {
+    home: 'Startseite', services: 'Leistungen', breadcrumb: 'Brotkrümelnavigation', audit: 'Kostenlosen Audit buchen', fits: 'So passt es in Ihren Plan',
+    plansTitle: 'In jedem Plan enthalten – in unterschiedlichem Tempo.', plansLead: 'Diese Leistung kaufen Sie nicht einzeln. Sie läuft zusammen mit Entwicklung, Wachstum und Hosting in einem Monatsplan.',
+    perMonth: '/ Monat', compareAll: 'Alle Pläne vergleichen →', how: 'So arbeiten wir', step: 'Schritt', tools: 'Unsere Tools',
+    screenshot: 'Projekt-Screenshot', related: 'Passendes Projekt', readCase: 'Zur Fallstudie →', faq: 'Häufige Fragen', also: 'Ebenfalls in jedem Plan',
+  },
+}[lang];
 
 const planPrice = (name: string) => plans.plans.find((p) => p.name === name)?.price ?? '';
 const planRows = [
@@ -36,15 +60,15 @@ const schema = [
     name: s.title,
     description: s.metaDescription,
     url: pageUrl,
-    provider: { '@type': 'ProfessionalService', name: site.name, url: Astro.site?.toString() },
+    provider: { '@type': 'ProfessionalService', name: site.name, url: new URL(localize('/', lang), Astro.site).toString() },
     areaServed: 'Europe',
   },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
-      { '@type': 'ListItem', position: 2, name: 'Services', item: new URL('/services/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 1, name: t.home, item: new URL(localize('/', lang), Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: t.services, item: new URL(localize('/services/', lang), Astro.site).toString() },
       { '@type': 'ListItem', position: 3, name: s.title, item: pageUrl },
     ],
   },
@@ -65,16 +89,16 @@ const schema = [
   <section class="relative overflow-hidden bg-tint">
     <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
     <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
-      <nav aria-label="Breadcrumb" class="label text-dim" data-reveal>
-        <a href="/services/" class="text-dim no-underline hover:text-brand">Services</a>
+      <nav aria-label={t.breadcrumb} class="label text-dim" data-reveal>
+        <a href={localize('/services/', lang)} class="text-dim no-underline hover:text-brand">{t.services}</a>
         <span aria-hidden="true" class="mx-2">/</span>
         <span class="text-brand">{s.discipline}</span>
       </nav>
       <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">{s.heroTitle}</h1>
       <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">{s.heroText}</p>
       <div class="flex flex-wrap gap-3.5" data-reveal style="--i:3">
-        <a href={site.auditUrl} class="btn btn-primary">Book a free audit</a>
-        <a href="#plans" class="btn btn-outline">How it fits your plan</a>
+        <a href={site.auditUrl} class="btn btn-primary">{t.audit}</a>
+        <a href="#plans" class="btn btn-outline">{t.fits}</a>
       </div>
     </div>
   </section>
@@ -121,21 +145,21 @@ const schema = [
   <section id="plans" class="bg-tint">
     <div class="container-site flex flex-col gap-10 py-22">
       <div class="flex flex-wrap items-end justify-between gap-6">
-        <h2 class="h-section max-w-[620px]" data-reveal>Included in every plan — at a different pace.</h2>
-        <p class="lead max-w-[440px]" data-reveal style="--i:1">You don’t buy this on its own. It runs alongside development, growth and hosting on one monthly plan.</p>
+        <h2 class="h-section max-w-[620px]" data-reveal>{t.plansTitle}</h2>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.plansLead}</p>
       </div>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5">
         {planRows.map((p, i) => (
           <div class:list={['flex flex-col gap-3 rounded-[20px] p-8', p.featured ? 'bg-ink text-white' : 'bg-white']} data-reveal style={`--i:${i}`}>
             <p class="m-0 flex items-baseline justify-between gap-3">
               <span class="text-[20px] font-extrabold">{p.name}</span>
-              <span class:list={['text-[15px] font-semibold', p.featured ? 'text-night-text' : 'text-muted']}>{p.price} / month</span>
+              <span class:list={['text-[15px] font-semibold', p.featured ? 'text-night-text' : 'text-muted']}>{p.price} {t.perMonth}</span>
             </p>
             <p class:list={['m-0 text-[15px] leading-[1.6]', p.featured ? 'text-night-text' : 'text-body']}>{p.text}</p>
           </div>
         ))}
       </div>
-      <a href="/pricing/" class="w-fit font-semibold" data-reveal>Compare all plans →</a>
+      <a href={localize('/pricing/', lang)} class="w-fit font-semibold" data-reveal>{t.compareAll}</a>
     </div>
   </section>
 
@@ -143,11 +167,11 @@ const schema = [
   {s.steps.length > 0 && (
     <section>
       <div class="container-site flex flex-col gap-10 py-22">
-        <h2 class="h-section" data-reveal>How we work</h2>
+        <h2 class="h-section" data-reveal>{t.how}</h2>
         <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-5 p-0">
           {s.steps.map((st, i) => (
             <li class="flex flex-col gap-2.5 rounded-2xl bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
-              <span class="label text-brand">Step {i + 1}</span>
+              <span class="label text-brand">{t.step} {i + 1}</span>
               <h3 class="m-0 text-[19px] font-bold">{st.title}</h3>
               <p class="m-0 text-[15px] leading-[1.55] text-body">{st.text}</p>
             </li>
@@ -155,8 +179,8 @@ const schema = [
         </ol>
         {s.tools.length > 0 && (
           <div class="flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-line-soft pt-8" data-reveal>
-            <span class="label text-dim">Tools we use</span>
-            {s.tools.map((t) => <span class="text-[16px] font-bold text-body">{t}</span>)}
+            <span class="label text-dim">{t.tools}</span>
+            {s.tools.map((tool) => <span class="text-[16px] font-bold text-body">{tool}</span>)}
           </div>
         )}
       </div>
@@ -167,13 +191,13 @@ const schema = [
   {work && (
     <section class="border-t border-line-soft">
       <div class="container-site flex flex-wrap items-center gap-10 py-22">
-        <Placeholder label="Project screenshot" src={work.data.image} alt={work.data.imageAlt} class="h-[280px] min-w-0 flex-[1_1_420px] rounded-[20px]" />
+        <Placeholder label={t.screenshot} src={work.data.image} alt={work.data.imageAlt} class="h-[280px] min-w-0 flex-[1_1_420px] rounded-[20px]" />
         <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-3" data-reveal>
-          <p class="eyebrow m-0">Related work</p>
+          <p class="eyebrow m-0">{t.related}</p>
           <p class="label m-0 text-dim">{work.data.meta}</p>
           <h2 class="m-0 text-[28px] font-extrabold leading-tight">{work.data.title}</h2>
           <p class="lead">{work.data.summary}</p>
-          <a href={`/work/${work.id}/`} class="mt-2 w-fit font-semibold">Read the case study →</a>
+          <a href={localize(`/work/${slugOf(work)}/`, lang)} class="mt-2 w-fit font-semibold">{t.readCase}</a>
         </div>
       </div>
     </section>
@@ -183,7 +207,7 @@ const schema = [
   {s.faq.length > 0 && (
     <section class="bg-tint-soft">
       <div class="container-site flex flex-wrap gap-12 py-22">
-        <h2 class="h-section min-w-0 flex-[1_1_300px]" data-reveal>Questions we get</h2>
+        <h2 class="h-section min-w-0 flex-[1_1_300px]" data-reveal>{t.faq}</h2>
         <div class="flex min-w-0 flex-[2_1_520px] flex-col gap-3">
           {s.faq.map((f) => (
             <details class="faq group rounded-2xl border border-line bg-white px-6 py-5 transition-colors duration-300 hover:border-brand open:border-brand" data-reveal>
@@ -202,11 +226,11 @@ const schema = [
   <!-- Other services -->
   <section>
     <div class="container-site flex flex-col gap-6 py-18">
-      <p class="label m-0 text-dim">Also in every plan</p>
+      <p class="label m-0 text-dim">{t.also}</p>
       <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-4 p-0">
         {others.map((o) => (
           <li>
-            <a href={`/services/${o.id}/`} class="card-hover group flex h-full flex-col gap-2 rounded-2xl border border-line bg-white p-6 no-underline">
+            <a href={localize(`/services/${slugOf(o)}/`, lang)} class="card-hover group flex h-full flex-col gap-2 rounded-2xl border border-line bg-white p-6 no-underline">
               <span class="label text-brand">{o.data.discipline}</span>
               <span class="flex items-center justify-between gap-3 text-[17px] font-bold text-ink">
                 {o.data.title}

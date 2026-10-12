@@ -1,27 +1,53 @@
 ---
-import Base from '../layouts/Base.astro';
-import BrandMark from '../components/BrandMark.astro';
-import Icon from '../components/Icon.astro';
-import Placeholder from '../components/Placeholder.astro';
-import Contact from '../components/sections/Contact.astro';
-import team from '../data/team.json';
-import site from '../data/site.json';
+import Base from '../../layouts/Base.astro';
+import BrandMark from '../../components/BrandMark.astro';
+import Icon from '../../components/Icon.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import Contact from '../../components/sections/Contact.astro';
+import { getSite, getTeam } from '../../i18n/data';
+import { getLang, langParams, localize } from '../../i18n';
 
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const team = getTeam(lang);
+const site = getSite(lang);
 const serviceFor: Record<string, string> = { Build: '/services/development/', Grow: '/services/seo-content/', Run: '/services/hosting-care/' };
+const t = {
+  en: {
+    metaTitle: 'Team — Three Senior Specialists | Upnestly',
+    metaDescription: 'Meet the Upnestly team: senior specialists in development and AI, content and marketing, and infrastructure — one team, one point of contact, in your time zone.',
+    eyebrow: 'Team', title: 'Three senior specialists. No juniors, no handoffs.',
+    text: 'Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work — in English or German, in your time zone.',
+    portrait: 'Portrait', onLinkedin: 'on LinkedIn',
+    howEyebrow: 'How we work together', howTitle: 'One team, one point of contact.', howText: 'You never have to coordinate three freelancers. We do that between ourselves.',
+    values: 'What we stand for', networkEyebrow: 'Extended network', networkTitle: 'When a project needs more',
+    whereEyebrow: 'Where we are', whereTitle: `Based in ${site.city}, working worldwide`, whereText: 'Remote by default, on site when a project needs it. Lorem ipsum dolor sit amet.',
+  },
+  de: {
+    metaTitle: 'Team — Drei Senior-Spezialisten | Upnestly',
+    metaDescription: 'Lernen Sie das Upnestly-Team kennen: Senior-Spezialisten für Entwicklung und KI, Content und Marketing sowie Infrastruktur – ein Team, ein Ansprechpartner, in Ihrer Zeitzone.',
+    eyebrow: 'Team', title: 'Drei Senior-Spezialisten. Keine Juniors, keine Übergaben.',
+    text: 'Jede Disziplin wird von jemandem mit langjähriger Praxiserfahrung geleitet. Sie sprechen direkt mit den Menschen, die die Arbeit machen – auf Deutsch oder Englisch, in Ihrer Zeitzone.',
+    portrait: 'Porträt', onLinkedin: 'auf LinkedIn',
+    howEyebrow: 'So arbeiten wir zusammen', howTitle: 'Ein Team, ein Ansprechpartner.', howText: 'Sie müssen nie drei Freelancer koordinieren. Das erledigen wir untereinander.',
+    values: 'Wofür wir stehen', networkEyebrow: 'Erweitertes Netzwerk', networkTitle: 'Wenn ein Projekt mehr braucht',
+    whereEyebrow: 'Wo wir sind', whereTitle: `Sitz in ${site.city}, weltweit tätig`, whereText: 'Standardmäßig remote, vor Ort, wenn ein Projekt es erfordert. Lorem ipsum dolor sit amet.',
+  },
+}[lang];
 ---
 
-<Base
-  title="Team — Three Senior Specialists | Upnestly"
-  description="Meet the Upnestly team: senior specialists in development and AI, content and marketing, and infrastructure — one team, one point of contact, in your time zone."
->
+<Base title={t.metaTitle} description={t.metaDescription}>
   <!-- Hero -->
   <section class="relative overflow-hidden bg-tint">
     <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
     <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
-      <p class="eyebrow m-0" data-reveal>Team</p>
-      <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">Three senior specialists. No juniors, no handoffs.</h1>
+      <p class="eyebrow m-0" data-reveal>{t.eyebrow}</p>
+      <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">{t.title}</h1>
       <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
-        Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work — in English or German, in your time zone.
+        {t.text}
       </p>
     </div>
   </section>
@@ -32,7 +58,7 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
       {team.members.map((m, i) => (
         <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
           {m.photo ? (
-            <Placeholder label="Portrait" src={m.photo} alt={m.name} class="aspect-[4/5] w-full" />
+            <Placeholder label={t.portrait} src={m.photo} alt={m.name} class="aspect-[4/5] w-full" />
           ) : (
             <div class="flex items-center gap-4 bg-tint px-8 pt-8 pb-6" aria-hidden="true">
               <span class="flex size-16 items-center justify-center rounded-full bg-brand text-[20px] font-extrabold text-white">{m.discipline.slice(0, 1)}</span>
@@ -52,10 +78,10 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
               {m.focus.map((f) => <li class="rounded-full border border-line px-3 py-1 text-[13px] font-semibold text-body">{f}</li>)}
             </ul>
             <div class="mt-auto flex items-center justify-between gap-4 border-t border-line-soft pt-4">
-              <a href={serviceFor[m.discipline]} class="label no-underline">{m.discipline} →</a>
+              <a href={localize(serviceFor[m.discipline], lang)} class="label no-underline">{m.discipline} →</a>
               <a
                 href={m.linkedin.startsWith('http') ? m.linkedin : '#'}
-                aria-label={`${m.name} on LinkedIn`}
+                aria-label={`${m.name} ${t.onLinkedin}`}
                 class="flex size-11 items-center justify-center rounded-full border border-line text-ink hover:border-brand hover:text-brand"
               >
                 <Icon name="linkedin" size={17} />
@@ -72,9 +98,9 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
     <BrandMark class="-bottom-40 -left-48 w-[600px] opacity-[0.10]" />
     <div class="container-site relative flex flex-wrap gap-14 py-22">
       <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-4" data-reveal>
-        <p class="eyebrow m-0 !text-night-accent">How we work together</p>
-        <h2 class="h-section">One team, one point of contact.</h2>
-        <p class="m-0 text-[17px] leading-[1.6] text-night-text">You never have to coordinate three freelancers. We do that between ourselves.</p>
+        <p class="eyebrow m-0 !text-night-accent">{t.howEyebrow}</p>
+        <h2 class="h-section">{t.howTitle}</h2>
+        <p class="m-0 text-[17px] leading-[1.6] text-night-text">{t.howText}</p>
       </div>
       <div class="grid min-w-0 flex-[1_1_520px] grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">
         {team.howWeWork.map((h, i) => (
@@ -90,7 +116,7 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
   <!-- Values -->
   <section>
     <div class="container-site flex flex-col gap-10 py-22">
-      <h2 class="h-section" data-reveal>What we stand for</h2>
+      <h2 class="h-section" data-reveal>{t.values}</h2>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-5">
         {team.values.map((v, i) => (
           <div class="flex flex-col gap-2.5 rounded-2xl bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
@@ -107,8 +133,8 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
   <section class="bg-tint">
     <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] gap-6 py-22">
       <div class="flex flex-col gap-4 rounded-[20px] bg-white p-9" data-reveal>
-        <p class="eyebrow m-0">Extended network</p>
-        <h2 class="m-0 text-[28px] font-extrabold leading-tight">When a project needs more</h2>
+        <p class="eyebrow m-0">{t.networkEyebrow}</p>
+        <h2 class="m-0 text-[28px] font-extrabold leading-tight">{t.networkTitle}</h2>
         <p class="m-0 text-[15px] leading-[1.6] text-body">{team.network.text}</p>
         <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[15px]">
           {team.network.items.map((n) => (
@@ -117,15 +143,15 @@ const serviceFor: Record<string, string> = { Build: '/services/development/', Gr
         </ul>
       </div>
       <div class="flex flex-col gap-4 rounded-[20px] bg-white p-9" data-reveal style="--i:1">
-        <p class="eyebrow m-0">Where we are</p>
-        <h2 class="m-0 text-[28px] font-extrabold leading-tight">Based in {site.city}, working worldwide</h2>
+        <p class="eyebrow m-0">{t.whereEyebrow}</p>
+        <h2 class="m-0 text-[28px] font-extrabold leading-tight">{t.whereTitle}</h2>
         <ul class="m-0 flex list-none flex-col gap-3 p-0 text-[15px] text-body">
           <li class="flex items-center gap-2.5"><Icon name="pin" size={17} class="shrink-0 text-brand" />{site.city}, {site.country}</li>
           <li class="flex items-center gap-2.5"><Icon name="clock" size={17} class="shrink-0 text-brand" />{site.hours}</li>
           <li class="flex items-center gap-2.5"><Icon name="globe" size={17} class="shrink-0 text-brand" />{site.languages.join(' · ')}</li>
           <li class="flex items-center gap-2.5"><Icon name="mail" size={17} class="shrink-0 text-brand" /><a href={`mailto:${site.email}`}>{site.email}</a></li>
         </ul>
-        <p class="m-0 text-[15px] leading-[1.6] text-body">Remote by default, on site when a project needs it. Lorem ipsum dolor sit amet.</p>
+        <p class="m-0 text-[15px] leading-[1.6] text-body">{t.whereText}</p>
       </div>
     </div>
   </section>

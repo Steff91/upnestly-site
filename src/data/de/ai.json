@@ -1,0 +1,35 @@
+{
+  "customFrom": "X.XXX €",
+  "useCases": [
+    { "title": "Produktkatalog", "text": "Lieferantendaten werden zu Produktseiten: Beschreibungen, Übersetzungen, Attribute und SEO-Felder – direkt in Ihrem Shop veröffentlicht.", "tag": "E-Commerce" },
+    { "title": "Mehrsprachiger Content", "text": "Erste Entwürfe und Übersetzungen zwischen Deutsch und Englisch, von einer Redakteurin im richtigen Ton finalisiert.", "tag": "Content" },
+    { "title": "Lead-Bearbeitung", "text": "Formularanfragen werden qualifiziert, angereichert und an die richtige Person in Ihrem CRM weitergeleitet – in Minuten statt Tagen.", "tag": "Vertrieb" },
+    { "title": "Posteingang & Support", "text": "Eingehende Nachrichten nach Thema und Dringlichkeit sortiert, mit Antwortentwürfen, die Ihr Team prüft und versendet.", "tag": "Support" },
+    { "title": "Reporting", "text": "Eine wöchentliche Zusammenfassung von Traffic, Ads und Umsatz aus GA4 und Ihren Werbekonten – per E-Mail oder Slack.", "tag": "Operations" },
+    { "title": "Dokumente zu Daten", "text": "PDFs, Datenblätter und Rechnungen werden zu strukturierten Daten, mit denen Ihre Systeme arbeiten können.", "tag": "Backoffice" }
+  ],
+  "pipeline": [
+    { "step": "Input", "text": "Lieferanten-CSV, gescrapte Produktdaten, Bilder" },
+    { "step": "KI-Schritt", "text": "Ein LLM schreibt Beschreibungen, übersetzt DE ↔ EN, füllt SEO-Felder" },
+    { "step": "Menschliche Prüfung", "text": "Eine Redakteurin prüft Fakten, Ton und Aussagen, bevor etwas veröffentlicht wird", "human": true },
+    { "step": "Veröffentlichen", "text": "Produkte werden per API im Shop angelegt, mit Bildern und Attributen" },
+    { "step": "Messen", "text": "Zeit pro Produkt und Output-Menge im Vergleich zum manuellen Prozess" }
+  ],
+  "process": [
+    { "title": "Analyse", "text": "Wir bilden mit Ihrem Team einen Prozess ab und schätzen, wie viele Stunden er sparen kann." },
+    { "title": "Prototyp", "text": "Eine funktionierende Version mit echten Daten in 1–2 Wochen." },
+    { "title": "Pilotphase", "text": "Läuft parallel zu Ihrem Team, mit menschlicher Prüfung bei jedem Ergebnis." },
+    { "title": "Rollout & Übergabe", "text": "Live im Betrieb, dokumentiert und übergeben – ohne Lock-in." }
+  ],
+  "tools": ["Claude API", "OpenAI API", "n8n", "Make", "Zapier", "WooCommerce API", "Shopify API", "Google Workspace", "HubSpot"],
+  "faq": [
+    { "q": "Werden unsere Daten zum Training von KI-Modellen verwendet?", "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam." },
+    { "q": "Was bedeutet der EU AI Act für diese Automatisierungen?", "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam." },
+    { "q": "Was, wenn die KI einen Fehler macht?", "a": "Genau deshalb hat jeder Workflow einen menschlichen Prüfschritt. Nichts, was Kunden sehen, geht live, ohne dass jemand aus Ihrem oder unserem Team es freigibt – und wir passen Prompts und Regeln an, sobald Fehler auftauchen." },
+    { "q": "Müssen wir unsere Tools wechseln?", "a": "In der Regel nicht. Wir verbinden uns mit dem Shop, CRM, Posteingang und den Tabellen, die Sie bereits nutzen. Hat ein Tool keine API, sagen wir es Ihnen vorab." },
+    { "q": "Wem gehören die Workflows?", "a": "Ihnen. Workflows laufen nach Möglichkeit in Konten auf Ihren Namen, und jeder einzelne wird dokumentiert und übergeben." },
+    { "q": "Wie lange dauert eine erste Automatisierung?", "a": "Eine klar umrissene Automatisierung ist meist in zwei bis vier Wochen live: eine Woche Analyse, ein bis zwei Wochen für einen Prototyp mit echten Daten, dann eine kurze Pilotphase." },
+    { "q": "Welche Prozesse eignen sich nicht für KI?", "a": "Aufgaben, die selten vorkommen, in jedem Einzelfall Urteilsvermögen erfordern oder bei denen ein einziger Fehler sehr teuer ist. Das sagen wir Ihnen im Potenzial-Check, statt etwas zu bauen, das Sie nicht brauchen." }
+  ],
+  "result": "Lorem ipsum dolor sit amet: XX Min. pro Produkt vorher, X Min. nachher – XXX Stunden gespart über den gesamten Katalog."
+}

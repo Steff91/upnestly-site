@@ -17,15 +17,10 @@ collections:
         file: src/data/site.json
         fields:
           - { name: name, label: Name, widget: string }
-          - { name: tagline, label: Tagline, widget: string }
-          - { name: description, label: Meta description, widget: text }
           - { name: email, label: Email, widget: string }
-          - { name: city, label: City, widget: string }
-          - { name: country, label: Country, widget: string }
-          - { name: languages, label: Languages, widget: list }
-          - { name: auditUrl, label: Audit booking link (mailto or Calendly), widget: string }
-          - { name: topbarMessage, label: Top bar message, widget: string }
-          - { name: hours, label: Working hours (top bar), widget: string }
+          - { name: auditUrl, label: "Audit page path (German pages add /de automatically)", widget: string }
+          - { name: contactUrl, label: "Contact page path", widget: string }
+          - { name: formAction, label: "Form endpoint (Formspree / Web3Forms); empty = opens email app", widget: string, required: false }
           - { name: legalName, label: Legal entity name, widget: string }
           - { name: address, label: Street and number, widget: string }
           - { name: postalCode, label: Postal code, widget: string }
@@ -38,10 +33,26 @@ collections:
           - { name: linkedin, label: LinkedIn URL, widget: string, required: false }
           - { name: github, label: GitHub URL, widget: string, required: false }
 
+      - name: site_en
+        label: Site texts (EN)
+        file: src/data/en/site.json
+        fields: &site_text_fields
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: description, label: Meta description, widget: text }
+          - { name: city, label: City, widget: string }
+          - { name: country, label: Country, widget: string }
+          - { name: languages, label: Languages, widget: list }
+          - { name: topbarMessage, label: Top bar message, widget: string }
+          - { name: hours, label: Working hours (top bar), widget: string }
+      - name: site_de
+        label: Site texts (DE)
+        file: src/data/de/site.json
+        fields: *site_text_fields
+
       - name: plans
-        label: Plans & pricing
-        file: src/data/plans.json
-        fields:
+        label: Plans & pricing (EN)
+        file: src/data/en/plans.json
+        fields: &plans_fields
           - { name: title, label: Section title, widget: string }
           - { name: intro, label: Intro, widget: text }
           - { name: footnote, label: Footnote (VAT, term, …), widget: text }
@@ -61,15 +72,20 @@ collections:
                 fields:
                   - { name: label, label: Label (Build / Grow / Run), widget: string }
                   - { name: items, label: Items, widget: list }
+      - name: plans_de
+        label: Plans & pricing (DE)
+        file: src/data/de/plans.json
+        fields: *plans_fields
 
   - name: pricing
     label: Pricing page
     files:
+      # The comparison table ("compare") mixes true/false and text values — edit it in the JSON files.
+      # Keep annualDiscount the same in both languages.
       - name: pricing
-        label: Discount, add-ons, terms & FAQ
-        file: src/data/pricing.json
-        # The comparison table ("compare") mixes true/false and text values — edit it in the JSON file.
-        fields:
+        label: Discount, add-ons, terms & FAQ (EN)
+        file: src/data/en/pricing.json
+        fields: &pricing_fields
           - { name: annualDiscount, label: Annual discount (%), widget: number, value_type: int }
           - name: examples
             label: What hours buy
@@ -87,14 +103,18 @@ collections:
             label: FAQ
             widget: list
             fields: [{ name: q, label: Question, widget: string }, { name: a, label: Answer, widget: text }]
+      - name: pricing_de
+        label: Discount, add-ons, terms & FAQ (DE)
+        file: src/data/de/pricing.json
+        fields: *pricing_fields
 
   - name: team
     label: Team page
     files:
       - name: team
-        label: Members, how we work, values, network
-        file: src/data/team.json
-        fields:
+        label: Members, how we work, values, network (EN)
+        file: src/data/en/team.json
+        fields: &team_fields
           - name: members
             label: Members
             widget: list
@@ -119,13 +139,19 @@ collections:
             label: Extended network
             widget: object
             fields: [{ name: text, label: Text, widget: text }, { name: items, label: Specialists, widget: list }]
+      - name: team_de
+        label: Members, how we work, values, network (DE)
+        file: src/data/de/team.json
+        fields: *team_fields
 
+  # Content collections: one folder per language. Use the same file name in both
+  # languages (e.g. en/cro-ads.md and de/cro-ads.md) — it is the URL slug.
   - name: services
-    label: Services
-    folder: src/content/services
+    label: Services (EN)
+    folder: src/content/services/en
     create: true
     slug: "{{slug}}"
-    fields:
+    fields: &service_fields
       - { name: title, label: Title, widget: string }
       - { name: order, label: Order, widget: number, value_type: int }
       - { name: discipline, label: Discipline, widget: select, options: [Build, Grow, Run] }
@@ -162,23 +188,36 @@ collections:
         widget: list
         fields: [{ name: q, label: Question, widget: string }, { name: a, label: Answer, widget: text }]
 
+  - name: services_de
+    label: Services (DE)
+    folder: src/content/services/de
+    create: true
+    slug: "{{slug}}"
+    fields: *service_fields
+
   - name: legal
-    label: Legal pages
-    folder: src/content/legal
+    label: Legal pages (EN)
+    folder: src/content/legal/en
     create: false
-    fields:
+    fields: &legal_fields
       - { name: title, label: Title, widget: string }
       - { name: description, label: Meta description, widget: text }
       - { name: updated, label: Last updated, widget: string }
       - { name: noindex, label: Hide from search engines, widget: boolean, default: true }
       - { name: body, label: Content, widget: markdown }
 
+  - name: legal_de
+    label: Legal pages (DE)
+    folder: src/content/legal/de
+    create: false
+    fields: *legal_fields
+
   - name: work
-    label: Case studies
-    folder: src/content/work
+    label: Case studies (EN)
+    folder: src/content/work/en
     create: true
     slug: "{{slug}}"
-    fields:
+    fields: &work_fields
       - { name: title, label: Title, widget: string }
       - { name: client, label: Client, widget: string }
       - { name: order, label: Order, widget: number, value_type: int }
@@ -212,3 +251,10 @@ collections:
         required: false
         fields: [{ name: quote, label: Quote, widget: text }, { name: name, label: Name, widget: string }, { name: role, label: Role, widget: string }]
       - { name: tools, label: Stack, widget: list, required: false }
+
+  - name: work_de
+    label: Case studies (DE)
+    folder: src/content/work/de
+    create: true
+    slug: "{{slug}}"
+    fields: *work_fields

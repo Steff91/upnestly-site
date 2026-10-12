@@ -4,32 +4,38 @@
 // Only a SHA-256 hash of the password is shipped. Change it with the PREVIEW_PASSWORD env variable.
 import Logo from './Logo.astro';
 import { previewHash } from '../lib/preview';
+import { getLang } from '../i18n';
+const lang = getLang(Astro.url);
+const t = {
+  en: { soon: 'Coming soon', title: 'Your web team on one monthly plan.', text: 'We’re putting the finishing touches on our new site. Have a preview password? Enter it below.', password: 'Password', enter: 'Enter', wrong: 'Wrong password — please try again.', questions: 'Questions?' },
+  de: { soon: 'Bald verfügbar', title: 'Ihr Web-Team in einem Monatsplan.', text: 'Wir legen gerade letzte Hand an unsere neue Website. Sie haben ein Vorschau-Passwort? Geben Sie es hier ein.', password: 'Passwort', enter: 'Weiter', wrong: 'Falsches Passwort – bitte erneut versuchen.', questions: 'Fragen?' },
+}[lang];
 ---
 
-<div id="preview-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" data-hash={previewHash}>
+<div id="preview-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" data-hash={previewHash} data-wrong={t.wrong}>
   <div class="gate-inner">
     <Logo class="h-10 w-auto" />
-    <p class="label m-0 text-brand">Coming soon</p>
+    <p class="label m-0 text-brand">{t.soon}</p>
     <h1 id="gate-title" class="m-0 text-[clamp(32px,5vw,52px)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink">
-      Your web team on one monthly plan.
+      {t.title}
     </h1>
     <p class="m-0 max-w-[460px] text-[17px] leading-[1.6] text-body">
-      We’re putting the finishing touches on our new site. Have a preview password? Enter it below.
+      {t.text}
     </p>
     <form class="gate-form flex w-full max-w-[420px] flex-col gap-3 sm:flex-row" novalidate>
-      <label for="gate-password" class="sr-only">Password</label>
+      <label for="gate-password" class="sr-only">{t.password}</label>
       <input
         id="gate-password"
         type="password"
         autocomplete="current-password"
-        placeholder="Password"
+        placeholder={t.password}
         required
         class="min-h-12 w-full flex-1 rounded-full border border-line bg-white px-5 text-[16px] text-ink outline-none transition-colors duration-300 focus:border-brand"
       />
-      <button type="submit" class="btn btn-primary cursor-pointer border-0">Enter</button>
+      <button type="submit" class="btn btn-primary cursor-pointer border-0">{t.enter}</button>
     </form>
     <p class="gate-error m-0 min-h-[1.4em] text-[14px] font-semibold text-[#B42318]" role="alert" aria-live="assertive"></p>
-    <p class="m-0 text-[14px] text-muted">Questions? <a href="mailto:info@upnestly.net">info@upnestly.net</a></p>
+    <p class="m-0 text-[14px] text-muted">{t.questions} <a href="mailto:info@upnestly.net">info@upnestly.net</a></p>
   </div>
 </div>
 
@@ -78,7 +84,7 @@ import { previewHash } from '../lib/preview';
     let ok = false;
     try { ok = (await sha256(input.value.trim())) === expected; } catch { ok = false; }
     if (!ok) {
-      error.textContent = 'Wrong password — please try again.';
+      error.textContent = gate?.dataset.wrong ?? 'Wrong password';
       input.select();
       return;
     }

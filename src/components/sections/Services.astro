@@ -1,41 +1,79 @@
 ---
 import Icon from '../Icon.astro';
+import { getLang, localize } from '../../i18n';
+
+const lang = getLang(Astro.url);
 
 // The three disciplines. All of them are ongoing monthly work — none is a one-off.
-const services = [
-  {
-    n: '01 — Build',
-    title: 'Development, design & AI automation',
-    text: 'Your site is never “done”. We keep shipping new pages and features, fix what breaks and maintain the platform — WordPress, Shopify, Webflow, Magento or custom code.',
-    items: ['New pages, features & UX improvements', 'Platform maintenance & bug fixes', 'AI automations & integrations'],
-    links: [{ href: '/services/development/', label: 'Development & design' }, { href: '/services/ai-automation/', label: 'AI automation' }],
+const t = {
+  en: {
+    title: 'Build. Grow. Run. Every month, from one team.',
+    lead: 'Most businesses juggle a developer, a marketing agency and a hosting company. We are all three — and all three keep working on your site, month after month.',
+    included: 'Included in every plan', includedText: 'All three disciplines, every month.', seePlans: 'See plans', all: 'All services',
+    services: [
+      {
+        n: '01 — Build',
+        title: 'Development, design & AI automation',
+        text: 'Your site is never “done”. We keep shipping new pages and features, fix what breaks and maintain the platform — WordPress, Shopify, Webflow, Magento or custom code.',
+        items: ['New pages, features & UX improvements', 'Platform maintenance & bug fixes', 'AI automations & integrations'],
+        links: [{ href: '/services/development/', label: 'Development & design' }, { href: '/services/ai-automation/', label: 'AI automation' }],
+      },
+      {
+        n: '02 — Grow',
+        title: 'Content, search, ads & CRO',
+        text: 'Multilingual content, SEO that ranks in Google and gets cited by AI search, campaigns tied to revenue — and a site that turns that traffic into leads and sales.',
+        items: ['Content in English & German', 'SEO & AI search (GEO)', 'Google & Meta ads, reporting', 'Conversion optimization (CRO) & A/B testing'],
+        links: [{ href: '/services/seo-content/', label: 'SEO & content' }, { href: '/services/cro-ads/', label: 'CRO & paid ads' }],
+      },
+      {
+        n: '03 — Run',
+        title: 'Hosting, security & care',
+        text: 'Managed EU hosting for self-hosted sites; on Shopify and Webflow we look after apps, themes and backups. Handled by a senior systems engineer, not a ticket queue.',
+        items: ['Managed EU hosting or platform care', 'Updates, backups, uptime monitoring', 'Security & GDPR documentation'],
+        links: [{ href: '/services/hosting-care/', label: 'Hosting & care' }],
+      },
+    ],
   },
-  {
-    n: '02 — Grow',
-    title: 'Content, search, ads & CRO',
-    text: 'Multilingual content, SEO that ranks in Google and gets cited by AI search, campaigns tied to revenue — and a site that turns that traffic into leads and sales.',
-    items: ['Content in English & German', 'SEO & AI search (GEO)', 'Google & Meta ads, reporting', 'Conversion optimization (CRO) & A/B testing'],
-    links: [{ href: '/services/seo-content/', label: 'SEO & content' }, { href: '/services/cro-ads/', label: 'CRO & paid ads' }],
+  de: {
+    title: 'Build. Grow. Run. Jeden Monat, aus einem Team.',
+    lead: 'Die meisten Unternehmen jonglieren mit einem Entwickler, einer Marketingagentur und einem Hoster. Wir sind alle drei – und alle drei arbeiten Monat für Monat an Ihrer Website weiter.',
+    included: 'In jedem Plan enthalten', includedText: 'Alle drei Disziplinen, jeden Monat.', seePlans: 'Pläne ansehen', all: 'Alle Leistungen',
+    services: [
+      {
+        n: '01 — Build',
+        title: 'Entwicklung, Design & KI-Automatisierung',
+        text: 'Eine Website ist nie „fertig“. Wir liefern laufend neue Seiten und Features, beheben, was kaputtgeht, und pflegen die Plattform – WordPress, Shopify, Webflow, Magento oder Custom Code.',
+        items: ['Neue Seiten, Features & UX-Verbesserungen', 'Plattform-Wartung & Fehlerbehebung', 'KI-Automatisierungen & Integrationen'],
+        links: [{ href: '/services/development/', label: 'Entwicklung & Design' }, { href: '/services/ai-automation/', label: 'KI-Automatisierung' }],
+      },
+      {
+        n: '02 — Grow',
+        title: 'Content, Suche, Ads & CRO',
+        text: 'Mehrsprachiger Content, SEO, das in Google rankt und von KI-Suchen zitiert wird, Kampagnen mit Bezug zum Umsatz – und eine Website, die aus diesem Traffic Leads und Verkäufe macht.',
+        items: ['Content auf Deutsch & Englisch', 'SEO & KI-Suche (GEO)', 'Google Ads & Meta Ads, Reporting', 'Conversion-Optimierung (CRO) & A/B-Tests'],
+        links: [{ href: '/services/seo-content/', label: 'SEO & Content' }, { href: '/services/cro-ads/', label: 'CRO & Werbeanzeigen' }],
+      },
+      {
+        n: '03 — Run',
+        title: 'Hosting, Sicherheit & Betreuung',
+        text: 'Managed Hosting in der EU für selbst gehostete Websites; bei Shopify und Webflow kümmern wir uns um Apps, Themes und Backups. Betreut von einem Senior Systems Engineer, nicht von einer Ticket-Warteschlange.',
+        items: ['Managed Hosting in der EU oder Plattform-Betreuung', 'Updates, Backups, Uptime-Monitoring', 'Sicherheit & DSGVO-Dokumentation'],
+        links: [{ href: '/services/hosting-care/', label: 'Hosting & Betreuung' }],
+      },
+    ],
   },
-  {
-    n: '03 — Run',
-    title: 'Hosting, security & care',
-    text: 'Managed EU hosting for self-hosted sites; on Shopify and Webflow we look after apps, themes and backups. Handled by a senior systems engineer, not a ticket queue.',
-    items: ['Managed EU hosting or platform care', 'Updates, backups, uptime monitoring', 'Security & GDPR documentation'],
-    links: [{ href: '/services/hosting-care/', label: 'Hosting & care' }],
-  },
-];
+}[lang];
 ---
 
 <section id="services">
   <div class="container-site flex flex-col gap-12 py-24 lg:py-26">
     <div class="flex flex-wrap items-end justify-between gap-6">
-      <h2 class="h-section max-w-[640px]" data-reveal>Build. Grow. Run. Every month, from one team.</h2>
-      <p class="lead max-w-[440px]" data-reveal style="--i:1">Most businesses juggle a developer, a marketing agency and a hosting company. We are all three — and all three keep working on your site, month after month.</p>
+      <h2 class="h-section max-w-[640px]" data-reveal>{t.title}</h2>
+      <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.lead}</p>
     </div>
 
     <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
-      {services.map((s, i) => (
+      {t.services.map((s, i) => (
         <article class="flex flex-col gap-4.5 rounded-[20px] border border-line p-9" data-reveal style={`--i:${i}`}>
           <p class="m-0 label text-brand">{s.n}</p>
           <h3 class="m-0 text-[26px] font-extrabold leading-tight tracking-[-0.01em]">{s.title}</h3>
@@ -49,15 +87,15 @@ const services = [
             ))}
           </ul>
           <p class="m-0 mt-auto flex flex-wrap gap-x-5 gap-y-1 border-t border-line-soft pt-4 text-[15px] font-semibold">
-            {s.links.map((l) => <a href={l.href} class="inline-flex items-center gap-1.5">{l.label} <span aria-hidden="true">→</span></a>)}
+            {s.links.map((l) => <a href={localize(l.href, lang)} class="inline-flex items-center gap-1.5">{l.label} <span aria-hidden="true">→</span></a>)}
           </p>
         </article>
       ))}
     </div>
 
     <p class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-body" data-reveal>
-      <span class="rounded-full bg-tint px-3 py-1 label text-brand">Included in every plan</span>
-      All three disciplines, every month. <a href="#pricing" class="font-semibold">See plans</a> · <a href="/services/" class="font-semibold">All services</a>
+      <span class="rounded-full bg-tint px-3 py-1 label text-brand">{t.included}</span>
+      {t.includedText} <a href="#pricing" class="font-semibold">{t.seePlans}</a> · <a href={localize('/services/', lang)} class="font-semibold">{t.all}</a>
     </p>
   </div>
 </section>

@@ -2,31 +2,40 @@
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import BrandMark from './BrandMark.astro';
-import site from '../data/site.json';
+import { getSite } from '../i18n/data';
+import { getLang, localize } from '../i18n';
 
+const lang = getLang(Astro.url);
+const site = getSite(lang);
 const year = new Date().getFullYear();
+const t = {
+  en: {
+    home: 'Upnestly — home',
+    about: 'Websites, search and AI automation on WordPress, Shopify, Webflow, Magento or custom code — built, grown and run by one senior team.',
+    services: 'Services', company: 'Company', contact: 'Contact', worldwide: 'working worldwide', audit: 'Book a free audit',
+    legal: 'Legal', imprint: 'Imprint', privacy: 'Privacy policy', cookies: 'Cookies', settings: 'Cookie settings', top: 'Back to top',
+    links: {
+      services: ['Development & design', 'SEO & content', 'CRO & paid ads', 'AI automation', 'Hosting & care'],
+      company: ['Plans & pricing', 'Selected work', 'Team', 'Free audit', 'Contact'],
+    },
+  },
+  de: {
+    home: 'Upnestly — Startseite',
+    about: 'Websites, Suchmaschinen und KI-Automatisierung auf WordPress, Shopify, Webflow, Magento oder Custom Code – entwickelt, weiterentwickelt und betrieben von einem Senior-Team.',
+    services: 'Leistungen', company: 'Unternehmen', contact: 'Kontakt', worldwide: 'weltweit tätig', audit: 'Kostenlosen Audit buchen',
+    legal: 'Rechtliches', imprint: 'Impressum', privacy: 'Datenschutz', cookies: 'Cookies', settings: 'Cookie-Einstellungen', top: 'Nach oben',
+    links: {
+      services: ['Entwicklung & Design', 'SEO & Content', 'CRO & Werbeanzeigen', 'KI-Automatisierung', 'Hosting & Betreuung'],
+      company: ['Pläne & Preise', 'Ausgewählte Projekte', 'Team', 'Kostenloser Audit', 'Kontakt'],
+    },
+  },
+}[lang];
 
+const serviceHrefs = ['/services/development/', '/services/seo-content/', '/services/cro-ads/', '/services/ai-automation/', '/services/hosting-care/'];
+const companyHrefs = ['/pricing/', '/work/', '/team/', '/audit/', '/contact/'];
 const columns = [
-  {
-    title: 'Services',
-    links: [
-      { href: '/services/development/', label: 'Development & design' },
-      { href: '/services/seo-content/', label: 'SEO & content' },
-      { href: '/services/cro-ads/', label: 'CRO & paid ads' },
-      { href: '/services/ai-automation/', label: 'AI automation' },
-      { href: '/services/hosting-care/', label: 'Hosting & care' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { href: '/pricing/', label: 'Plans & pricing' },
-      { href: '/work/', label: 'Selected work' },
-      { href: '/team/', label: 'Team' },
-      { href: '/audit/', label: 'Free audit' },
-      { href: '/contact/', label: 'Contact' },
-    ],
-  },
+  { title: t.services, links: serviceHrefs.map((h, i) => ({ href: localize(h, lang), label: t.links.services[i] })) },
+  { title: t.company, links: companyHrefs.map((h, i) => ({ href: localize(h, lang), label: t.links.company[i] })) },
 ];
 
 // LinkedIn always shows (falls back to "#" until the URL is set); GitHub only once a URL exists.
@@ -41,9 +50,9 @@ const socials = [
 
   <div class="container-site relative grid grid-cols-1 gap-12 py-18 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
     <div class="flex flex-col gap-5">
-      <a href="/" aria-label="Upnestly — home" class="w-fit"><Logo variant="white" class="h-9 w-auto" /></a>
+      <a href={localize('/', lang)} aria-label={t.home} class="w-fit"><Logo variant="white" class="h-9 w-auto" /></a>
       <p class="m-0 max-w-[340px] text-[15px] leading-[1.6] text-night-text">
-        Websites, search and AI automation on WordPress, Shopify, Webflow, Magento or custom code — built, grown and run by one senior team.
+        {t.about}
       </p>
       {socials.length > 0 && (
         <ul class="m-0 flex list-none gap-2 p-0">
@@ -70,7 +79,7 @@ const socials = [
     ))}
 
     <div class="flex flex-col gap-4">
-      <p class="m-0 label text-night-accent">Contact</p>
+      <p class="m-0 label text-night-accent">{t.contact}</p>
       <ul class="m-0 flex list-none flex-col gap-3 p-0 text-[15px] text-night-text">
         <li class="flex items-center gap-2.5">
           <Icon name="mail" size={17} class="shrink-0 text-night-accent" />
@@ -78,26 +87,26 @@ const socials = [
         </li>
         <li class="flex items-center gap-2.5">
           <Icon name="pin" size={17} class="shrink-0 text-night-accent" />
-          <span>{site.city}, {site.country} · working worldwide</span>
+          <span>{site.city}, {site.country} · {t.worldwide}</span>
         </li>
         <li class="flex items-center gap-2.5">
           <Icon name="globe" size={17} class="shrink-0 text-night-accent" />
           <span>{site.languages.join(' · ')}</span>
         </li>
       </ul>
-      <a href={site.auditUrl} class="btn btn-light mt-2 w-fit">Book a free audit</a>
+      <a href={site.auditUrl} class="btn btn-light mt-2 w-fit">{t.audit}</a>
     </div>
   </div>
 
   <div class="relative border-t border-night-line">
     <div class="container-site flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-6 text-[13px] text-night-text">
       <p class="m-0">© {year} {site.legalName} · {site.city}, {site.country}</p>
-      <nav aria-label="Legal" class="flex flex-wrap gap-x-6 gap-y-2">
-        <a href="/imprint/" class="text-night-text hover:text-white">Imprint</a>
-        <a href="/privacy/" class="text-night-text hover:text-white">Privacy policy</a>
-        <a href="/cookies/" class="text-night-text hover:text-white">Cookies</a>
-        <button type="button" data-open-cookie-settings class="cursor-pointer border-0 bg-transparent p-0 text-[13px] text-night-text transition-colors duration-300 hover:text-white">Cookie settings</button>
-        <a href="#" class="inline-flex items-center gap-1.5 text-night-text hover:text-white">Back to top <Icon name="arrow-up" size={14} /></a>
+      <nav aria-label={t.legal} class="flex flex-wrap gap-x-6 gap-y-2">
+        <a href={localize('/imprint/', lang)} class="text-night-text hover:text-white">{t.imprint}</a>
+        <a href={localize('/privacy/', lang)} class="text-night-text hover:text-white">{t.privacy}</a>
+        <a href={localize('/cookies/', lang)} class="text-night-text hover:text-white">{t.cookies}</a>
+        <button type="button" data-open-cookie-settings class="cursor-pointer border-0 bg-transparent p-0 text-[13px] text-night-text transition-colors duration-300 hover:text-white">{t.settings}</button>
+        <a href="#" class="inline-flex items-center gap-1.5 text-night-text hover:text-white">{t.top} <Icon name="arrow-up" size={14} /></a>
       </nav>
     </div>
   </div>

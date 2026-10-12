@@ -1,14 +1,19 @@
 ---
 // Homepage pricing section: monthly plans only, links to the full /pricing/ page.
 import PlanCards from '../PlanCards.astro';
-import data from '../../data/plans.json';
+import { getPlans } from '../../i18n/data';
+import { getLang, localize } from '../../i18n';
+
+const lang = getLang(Astro.url);
+const data = getPlans(lang);
+const t = lang === 'de' ? { eyebrow: 'Pläne & Preise', compare: 'Pläne im Detail vergleichen →' } : { eyebrow: 'Plans & pricing', compare: 'Compare plans in detail →' };
 ---
 
 <section id="pricing" class="bg-tint">
   <div class="container-site flex flex-col gap-12 py-24 lg:py-26">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div class="flex max-w-[680px] flex-col gap-4" data-reveal>
-        <p class="eyebrow m-0">Plans & pricing</p>
+        <p class="eyebrow m-0">{t.eyebrow}</p>
         <h2 class="h-section">{data.title}</h2>
       </div>
       <p class="lead max-w-[440px]" data-reveal style="--i:1">{data.intro}</p>
@@ -18,7 +23,7 @@ import data from '../../data/plans.json';
 
     <div class="flex flex-wrap items-center justify-between gap-x-10 gap-y-4" data-reveal>
       <p class="m-0 max-w-[820px] text-[14px] leading-relaxed text-muted">{data.footnote}</p>
-      <a href="/pricing/" class="shrink-0 font-semibold">Compare plans in detail →</a>
+      <a href={localize('/pricing/', lang)} class="shrink-0 font-semibold">{t.compare}</a>
     </div>
   </div>
 </section>

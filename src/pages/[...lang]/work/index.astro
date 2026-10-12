@@ -1,38 +1,53 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import BrandMark from '../../components/BrandMark.astro';
-import WorkCard from '../../components/WorkCard.astro';
-import Contact from '../../components/sections/Contact.astro';
+import Base from '../../../layouts/Base.astro';
+import BrandMark from '../../../components/BrandMark.astro';
+import WorkCard from '../../../components/WorkCard.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import { getLang, langParams } from '../../../i18n';
+import { getLocalized } from '../../../i18n/content';
 
-const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const work = (await getLocalized('work', lang)).sort((a, b) => a.data.order - b.data.order);
 const filters = ['All', 'Build', 'Grow', 'Run'] as const;
+const t = {
+  en: {
+    metaTitle: 'Work — Case Studies | Upnestly', metaDescription: 'Case studies from Upnestly: websites, shops, SEO, CRO, AI automation and hosting projects — with the results they brought.',
+    eyebrow: 'Work', title: 'Results, not just launches.', text: 'A selection of projects across development, growth and hosting — and what they changed for the business.',
+    filter: 'Filter projects by discipline', all: 'All', one: 'project', many: 'projects',
+  },
+  de: {
+    metaTitle: 'Projekte — Fallstudien | Upnestly', metaDescription: 'Fallstudien von Upnestly: Websites, Shops, SEO, CRO, KI-Automatisierung und Hosting – mit den Ergebnissen, die sie gebracht haben.',
+    eyebrow: 'Projekte', title: 'Ergebnisse, nicht nur Launches.', text: 'Eine Auswahl an Projekten aus Entwicklung, Wachstum und Hosting – und was sie für das Unternehmen verändert haben.',
+    filter: 'Projekte nach Disziplin filtern', all: 'Alle', one: 'Projekt', many: 'Projekte',
+  },
+}[lang];
 ---
 
-<Base
-  title="Work — Case Studies | Upnestly"
-  description="Case studies from Upnestly: websites, shops, SEO, CRO, AI automation and hosting projects — with the results they brought."
->
+<Base title={t.metaTitle} description={t.metaDescription}>
   <section class="relative overflow-hidden bg-tint">
     <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
     <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
-      <p class="eyebrow m-0" data-reveal>Work</p>
-      <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">Results, not just launches.</h1>
+      <p class="eyebrow m-0" data-reveal>{t.eyebrow}</p>
+      <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">{t.title}</h1>
       <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
-        A selection of projects across development, growth and hosting — and what they changed for the business.
+        {t.text}
       </p>
     </div>
   </section>
 
   <section>
     <div class="container-site flex flex-col gap-10 py-18">
-      <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter projects by discipline" data-work-filters>
+      <div class="flex flex-wrap items-center gap-2" role="group" aria-label={t.filter} data-work-filters>
         {filters.map((f, i) => (
           <button type="button" class="filter-btn min-h-11 rounded-full border border-line px-5 text-[15px] font-semibold" data-filter={f} aria-pressed={i === 0 ? 'true' : 'false'}>
-            {f}
+            {f === 'All' ? t.all : f}
           </button>
         ))}
-        <span class="ml-auto text-[14px] text-muted" aria-live="polite" data-work-count>{work.length} projects</span>
+        <span class="ml-auto text-[14px] text-muted" aria-live="polite" data-work-count data-one={t.one} data-many={t.many}>{work.length} {t.many}</span>
       </div>
 
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6" data-work-grid>
@@ -66,7 +81,7 @@ const filters = ['All', 'Build', 'Grow', 'Run'] as const;
         if (show) visible++;
       });
       buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      if (count) count.textContent = `${visible} project${visible === 1 ? '' : 's'}`;
+      if (count) count.textContent = `${visible} ${visible === 1 ? count.dataset.one : count.dataset.many}`;
     }),
   );
 </script>

@@ -1,36 +1,58 @@
 ---
 import BrandMark from '../BrandMark.astro';
 import Icon from '../Icon.astro';
-import site from '../../data/site.json';
+import { getSite } from '../../i18n/data';
+import { getLang, localize } from '../../i18n';
+
+const lang = getLang(Astro.url);
+const site = getSite(lang);
 
 // Facts about how we work — no claims that need proof we don't have yet.
-const facts = [
-  { title: 'Same time zone as Berlin, Vienna & Zurich', text: 'Calls and fixes during your working day.' },
-  { title: 'Senior people only', text: 'No juniors, no account managers in between.' },
-  { title: 'English & German', text: 'Content and communication in both.' },
-  { title: 'One team, one invoice', text: 'Development, growth and hosting in one plan.' },
-];
+const t = {
+  en: {
+    eyebrow: `${site.tagline} · Based in ${site.city}, working worldwide`,
+    title: 'Your web team on one monthly plan.',
+    text: 'We develop and maintain your site on WordPress, Shopify, Webflow, Magento or custom code, grow it with content, SEO and CRO, and automate the busywork with AI. Senior people, human-reviewed output, no AI slop.',
+    audit: 'Book a free audit', plans: 'See plans & pricing', factsTitle: 'Why teams work with us',
+    facts: [
+      { title: 'Same time zone as Berlin, Vienna & Zurich', text: 'Calls and fixes during your working day.' },
+      { title: 'Senior people only', text: 'No juniors, no account managers in between.' },
+      { title: 'English & German', text: 'Content and communication in both.' },
+      { title: 'One team, one invoice', text: 'Development, growth and hosting in one plan.' },
+    ],
+  },
+  de: {
+    eyebrow: `${site.tagline} · Sitz in ${site.city}, weltweit tätig`,
+    title: 'Ihr Web-Team in einem Monatsplan.',
+    text: 'Wir entwickeln und betreuen Ihre Website auf WordPress, Shopify, Webflow, Magento oder Custom Code, lassen sie mit Content, SEO und CRO wachsen und automatisieren Routinearbeit mit KI. Senior-Spezialisten, menschlich geprüfte Ergebnisse, kein generischer KI-Einheitsbrei.',
+    audit: 'Kostenlosen Audit buchen', plans: 'Pläne & Preise ansehen', factsTitle: 'Warum Teams mit uns arbeiten',
+    facts: [
+      { title: 'Gleiche Zeitzone wie Berlin, Wien & Zürich', text: 'Calls und Fixes während Ihrer Arbeitszeit.' },
+      { title: 'Nur Senior-Spezialisten', text: 'Keine Juniors, keine Account Manager dazwischen.' },
+      { title: 'Deutsch & Englisch', text: 'Content und Kommunikation in beiden Sprachen.' },
+      { title: 'Ein Team, eine Rechnung', text: 'Entwicklung, Wachstum und Hosting in einem Plan.' },
+    ],
+  },
+}[lang];
 ---
 
 <section id="top" class="relative overflow-hidden bg-tint">
   <BrandMark variant="blue" class="-bottom-28 left-[44%] hidden w-[380px] opacity-[0.05] lg:block" />
   <div class="container-site relative flex flex-wrap items-center gap-14 py-20 lg:py-24">
     <div class="flex min-w-0 flex-[999_1_560px] flex-col gap-7">
-      <p class="eyebrow m-0" data-reveal>{site.tagline} · Based in {site.city}, working worldwide</p>
-      <h1 class="h-hero" data-reveal style="--i:1">Your web team on one monthly plan.</h1>
-      <p class="m-0 max-w-[620px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
-        We develop and maintain your site on WordPress, Shopify, Webflow, Magento or custom code, grow it with content, SEO and CRO, and automate the busywork with AI. Senior people, human-reviewed output, no AI slop.
-      </p>
+      <p class="eyebrow m-0" data-reveal>{t.eyebrow}</p>
+      <h1 class="h-hero" data-reveal style="--i:1">{t.title}</h1>
+      <p class="m-0 max-w-[620px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">{t.text}</p>
       <div class="flex flex-wrap gap-3.5" data-reveal style="--i:3">
-        <a href={site.auditUrl} class="btn btn-primary">Book a free audit</a>
-        <a href="/pricing/" class="btn btn-outline">See plans & pricing</a>
+        <a href={site.auditUrl} class="btn btn-primary">{t.audit}</a>
+        <a href={localize('/pricing/', lang)} class="btn btn-outline">{t.plans}</a>
       </div>
     </div>
 
     <aside class="flex min-w-0 flex-[1_1_360px] flex-col gap-1 rounded-[20px] border border-line bg-white p-7" aria-labelledby="facts-title" data-reveal style="--i:2">
-      <p id="facts-title" class="m-0 mb-3 label text-dim">Why teams work with us</p>
+      <p id="facts-title" class="m-0 mb-3 label text-dim">{t.factsTitle}</p>
       <ul class="m-0 flex list-none flex-col p-0">
-        {facts.map((f) => (
+        {t.facts.map((f) => (
           <li class="flex gap-3.5 border-t border-line-soft py-3.5 first:border-t-0 first:pt-0">
             <span class="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-tint text-brand"><Icon name="check" size={15} /></span>
             <span class="flex flex-col gap-0.5">

@@ -1,25 +1,43 @@
 ---
 import BrandMark from '../BrandMark.astro';
+import { getLang, localize } from '../../i18n';
 
-const principles = [
-  { title: 'Human-reviewed', text: 'Nothing generated goes live without an editor’s sign-off.' },
-  { title: 'GDPR-aware', text: 'EU hosting options and documented data flows for every workflow.' },
-  { title: 'Measured', text: 'Hours saved and output volume tracked from day one.' },
-  { title: 'Yours to keep', text: 'Workflows documented and handed over, no lock-in.' },
-];
+const lang = getLang(Astro.url);
+const t = {
+  en: {
+    eyebrow: 'How we use AI', title: 'AI does the volume. People own the result.',
+    text: 'Every AI system we build has a human checkpoint, clear data handling and a measurable goal. You get speed without generic output.', cta: 'How we automate',
+    principles: [
+      { title: 'Human-reviewed', text: 'Nothing generated goes live without an editor’s sign-off.' },
+      { title: 'GDPR-aware', text: 'EU hosting options and documented data flows for every workflow.' },
+      { title: 'Measured', text: 'Hours saved and output volume tracked from day one.' },
+      { title: 'Yours to keep', text: 'Workflows documented and handed over, no lock-in.' },
+    ],
+  },
+  de: {
+    eyebrow: 'Wie wir KI einsetzen', title: 'KI liefert die Menge. Menschen verantworten das Ergebnis.',
+    text: 'Jedes KI-System, das wir bauen, hat einen menschlichen Prüfschritt, einen klaren Umgang mit Daten und ein messbares Ziel. Sie bekommen Tempo ohne generische Ergebnisse.', cta: 'So automatisieren wir',
+    principles: [
+      { title: 'Menschlich geprüft', text: 'Nichts Generiertes geht ohne Freigabe einer Redakteurin live.' },
+      { title: 'DSGVO-konform gedacht', text: 'Hosting-Optionen in der EU und dokumentierte Datenflüsse für jeden Workflow.' },
+      { title: 'Messbar', text: 'Gesparte Stunden und Output-Menge werden ab dem ersten Tag erfasst.' },
+      { title: 'Gehört Ihnen', text: 'Workflows werden dokumentiert und übergeben – ohne Lock-in.' },
+    ],
+  },
+}[lang];
 ---
 
 <section id="ai" class="relative overflow-hidden bg-ink text-white">
   <BrandMark class="-bottom-40 -left-48 w-[640px] opacity-[0.10] lg:-left-32" />
   <div class="container-site relative flex flex-wrap gap-14 py-24 lg:py-26">
     <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-5" data-reveal>
-      <p class="eyebrow m-0 !text-night-accent">How we use AI</p>
-      <h2 class="h-section">AI does the volume. People own the result.</h2>
-      <p class="m-0 text-[17px] leading-[1.6] text-night-text">Every AI system we build has a human checkpoint, clear data handling and a measurable goal. You get speed without generic output.</p>
-      <a href="/services/ai-automation/" class="btn btn-light mt-2 w-fit">How we automate</a>
+      <p class="eyebrow m-0 !text-night-accent">{t.eyebrow}</p>
+      <h2 class="h-section">{t.title}</h2>
+      <p class="m-0 text-[17px] leading-[1.6] text-night-text">{t.text}</p>
+      <a href={localize('/services/ai-automation/', lang)} class="btn btn-light mt-2 w-fit">{t.cta}</a>
     </div>
     <div class="grid min-w-0 flex-[1_1_520px] grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">
-      {principles.map((p, i) => (
+      {t.principles.map((p, i) => (
         <div class="flex flex-col gap-2 rounded-2xl border border-night-line p-6" data-reveal style={`--i:${i}`}>
           <h3 class="m-0 text-[18px] font-bold">{p.title}</h3>
           <p class="m-0 text-[15px] leading-[1.55] text-night-text">{p.text}</p>

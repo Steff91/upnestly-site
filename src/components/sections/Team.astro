@@ -1,21 +1,44 @@
 ---
 import Icon from '../Icon.astro';
+import { getLang, localize } from '../../i18n';
 
-const team = [
-  { stat: '8+ yrs', title: 'Development, design & AI', text: 'Built and maintained platforms for SaaS companies and agencies across Europe.' },
-  { stat: '8+ yrs', title: 'Content & marketing', text: 'Philologist writing in English and German, with in-house marketing experience at a major European retailer.' },
-  { stat: '25+ yrs', title: 'Infrastructure & DevOps', text: 'Senior systems engineer running production servers since the early 2000s.' },
-];
+const lang = getLang(Astro.url);
+const t = {
+  en: {
+    title: 'Three senior specialists. No juniors, no handoffs.',
+    lead: 'Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work.',
+    team: [
+      { stat: '8+ yrs', title: 'Development, design & AI', text: 'Built and maintained platforms for SaaS companies and agencies across Europe.' },
+      { stat: '8+ yrs', title: 'Content & marketing', text: 'Philologist writing in English and German, with in-house marketing experience at a major European retailer.' },
+      { stat: '25+ yrs', title: 'Infrastructure & DevOps', text: 'Senior systems engineer running production servers since the early 2000s.' },
+    ],
+    contactStrong: 'One point of contact for everything.',
+    contactText: 'One project lead, one invoice, one contract — in English or German, in your time zone.',
+    meet: 'Meet the team →',
+  },
+  de: {
+    title: 'Drei Senior-Spezialisten. Keine Juniors, keine Übergaben.',
+    lead: 'Jede Disziplin wird von jemandem mit langjähriger Praxiserfahrung geleitet. Sie sprechen direkt mit den Menschen, die die Arbeit machen.',
+    team: [
+      { stat: '8+ Jahre', title: 'Entwicklung, Design & KI', text: 'Plattformen für SaaS-Unternehmen und Agenturen in ganz Europa entwickelt und betreut.' },
+      { stat: '8+ Jahre', title: 'Content & Marketing', text: 'Germanist, der auf Deutsch und Englisch schreibt – mit Inhouse-Marketingerfahrung bei einem großen europäischen Händler.' },
+      { stat: '25+ Jahre', title: 'Infrastruktur & DevOps', text: 'Senior Systems Engineer, der seit Anfang der 2000er Produktionsserver betreibt.' },
+    ],
+    contactStrong: 'Ein Ansprechpartner für alles.',
+    contactText: 'Eine Projektleitung, eine Rechnung, ein Vertrag – auf Deutsch oder Englisch, in Ihrer Zeitzone.',
+    meet: 'Das Team kennenlernen →',
+  },
+}[lang];
 ---
 
 <section id="team">
   <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
     <div class="flex flex-wrap items-end justify-between gap-6">
-      <h2 class="h-section max-w-[680px]" data-reveal>Three senior specialists. No juniors, no handoffs.</h2>
-      <p class="lead max-w-[440px]" data-reveal style="--i:1">Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work.</p>
+      <h2 class="h-section max-w-[680px]" data-reveal>{t.title}</h2>
+      <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.lead}</p>
     </div>
     <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
-      {team.map((m, i) => (
+      {t.team.map((m, i) => (
         <div class="flex flex-col gap-3 rounded-[20px] bg-tint-soft p-8" data-reveal style={`--i:${i}`}>
           <p class="m-0 text-[44px] font-extrabold tracking-[-0.02em] text-brand">{m.stat}</p>
           <h3 class="m-0 text-[19px] font-bold">{m.title}</h3>
@@ -25,8 +48,8 @@ const team = [
     </div>
     <div class="flex flex-wrap items-center gap-4 rounded-2xl border border-line px-7 py-6" data-reveal>
       <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-white"><Icon name="chat" /></span>
-      <p class="m-0 min-w-0 flex-[1_1_320px] text-[16px] leading-normal"><strong>One point of contact for everything.</strong> One project lead, one invoice, one contract — in English or German, in your time zone.</p>
-      <a href="/team/" class="shrink-0 font-semibold">Meet the team →</a>
+      <p class="m-0 min-w-0 flex-[1_1_320px] text-[16px] leading-normal"><strong>{t.contactStrong}</strong> {t.contactText}</p>
+      <a href={localize('/team/', lang)} class="shrink-0 font-semibold">{t.meet}</a>
     </div>
   </div>
 </section>

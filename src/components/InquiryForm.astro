@@ -4,14 +4,35 @@
 // - Posts to site.formAction (e.g. a Formspree / Web3Forms endpoint) when set.
 //   Until then it opens the visitor's email app with everything prefilled, so no enquiry is lost.
 import { interestOptions, billablePlans, platformOptions } from '../data/inquiry';
-import site from '../data/site.json';
-import pricing from '../data/pricing.json';
+import { getSite, getPricing } from '../i18n/data';
+import { getLang, localize } from '../i18n';
 
 interface Props {
   preset?: string;
   submitLabel?: string;
 }
-const { preset = 'audit', submitLabel = 'Send' } = Astro.props;
+const lang = getLang(Astro.url);
+const site = getSite(lang);
+const pricing = getPricing(lang);
+const t = {
+  en: {
+    interest: 'What are you interested in?', billing: 'Billing', monthly: 'Monthly', annual: `Annual — save ${pricing.annualDiscount}%`,
+    name: 'Name', email: 'Work email', company: 'Company', website: 'Website', websitePh: 'example.com',
+    platform: 'Platform', platformPh: 'Select a platform', message: 'What would you like to improve?',
+    messagePh: 'More leads from the site, a faster shop, automating product data…', honeypot: 'Leave this empty',
+    consent: ['I agree that Upnestly may use these details to reply to my enquiry. See the ', 'privacy policy', '.'], send: 'Send',
+    mail: { interest: 'Interest', billing: 'Billing', name: 'Name', email: 'Email', company: 'Company', website: 'Website', platform: 'Platform', monthly: 'monthly', annual: 'annual' },
+  },
+  de: {
+    interest: 'Wofür interessieren Sie sich?', billing: 'Abrechnung', monthly: 'Monatlich', annual: `Jährlich – ${pricing.annualDiscount} % sparen`,
+    name: 'Name', email: 'Geschäftliche E-Mail', company: 'Unternehmen', website: 'Website', websitePh: 'beispiel.de',
+    platform: 'Plattform', platformPh: 'Plattform auswählen', message: 'Was möchten Sie verbessern?',
+    messagePh: 'Mehr Leads über die Website, ein schnellerer Shop, automatisierte Produktdaten …', honeypot: 'Bitte leer lassen',
+    consent: ['Ich bin einverstanden, dass Upnestly diese Angaben zur Beantwortung meiner Anfrage verwendet. Siehe ', 'Datenschutzerklärung', '.'], send: 'Senden',
+    mail: { interest: 'Interesse', billing: 'Abrechnung', name: 'Name', email: 'E-Mail', company: 'Unternehmen', website: 'Website', platform: 'Plattform', monthly: 'monatlich', annual: 'jährlich' },
+  },
+}[lang];
+const { preset = 'audit', submitLabel = t.send } = Astro.props;
 const field = 'w-full rounded-xl border border-line bg-white px-4 py-3 text-[16px] text-ink outline-none transition-colors focus:border-brand';
 const labelCls = 'text-[14px] font-semibold text-ink';
 ---
@@ -23,70 +44,71 @@ const labelCls = 'text-[14px] font-semibold text-ink';
   data-preset={preset}
   data-billable={billablePlans.join(' ')}
   data-email={site.email}
-  data-thanks="/thank-you/"
+  data-thanks={localize('/thank-you/', lang)}
+  data-mail={JSON.stringify(t.mail)}
 >
   <div class="flex flex-col gap-2">
-    <label for="f-interest" class={labelCls}>What are you interested in?</label>
+    <label for="f-interest" class={labelCls}>{t.interest}</label>
     <select id="f-interest" name="interest" class={field} required>
-      {interestOptions.map((o) => <option value={o.value} selected={o.value === preset}>{o.label}</option>)}
+      {interestOptions(lang).map((o) => <option value={o.value} selected={o.value === preset}>{o.label}</option>)}
     </select>
   </div>
 
   <fieldset class="billing-field m-0 flex flex-col gap-2 border-0 p-0" hidden>
-    <legend class:list={[labelCls, 'mb-2']}>Billing</legend>
+    <legend class:list={[labelCls, 'mb-2']}>{t.billing}</legend>
     <div class="flex flex-wrap gap-2">
       <label class="cursor-pointer">
         <input type="radio" name="billing" value="monthly" checked class="peer sr-only" />
-        <span class="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-5 text-[15px] font-semibold text-body transition-[background-color,border-color,color] duration-300 ease-out hover:border-brand hover:bg-tint hover:text-brand peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-checked:hover:bg-brand-deep peer-checked:hover:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">Monthly</span>
+        <span class="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-5 text-[15px] font-semibold text-body transition-[background-color,border-color,color] duration-300 ease-out hover:border-brand hover:bg-tint hover:text-brand peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-checked:hover:bg-brand-deep peer-checked:hover:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">{t.monthly}</span>
       </label>
       <label class="cursor-pointer">
         <input type="radio" name="billing" value="annual" class="peer sr-only" />
-        <span class="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-5 text-[15px] font-semibold text-body transition-[background-color,border-color,color] duration-300 ease-out hover:border-brand hover:bg-tint hover:text-brand peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-checked:hover:bg-brand-deep peer-checked:hover:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">Annual — save {pricing.annualDiscount}%</span>
+        <span class="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-5 text-[15px] font-semibold text-body transition-[background-color,border-color,color] duration-300 ease-out hover:border-brand hover:bg-tint hover:text-brand peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-checked:hover:bg-brand-deep peer-checked:hover:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">{t.annual}</span>
       </label>
     </div>
   </fieldset>
 
   <div class="grid gap-5 sm:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <label for="f-name" class={labelCls}>Name</label>
+      <label for="f-name" class={labelCls}>{t.name}</label>
       <input id="f-name" name="name" type="text" autocomplete="name" required class={field} />
     </div>
     <div class="flex flex-col gap-2">
-      <label for="f-email" class={labelCls}>Work email</label>
+      <label for="f-email" class={labelCls}>{t.email}</label>
       <input id="f-email" name="email" type="email" autocomplete="email" required class={field} />
     </div>
     <div class="flex flex-col gap-2">
-      <label for="f-company" class={labelCls}>Company</label>
+      <label for="f-company" class={labelCls}>{t.company}</label>
       <input id="f-company" name="company" type="text" autocomplete="organization" class={field} />
     </div>
     <div class="flex flex-col gap-2">
-      <label for="f-website" class={labelCls}>Website</label>
-      <input id="f-website" name="website" type="text" inputmode="url" placeholder="example.com" class={field} />
+      <label for="f-website" class={labelCls}>{t.website}</label>
+      <input id="f-website" name="website" type="text" inputmode="url" placeholder={t.websitePh} class={field} />
     </div>
   </div>
 
   <div class="flex flex-col gap-2">
-    <label for="f-platform" class={labelCls}>Platform</label>
+    <label for="f-platform" class={labelCls}>{t.platform}</label>
     <select id="f-platform" name="platform" class={field}>
-      <option value="" selected>Select a platform</option>
-      {platformOptions.map((p) => <option value={p}>{p}</option>)}
+      <option value="" selected>{t.platformPh}</option>
+      {platformOptions(lang).map((p) => <option value={p}>{p}</option>)}
     </select>
   </div>
 
   <div class="flex flex-col gap-2">
-    <label for="f-message" class={labelCls}>What would you like to improve?</label>
-    <textarea id="f-message" name="message" rows="5" class={field} placeholder="More leads from the site, a faster shop, automating product data…"></textarea>
+    <label for="f-message" class={labelCls}>{t.message}</label>
+    <textarea id="f-message" name="message" rows="5" class={field} placeholder={t.messagePh}></textarea>
   </div>
 
   <!-- Honeypot: humans never see or fill this -->
   <div class="hidden" aria-hidden="true">
-    <label for="f-company-url">Leave this empty</label>
+    <label for="f-company-url">{t.honeypot}</label>
     <input id="f-company-url" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
   </div>
 
   <label class="flex items-start gap-3 text-[14px] leading-snug text-body">
     <input type="checkbox" name="consent" required class="mt-0.5 size-5 shrink-0 accent-[#2D327D]" />
-    <span>I agree that Upnestly may use these details to reply to my enquiry. See the <a href="/privacy/">privacy policy</a>.</span>
+    <span>{t.consent[0]}<a href={localize('/privacy/', lang)}>{t.consent[1]}</a>{t.consent[2]}</span>
   </label>
 
   <button type="submit" class="btn btn-primary w-full sm:w-fit">{submitLabel}</button>
@@ -120,14 +142,15 @@ const labelCls = 'text-[14px] font-semibold text-ink';
         const data = new FormData(form);
         if (data.get('_gotcha')) return;
         const interest = select?.selectedOptions[0]?.text ?? '';
+        const m = JSON.parse(form.dataset.mail ?? '{}') as Record<string, string>;
         const lines = [
-          `Interest: ${interest}`,
-          ...(billing && !billing.hidden ? [`Billing: ${data.get('billing')}`] : []),
-          `Name: ${data.get('name')}`,
-          `Email: ${data.get('email')}`,
-          `Company: ${data.get('company') || '-'}`,
-          `Website: ${data.get('website') || '-'}`,
-          `Platform: ${data.get('platform') || '-'}`,
+          `${m.interest}: ${interest}`,
+          ...(billing && !billing.hidden ? [`${m.billing}: ${m[String(data.get('billing'))]}`] : []),
+          `${m.name}: ${data.get('name')}`,
+          `${m.email}: ${data.get('email')}`,
+          `${m.company}: ${data.get('company') || '-'}`,
+          `${m.website}: ${data.get('website') || '-'}`,
+          `${m.platform}: ${data.get('platform') || '-'}`,
           '',
           String(data.get('message') || ''),
         ];

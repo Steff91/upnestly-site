@@ -1,51 +1,65 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import BrandMark from '../../components/BrandMark.astro';
-import Icon from '../../components/Icon.astro';
-import Placeholder from '../../components/Placeholder.astro';
-import WorkCard from '../../components/WorkCard.astro';
-import Contact from '../../components/sections/Contact.astro';
+import Base from '../../../layouts/Base.astro';
+import BrandMark from '../../../components/BrandMark.astro';
+import Icon from '../../../components/Icon.astro';
+import Placeholder from '../../../components/Placeholder.astro';
+import WorkCard from '../../../components/WorkCard.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import type { CollectionEntry } from 'astro:content';
+import { defaultLang, getLang, langs, localize } from '../../../i18n';
+import { getLocalized, slugOf } from '../../../i18n/content';
 
 export async function getStaticPaths() {
-  const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
-  return work.map((entry, i) => ({
-    params: { slug: entry.id },
-    props: { entry, next: work[(i + 1) % work.length], after: work[(i + 2) % work.length] },
-  }));
+  type Work = CollectionEntry<'work'>;
+  const paths: { params: { lang?: string; slug: string }; props: { entry: Work; next: Work; after: Work } }[] = [];
+  for (const lang of langs) {
+    const work = (await getLocalized('work', lang)).sort((a, b) => a.data.order - b.data.order);
+    work.forEach((entry, i) =>
+      paths.push({
+        params: { lang: lang === defaultLang ? undefined : lang, slug: slugOf(entry) },
+        props: { entry, next: work[(i + 1) % work.length], after: work[(i + 2) % work.length] },
+      }),
+    );
+  }
+  return paths;
 }
 
 const { entry, next, after } = Astro.props;
 const w = entry.data;
+const lang = getLang(Astro.url);
 const serviceFor = { Build: '/services/development/', Grow: '/services/seo-content/', Run: '/services/hosting-care/' } as const;
+const t = {
+  en: { home: 'Home', work: 'Work', breadcrumb: 'Breadcrumb', caseStudy: 'Case Study', plan: 'plan', screenshot: 'Main project screenshot', challenge: 'The challenge', visit: 'Visit the site', did: 'What we did', more: 'More work', all: 'All projects →' },
+  de: { home: 'Startseite', work: 'Projekte', breadcrumb: 'Brotkrümelnavigation', caseStudy: 'Fallstudie', plan: 'Plan', screenshot: 'Haupt-Screenshot des Projekts', challenge: 'Die Herausforderung', visit: 'Zur Website', did: 'Was wir gemacht haben', more: 'Weitere Projekte', all: 'Alle Projekte →' },
+}[lang];
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
-    { '@type': 'ListItem', position: 2, name: 'Work', item: new URL('/work/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 1, name: t.home, item: new URL(localize('/', lang), Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: t.work, item: new URL(localize('/work/', lang), Astro.site).toString() },
     { '@type': 'ListItem', position: 3, name: w.title, item: pageUrl },
   ],
 };
 ---
 
-<Base title={`${w.title} — Case Study | Upnestly`} description={w.summary}>
+<Base title={`${w.title} — ${t.caseStudy} | Upnestly`} description={w.summary}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <!-- Hero -->
   <section class="relative overflow-hidden bg-tint">
     <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
     <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
-      <nav aria-label="Breadcrumb" class="label text-dim" data-reveal>
-        <a href="/work/" class="text-dim no-underline hover:text-brand">Work</a>
+      <nav aria-label={t.breadcrumb} class="label text-dim" data-reveal>
+        <a href={localize('/work/', lang)} class="text-dim no-underline hover:text-brand">{t.work}</a>
         <span aria-hidden="true" class="mx-2">/</span>
         <span class="text-brand">{w.client}</span>
       </nav>
       <h1 class="h-hero max-w-[900px]" data-reveal style="--i:1">{w.headline}</h1>
       <ul class="m-0 flex list-none flex-wrap gap-2 p-0" data-reveal style="--i:2">
-        {[w.industry, w.platform, ...(w.plan ? [`${w.plan} plan`] : []), ...w.disciplines].map((tag) => (
+        {[w.industry, w.platform, ...(w.plan ? [`${w.plan} ${t.plan}`] : []), ...w.disciplines].map((tag) => (
           <li class="rounded-full border border-line bg-white px-3.5 py-1.5 text-[14px] font-semibold text-body">{tag}</li>
         ))}
       </ul>
@@ -69,7 +83,7 @@ const schema = {
   <!-- Hero image -->
   <section class="pt-16">
     <div class="container-site" data-reveal>
-      <Placeholder label="Main project screenshot" src={w.image} alt={w.imageAlt} class="h-[clamp(240px,40vw,520px)] rounded-[20px]" />
+      <Placeholder label={t.screenshot} src={w.image} alt={w.imageAlt} class="h-[clamp(240px,40vw,520px)] rounded-[20px]" />
     </div>
   </section>
 
@@ -77,15 +91,15 @@ const schema = {
   <section>
     <div class="container-site flex flex-wrap gap-x-16 gap-y-12 py-20">
       <div class="flex min-w-0 flex-[1_1_340px] flex-col gap-4" data-reveal>
-        <p class="eyebrow m-0">The challenge</p>
+        <p class="eyebrow m-0">{t.challenge}</p>
         <p class="m-0 text-[20px] font-semibold leading-[1.5] text-ink">{w.challenge}</p>
-        {w.url && <a href={w.url} class="mt-2 inline-flex w-fit items-center gap-1.5 font-semibold">Visit the site <Icon name="arrow" size={16} /></a>}
+        {w.url && <a href={w.url} class="mt-2 inline-flex w-fit items-center gap-1.5 font-semibold">{t.visit} <Icon name="arrow" size={16} /></a>}
       </div>
       <div class="flex min-w-0 flex-[1_1_440px] flex-col gap-5">
-        <p class="eyebrow m-0" data-reveal>What we did</p>
+        <p class="eyebrow m-0" data-reveal>{t.did}</p>
         {w.approach.map((a, i) => (
           <div class="flex flex-col gap-2 rounded-[20px] bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
-            <a href={serviceFor[a.discipline]} class="label w-fit text-brand no-underline">{a.discipline}</a>
+            <a href={localize(serviceFor[a.discipline], lang)} class="label w-fit text-brand no-underline">{a.discipline}</a>
             <p class="m-0 text-[15px] leading-[1.65] text-body">{a.text}</p>
           </div>
         ))}
@@ -127,7 +141,7 @@ const schema = {
     <section class="border-y border-line-soft">
       <div class="container-site flex flex-wrap items-center gap-x-7 gap-y-3 py-8">
         <span class="label text-dim">Stack</span>
-        {w.tools.map((t) => <span class="text-[16px] font-bold text-body">{t}</span>)}
+        {w.tools.map((tool) => <span class="text-[16px] font-bold text-body">{tool}</span>)}
       </div>
     </section>
   )}
@@ -136,8 +150,8 @@ const schema = {
   <section>
     <div class="container-site flex flex-col gap-8 py-20">
       <div class="flex flex-wrap items-end justify-between gap-4">
-        <h2 class="h-section" data-reveal>More work</h2>
-        <a href="/work/" class="font-semibold" data-reveal>All projects →</a>
+        <h2 class="h-section" data-reveal>{t.more}</h2>
+        <a href={localize('/work/', lang)} class="font-semibold" data-reveal>{t.all}</a>
       </div>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
         {[next, after].filter((e) => e && e.id !== entry.id).map((e, i) => <WorkCard entry={e!} index={i} />)}

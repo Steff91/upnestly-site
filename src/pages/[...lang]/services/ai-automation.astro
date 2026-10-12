@@ -1,0 +1,306 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BrandMark from '../../../components/BrandMark.astro';
+import Icon from '../../../components/Icon.astro';
+import SavingsCalculator from '../../../components/SavingsCalculator.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import { getAi, getPlans, getSite } from '../../../i18n/data';
+import { getLang, langParams, localize } from '../../../i18n';
+import { getLocalized, slugOf } from '../../../i18n/content';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const ai = getAi(lang);
+const plans = getPlans(lang);
+const site = getSite(lang);
+const services = await getLocalized('services', lang);
+const entry = services.find((s) => slugOf(s) === 'ai-automation');
+const others = services.filter((o) => slugOf(o) !== 'ai-automation').sort((a, b) => a.data.order - b.data.order);
+
+const checkHref = localize('/audit/?plan=ai', lang);
+const quoteHref = localize('/contact/?plan=custom', lang);
+const price = (name: string) => plans.plans.find((p) => p.name === name)?.price ?? '';
+
+const t = {
+  en: {
+    name: 'AI automation', home: 'Home', services: 'Services', breadcrumb: 'Breadcrumb',
+    title: 'Put AI to work on the busywork — not on your brand.',
+    text: 'Catalogue enrichment, content, lead handling and reporting — automated with LLMs and n8n, with a human checkpoint before anything goes live.',
+    check: 'Free AI opportunity check', payoff: 'See where it pays off',
+    useTitle: 'Where AI pays off first', useLead: 'Repetitive work with clear inputs and a clear result. That’s where automation saves hours without risking quality.',
+    pipeEyebrow: 'How a pipeline works', pipeTitle: 'From supplier spreadsheet to live product pages', pipeLead: 'A real workflow from a 650-product outdoor shop. The human step is not optional — it’s the part that keeps quality up.',
+    result: 'Result', resultStrong: '650 products', resultText: 'with descriptions, translations and SEO fields.', project: 'See the project →',
+    buildEyebrow: 'How we build', buildTitle: 'AI does the volume. People own the result.',
+    principles: [
+      { title: 'Human-reviewed', text: 'Nothing generated goes live without an editor’s sign-off.' },
+      { title: 'GDPR-aware', text: 'EU hosting options and documented data flows for every workflow.' },
+      { title: 'Measured', text: 'Hours saved and output volume tracked from day one.' },
+      { title: 'Yours to keep', text: 'Workflows documented and handed over, no lock-in.' },
+    ],
+    calcTitle: 'What could one automation be worth?', calcLead: 'Pick a task your team repeats every week and move the sliders.',
+    waysTitle: 'Two ways to get started',
+    inPlan: 'Inside your plan', inPlanTitle: 'Smaller automations, in your monthly hours', inPlanText: 'Lead routing, reporting, content drafts and similar workflows run on the development hours of your plan.',
+    growthLine: (p: string) => `(${p}/month): AI automations within 16 h`, scaleLine: (p: string) => `(${p}/month): larger workflows within 32 h, planned quarterly`, seePlans: 'See plans',
+    custom: 'Custom AI project', customTitle: 'Bigger pipelines, at a fixed price', customText: 'Catalogue pipelines, document processing and multi-system integrations, scoped and quoted up front. After launch, the workflow is maintained through a monthly plan.', from: 'From', quote: 'Get a quote',
+    processTitle: 'From idea to running workflow', step: 'Step', tools: 'Tools we use',
+    faq: 'Questions we get', faqLead: 'Have a process in mind? We’ll tell you honestly whether it’s worth automating.', also: 'Also in every plan',
+  },
+  de: {
+    name: 'KI-Automatisierung', home: 'Startseite', services: 'Leistungen', breadcrumb: 'Brotkrümelnavigation',
+    title: 'KI für die Routinearbeit – nicht für Ihre Marke.',
+    text: 'Katalogpflege, Content, Lead-Bearbeitung und Reporting – automatisiert mit LLMs und n8n, mit menschlicher Prüfung, bevor etwas live geht.',
+    check: 'Kostenloser KI-Potenzial-Check', payoff: 'Wo es sich lohnt',
+    useTitle: 'Wo sich KI zuerst lohnt', useLead: 'Wiederkehrende Arbeit mit klaren Eingaben und einem klaren Ergebnis. Genau dort spart Automatisierung Stunden, ohne die Qualität zu gefährden.',
+    pipeEyebrow: 'So funktioniert eine Pipeline', pipeTitle: 'Von der Lieferantentabelle zur fertigen Produktseite', pipeLead: 'Ein echter Workflow aus einem Outdoor-Shop mit 650 Produkten. Der menschliche Schritt ist nicht optional – er sorgt für die Qualität.',
+    result: 'Ergebnis', resultStrong: '650 Produkte', resultText: 'mit Beschreibungen, Übersetzungen und SEO-Feldern.', project: 'Zum Projekt →',
+    buildEyebrow: 'So bauen wir', buildTitle: 'KI liefert die Menge. Menschen verantworten das Ergebnis.',
+    principles: [
+      { title: 'Menschlich geprüft', text: 'Nichts Generiertes geht ohne Freigabe einer Redakteurin live.' },
+      { title: 'DSGVO-konform gedacht', text: 'Hosting-Optionen in der EU und dokumentierte Datenflüsse für jeden Workflow.' },
+      { title: 'Messbar', text: 'Gesparte Stunden und Output-Menge werden ab dem ersten Tag erfasst.' },
+      { title: 'Gehört Ihnen', text: 'Workflows werden dokumentiert und übergeben – ohne Lock-in.' },
+    ],
+    calcTitle: 'Was könnte eine Automatisierung wert sein?', calcLead: 'Wählen Sie eine Aufgabe, die Ihr Team jede Woche wiederholt, und bewegen Sie die Regler.',
+    waysTitle: 'Zwei Wege zum Start',
+    inPlan: 'In Ihrem Plan', inPlanTitle: 'Kleinere Automatisierungen in Ihren Monatsstunden', inPlanText: 'Lead-Routing, Reporting, Content-Entwürfe und ähnliche Workflows laufen über die Entwicklungsstunden Ihres Plans.',
+    growthLine: (p: string) => `(${p}/Monat): KI-Automatisierungen innerhalb von 16 Std.`, scaleLine: (p: string) => `(${p}/Monat): größere Workflows innerhalb von 32 Std., quartalsweise geplant`, seePlans: 'Pläne ansehen',
+    custom: 'Individuelles KI-Projekt', customTitle: 'Größere Pipelines zum Festpreis', customText: 'Katalog-Pipelines, Dokumentenverarbeitung und Integrationen über mehrere Systeme – vorab definiert und mit Festpreis angeboten. Nach dem Launch wird der Workflow über einen Monatsplan betreut.', from: 'Ab', quote: 'Angebot anfragen',
+    processTitle: 'Von der Idee zum laufenden Workflow', step: 'Schritt', tools: 'Unsere Tools',
+    faq: 'Häufige Fragen', faqLead: 'Sie haben einen Prozess im Kopf? Wir sagen Ihnen ehrlich, ob sich die Automatisierung lohnt.', also: 'Ebenfalls in jedem Plan',
+  },
+}[lang];
+const principles = t.principles;
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t.name,
+    description: entry?.data.metaDescription,
+    url: pageUrl,
+    provider: { '@type': 'ProfessionalService', name: site.name, url: new URL(localize('/', lang), Astro.site).toString() },
+    areaServed: 'Europe',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t.home, item: new URL(localize('/', lang), Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: t.services, item: new URL(localize('/services/', lang), Astro.site).toString() },
+      { '@type': 'ListItem', position: 3, name: t.name, item: pageUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ai.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<Base title={entry?.data.metaTitle ?? 'AI Automation | Upnestly'} description={entry?.data.metaDescription}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-ink text-white">
+    <BrandMark class="-bottom-40 -right-32 w-[640px] opacity-[0.11]" />
+    <div class="container-site relative flex flex-col gap-6 py-20 lg:py-26">
+      <nav aria-label={t.breadcrumb} class="label text-night-text" data-reveal>
+        <a href={localize('/services/', lang)} class="text-night-text no-underline hover:text-white">{t.services}</a>
+        <span aria-hidden="true" class="mx-2">/</span>
+        <span class="text-night-accent">{t.name}</span>
+      </nav>
+      <h1 class="m-0 max-w-[900px] font-extrabold leading-[1.04] tracking-[-0.03em]" style="font-size: clamp(40px, 5.2vw, 64px); --i:1" data-reveal>
+        {t.title}
+      </h1>
+      <p class="m-0 max-w-[680px] text-[19px] leading-[1.55] text-night-text" data-reveal style="--i:2">
+        {t.text}
+      </p>
+      <div class="flex flex-wrap gap-3.5" data-reveal style="--i:3">
+        <a href={checkHref} class="btn btn-light">{t.check}</a>
+        <a href="#use-cases" class="btn border border-night-line text-white hover:text-white">{t.payoff}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section id="use-cases">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <h2 class="h-section max-w-[620px]" data-reveal>{t.useTitle}</h2>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.useLead}</p>
+      </div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-5">
+        {ai.useCases.map((u, i) => (
+          <article class="flex flex-col gap-3 rounded-[20px] border border-line p-8" data-reveal style={`--i:${i % 3}`}>
+            <p class="label m-0 text-brand">{u.tag}</p>
+            <h3 class="m-0 text-[21px] font-extrabold">{u.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.6] text-body">{u.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline -->
+  <section class="bg-tint">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div class="flex max-w-[640px] flex-col gap-4" data-reveal>
+          <p class="eyebrow m-0">{t.pipeEyebrow}</p>
+          <h2 class="h-section">{t.pipeTitle}</h2>
+        </div>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.pipeLead}</p>
+      </div>
+
+      <ol class="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-5 md:gap-0">
+        {ai.pipeline.map((p, i) => (
+          <li class="relative flex md:flex-col" data-reveal style={`--i:${i}`}>
+            <div class:list={['flex flex-1 flex-col gap-2 rounded-[18px] p-6 md:mr-6', p.human ? 'bg-brand text-white' : 'bg-white']}>
+              <span class:list={['label', p.human ? 'text-night-accent' : 'text-brand']}>{String(i + 1).padStart(2, '0')}</span>
+              <span class="text-[18px] font-extrabold">{p.step}</span>
+              <span class:list={['text-[14px] leading-[1.55]', p.human ? 'text-night-text' : 'text-body']}>{p.text}</span>
+            </div>
+            {i < ai.pipeline.length - 1 && (
+              <span class="absolute right-0 top-1/2 hidden -translate-y-1/2 text-brand md:block" aria-hidden="true"><Icon name="arrow" size={20} /></span>
+            )}
+          </li>
+        ))}
+      </ol>
+
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-4 rounded-[20px] border border-line bg-white p-7" data-reveal>
+        <p class="label m-0 text-dim">{t.result}</p>
+        <p class="m-0 flex-[1_1_480px] text-[16px] leading-[1.6] text-body">
+          <strong class="text-ink">{t.resultStrong}</strong> {t.resultText} {ai.result}
+        </p>
+        <a href={localize('/work/project-one/', lang)} class="shrink-0 font-semibold">{t.project}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="bg-ink text-white">
+    <div class="container-site flex flex-wrap gap-14 py-22">
+      <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-4" data-reveal>
+        <p class="eyebrow m-0 !text-night-accent">{t.buildEyebrow}</p>
+        <h2 class="h-section">{t.buildTitle}</h2>
+      </div>
+      <div class="grid min-w-0 flex-[1_1_520px] grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">
+        {principles.map((p, i) => (
+          <div class="flex flex-col gap-2 rounded-2xl border border-night-line p-6" data-reveal style={`--i:${i}`}>
+            <h3 class="m-0 text-[18px] font-bold">{p.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.55] text-night-text">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="bg-tint">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <h2 class="h-section max-w-[620px]" data-reveal>{t.calcTitle}</h2>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.calcLead}</p>
+      </div>
+      <div data-reveal><SavingsCalculator /></div>
+    </div>
+  </section>
+
+  <!-- Ways to buy -->
+  <section>
+    <div class="container-site flex flex-col gap-10 py-22">
+      <h2 class="h-section" data-reveal>{t.waysTitle}</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-5">
+        <article class="flex flex-col gap-5 rounded-[20px] bg-tint-soft p-9" data-reveal>
+          <p class="label m-0 text-brand">{t.inPlan}</p>
+          <h3 class="m-0 text-[26px] font-extrabold leading-tight">{t.inPlanTitle}</h3>
+          <p class="m-0 text-[15px] leading-[1.6] text-body">{t.inPlanText}</p>
+          <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[15px]">
+            <li class="flex gap-2.5"><Icon name="check" size={16} class="mt-0.5 shrink-0 text-brand" /><span><strong>Growth</strong> {t.growthLine(price('Growth'))}</span></li>
+            <li class="flex gap-2.5"><Icon name="check" size={16} class="mt-0.5 shrink-0 text-brand" /><span><strong>Scale</strong> {t.scaleLine(price('Scale'))}</span></li>
+          </ul>
+          <a href={localize('/pricing/', lang)} class="btn btn-primary mt-auto w-fit">{t.seePlans}</a>
+        </article>
+        <article class="flex flex-col gap-5 rounded-[20px] border-2 border-brand p-9" data-reveal style="--i:1">
+          <p class="label m-0 text-brand">{t.custom}</p>
+          <h3 class="m-0 text-[26px] font-extrabold leading-tight">{t.customTitle}</h3>
+          <p class="m-0 text-[15px] leading-[1.6] text-body">{t.customText}</p>
+          <p class="m-0 flex items-baseline gap-2">
+            <span class="text-[15px] text-muted">{t.from}</span>
+            <span class="text-[36px] font-extrabold leading-none tracking-[-0.02em] text-ink">{ai.customFrom}</span>
+          </p>
+          <a href={quoteHref} class="btn btn-outline mt-auto w-fit">{t.quote}</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="bg-tint-soft">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <h2 class="h-section" data-reveal>{t.processTitle}</h2>
+      <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-5 p-0">
+        {ai.process.map((s, i) => (
+          <li class="flex flex-col gap-2.5 rounded-2xl bg-white p-7" data-reveal style={`--i:${i}`}>
+            <span class="label text-brand">{t.step} {i + 1}</span>
+            <h3 class="m-0 text-[19px] font-bold">{s.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.55] text-body">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-line pt-8" data-reveal>
+        <span class="label text-dim">{t.tools}</span>
+        {ai.tools.map((tool) => <span class="text-[16px] font-bold text-body">{tool}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container-site flex flex-wrap gap-12 py-22">
+      <div class="flex min-w-0 flex-[1_1_300px] flex-col gap-5" data-reveal>
+        <h2 class="h-section">{t.faq}</h2>
+        <p class="lead">{t.faqLead}</p>
+        <a href={checkHref} class="btn btn-primary w-fit">{t.check}</a>
+      </div>
+      <div class="flex min-w-0 flex-[2_1_520px] flex-col gap-3">
+        {ai.faq.map((f) => (
+          <details class="faq group rounded-2xl border border-line bg-white px-6 py-5 transition-colors duration-300 hover:border-brand open:border-brand" data-reveal>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-bold text-ink transition-colors duration-300 hover:text-brand [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-tint text-brand transition-[transform,background-color,color] duration-300 group-hover:bg-brand group-hover:text-white group-open:rotate-45 group-open:bg-brand group-open:text-white" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-body overflow-hidden"><p class="m-0 pt-3 text-[15px] leading-[1.65] text-body">{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Other services -->
+  <section class="border-t border-line-soft">
+    <div class="container-site flex flex-col gap-6 py-18">
+      <p class="label m-0 text-dim">{t.also}</p>
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-4 p-0">
+        {others.map((o) => (
+          <li>
+            <a href={localize(`/services/${slugOf(o)}/`, lang)} class="card-hover group flex h-full flex-col gap-2 rounded-2xl border border-line bg-white p-6 no-underline">
+              <span class="label text-brand">{o.data.discipline}</span>
+              <span class="flex items-center justify-between gap-3 text-[17px] font-bold text-ink">
+                {o.data.title}
+                <Icon name="arrow" size={18} class="shrink-0 text-brand transition-transform duration-300 ease-out group-hover:translate-x-1" />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Contact />
+</Base>

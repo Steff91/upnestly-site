@@ -1,0 +1,31 @@
+---
+// Redirect target for the form provider after a successful submission (configure it there).
+import Base from '../../layouts/Base.astro';
+import BrandMark from '../../components/BrandMark.astro';
+import { getLang, langParams, localize } from '../../i18n';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const t = {
+  en: { meta: 'Thank you — Upnestly', eyebrow: 'Message sent', title: 'Thank you — we’ll be in touch soon.', text: 'We usually reply [within one business day]. In the meantime, have a look at our work.', work: 'See our work', home: 'Back to the homepage' },
+  de: { meta: 'Vielen Dank — Upnestly', eyebrow: 'Nachricht gesendet', title: 'Vielen Dank – wir melden uns in Kürze.', text: 'Wir antworten in der Regel [innerhalb eines Werktags]. Schauen Sie sich in der Zwischenzeit gern unsere Projekte an.', work: 'Unsere Projekte', home: 'Zur Startseite' },
+}[lang];
+---
+
+<Base title={t.meta} noindex>
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-right-20 top-1/2 w-[520px] -translate-y-1/2 opacity-[0.08]" />
+    <div class="container-site relative flex flex-col items-start gap-6 py-32">
+      <p class="eyebrow m-0">{t.eyebrow}</p>
+      <h1 class="h-hero max-w-[760px]">{t.title}</h1>
+      <p class="m-0 max-w-[560px] text-[19px] leading-[1.55] text-body">{t.text}</p>
+      <div class="flex flex-wrap gap-3.5">
+        <a href={localize('/work/', lang)} class="btn btn-primary">{t.work}</a>
+        <a href={localize('/', lang)} class="btn btn-outline">{t.home}</a>
+      </div>
+    </div>
+  </section>
+</Base>

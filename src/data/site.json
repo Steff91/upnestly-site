@@ -1,19 +1,9 @@
 {
   "name": "Upnestly",
-  "tagline": "AI-native digital agency",
-  "description": "Upnestly builds websites, shops and AI automations on WordPress, Shopify, Webflow, Magento or custom code — and keeps them growing with content, SEO, CRO and managed hosting on one monthly plan.",
   "email": "info@upnestly.net",
-  "city": "Belgrade",
-  "country": "Serbia",
-  "languages": [
-    "English",
-    "Deutsch"
-  ],
   "auditUrl": "/audit/",
   "contactUrl": "/contact/",
   "formAction": "",
-  "topbarMessage": "Free 20-minute audit: conversion, SEO & automation",
-  "hours": "Mon–Fri, 9–17 Belgrade time (CET)",
   "legalName": "[Legal entity name]",
   "address": "[Street and number]",
   "postalCode": "[11000]",

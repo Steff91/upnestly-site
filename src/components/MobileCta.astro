@@ -1,15 +1,18 @@
 ---
 // Sticky "Book a free audit" bar on small screens (where the header button is hidden).
 // Appears after the hero, hides near the page's own CTA band and footer, and on the form pages.
-import site from '../data/site.json';
+import { getSite } from '../i18n/data';
+import { getLang, stripLang } from '../i18n';
 
-const path = Astro.url.pathname;
+const lang = getLang(Astro.url);
+const site = getSite(lang);
+const path = stripLang(Astro.url.pathname);
 const skip = ['/audit/', '/contact/', '/thank-you/'].some((p) => path.startsWith(p));
 ---
 
 {!skip && (
   <div class="mobile-cta fixed inset-x-0 bottom-0 z-30 border-t border-line-soft bg-white/95 px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))] backdrop-blur sm:hidden" data-mobile-cta data-show="false" aria-hidden="true">
-    <a href={site.auditUrl} class="btn btn-primary w-full" tabindex="-1">Book a free audit</a>
+    <a href={site.auditUrl} class="btn btn-primary w-full" tabindex="-1">{lang === 'de' ? 'Kostenlosen Audit buchen' : 'Book a free audit'}</a>
   </div>
 )}
 

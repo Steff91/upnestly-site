@@ -1,15 +1,32 @@
 ---
-const steps = [
-  { when: 'Week 1', title: 'Free audit', text: 'We review your site and recommend the plan that fits.' },
-  { when: 'Week 2', title: 'Onboarding', text: 'Access, tracking, hosting setup where needed and a baseline report.' },
-  { when: 'Month 1', title: 'First sprint', text: 'Quick wins across development, SEO and conversion.' },
-  { when: 'Every month', title: 'Report & plan', text: 'Results, next priorities and one call with the whole team.' },
-];
+import { getLang } from '../../i18n';
+const lang = getLang(Astro.url);
+const t = {
+  en: {
+    title: 'How working with us starts',
+    steps: [
+      { when: 'Week 1', title: 'Free audit', text: 'We review your site and recommend the plan that fits.' },
+      { when: 'Week 2', title: 'Onboarding', text: 'Access, tracking, hosting setup where needed and a baseline report.' },
+      { when: 'Month 1', title: 'First sprint', text: 'Quick wins across development, SEO and conversion.' },
+      { when: 'Every month', title: 'Report & plan', text: 'Results, next priorities and one call with the whole team.' },
+    ],
+  },
+  de: {
+    title: 'So startet die Zusammenarbeit',
+    steps: [
+      { when: 'Woche 1', title: 'Kostenloser Audit', text: 'Wir prüfen Ihre Website und empfehlen den passenden Plan.' },
+      { when: 'Woche 2', title: 'Onboarding', text: 'Zugänge, Tracking, bei Bedarf Hosting-Einrichtung und ein Ausgangsreport.' },
+      { when: 'Monat 1', title: 'Erster Sprint', text: 'Schnelle Erfolge in Entwicklung, SEO und Conversion.' },
+      { when: 'Jeden Monat', title: 'Report & Planung', text: 'Ergebnisse, nächste Prioritäten und ein Call mit dem ganzen Team.' },
+    ],
+  },
+}[lang];
+const steps = t.steps;
 ---
 
 <section class="bg-tint">
   <div class="container-site flex flex-col gap-12 py-24 lg:py-26">
-    <h2 class="h-section" data-reveal>How working with us starts</h2>
+    <h2 class="h-section" data-reveal>{t.title}</h2>
     <ol class="relative m-0 grid list-none gap-8 p-0 lg:grid-cols-4 lg:gap-6">
       <span class="absolute left-5 top-5 bottom-5 w-0.5 rounded bg-[#C9CDEA] lg:bottom-auto lg:left-5 lg:right-[calc(25%-20px)] lg:h-0.5 lg:w-auto" aria-hidden="true"></span>
       {steps.map((s, i) => (

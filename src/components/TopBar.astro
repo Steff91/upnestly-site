@@ -1,6 +1,9 @@
 ---
 import Icon from './Icon.astro';
-import site from '../data/site.json';
+import { getSite } from '../i18n/data';
+import { getLang } from '../i18n';
+
+const site = getSite(getLang(Astro.url));
 
 // LinkedIn shows as soon as the URL is set in site.json (CMS → Settings → Site & contact).
 const linkedin = site.linkedin.startsWith('http') ? site.linkedin : '#';

@@ -8,7 +8,13 @@ const live = process.env.PUBLIC_SITE_LIVE === 'true';
 
 export default defineConfig({
   site: 'https://upnestly.net',
-  integrations: [sitemap({ filter: (page) => live && !page.includes('/admin/') && !page.includes('/thank-you/') })],
+  integrations: [
+    sitemap({
+      filter: (page) => live && !page.includes('/admin/') && !page.includes('/thank-you/'),
+      // English at the root, German under /de/ — adds hreflang alternates to the sitemap.
+      i18n: { defaultLocale: 'en', locales: { en: 'en', de: 'de' } },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

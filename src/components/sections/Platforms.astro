@@ -1,10 +1,15 @@
 ---
-const platforms = ['WordPress', 'WooCommerce', 'Shopify', 'Webflow', 'Magento', 'Custom code'];
+import { getLang } from '../../i18n';
+const lang = getLang(Astro.url);
+const t = lang === 'de'
+  ? { aria: 'Plattformen, mit denen wir arbeiten', label: 'Plattformunabhängig', custom: 'Custom Code' }
+  : { aria: 'Platforms we work with', label: 'Platform-agnostic', custom: 'Custom code' };
+const platforms = ['WordPress', 'WooCommerce', 'Shopify', 'Webflow', 'Magento', t.custom];
 ---
 
-<section aria-label="Platforms we work with" class="border-b border-line-soft">
+<section aria-label={t.aria} class="border-b border-line-soft">
   <div class="container-site flex flex-wrap items-center gap-x-9 gap-y-3 py-8">
-    <span class="label text-dim">Platform-agnostic</span>
+    <span class="label text-dim">{t.label}</span>
     {platforms.map((p) => <span class="text-[18px] font-bold text-body">{p}</span>)}
   </div>
 </section>

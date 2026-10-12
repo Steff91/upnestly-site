@@ -1,0 +1,24 @@
+---
+// Markdown legal pages (src/content/legal/<lang>/*.md) → /privacy/, /de/privacy/, …
+import { render, type CollectionEntry } from 'astro:content';
+import Legal from '../../layouts/Legal.astro';
+import { langs, defaultLang } from '../../i18n';
+import { getLocalized, slugOf } from '../../i18n/content';
+
+export async function getStaticPaths() {
+  const paths: { params: { lang?: string; legal: string }; props: { doc: CollectionEntry<'legal'> } }[] = [];
+  for (const lang of langs) {
+    for (const doc of await getLocalized('legal', lang)) {
+      paths.push({ params: { lang: lang === defaultLang ? undefined : lang, legal: slugOf(doc) }, props: { doc } });
+    }
+  }
+  return paths;
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+---
+
+<Legal title={doc.data.title} description={doc.data.description} updated={doc.data.updated} noindex={doc.data.noindex}>
+  <Content />
+</Legal>

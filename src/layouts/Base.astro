@@ -7,7 +7,8 @@ import CookieBanner from '../components/CookieBanner.astro';
 import PreviewGate from '../components/PreviewGate.astro';
 import MobileCta from '../components/MobileCta.astro';
 import { previewGateOn, previewHash } from '../lib/preview';
-import site from '../data/site.json';
+import { getSite } from '../i18n/data';
+import { getLang, langMeta, langs, switchLang } from '../i18n';
 
 interface Props {
   title: string;
@@ -16,8 +17,13 @@ interface Props {
   noindex?: boolean;
 }
 
+const lang = getLang(Astro.url);
+const site = getSite(lang);
 const { title, description = site.description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Every page exists in both languages under the same slug (/x/ and /de/x/).
+const alternates = langs.map((l) => ({ lang: langMeta[l].html, href: new URL(switchLang(Astro.url.pathname, l), Astro.site).toString() }));
+const xDefault = new URL(switchLang(Astro.url.pathname, 'en'), Astro.site).toString();
 // Until launch (PUBLIC_SITE_LIVE=true), every page tells crawlers to stay out.
 const live = import.meta.env.PUBLIC_SITE_LIVE === 'true';
 const robots = !live ? 'noindex, nofollow, noarchive, noimageindex' : noindex ? 'noindex, follow' : undefined;
@@ -27,19 +33,20 @@ const schema = {
   '@type': 'ProfessionalService',
   name: site.name,
   description: site.description,
-  url: Astro.site?.toString(),
+  url: new URL(lang === 'de' ? '/de/' : '/', Astro.site).toString(),
   email: site.email,
   logo: new URL('/logo/upnestly.png', Astro.site).toString(),
   image: new URL('/og-image.png', Astro.site).toString(),
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'RS' },
   areaServed: ['Europe', 'DACH', 'United Kingdom', 'United States'],
   knowsLanguage: ['en', 'de'],
+  inLanguage: langMeta[lang].html,
   sameAs: [site.linkedin, site.github].filter((u) => u.startsWith('http')),
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={langMeta[lang].html}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,6 +54,8 @@ const schema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {robots && <meta name="robots" content={robots} />}
+    {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={xDefault} />}
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
@@ -59,7 +68,8 @@ const schema = {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale" content={langMeta[lang].og} />
+    {langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={langMeta[l].og} />)}
     <meta name="theme-color" content="#2D327D" />
     <script is:inline>document.documentElement.classList.add('js');</script>
     {previewGateOn && (
@@ -73,7 +83,7 @@ const schema = {
   </head>
   <body>
     {previewGateOn && <PreviewGate />}
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">{lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}</a>
     <TopBar />
     <Header />
     <main id="main">

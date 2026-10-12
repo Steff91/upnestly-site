@@ -1,0 +1,108 @@
+---
+import Base from '../../layouts/Base.astro';
+import BrandMark from '../../components/BrandMark.astro';
+import Icon from '../../components/Icon.astro';
+import InquiryForm from '../../components/InquiryForm.astro';
+import { getLang, langParams, localize } from '../../i18n';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = getLang(Astro.url);
+const t = {
+  en: {
+    metaTitle: 'Free 20-Minute Website Audit | Upnestly',
+    metaDescription: "A free audit of your site's conversion funnel, search visibility and one process we could automate — with a short written report. No obligation.",
+    eyebrow: 'Free audit', title: 'Get a free 20-minute audit.',
+    text: 'We review your site and send you a short written report with what to fix first. No obligation, no sales pressure.',
+    lookAt: 'What we look at', formTitle: 'Request your audit', submit: 'Request the audit', how: 'How it works', step: 'Step',
+    already: 'Already know what you need?', plans: 'See plans & pricing →',
+    includes: [
+      { title: 'Conversion funnel review', text: 'Where visitors drop off on the way to an enquiry or order, and the quickest fixes.' },
+      { title: 'Search visibility check', text: 'Technical SEO health, how you rank, and whether AI search mentions you.' },
+      { title: 'One automation opportunity', text: 'A repetitive process we could automate, with a rough estimate of hours saved.' },
+      { title: 'Platform & hosting health', text: 'Speed, updates, security and backups at a glance.' },
+    ],
+    steps: [
+      { title: 'Send the form', text: 'Tell us about your site and what you want to improve. Takes two minutes.' },
+      { title: '20-minute call', text: 'We walk through your site together and ask a few questions. [Lorem ipsum: how the call is booked.]' },
+      { title: 'Written report', text: 'You receive a short report with priorities and a plan recommendation [within X business days].' },
+    ],
+  },
+  de: {
+    metaTitle: 'Kostenloser 20-Minuten-Website-Audit | Upnestly',
+    metaDescription: 'Ein kostenloser Audit des Conversion-Funnels Ihrer Website, der Sichtbarkeit in Suchmaschinen und eines Prozesses, den wir automatisieren könnten – mit kurzem schriftlichem Bericht. Unverbindlich.',
+    eyebrow: 'Kostenloser Audit', title: 'Ihr kostenloser 20-Minuten-Audit.',
+    text: 'Wir prüfen Ihre Website und schicken Ihnen einen kurzen schriftlichen Bericht mit den wichtigsten ersten Schritten. Unverbindlich, ohne Verkaufsdruck.',
+    lookAt: 'Was wir prüfen', formTitle: 'Audit anfragen', submit: 'Audit anfragen', how: 'So funktioniert es', step: 'Schritt',
+    already: 'Sie wissen schon, was Sie brauchen?', plans: 'Pläne & Preise ansehen →',
+    includes: [
+      { title: 'Analyse des Conversion-Funnels', text: 'Wo Besucher auf dem Weg zur Anfrage oder Bestellung abspringen – und die schnellsten Lösungen.' },
+      { title: 'Check der Sichtbarkeit in Suchmaschinen', text: 'Technischer SEO-Zustand, Ihre Rankings und ob KI-Suchen Sie erwähnen.' },
+      { title: 'Ein Automatisierungspotenzial', text: 'Ein wiederkehrender Prozess, den wir automatisieren könnten, mit grober Schätzung der gesparten Stunden.' },
+      { title: 'Zustand von Plattform & Hosting', text: 'Geschwindigkeit, Updates, Sicherheit und Backups auf einen Blick.' },
+    ],
+    steps: [
+      { title: 'Formular senden', text: 'Erzählen Sie uns von Ihrer Website und was Sie verbessern möchten. Dauert zwei Minuten.' },
+      { title: '20-Minuten-Call', text: 'Wir gehen Ihre Website gemeinsam durch und stellen ein paar Fragen. [Lorem ipsum: wie der Call gebucht wird.]' },
+      { title: 'Schriftlicher Bericht', text: 'Sie erhalten einen kurzen Bericht mit Prioritäten und einer Planempfehlung [innerhalb von X Werktagen].' },
+    ],
+  },
+}[lang];
+---
+
+<Base title={t.metaTitle} description={t.metaDescription}>
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
+    <div class="container-site relative flex flex-wrap gap-12 py-18 lg:py-22">
+      <!-- Left: what you get -->
+      <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-8">
+        <div class="flex flex-col gap-5">
+          <p class="eyebrow m-0" data-reveal>{t.eyebrow}</p>
+          <h1 class="h-hero" data-reveal style="--i:1">{t.title}</h1>
+          <p class="m-0 max-w-[560px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">{t.text}</p>
+        </div>
+
+        <div class="flex flex-col gap-4" data-reveal style="--i:3">
+          <p class="label m-0 text-dim">{t.lookAt}</p>
+          <ul class="m-0 flex list-none flex-col gap-4 p-0">
+            {t.includes.map((i) => (
+              <li class="flex gap-3.5">
+                <span class="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-white text-brand"><Icon name="check" size={15} /></span>
+                <span class="flex flex-col gap-0.5">
+                  <span class="text-[16px] font-bold text-ink">{i.title}</span>
+                  <span class="text-[15px] leading-snug text-body">{i.text}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="min-w-0 flex-[1_1_460px]" data-reveal style="--i:2">
+        <div class="rounded-[24px] bg-white p-7 shadow-[0_1px_0_rgba(23,22,58,0.04)] sm:p-9">
+          <h2 class="m-0 mb-6 text-[24px] font-extrabold">{t.formTitle}</h2>
+          <InquiryForm preset="audit" submitLabel={t.submit} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-site flex flex-col gap-10 py-20">
+      <h2 class="h-section" data-reveal>{t.how}</h2>
+      <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 p-0">
+        {t.steps.map((s, i) => (
+          <li class="flex flex-col gap-2.5 rounded-2xl bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
+            <span class="label text-brand">{t.step} {i + 1}</span>
+            <h3 class="m-0 text-[19px] font-bold">{s.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.55] text-body">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="m-0 text-[15px] text-body" data-reveal>{t.already} <a href={localize('/pricing/', lang)} class="font-semibold">{t.plans}</a></p>
+    </div>
+  </section>
+</Base>
