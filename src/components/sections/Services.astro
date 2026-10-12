@@ -32,7 +32,7 @@ const services = [
     <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
       {services.map((s, i) => (
         <article class="flex flex-col gap-4.5 rounded-[20px] border border-line p-9" data-reveal style={`--i:${i}`}>
-          <p class="m-0 font-mono text-[13px] text-brand">{s.n}</p>
+          <p class="m-0 label text-brand">{s.n}</p>
           <h3 class="m-0 text-[26px] font-extrabold leading-tight tracking-[-0.01em]">{s.title}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-body">{s.text}</p>
           <ul class="m-0 flex flex-col gap-2 pl-[18px] text-[15px]">
@@ -43,7 +43,7 @@ const services = [
     </div>
 
     <p class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-body" data-reveal>
-      <span class="rounded-full bg-tint px-3 py-1 font-mono text-[13px] uppercase tracking-[0.08em] text-brand">Included in every plan</span>
+      <span class="rounded-full bg-tint px-3 py-1 label text-brand">Included in every plan</span>
       All three disciplines, every month. <a href="#pricing" class="font-semibold">See plans</a>
     </p>
   </div>

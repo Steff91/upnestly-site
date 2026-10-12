@@ -5,8 +5,6 @@
 @import "@fontsource/montserrat/600.css";
 @import "@fontsource/montserrat/700.css";
 @import "@fontsource/montserrat/800.css";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/500.css";
 
 /* Brand colours from the Upnestly standards (navy C100 M100 Y15 K5 / Y35 K5) plus web-only tints */
 @theme {
@@ -26,7 +24,15 @@
   --color-night-accent: #B9C0F2;
 
   --font-sans: "Montserrat", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* Small uppercase labels (eyebrows, plan groups, step labels) — Montserrat only, per the brand standards */
+@utility label {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.375;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 @layer base {
@@ -45,7 +51,7 @@
 @layer components {
   .container-site { @apply mx-auto w-full max-w-[1240px] px-6; }
 
-  .eyebrow { @apply font-mono text-[13px] uppercase tracking-[0.08em] text-brand; }
+  .eyebrow { @apply label text-brand; }
 
   .h-hero {
     @apply m-0 font-extrabold leading-[1.04] tracking-[-0.03em] text-ink;
@@ -72,7 +78,7 @@
   .btn-light:hover { @apply text-brand; }
 
   .placeholder {
-    @apply flex items-center justify-center bg-tint-strong text-center font-mono text-[13px] text-dim;
+    @apply flex items-center justify-center bg-tint-strong text-center text-[13px] font-medium text-dim;
   }
 }
 

@@ -59,7 +59,7 @@ const socials = [
 
     {columns.map((col) => (
       <nav aria-label={col.title} class="flex flex-col gap-4">
-        <p class="m-0 font-mono text-[13px] uppercase tracking-[0.08em] text-night-accent">{col.title}</p>
+        <p class="m-0 label text-night-accent">{col.title}</p>
         <ul class="m-0 flex list-none flex-col gap-2.5 p-0 text-[15px]">
           {col.links.map((l) => (
             <li><a href={l.href} class="text-night-text no-underline hover:text-white">{l.label}</a></li>
@@ -69,7 +69,7 @@ const socials = [
     ))}
 
     <div class="flex flex-col gap-4">
-      <p class="m-0 font-mono text-[13px] uppercase tracking-[0.08em] text-night-accent">Contact</p>
+      <p class="m-0 label text-night-accent">Contact</p>
       <ul class="m-0 flex list-none flex-col gap-3 p-0 text-[15px] text-night-text">
         <li class="flex items-center gap-2.5">
           <Icon name="mail" size={17} class="shrink-0 text-night-accent" />

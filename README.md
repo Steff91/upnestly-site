@@ -5,7 +5,7 @@ Website for Upnestly, an AI-native digital agency (Build · Grow · Run on one m
 ## Stack
 
 - **Astro 7** (static output) + **TypeScript** (strict) + **Tailwind CSS 4** (`@tailwindcss/vite`)
-- **Montserrat** (brand typeface) + **IBM Plex Mono** (labels), self-hosted via Fontsource
+- **Montserrat** (the only brand typeface), self-hosted via Fontsource
 - **Sveltia CMS** at `/admin` (Git-based, edits commit straight to `main`)
 - **GitHub Actions** → `astro check` + build → `rsync` to own server
 
