@@ -75,7 +75,7 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 
 ## TODO
 
-- [ ] Real numbers: years of experience, case study results; confirm plan prices in `src/data/plans.json`
+- [ ] Real numbers: case study results; confirm plan prices in `src/data/plans.json`
 - [ ] Project screenshots for case studies
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
