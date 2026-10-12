@@ -125,6 +125,10 @@ const schema = {
           }
         });
       });
+
+      // Mobile menu: close after picking a link.
+      const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
+      menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.removeAttribute('open')));
     </script>
   </body>
 </html>

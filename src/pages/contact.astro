@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import BrandMark from '../components/BrandMark.astro';
 import Icon from '../components/Icon.astro';
 import InquiryForm from '../components/InquiryForm.astro';
 import site from '../data/site.json';
@@ -12,6 +13,7 @@ const linkedin = site.linkedin.startsWith('http') ? site.linkedin : '#';
   description="Start a monthly plan, request a quote for a custom project or just ask a question. We reply in English or German."
 >
   <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
     <div class="container-site relative flex flex-wrap gap-12 py-18 lg:py-22">
       <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-8">
         <div class="flex flex-col gap-5">

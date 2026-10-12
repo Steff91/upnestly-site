@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import BrandMark from '../../components/BrandMark.astro';
 import Icon from '../../components/Icon.astro';
 import Placeholder from '../../components/Placeholder.astro';
 import Contact from '../../components/sections/Contact.astro';
@@ -62,6 +63,7 @@ const schema = [
 
   <!-- Hero -->
   <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-28 -right-16 hidden w-[440px] opacity-[0.05] lg:block" />
     <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
       <nav aria-label="Breadcrumb" class="label text-dim" data-reveal>
         <a href="/services/" class="text-dim no-underline hover:text-brand">Services</a>
