@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../components/Icon.astro';
+import PlanCards from '../components/PlanCards.astro';
+import Contact from '../components/sections/Contact.astro';
+import plans from '../data/plans.json';
+import pricing from '../data/pricing.json';
+import site from '../data/site.json';
+
+const cols = plans.plans.filter((p) => p.name !== 'Custom');
+const terms = pricing.terms.map((t) => ({ ...t, text: t.text.replace('{discount}', String(pricing.annualDiscount)) }));
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: pricing.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Base
+  title="Pricing — Monthly Plans for Development, SEO, CRO & Hosting | Upnestly"
+  description={`Three monthly plans from ${cols[0]?.price} — development, content, SEO, CRO and managed hosting from one senior team. Save ${pricing.annualDiscount}% with annual billing.`}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero + plans -->
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-right-24 -top-40 hidden w-[560px] opacity-[0.06] lg:block" />
+    <div class="container-site relative flex flex-col gap-12 py-18 lg:py-22">
+      <div class="flex flex-col gap-6">
+        <p class="eyebrow m-0" data-reveal>Pricing</p>
+        <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">Simple monthly plans. One senior team.</h1>
+        <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
+          Every plan includes development, growth and hosting. Minimum 3 months, then cancel monthly.
+        </p>
+      </div>
+      <PlanCards toggle />
+    </div>
+  </section>
+
+  <!-- Compare -->
+  <section id="compare">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <h2 class="h-section" data-reveal>Compare plans in detail</h2>
+      <div class="overflow-x-auto rounded-[20px] border border-line" data-reveal>
+        <table class="w-full min-w-[760px] border-collapse text-left text-[15px]">
+          <caption class="sr-only">Feature comparison of the Essentials, Growth and Scale plans</caption>
+          <thead>
+            <tr class="border-b border-line">
+              <th scope="col" class="w-[34%] p-6"><span class="sr-only">Feature</span></th>
+              {cols.map((p) => (
+                <th scope="col" class:list={['p-6 align-bottom', p.featured && 'bg-tint-soft']}>
+                  <span class="block text-[19px] font-extrabold text-ink">{p.name}</span>
+                  <span class="text-[14px] font-semibold text-muted">{p.price} / month</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          {pricing.compare.map((group) => (
+            <tbody>
+              <tr class="border-b border-line-soft bg-tint">
+                <th scope="colgroup" colspan={cols.length + 1} class="px-6 py-3"><span class="label text-brand">{group.group}</span></th>
+              </tr>
+              {group.rows.map((row) => (
+                <tr class="border-b border-line-soft">
+                  <th scope="row" class="px-6 py-4 font-semibold text-ink">{row.label}</th>
+                  {row.values.map((v, i) => (
+                    <td class:list={['px-6 py-4 text-body', cols[i]?.featured && 'bg-tint-soft']}>
+                      {v === true ? (
+                        <span class="inline-flex size-7 items-center justify-center rounded-full bg-tint text-brand"><Icon name="check" size={15} /><span class="sr-only">Included</span></span>
+                      ) : v === false ? (
+                        <span class="text-dim" aria-label="Not included">—</span>
+                      ) : (
+                        <span class="font-semibold text-ink">{v}</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- What hours buy -->
+  <section class="bg-tint-soft">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <h2 class="h-section max-w-[620px]" data-reveal>What can we do with your hours?</h2>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">Examples of a typical month of development and design work in each plan.</p>
+      </div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5">
+        {pricing.examples.map((e, i) => (
+          <div class="flex flex-col gap-3 rounded-[20px] bg-white p-8" data-reveal style={`--i:${i}`}>
+            <p class="m-0 flex items-baseline justify-between gap-3">
+              <span class="label text-brand">{e.plan}</span>
+              <span class="text-[32px] font-extrabold leading-none tracking-[-0.02em] text-ink">{e.hours}</span>
+            </p>
+            <p class="m-0 text-[15px] leading-[1.6] text-body">{e.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-ons -->
+  <section>
+    <div class="container-site flex flex-col gap-10 py-22">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <h2 class="h-section max-w-[620px]" data-reveal>Need more in a busy month?</h2>
+        <p class="lead max-w-[440px]" data-reveal style="--i:1">Add hours on top of any plan. If it happens every month, moving up a plan is usually cheaper.</p>
+      </div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5">
+        {pricing.addons.map((a, i) => (
+          <div class="flex flex-col gap-3 rounded-[20px] border border-line p-8" data-reveal style={`--i:${i}`}>
+            <h3 class="m-0 text-[19px] font-bold">{a.title}</h3>
+            <p class="m-0 flex items-baseline gap-2">
+              <span class="text-[36px] font-extrabold leading-none tracking-[-0.02em] text-brand">{a.price}</span>
+              <span class="text-[15px] text-muted">{a.unit}</span>
+            </p>
+            <p class="m-0 text-[15px] leading-[1.6] text-body">{a.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Billing terms -->
+  <section class="bg-ink text-white">
+    <div class="container-site flex flex-col gap-10 py-22">
+      <h2 class="h-section" data-reveal>How billing works</h2>
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-10 gap-y-7 p-0">
+        {terms.map((t, i) => (
+          <li class="flex gap-4" data-reveal style={`--i:${i % 3}`}>
+            <span class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-night-line text-night-accent"><Icon name="check" size={16} /></span>
+            <span class="flex flex-col gap-1.5">
+              <span class="text-[17px] font-bold">{t.title}</span>
+              <span class="text-[15px] leading-[1.6] text-night-text">{t.text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-tint-soft">
+    <div class="container-site flex flex-wrap gap-12 py-22">
+      <div class="flex min-w-0 flex-[1_1_300px] flex-col gap-5" data-reveal>
+        <h2 class="h-section">Pricing questions</h2>
+        <p class="lead">Not sure which plan fits? Book the free audit and we’ll recommend one.</p>
+        <a href={site.auditUrl} class="btn btn-primary w-fit">Book a free audit</a>
+      </div>
+      <div class="flex min-w-0 flex-[2_1_520px] flex-col gap-3">
+        {pricing.faq.map((f) => (
+          <details class="group rounded-2xl border border-line bg-white px-6 py-5" data-reveal>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-bold text-ink [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-tint text-brand transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="m-0 mt-3 text-[15px] leading-[1.65] text-body">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="h-24"></div>
+  <Contact />
+</Base>

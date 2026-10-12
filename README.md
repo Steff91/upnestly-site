@@ -24,6 +24,7 @@ npm run preview
 src/
   data/site.json            # name, email, audit link
   data/plans.json           # pricing plans (editable in the CMS)
+  data/pricing.json         # /pricing/: annual discount, comparison table, add-ons, terms, FAQ
   data/nav.ts               # header navigation
   content/services/*.md     # one file per service → /services/<file-name>/
   content/work/*.md         # case studies (homepage, service pages)
@@ -36,6 +37,7 @@ src/
   styles/global.css         # brand tokens (@theme) and shared components
   layouts/Legal.astro       # imprint & privacy layout
   pages/index.astro, imprint.astro, privacy.astro, 404.astro, admin/
+  pages/pricing.astro             # full pricing page (monthly/annual toggle, comparison table)
   pages/services/index.astro      # services hub with plan comparison table
   pages/services/[slug].astro     # shared template for all service pages (Service, Breadcrumb, FAQ schema)
 public/
@@ -85,5 +87,6 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
 - [ ] Booking link for the audit
+- [ ] Confirm VAT handling for EU clients (pricing terms), annual discount and add-on rates
 - [ ] LinkedIn URL in `site.json` (top bar and footer link to `#` until then)
 - [ ] Company details in `site.json` (imprint, footer) and a GDPR-reviewed privacy policy (`src/pages/privacy.astro`); then remove `noindex` from both legal pages
