@@ -65,9 +65,9 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
   .lang-link { color: var(--color-body); transition: background-color .3s ease-out, color .3s ease-out; }
   .lang-link:hover { color: var(--color-brand); background: var(--color-tint); }
   .lang-link[aria-current='true'] { color: #fff; background: var(--color-brand); }
+  /* Underline: fills from left to right on hover, stays full on the current page. */
   .nav-link { position: relative; transition: color .3s ease-out; }
-  .nav-link[aria-current='page'] { color: var(--color-brand); }
-  .nav-link[aria-current='page']::after {
+  .nav-link::after {
     content: '';
     position: absolute;
     left: 0;
@@ -76,5 +76,13 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
     height: 2px;
     border-radius: 2px;
     background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1);
   }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link[aria-current='page']::after { transform: scaleX(1); }
+  .nav-link[aria-current='page'] { color: var(--color-brand); }
+  @media (prefers-reduced-motion: reduce) { .nav-link::after { transition: none; } }
 </style>
