@@ -42,7 +42,14 @@ public/
 
 Colours and type follow the Upnestly standards (navy `#2D327D`, deep navy `#242056`, Montserrat). Web tints (`tint`, `line`, …) are defined in `src/styles/global.css`.
 
-The logo and favicons are raster exports from the standards PDF. Replace `public/logo/*` and the favicons with the designer's vector files.
+Logo, mark and favicons come from the designer's SVG exports. Those SVGs wrap high-resolution PNGs (the mark has shading), so `public/logo/` holds trimmed PNG + WebP versions:
+
+| File | Use |
+|---|---|
+| `upnestly.*` / `upnestly-white.*` / `upnestly-black.*` | wordmark (header, footer) |
+| `mark.*` / `mark-white.*` | “UP” dove mark, used large and cropped as a section decoration (`BrandMark.astro`) |
+
+The navy in the logo files (`#090E50`) is darker than the standards' RGB value used for UI (`#2D327D`) — confirm with the designer which is final.
 
 ## Content editing
 
@@ -68,6 +75,6 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 
 - [ ] Real numbers: years of experience, retainer price and hours, case study results
 - [ ] Project screenshots for case studies
-- [ ] Vector logo (SVG) and favicon from the designer
+- [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
 - [ ] Booking link for the audit, privacy page and imprint

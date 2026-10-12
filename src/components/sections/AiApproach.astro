@@ -1,4 +1,6 @@
 ---
+import BrandMark from '../BrandMark.astro';
+
 const principles = [
   { title: 'Human-reviewed', text: 'Nothing generated goes live without an editor’s sign-off.' },
   { title: 'GDPR-aware', text: 'EU hosting options and documented data flows for every workflow.' },
@@ -7,8 +9,9 @@ const principles = [
 ];
 ---
 
-<section id="ai" class="bg-ink text-white">
-  <div class="container-site flex flex-wrap gap-14 py-24 lg:py-26">
+<section id="ai" class="relative overflow-hidden bg-ink text-white">
+  <BrandMark class="-bottom-40 -left-48 w-[640px] opacity-[0.05] lg:-left-32" />
+  <div class="container-site relative flex flex-wrap gap-14 py-24 lg:py-26">
     <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-5" data-reveal>
       <p class="eyebrow m-0 !text-night-accent">How we use AI</p>
       <h2 class="h-section">AI does the volume. People own the result.</h2>

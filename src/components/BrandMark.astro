@@ -1,0 +1,23 @@
+---
+// Decorative "UP" dove mark, cropped off a section edge like on the brand's shopping bag.
+// Purely decorative: hidden from assistive tech and never intercepts clicks.
+interface Props {
+  variant?: 'blue' | 'white';
+  class?: string;
+}
+const { variant = 'white', class: className = '' } = Astro.props;
+const file = variant === 'white' ? 'mark-white' : 'mark';
+---
+
+<picture aria-hidden="true">
+  <source srcset={`/logo/${file}.webp`} type="image/webp" />
+  <img
+    src={`/logo/${file}.png`}
+    alt=""
+    width="1200"
+    height="969"
+    loading="lazy"
+    decoding="async"
+    class:list={['pointer-events-none absolute select-none', className]}
+  />
+</picture>

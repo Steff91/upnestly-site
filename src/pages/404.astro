@@ -1,12 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
+import BrandMark from '../components/BrandMark.astro';
 ---
 
 <Base title="Page not found — Upnestly">
-  <section class="bg-tint">
-    <div class="container-site flex flex-col items-start gap-6 py-32">
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-right-20 top-1/2 w-[520px] -translate-y-1/2 opacity-[0.08]" />
+    <div class="container-site relative flex flex-col items-start gap-6 py-32">
       <p class="eyebrow m-0">404</p>
-      <h1 class="h-hero">This page doesn’t exist.</h1>
+      <h1 class="h-hero">This page flew away.</h1>
       <a href="/" class="btn btn-primary">Back to the homepage</a>
     </div>
   </section>

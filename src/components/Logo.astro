@@ -1,11 +1,14 @@
 ---
-// Raster logo exported from the brand standards PDF. Swap for the designer's SVG when available.
+// Wordmark from the designer's files (raster inside the SVG exports), served as WebP with PNG fallback.
 interface Props {
-  variant?: 'color' | 'white';
+  variant?: 'color' | 'white' | 'black';
   class?: string;
 }
 const { variant = 'color', class: className = 'h-9 w-auto' } = Astro.props;
-const src = variant === 'white' ? '/logo/upnestly-white.png' : '/logo/upnestly.png';
+const file = { color: 'upnestly', white: 'upnestly-white', black: 'upnestly-black' }[variant];
 ---
 
-<img src={src} alt="Upnestly" width="564" height="160" class={className} />
+<picture>
+  <source srcset={`/logo/${file}.webp`} type="image/webp" />
+  <img src={`/logo/${file}.png`} alt="Upnestly" width="510" height="144" class={className} />
+</picture>
