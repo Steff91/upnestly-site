@@ -25,6 +25,7 @@ src/
   data/site.json            # name, email, audit link
   data/plans.json           # pricing plans (editable in the CMS)
   data/pricing.json         # /pricing/: annual discount, comparison table, add-ons, terms, FAQ
+  data/ai.json              # /services/ai-automation/: use cases, pipeline, process, tools, FAQ, Custom price
   data/nav.ts               # header navigation
   content/services/*.md     # one file per service → /services/<file-name>/
   content/work/*.md         # case studies (homepage, service pages)
@@ -39,6 +40,7 @@ src/
   pages/index.astro, imprint.astro, privacy.astro, 404.astro, admin/
   pages/pricing.astro             # full pricing page (monthly/annual toggle, comparison table)
   pages/services/index.astro      # services hub with plan comparison table
+  pages/services/ai-automation.astro  # dedicated AI page (pipeline, savings calculator) — excluded from [slug]
   pages/services/[slug].astro     # shared template for all service pages (Service, Breadcrumb, FAQ schema)
 public/
   admin/config.yml          # Sveltia CMS
@@ -83,7 +85,8 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 
 - [ ] Real numbers: case study results; confirm plan prices in `src/data/plans.json`
 - [ ] Project screenshots for case studies
-- [ ] Fill service pages: development, seo-content, hosting-care, ai-automation (pains, steps, FAQ, hosting details)
+- [ ] AI page: Custom AI project price (`ai.json → customFrom`), catalogue results, FAQ on model training and the EU AI Act
+- [ ] Fill service pages: development, seo-content, hosting-care (pains, steps, FAQ, hosting details)
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
 - [ ] Booking link for the audit

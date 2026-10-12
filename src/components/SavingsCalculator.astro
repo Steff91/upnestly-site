@@ -1,0 +1,69 @@
+---
+// Rough savings estimate: weekly hours × share automated × hourly cost. Purely client-side, no data leaves the page.
+---
+
+<div class="savings grid gap-8 rounded-[20px] bg-white p-8 sm:p-10 lg:grid-cols-[1.1fr_1fr]">
+  <form class="flex flex-col gap-6" onsubmit="return false">
+    <div class="flex flex-col gap-2">
+      <label for="calc-hours" class="flex items-baseline justify-between gap-3 text-[15px] font-semibold text-ink">
+        Hours your team spends on the task per week
+        <output for="calc-hours" class="text-[20px] font-extrabold text-brand" data-out="hours">10</output>
+      </label>
+      <input id="calc-hours" name="hours" type="range" min="1" max="60" step="1" value="10" class="accent-[#2D327D]" />
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="calc-rate" class="flex items-baseline justify-between gap-3 text-[15px] font-semibold text-ink">
+        Cost of one hour of their time
+        <output for="calc-rate" class="text-[20px] font-extrabold text-brand" data-out="rate">€45</output>
+      </label>
+      <input id="calc-rate" name="rate" type="range" min="15" max="150" step="5" value="45" class="accent-[#2D327D]" />
+    </div>
+
+    <fieldset class="m-0 flex flex-col gap-2 border-0 p-0">
+      <legend class="mb-2 text-[15px] font-semibold text-ink">Share of the work AI can take over</legend>
+      <div class="flex flex-wrap gap-2">
+        {[40, 60, 80].map((v) => (
+          <label class="cursor-pointer">
+            <input type="radio" name="share" value={v} checked={v === 60} class="peer sr-only" />
+            <span class="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[15px] font-semibold text-body peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-brand">{v}%</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="flex flex-col justify-center gap-5 rounded-2xl bg-ink p-8 text-white" aria-live="polite">
+    <div>
+      <p class="label m-0 text-night-accent">Hours back per month</p>
+      <p class="m-0 text-[48px] font-extrabold leading-none tracking-[-0.02em]" data-out="saved-hours">26 h</p>
+    </div>
+    <div>
+      <p class="label m-0 text-night-accent">Value per month</p>
+      <p class="m-0 text-[48px] font-extrabold leading-none tracking-[-0.02em]" data-out="saved-value">€1,170</p>
+    </div>
+    <p class="m-0 text-[13px] leading-relaxed text-night-text">A rough estimate based on 4.33 weeks per month. The free opportunity check replaces it with real numbers for your process.</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.savings').forEach((root) => {
+    const form = root.querySelector('form');
+    const out = (key: string) => root.querySelector<HTMLElement>(`[data-out="${key}"]`);
+    const fmt = (n: number) => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    const update = () => {
+      if (!form) return;
+      const data = new FormData(form);
+      const hours = Number(data.get('hours'));
+      const rate = Number(data.get('rate'));
+      const share = Number(data.get('share')) / 100;
+      const saved = hours * 4.33 * share;
+      out('hours')!.textContent = String(hours);
+      out('rate')!.textContent = `€${rate}`;
+      out('saved-hours')!.textContent = `${fmt(saved)} h`;
+      out('saved-value')!.textContent = `€${fmt(saved * rate)}`;
+    };
+    form?.addEventListener('input', update);
+    update();
+  });
+</script>

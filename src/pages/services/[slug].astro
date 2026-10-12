@@ -9,7 +9,8 @@ import site from '../../data/site.json';
 import plans from '../../data/plans.json';
 
 export async function getStaticPaths() {
-  const services = await getCollection('services');
+  // AI automation has its own page (src/pages/services/ai-automation.astro); its .md still feeds the hub cards and plan table.
+  const services = (await getCollection('services')).filter((s) => s.id !== 'ai-automation');
   return services.map((service) => ({ params: { slug: service.id }, props: { service } }));
 }
 
