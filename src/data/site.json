@@ -19,6 +19,9 @@
   "postalCode": "[11000]",
   "registrationNumber": "[MB]",
   "vatId": "[PIB / VAT ID]",
+  "register": "[Serbian Business Registers Agency (APR)]",
+  "phone": "[+381 00 000 0000]",
+  "representedBy": "[Name Surname, Director]",
   "responsiblePerson": "[Name, role]",
   "linkedin": "",
   "github": ""

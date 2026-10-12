@@ -1,0 +1,112 @@
+---
+// Cookie consent with three categories: necessary (always on), analytics, marketing.
+// Choice is stored in localStorage (`upn-consent`). Nothing optional is loaded today.
+//
+// To add a tracking script later, mark it so it only runs after consent:
+//   <script type="text/plain" data-consent="analytics" src="https://…"></script>
+//   <script type="text/plain" data-consent="marketing">/* pixel code */</script>
+// Other code can listen for:  document.addEventListener('upnestly:consent', (e) => e.detail)
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-modal="false"
+  aria-labelledby="cookie-title"
+  aria-describedby="cookie-text"
+  class="fixed inset-x-4 bottom-4 z-[60] max-w-[480px] rounded-[20px] border border-line bg-white p-6 shadow-[0_24px_60px_-24px_rgb(23_22_58/0.45)] sm:bottom-6 sm:left-6 sm:right-auto"
+  hidden
+>
+  <p id="cookie-title" class="m-0 text-[18px] font-extrabold text-ink">Cookies</p>
+  <p id="cookie-text" class="mt-2 mb-0 text-[15px] leading-relaxed text-body">
+    We only use what’s necessary to run this site. With your permission we’d also use analytics to improve it. <a href="/cookies/">Cookie policy</a>
+  </p>
+
+  <form class="mt-4 flex flex-col gap-3 border-t border-line-soft pt-4" data-cookie-prefs hidden>
+    <label class="flex items-start gap-3 text-[14px] leading-snug text-body">
+      <input type="checkbox" checked disabled class="mt-0.5 size-5 shrink-0 accent-[#2D327D]" />
+      <span><strong class="text-ink">Necessary</strong><br />Remembers your choice and keeps the site secure. Always on.</span>
+    </label>
+    <label class="flex cursor-pointer items-start gap-3 text-[14px] leading-snug text-body">
+      <input type="checkbox" name="analytics" class="mt-0.5 size-5 shrink-0 accent-[#2D327D]" />
+      <span><strong class="text-ink">Analytics</strong><br />Helps us understand which pages are useful.</span>
+    </label>
+    <label class="flex cursor-pointer items-start gap-3 text-[14px] leading-snug text-body">
+      <input type="checkbox" name="marketing" class="mt-0.5 size-5 shrink-0 accent-[#2D327D]" />
+      <span><strong class="text-ink">Marketing</strong><br />Measures our own ad campaigns.</span>
+    </label>
+  </form>
+
+  <div class="mt-5 flex flex-wrap items-center gap-2.5">
+    <button type="button" class="btn btn-primary cursor-pointer border-0 !px-5 !py-3 !text-[15px]" data-cookie-accept>Accept all</button>
+    <button type="button" class="btn btn-outline cursor-pointer !px-5 !py-3 !text-[15px]" data-cookie-necessary>Necessary only</button>
+    <button type="button" class="cursor-pointer border-0 bg-transparent px-2 py-2 text-[15px] font-semibold text-brand underline-offset-4 transition-colors duration-300 hover:text-brand-deep hover:underline" data-cookie-settings>Settings</button>
+    <button type="button" class="btn btn-outline cursor-pointer !px-5 !py-3 !text-[15px]" data-cookie-save hidden>Save choice</button>
+  </div>
+</div>
+
+<script>
+  const KEY = 'upn-consent';
+  const VERSION = 1;
+  type Consent = { v: number; analytics: boolean; marketing: boolean; at: string };
+
+  const banner = document.getElementById('cookie-banner') as HTMLElement;
+  const prefs = banner.querySelector<HTMLFormElement>('[data-cookie-prefs]')!;
+  const box = (name: string) => prefs.querySelector<HTMLInputElement>(`input[name="${name}"]`)!;
+  const saveBtn = banner.querySelector<HTMLButtonElement>('[data-cookie-save]')!;
+  const settingsBtn = banner.querySelector<HTMLButtonElement>('[data-cookie-settings]')!;
+
+  const read = (): Consent | null => {
+    try {
+      const c = JSON.parse(localStorage.getItem(KEY) ?? 'null');
+      return c && c.v === VERSION ? c : null;
+    } catch {
+      return null;
+    }
+  };
+
+  // Activate <script type="text/plain" data-consent="…"> for allowed categories.
+  const apply = (c: Consent | null) => {
+    if (!c) return;
+    document.querySelectorAll<HTMLScriptElement>('script[type="text/plain"][data-consent]').forEach((old) => {
+      const cat = old.dataset.consent as 'analytics' | 'marketing';
+      if (!c[cat]) return;
+      const s = document.createElement('script');
+      [...old.attributes].forEach((a) => { if (a.name !== 'type') s.setAttribute(a.name, a.value); });
+      s.textContent = old.textContent;
+      old.replaceWith(s);
+    });
+    document.dispatchEvent(new CustomEvent('upnestly:consent', { detail: c }));
+  };
+
+  const write = (analytics: boolean, marketing: boolean) => {
+    const c: Consent = { v: VERSION, analytics, marketing, at: new Date().toISOString() };
+    try { localStorage.setItem(KEY, JSON.stringify(c)); } catch { /* private mode */ }
+    apply(c);
+    banner.hidden = true;
+  };
+
+  const open = (withSettings = false) => {
+    const c = read();
+    box('analytics').checked = c?.analytics ?? false;
+    box('marketing').checked = c?.marketing ?? false;
+    prefs.hidden = !withSettings;
+    saveBtn.hidden = !withSettings;
+    settingsBtn.hidden = withSettings;
+    banner.hidden = false;
+  };
+
+  banner.querySelector('[data-cookie-accept]')!.addEventListener('click', () => write(true, true));
+  banner.querySelector('[data-cookie-necessary]')!.addEventListener('click', () => write(false, false));
+  settingsBtn.addEventListener('click', () => open(true));
+  saveBtn.addEventListener('click', () => write(box('analytics').checked, box('marketing').checked));
+
+  // "Cookie settings" links (footer, legal pages)
+  document.querySelectorAll('[data-open-cookie-settings]').forEach((el) =>
+    el.addEventListener('click', (e) => { e.preventDefault(); open(true); }),
+  );
+
+  const current = read();
+  if (current) apply(current);
+  else open();
+</script>

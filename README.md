@@ -37,7 +37,9 @@ src/
     Header, Footer, Logo, Icon, Placeholder
   layouts/Base.astro        # <head>, ProfessionalService JSON-LD, reveal-on-scroll
   styles/global.css         # brand tokens (@theme) and shared components
-  layouts/Legal.astro       # imprint & privacy layout
+  layouts/Legal.astro       # legal layout (side nav, prose styles)
+  content/legal/*.md        # privacy & cookie policy → /privacy/, /cookies/
+  components/CookieBanner.astro  # consent: necessary / analytics / marketing
   pages/index.astro, imprint.astro, privacy.astro, 404.astro, admin/
   pages/pricing.astro             # full pricing page (monthly/annual toggle, comparison table)
   pages/services/index.astro      # services hub with plan comparison table
@@ -96,4 +98,5 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 - [ ] Audit & contact pages: response time, report turnaround, how the call is booked ([bracketed] text)
 - [ ] Confirm VAT handling for EU clients (pricing terms), annual discount and add-on rates
 - [ ] LinkedIn URL in `site.json` (top bar and footer link to `#` until then)
-- [ ] Company details in `site.json` (imprint, footer) and a GDPR-reviewed privacy policy (`src/pages/privacy.astro`); then remove `noindex` from both legal pages
+- [ ] Legal: company details in `site.json` (imprint), final texts in `src/content/legal/privacy.md` and `cookies.md` — all marked as example text; have them reviewed, then set `noindex: false` (and remove `noindex` on `/imprint/`)
+- [ ] Before adding analytics or ad pixels: load them as `<script type="text/plain" data-consent="analytics|marketing">` (see `CookieBanner.astro`) and update the cookie policy

@@ -55,4 +55,15 @@ const services = defineCollection({
   }),
 });
 
-export const collections = { work, services };
+// Legal pages written in Markdown → /<file-name>/ (privacy, cookies). The imprint is built from site.json.
+const legal = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/legal' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    updated: z.string(),
+    noindex: z.boolean().default(false),
+  }),
+});
+
+export const collections = { work, services, legal };

@@ -31,6 +31,9 @@ collections:
           - { name: postalCode, label: Postal code, widget: string }
           - { name: registrationNumber, label: Registration number (MB), widget: string }
           - { name: vatId, label: VAT / tax ID (PIB), widget: string }
+          - { name: register, label: Business register, widget: string }
+          - { name: phone, label: Phone (imprint), widget: string }
+          - { name: representedBy, label: Represented by (imprint), widget: string }
           - { name: responsiblePerson, label: Responsible for content, widget: string }
           - { name: linkedin, label: LinkedIn URL, widget: string, required: false }
           - { name: github, label: GitHub URL, widget: string, required: false }
@@ -158,6 +161,17 @@ collections:
         label: FAQ
         widget: list
         fields: [{ name: q, label: Question, widget: string }, { name: a, label: Answer, widget: text }]
+
+  - name: legal
+    label: Legal pages
+    folder: src/content/legal
+    create: false
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Meta description, widget: text }
+      - { name: updated, label: Last updated, widget: string }
+      - { name: noindex, label: Hide from search engines, widget: boolean, default: true }
+      - { name: body, label: Content, widget: markdown }
 
   - name: work
     label: Case studies

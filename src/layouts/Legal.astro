@@ -3,13 +3,21 @@ import Base from './Base.astro';
 
 interface Props {
   title: string;
+  description?: string;
   updated?: string;
   noindex?: boolean;
 }
-const { title, updated, noindex = false } = Astro.props;
+const { title, description, updated, noindex = false } = Astro.props;
+
+const legalNav = [
+  { href: '/imprint/', label: 'Imprint' },
+  { href: '/privacy/', label: 'Privacy policy' },
+  { href: '/cookies/', label: 'Cookie policy' },
+];
+const current = Astro.url.pathname;
 ---
 
-<Base title={`${title} — Upnestly`} noindex={noindex}>
+<Base title={`${title} — Upnestly`} description={description} noindex={noindex}>
   <section class="bg-tint">
     <div class="container-site flex flex-col gap-4 py-18">
       <p class="eyebrow m-0">Legal</p>
@@ -18,8 +26,22 @@ const { title, updated, noindex = false } = Astro.props;
     </div>
   </section>
   <section>
-    <div class="container-site py-16">
-      <div class="legal flex max-w-[760px] flex-col gap-4 text-[16px] leading-[1.7] text-body">
+    <div class="container-site flex flex-wrap gap-x-16 gap-y-10 py-16">
+      <nav aria-label="Legal pages" class="flex min-w-0 flex-[0_1_200px] flex-col gap-1 lg:sticky lg:top-28 lg:self-start">
+        {legalNav.map((l) => (
+          <a
+            href={l.href}
+            aria-current={current === l.href ? 'page' : undefined}
+            class:list={['rounded-xl px-4 py-2.5 text-[15px] font-semibold no-underline', current === l.href ? 'bg-tint text-brand' : 'text-body hover:bg-tint-soft hover:text-brand']}
+          >
+            {l.label}
+          </a>
+        ))}
+        <button type="button" data-open-cookie-settings class="cursor-pointer rounded-xl border-0 bg-transparent px-4 py-2.5 text-left text-[15px] font-semibold text-body transition-colors duration-300 hover:bg-tint-soft hover:text-brand">
+          Cookie settings
+        </button>
+      </nav>
+      <div class="legal flex min-w-0 max-w-[760px] flex-[1_1_520px] flex-col gap-4 text-[16px] leading-[1.7] text-body">
         <slot />
       </div>
     </div>
@@ -27,9 +49,20 @@ const { title, updated, noindex = false } = Astro.props;
 </Base>
 
 <style>
-  .legal :global(h2) { margin: 1.5rem 0 0; font-size: 22px; font-weight: 700; color: var(--color-ink); }
-  .legal :global(p), .legal :global(ul), .legal :global(dl) { margin: 0; }
-  .legal :global(ul) { padding-left: 1.2rem; list-style: disc; }
-  .legal :global(dt) { font-weight: 600; color: var(--color-ink); }
-  .legal :global(dd) { margin: 0 0 .75rem; }
+  .legal :global(h2) { margin: 1.75rem 0 0; font-size: 22px; font-weight: 700; line-height: 1.3; color: var(--color-ink); }
+  .legal :global(h3) { margin: 1rem 0 0; font-size: 17px; font-weight: 700; color: var(--color-ink); }
+  .legal :global(p), .legal :global(ul), .legal :global(ol), .legal :global(dl) { margin: 0; }
+  .legal :global(ul), .legal :global(ol) { padding-left: 1.2rem; }
+  .legal :global(ul) { list-style: disc; }
+  .legal :global(ol) { list-style: decimal; }
+  .legal :global(li + li) { margin-top: .35rem; }
+  .legal :global(strong) { color: var(--color-ink); }
+  .legal :global(dt) { font-weight: 700; color: var(--color-ink); }
+  .legal :global(dd) { margin: 0 0 .9rem; }
+  .legal :global(table) { width: 100%; border-collapse: collapse; font-size: 15px; display: block; overflow-x: auto; }
+  .legal :global(th), .legal :global(td) { border-bottom: 1px solid var(--color-line); padding: .7rem .8rem; text-align: left; vertical-align: top; }
+  .legal :global(th) { color: var(--color-ink); background: var(--color-tint-soft); }
+  .legal :global(blockquote) { margin: 0; border-radius: 14px; background: var(--color-tint); padding: 1rem 1.25rem; color: var(--color-ink); font-size: 15px; }
+  .legal :global(blockquote p) { margin: 0; }
+  .legal :global(code) { font-size: .9em; background: var(--color-tint-soft); padding: .1em .35em; border-radius: 6px; }
 </style>
