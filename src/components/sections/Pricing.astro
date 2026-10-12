@@ -24,15 +24,16 @@ const custom = data.plans.find((p) => p.name === 'Custom');
     </div>
 
     <div class="flex flex-col gap-5">
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-5">
+      <p class="m-0 -mb-2 font-mono text-[13px] text-dim lg:hidden">Swipe to compare plans →</p>
+      <div class="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-3 pt-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0">
         {plans.map((plan, i) => (
           <article
-            class:list={['relative flex flex-col gap-6 rounded-[20px] p-9', plan.featured ? 'bg-ink text-white' : 'bg-white']}
+            class:list={['relative flex w-[86%] shrink-0 snap-start flex-col gap-6 rounded-[20px] p-8 sm:w-[60%] md:w-[46%] lg:w-auto lg:p-9', plan.featured ? 'bg-ink text-white' : 'bg-white']}
             data-reveal
             style={`--i:${i}`}
           >
             {plan.featured && (
-              <span class="absolute -top-3 left-9 rounded-full bg-night-accent px-3 py-1 font-mono text-[12px] font-medium text-ink">Most chosen</span>
+              <span class="absolute -top-3 left-8 rounded-full lg:left-9 bg-night-accent px-3 py-1 font-mono text-[13px] font-medium text-ink">Most chosen</span>
             )}
             <div class="flex flex-col gap-2">
               <h3 class="m-0 text-[24px] font-extrabold">{plan.name}</h3>
@@ -46,7 +47,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
             <div class="flex flex-col gap-5">
               {plan.groups.map((g) => (
                 <div class="flex flex-col gap-2">
-                  <p class:list={['m-0 font-mono text-[12px] uppercase tracking-[0.08em]', plan.featured ? 'text-night-accent' : 'text-brand']}>{g.label}</p>
+                  <p class:list={['m-0 font-mono text-[13px] uppercase tracking-[0.08em]', plan.featured ? 'text-night-accent' : 'text-brand']}>{g.label}</p>
                   <ul class="m-0 flex list-none flex-col gap-1.5 p-0 text-[15px] leading-snug">
                     {g.items.map((item) => (
                       <li class="flex gap-2.5">

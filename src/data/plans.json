@@ -1,7 +1,7 @@
 {
   "title": "One team, one monthly fee. Pick the pace.",
   "intro": "Every plan includes all three disciplines — development, growth and hosting — handled by the same three senior people.",
-  "footnote": "Prices excl. VAT. Ad spend is billed directly by Google or Meta. Minimum term 3 months, then cancel monthly. Unused development hours roll over for one month.",
+  "footnote": "Prices excl. VAT. Ad spend is billed directly by Google or Meta. On Shopify and Webflow, hosting is provided by the platform — we take care of apps, themes, monitoring and backups instead. Minimum term 3 months, then cancel monthly. Unused development hours roll over for one month.",
   "plans": [
     {
       "name": "Essentials",
@@ -11,9 +11,29 @@
       "featured": false,
       "cta": "Start with Essentials",
       "groups": [
-        { "label": "Build", "items": ["8 h development & design per month", "Fixes, small features, content updates"] },
-        { "label": "Grow", "items": ["1 article per month (EN or DE)", "Technical SEO monitoring", "Monthly report"] },
-        { "label": "Run", "items": ["Managed EU hosting", "Updates, daily backups, uptime monitoring", "Response within 2 business days"] }
+        {
+          "label": "Build",
+          "items": [
+            "8 h development & design per month",
+            "Fixes, small features, content updates"
+          ]
+        },
+        {
+          "label": "Grow",
+          "items": [
+            "1 article per month, in English or German",
+            "Technical SEO monitoring",
+            "Monthly report"
+          ]
+        },
+        {
+          "label": "Run",
+          "items": [
+            "Managed EU hosting or platform care",
+            "Updates, daily backups, uptime monitoring",
+            "Response within 2 business days"
+          ]
+        }
       ]
     },
     {
@@ -24,9 +44,30 @@
       "featured": true,
       "cta": "Start with Growth",
       "groups": [
-        { "label": "Build", "items": ["16 h development & design per month", "Includes AI automations"] },
-        { "label": "Grow", "items": ["2 articles per month in EN & DE", "SEO & AI search (GEO)", "Google or Meta ads management", "1 CRO test per month"] },
-        { "label": "Run", "items": ["Everything in Essentials", "Performance optimization, staging site", "Next-business-day response"] }
+        {
+          "label": "Build",
+          "items": [
+            "16 h development & design per month",
+            "Includes AI automations"
+          ]
+        },
+        {
+          "label": "Grow",
+          "items": [
+            "2 articles per month, in English or German",
+            "SEO & AI search (GEO)",
+            "Google or Meta ads management",
+            "1 CRO test per month"
+          ]
+        },
+        {
+          "label": "Run",
+          "items": [
+            "Everything in Essentials",
+            "Performance optimization, staging site",
+            "Next-business-day response"
+          ]
+        }
       ]
     },
     {
@@ -37,9 +78,30 @@
       "featured": false,
       "cta": "Start with Scale",
       "groups": [
-        { "label": "Build", "items": ["32 h development, design & AI per month", "Feature roadmap, planned quarterly"] },
-        { "label": "Grow", "items": ["4 articles per month in EN & DE", "Google and Meta ads", "2 CRO tests per month", "Quarterly strategy review"] },
-        { "label": "Run", "items": ["Everything in Growth", "Security hardening, GDPR documentation", "4-hour response on business days"] }
+        {
+          "label": "Build",
+          "items": [
+            "32 h development, design & AI per month",
+            "Feature roadmap, planned quarterly"
+          ]
+        },
+        {
+          "label": "Grow",
+          "items": [
+            "4 articles per month, in English or German",
+            "Google and Meta ads",
+            "2 CRO tests per month",
+            "Quarterly strategy review"
+          ]
+        },
+        {
+          "label": "Run",
+          "items": [
+            "Everything in Growth",
+            "Security hardening, GDPR documentation",
+            "Same-business-day response"
+          ]
+        }
       ]
     },
     {
@@ -50,7 +112,15 @@
       "featured": false,
       "cta": "Get a quote",
       "groups": [
-        { "label": "Examples", "items": ["New website or shop, redesign", "Migration between platforms", "Custom AI pipelines & integrations", "More hours, languages or markets"] }
+        {
+          "label": "Examples",
+          "items": [
+            "New website or shop, redesign",
+            "Migration between platforms",
+            "Custom AI pipelines & integrations",
+            "More hours, languages or markets"
+          ]
+        }
       ]
     }
   ]
