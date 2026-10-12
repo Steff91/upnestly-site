@@ -221,12 +221,12 @@ const schema = [
       </div>
       <div class="flex min-w-0 flex-[2_1_520px] flex-col gap-3">
         {ai.faq.map((f) => (
-          <details class="group rounded-2xl border border-line bg-white px-6 py-5" data-reveal>
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-bold text-ink [&::-webkit-details-marker]:hidden">
+          <details class="faq group rounded-2xl border border-line bg-white px-6 py-5 transition-colors duration-300 hover:border-brand open:border-brand" data-reveal>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-bold text-ink transition-colors duration-300 hover:text-brand [&::-webkit-details-marker]:hidden">
               {f.q}
-              <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-tint text-brand transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-tint text-brand transition-[transform,background-color,color] duration-300 group-hover:bg-brand group-hover:text-white group-open:rotate-45 group-open:bg-brand group-open:text-white" aria-hidden="true">+</span>
             </summary>
-            <p class="m-0 mt-3 text-[15px] leading-[1.65] text-body">{f.a}</p>
+            <div class="faq-body overflow-hidden"><p class="m-0 pt-3 text-[15px] leading-[1.65] text-body">{f.a}</p></div>
           </details>
         ))}
       </div>

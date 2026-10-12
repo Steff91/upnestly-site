@@ -87,6 +87,29 @@ const schema = {
         items.forEach((el) => el.classList.add('is-visible'));
       }
 
+      // FAQ: animate opening and closing of <details class="faq"> (skipped when reduced motion is preferred).
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      document.querySelectorAll<HTMLDetailsElement>('details.faq').forEach((d) => {
+        const summary = d.querySelector('summary');
+        const body = d.querySelector<HTMLElement>('.faq-body');
+        if (!summary || !body) return;
+        let running: Animation | null = null;
+        summary.addEventListener('click', (e) => {
+          if (reduceMotion.matches) return;
+          e.preventDefault();
+          running?.cancel();
+          const opts = { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' };
+          if (d.open) {
+            running = body.animate([{ height: `${body.offsetHeight}px`, opacity: 1 }, { height: '0px', opacity: 0 }], opts);
+            running.onfinish = () => { d.open = false; running = null; };
+          } else {
+            d.open = true;
+            running = body.animate([{ height: '0px', opacity: 0 }, { height: `${body.offsetHeight}px`, opacity: 1 }], opts);
+            running.onfinish = () => { running = null; };
+          }
+        });
+      });
+
       // Mobile menu: close after picking a link.
       const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
       menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.removeAttribute('open')));

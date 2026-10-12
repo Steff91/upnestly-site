@@ -43,7 +43,7 @@
     font-size: 16px;
     line-height: 1.6;
   }
-  a { @apply text-brand transition-colors; }
+  a { @apply text-brand transition-colors duration-300 ease-out; }
   a:hover { @apply text-brand-deep; }
   :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
 }
