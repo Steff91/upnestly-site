@@ -1,0 +1,35 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  updated?: string;
+  noindex?: boolean;
+}
+const { title, updated, noindex = false } = Astro.props;
+---
+
+<Base title={`${title} — Upnestly`} noindex={noindex}>
+  <section class="bg-tint">
+    <div class="container-site flex flex-col gap-4 py-18">
+      <p class="eyebrow m-0">Legal</p>
+      <h1 class="h-hero">{title}</h1>
+      {updated && <p class="m-0 text-[14px] text-muted">Last updated: {updated}</p>}
+    </div>
+  </section>
+  <section>
+    <div class="container-site py-16">
+      <div class="legal flex max-w-[760px] flex-col gap-4 text-[16px] leading-[1.7] text-body">
+        <slot />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal :global(h2) { margin: 1.5rem 0 0; font-size: 22px; font-weight: 700; color: var(--color-ink); }
+  .legal :global(p), .legal :global(ul), .legal :global(dl) { margin: 0; }
+  .legal :global(ul) { padding-left: 1.2rem; list-style: disc; }
+  .legal :global(dt) { font-weight: 600; color: var(--color-ink); }
+  .legal :global(dd) { margin: 0 0 .75rem; }
+</style>

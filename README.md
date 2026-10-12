@@ -33,7 +33,8 @@ src/
     Header, Footer, Logo, Icon, Placeholder
   layouts/Base.astro        # <head>, ProfessionalService JSON-LD, reveal-on-scroll
   styles/global.css         # brand tokens (@theme) and shared components
-  pages/index.astro, 404.astro, admin/
+  layouts/Legal.astro       # imprint & privacy layout
+  pages/index.astro, imprint.astro, privacy.astro, 404.astro, admin/
 public/
   admin/config.yml          # Sveltia CMS
   logo/                     # logo PNGs exported from the brand standards PDF
@@ -78,4 +79,5 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 - [ ] Project screenshots for case studies
 - [ ] Confirm final navy (logo file vs. standards)
 - [ ] German version (`/de/`)
-- [ ] Booking link for the audit, privacy page and imprint
+- [ ] Booking link for the audit
+- [ ] Company details in `site.json` (imprint, footer) and a GDPR-reviewed privacy policy (`src/pages/privacy.astro`); then remove `noindex` from both legal pages

@@ -1,0 +1,23 @@
+---
+import Legal from '../layouts/Legal.astro';
+import site from '../data/site.json';
+---
+
+<!-- Company details come from src/data/site.json (CMS → Settings → Site & contact). -->
+<Legal title="Imprint" noindex>
+  <dl>
+    <dt>Company</dt>
+    <dd>{site.legalName}</dd>
+    <dt>Address</dt>
+    <dd>{site.address}, {site.postalCode} {site.city}, {site.country}</dd>
+    <dt>Registration number</dt>
+    <dd>{site.registrationNumber}</dd>
+    <dt>VAT / tax ID</dt>
+    <dd>{site.vatId}</dd>
+    <dt>Responsible for content</dt>
+    <dd>{site.responsiblePerson}</dd>
+    <dt>Email</dt>
+    <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+  </dl>
+  <p>[Have the imprint checked against the requirements of your target markets, e.g. § 5 DDG for Germany, before going live.]</p>
+</Legal>

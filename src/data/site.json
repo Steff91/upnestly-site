@@ -7,6 +7,12 @@
   "country": "Serbia",
   "languages": ["English", "Deutsch"],
   "auditUrl": "mailto:info@upnestly.net?subject=Free%20audit",
+  "legalName": "[Legal entity name]",
+  "address": "[Street and number]",
+  "postalCode": "[11000]",
+  "registrationNumber": "[MB]",
+  "vatId": "[PIB / VAT ID]",
+  "responsiblePerson": "[Name, role]",
   "linkedin": "",
   "github": ""
 }

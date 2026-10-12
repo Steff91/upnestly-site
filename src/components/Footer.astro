@@ -1,16 +1,100 @@
 ---
 import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import BrandMark from './BrandMark.astro';
 import site from '../data/site.json';
+
 const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Services',
+    links: [
+      { href: '/#services', label: 'Development & design' },
+      { href: '/#services', label: 'Content, SEO & ads' },
+      { href: '/#services', label: 'Conversion optimization' },
+      { href: '/#ai', label: 'AI automation' },
+      { href: '/#services', label: 'Hosting & care' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { href: '/#pricing', label: 'Plans & pricing' },
+      { href: '/#work', label: 'Selected work' },
+      { href: '/#team', label: 'Team' },
+      { href: '/#contact', label: 'Free audit' },
+    ],
+  },
+];
+
+const socials = [
+  { href: site.linkedin, label: 'LinkedIn', icon: 'linkedin' as const },
+  { href: site.github, label: 'GitHub', icon: 'github' as const },
+].filter((s) => s.href.startsWith('http'));
 ---
 
-<footer class="border-t border-line-soft">
-  <div class="container-site flex flex-wrap items-center justify-between gap-4 py-10 text-[14px] text-muted">
-    <Logo class="h-7 w-auto" />
-    <span>
-      <a href={`mailto:${site.email}`} class="text-muted hover:text-brand">{site.email}</a>
-      · {site.city}, {site.country} · {site.languages.join(' · ')}
-    </span>
-    <span>© {year} {site.name}</span>
+<footer class="relative overflow-hidden bg-ink text-white">
+  <BrandMark class="-bottom-24 -right-28 w-[460px] opacity-[0.05]" />
+
+  <div class="container-site relative grid grid-cols-1 gap-12 py-18 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+    <div class="flex flex-col gap-5">
+      <a href="/" aria-label="Upnestly — home" class="w-fit"><Logo variant="white" class="h-9 w-auto" /></a>
+      <p class="m-0 max-w-[340px] text-[15px] leading-[1.6] text-night-text">
+        Websites, search and AI automation on WordPress, Shopify, Webflow, Magento or custom code — built, grown and run by one senior team.
+      </p>
+      {socials.length > 0 && (
+        <ul class="m-0 flex list-none gap-2 p-0">
+          {socials.map((s) => (
+            <li>
+              <a href={s.href} aria-label={s.label} class="flex size-11 items-center justify-center rounded-full border border-night-line text-white hover:border-white hover:text-white">
+                <Icon name={s.icon} size={18} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    {columns.map((col) => (
+      <nav aria-label={col.title} class="flex flex-col gap-4">
+        <p class="m-0 font-mono text-[12px] uppercase tracking-[0.08em] text-night-accent">{col.title}</p>
+        <ul class="m-0 flex list-none flex-col gap-2.5 p-0 text-[15px]">
+          {col.links.map((l) => (
+            <li><a href={l.href} class="text-night-text no-underline hover:text-white">{l.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    ))}
+
+    <div class="flex flex-col gap-4">
+      <p class="m-0 font-mono text-[12px] uppercase tracking-[0.08em] text-night-accent">Contact</p>
+      <ul class="m-0 flex list-none flex-col gap-3 p-0 text-[15px] text-night-text">
+        <li class="flex items-center gap-2.5">
+          <Icon name="mail" size={17} class="shrink-0 text-night-accent" />
+          <a href={`mailto:${site.email}`} class="text-night-text hover:text-white">{site.email}</a>
+        </li>
+        <li class="flex items-center gap-2.5">
+          <Icon name="pin" size={17} class="shrink-0 text-night-accent" />
+          <span>{site.city}, {site.country} · working worldwide</span>
+        </li>
+        <li class="flex items-center gap-2.5">
+          <Icon name="globe" size={17} class="shrink-0 text-night-accent" />
+          <span>{site.languages.join(' · ')}</span>
+        </li>
+      </ul>
+      <a href={site.auditUrl} class="btn btn-light mt-2 w-fit">Book a free audit</a>
+    </div>
+  </div>
+
+  <div class="relative border-t border-night-line">
+    <div class="container-site flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-6 text-[13px] text-night-text">
+      <p class="m-0">© {year} {site.legalName} · {site.city}, {site.country}</p>
+      <nav aria-label="Legal" class="flex flex-wrap gap-x-6 gap-y-2">
+        <a href="/imprint/" class="text-night-text hover:text-white">Imprint</a>
+        <a href="/privacy/" class="text-night-text hover:text-white">Privacy policy</a>
+        <a href="#" class="inline-flex items-center gap-1.5 text-night-text hover:text-white">Back to top <Icon name="arrow-up" size={14} /></a>
+      </nav>
+    </div>
   </div>
 </footer>

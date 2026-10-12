@@ -24,6 +24,12 @@ collections:
           - { name: country, label: Country, widget: string }
           - { name: languages, label: Languages, widget: list }
           - { name: auditUrl, label: Audit booking link (mailto or Calendly), widget: string }
+          - { name: legalName, label: Legal entity name, widget: string }
+          - { name: address, label: Street and number, widget: string }
+          - { name: postalCode, label: Postal code, widget: string }
+          - { name: registrationNumber, label: Registration number (MB), widget: string }
+          - { name: vatId, label: VAT / tax ID (PIB), widget: string }
+          - { name: responsiblePerson, label: Responsible for content, widget: string }
           - { name: linkedin, label: LinkedIn URL, widget: string, required: false }
           - { name: github, label: GitHub URL, widget: string, required: false }
 

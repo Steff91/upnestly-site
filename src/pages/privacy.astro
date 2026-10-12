@@ -1,0 +1,24 @@
+---
+import Legal from '../layouts/Legal.astro';
+import site from '../data/site.json';
+---
+
+<!-- Placeholder structure only. Replace every [bracketed] part with text reviewed for GDPR compliance. -->
+<Legal title="Privacy policy" noindex>
+  <p>[Placeholder — this page needs a privacy policy reviewed for GDPR before the site goes live.]</p>
+
+  <h2>Controller</h2>
+  <p>{site.legalName}, {site.address}, {site.postalCode} {site.city}, {site.country} · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+
+  <h2>Hosting and server logs</h2>
+  <p>[Hosting provider, server location, what is logged and for how long.]</p>
+
+  <h2>Contact by email</h2>
+  <p>[What data you receive when someone writes to you, legal basis, retention.]</p>
+
+  <h2>Fonts and cookies</h2>
+  <p>Fonts are self-hosted; no requests are made to Google Fonts. [Confirm whether any cookies or analytics are used.]</p>
+
+  <h2>Your rights</h2>
+  <p>[Access, rectification, erasure, restriction, portability, objection, complaint to a supervisory authority.]</p>
+</Legal>
