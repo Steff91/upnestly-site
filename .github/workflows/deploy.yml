@@ -23,6 +23,9 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          # Leave unset (or anything but "true") while the site is in preview: noindex everywhere, robots.txt blocks all.
+          PUBLIC_SITE_LIVE: ${{ vars.SITE_LIVE }}
 
       - name: Rsync to server
         if: env.HAS_SSH == 'true'

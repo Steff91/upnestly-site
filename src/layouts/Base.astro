@@ -15,6 +15,9 @@ interface Props {
 
 const { title, description = site.description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Until launch (PUBLIC_SITE_LIVE=true), every page tells crawlers to stay out.
+const live = import.meta.env.PUBLIC_SITE_LIVE === 'true';
+const robots = !live ? 'noindex, nofollow, noarchive, noimageindex' : noindex ? 'noindex, follow' : undefined;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -40,7 +43,7 @@ const schema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {robots && <meta name="robots" content={robots} />}
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />

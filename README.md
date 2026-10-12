@@ -72,6 +72,15 @@ The navy in the logo files (`#090E50`) is darker than the standards' RGB value u
 - Plans and prices: CMS → *Settings → Plans & pricing*.
 - Forms: `/audit/` and `/contact/` share `InquiryForm.astro`. Links preselect the interest with `?plan=audit|ai|essentials|growth|scale|custom` and `&billing=annual`.
 
+## Preview mode (pre-launch)
+
+Until launch, every build is hidden from search engines and AI crawlers:
+
+- every page carries `<meta name="robots" content="noindex, nofollow, …">`
+- `/robots.txt` disallows everything, and the sitemap is empty
+
+To launch, set the GitHub repository **variable** `SITE_LIVE` to `true` and redeploy. Password protection is done on the server (Plesk → *Password-Protected Directories*), not in the code.
+
 ## Deploy
 
 Push to `main` runs `.github/workflows/deploy.yml`. Add repository secrets:
