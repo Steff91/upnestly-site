@@ -3,5 +3,5 @@ export const nav = [
   { href: '/pricing/', label: 'Pricing' },
   { href: '/services/ai-automation/', label: 'AI & Automation' },
   { href: '/work/', label: 'Work' },
-  { href: '/#team', label: 'Team' },
+  { href: '/team/', label: 'Team' },
 ] as const;

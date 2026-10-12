@@ -85,6 +85,38 @@ collections:
             widget: list
             fields: [{ name: q, label: Question, widget: string }, { name: a, label: Answer, widget: text }]
 
+  - name: team
+    label: Team page
+    files:
+      - name: team
+        label: Members, how we work, values, network
+        file: src/data/team.json
+        fields:
+          - name: members
+            label: Members
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: role, label: Role, widget: string }
+              - { name: discipline, label: Discipline, widget: select, options: [Build, Grow, Run] }
+              - { name: years, label: Experience, widget: string }
+              - { name: photo, label: Portrait, widget: image, required: false }
+              - { name: bio, label: Bio, widget: text }
+              - { name: focus, label: Focus areas, widget: list }
+              - { name: linkedin, label: LinkedIn URL, widget: string, required: false }
+          - name: howWeWork
+            label: How we work together
+            widget: list
+            fields: [{ name: title, label: Title, widget: string }, { name: text, label: Text, widget: text }]
+          - name: values
+            label: Values
+            widget: list
+            fields: [{ name: title, label: Title, widget: string }, { name: text, label: Text, widget: text }]
+          - name: network
+            label: Extended network
+            widget: object
+            fields: [{ name: text, label: Text, widget: text }, { name: items, label: Specialists, widget: list }]
+
   - name: services
     label: Services
     folder: src/content/services

@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../components/Icon.astro';
+import Placeholder from '../components/Placeholder.astro';
+import Contact from '../components/sections/Contact.astro';
+import team from '../data/team.json';
+import site from '../data/site.json';
+
+const serviceFor: Record<string, string> = { Build: '/services/development/', Grow: '/services/seo-content/', Run: '/services/hosting-care/' };
+---
+
+<Base
+  title="Team — Three Senior Specialists | Upnestly"
+  description="Meet the Upnestly team: senior specialists in development and AI, content and marketing, and infrastructure — one team, one point of contact, in your time zone."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-tint">
+    <BrandMark variant="blue" class="-bottom-48 -right-24 hidden w-[600px] opacity-[0.07] lg:block" />
+    <div class="container-site relative flex flex-col gap-6 py-18 lg:py-22">
+      <p class="eyebrow m-0" data-reveal>Team</p>
+      <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">Three senior specialists. No juniors, no handoffs.</h1>
+      <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">
+        Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work — in English or German, in your time zone.
+      </p>
+    </div>
+  </section>
+
+  <!-- Members -->
+  <section>
+    <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 py-20">
+      {team.members.map((m, i) => (
+        <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
+          <Placeholder label="Portrait" src={m.photo || undefined} alt={m.name} class="aspect-[4/5] w-full" />
+          <div class="flex flex-1 flex-col gap-4 p-8">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex flex-col gap-1">
+                <h2 class="m-0 text-[24px] font-extrabold leading-tight">{m.name}</h2>
+                <p class="m-0 text-[15px] font-semibold text-brand">{m.role}</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-tint px-3 py-1 text-[14px] font-bold text-brand">{m.years}</span>
+            </div>
+            <p class="m-0 text-[15px] leading-[1.6] text-body">{m.bio}</p>
+            <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+              {m.focus.map((f) => <li class="rounded-full border border-line px-3 py-1 text-[13px] font-semibold text-body">{f}</li>)}
+            </ul>
+            <div class="mt-auto flex items-center justify-between gap-4 border-t border-line-soft pt-4">
+              <a href={serviceFor[m.discipline]} class="label no-underline">{m.discipline} →</a>
+              <a
+                href={m.linkedin.startsWith('http') ? m.linkedin : '#'}
+                aria-label={`${m.name} on LinkedIn`}
+                class="flex size-11 items-center justify-center rounded-full border border-line text-ink hover:border-brand hover:text-brand"
+              >
+                <Icon name="linkedin" size={17} />
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- How we work -->
+  <section class="relative overflow-hidden bg-ink text-white">
+    <BrandMark class="-bottom-40 -left-48 w-[600px] opacity-[0.05]" />
+    <div class="container-site relative flex flex-wrap gap-14 py-22">
+      <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-4" data-reveal>
+        <p class="eyebrow m-0 !text-night-accent">How we work together</p>
+        <h2 class="h-section">One team, one point of contact.</h2>
+        <p class="m-0 text-[17px] leading-[1.6] text-night-text">You never have to coordinate three freelancers. We do that between ourselves.</p>
+      </div>
+      <div class="grid min-w-0 flex-[1_1_520px] grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">
+        {team.howWeWork.map((h, i) => (
+          <div class="flex flex-col gap-2 rounded-2xl border border-night-line p-6" data-reveal style={`--i:${i}`}>
+            <h3 class="m-0 text-[18px] font-bold">{h.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.55] text-night-text">{h.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section>
+    <div class="container-site flex flex-col gap-10 py-22">
+      <h2 class="h-section" data-reveal>What we stand for</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-5">
+        {team.values.map((v, i) => (
+          <div class="flex flex-col gap-2.5 rounded-2xl bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
+            <span class="label text-brand">0{i + 1}</span>
+            <h3 class="m-0 text-[19px] font-bold">{v.title}</h3>
+            <p class="m-0 text-[15px] leading-[1.55] text-body">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Network + location -->
+  <section class="bg-tint">
+    <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] gap-6 py-22">
+      <div class="flex flex-col gap-4 rounded-[20px] bg-white p-9" data-reveal>
+        <p class="eyebrow m-0">Extended network</p>
+        <h2 class="m-0 text-[28px] font-extrabold leading-tight">When a project needs more</h2>
+        <p class="m-0 text-[15px] leading-[1.6] text-body">{team.network.text}</p>
+        <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[15px]">
+          {team.network.items.map((n) => (
+            <li class="flex gap-2.5"><Icon name="check" size={16} class="mt-0.5 shrink-0 text-brand" /><span>{n}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="flex flex-col gap-4 rounded-[20px] bg-white p-9" data-reveal style="--i:1">
+        <p class="eyebrow m-0">Where we are</p>
+        <h2 class="m-0 text-[28px] font-extrabold leading-tight">Based in {site.city}, working worldwide</h2>
+        <ul class="m-0 flex list-none flex-col gap-3 p-0 text-[15px] text-body">
+          <li class="flex items-center gap-2.5"><Icon name="pin" size={17} class="shrink-0 text-brand" />{site.city}, {site.country}</li>
+          <li class="flex items-center gap-2.5"><Icon name="clock" size={17} class="shrink-0 text-brand" />{site.hours}</li>
+          <li class="flex items-center gap-2.5"><Icon name="globe" size={17} class="shrink-0 text-brand" />{site.languages.join(' · ')}</li>
+          <li class="flex items-center gap-2.5"><Icon name="mail" size={17} class="shrink-0 text-brand" /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        </ul>
+        <p class="m-0 text-[15px] leading-[1.6] text-body">Remote by default, on site when a project needs it. Lorem ipsum dolor sit amet.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="h-24"></div>
+  <Contact />
+</Base>
