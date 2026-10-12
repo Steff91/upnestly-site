@@ -126,9 +126,23 @@ const schema = {
         });
       });
 
-      // Mobile menu: close after picking a link.
+      // Mobile menu: the hamburger toggles it; picking a link, clicking/tapping outside or pressing Esc closes it.
       const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
-      menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.removeAttribute('open')));
+      if (menu) {
+        const close = () => menu.removeAttribute('open');
+        menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+        // The tap that closes the menu shouldn't also hit a link or button underneath it.
+        const swallow = (e: Event) => { e.preventDefault(); e.stopPropagation(); };
+        document.addEventListener('pointerdown', (e) => {
+          if (!menu.open || menu.contains(e.target as Node)) return;
+          close();
+          document.addEventListener('click', swallow, { capture: true, once: true });
+          setTimeout(() => document.removeEventListener('click', swallow, { capture: true }), 600);
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menu.open) { close(); menu.querySelector('summary')?.focus(); }
+        });
+      }
     </script>
   </body>
 </html>
