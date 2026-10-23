@@ -1,7 +1,7 @@
 ---
 title: "Entwicklung & Design"
 order: 1
-discipline: Build
+discipline: Web
 excerpt: "Neue Seiten, Features und Fixes auf WordPress, Shopify, Webflow, Magento oder Custom Code – jeden Monat."
 metaTitle: "Website-Entwicklung & Wartung im Monatsplan | Upnestly"
 metaDescription: "Laufende Website-Entwicklung, Design und Wartung für WordPress, Shopify, Webflow, Magento und individuelle Websites – Senior-Entwickler in einem Monatsplan."

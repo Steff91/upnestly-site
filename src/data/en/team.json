@@ -2,8 +2,8 @@
   "members": [
     {
       "name": "[Name Surname]",
-      "role": "Development, design & AI",
-      "discipline": "Build",
+      "role": "Development, AI & automation",
+      "discipline": "Web",
       "years": "8+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
@@ -11,7 +11,7 @@
         "WordPress & WooCommerce",
         "Shopify & Webflow",
         "Custom code (Astro)",
-        "AI automation",
+        "AI automation (Claude API, n8n)",
         "Technical SEO"
       ],
       "linkedin": ""
@@ -19,7 +19,7 @@
     {
       "name": "[Name Surname]",
       "role": "Content & marketing",
-      "discipline": "Grow",
+      "discipline": "Growth",
       "years": "8+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
@@ -33,14 +33,14 @@
     },
     {
       "name": "[Name Surname]",
-      "role": "Processes, applications & delivery",
-      "discipline": "Automate",
+      "role": "Product & project manager",
+      "discipline": "Apps",
       "years": "[X]+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
       "focus": [
-        "Process mapping",
-        "CRM & internal tools",
+        "Your main point of contact",
+        "Business apps & CRM",
         "Scrum & project delivery",
         "Requirements & research"
       ],
@@ -49,7 +49,7 @@
     {
       "name": "[Name Surname]",
       "role": "Infrastructure & DevOps",
-      "discipline": "Run",
+      "discipline": "Ops",
       "years": "25+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",

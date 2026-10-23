@@ -1,7 +1,7 @@
 ---
 title: "SEO & Content"
 order: 2
-discipline: Grow
+discipline: Growth
 excerpt: "Content auf Deutsch und Englisch, technisches SEO und Sichtbarkeit in KI-Suchen."
 metaTitle: "SEO & Content auf Deutsch und Englisch | Upnestly"
 metaDescription: "Technisches SEO, Optimierung für KI-Suchen (GEO) und Content auf Deutsch und Englisch – von Menschen geschrieben, jeden Monat gemessen, in einem Plan mit Entwicklung und Hosting."

@@ -1,6 +1,6 @@
 {
-  "title": "One team, one monthly plan. Website, marketing and processes.",
-  "intro": "Every plan includes all four disciplines — handled by the same four senior people. You pay for the result, not for hours.",
+  "title": "One team, one monthly plan. Website, marketing and apps.",
+  "intro": "Every plan includes all four disciplines — delivered by the same four senior people, with one project manager. You pay for the result, not for hours.",
   "footnote": "Prices are starting points, excl. VAT. The exact monthly price follows a free discovery call, based on your site, your processes and your goals. Ad spend is billed directly by Google or Meta; software licences (e.g. CRM) are billed by the vendor. Minimum term 3 months, then cancel monthly.",
   "plans": [
     {
@@ -12,28 +12,28 @@
       "cta": "Start with Essentials",
       "groups": [
         {
-          "label": "Build",
+          "label": "Web",
           "items": [
             "Site care, fixes and small improvements",
             "Content updates every month"
           ]
         },
         {
-          "label": "Grow",
+          "label": "Growth",
           "items": [
             "1 article per month, in English or German",
             "Technical SEO monitoring, monthly report"
           ]
         },
         {
-          "label": "Automate",
+          "label": "Apps",
           "items": [
             "One routine process automated",
             "e.g. website enquiries straight into your CRM"
           ]
         },
         {
-          "label": "Run",
+          "label": "Ops",
           "items": [
             "Managed EU hosting or platform care",
             "Updates, backups, uptime · reply within 2 business days"
@@ -50,27 +50,27 @@
       "cta": "Start with Growth",
       "groups": [
         {
-          "label": "Build",
+          "label": "Web",
           "items": [
             "Ongoing improvements and new landing pages"
           ]
         },
         {
-          "label": "Grow",
+          "label": "Growth",
           "items": [
             "2 articles per month, SEO & AI search (GEO)",
             "Google or Meta ads, 1 CRO test per month"
           ]
         },
         {
-          "label": "Automate",
+          "label": "Apps",
           "items": [
             "CRM set up and connected to site, shop and email",
             "Ongoing AI automations"
           ]
         },
         {
-          "label": "Run",
+          "label": "Ops",
           "items": [
             "Everything in Essentials",
             "Performance, staging · next-business-day reply"
@@ -87,27 +87,27 @@
       "cta": "Start with Scale",
       "groups": [
         {
-          "label": "Build",
+          "label": "Web",
           "items": [
             "Feature roadmap, planned quarterly"
           ]
         },
         {
-          "label": "Grow",
+          "label": "Growth",
           "items": [
             "4 articles per month, Google and Meta ads",
             "2 CRO tests per month, quarterly strategy review"
           ]
         },
         {
-          "label": "Automate",
+          "label": "Apps",
           "items": [
-            "Custom internal tools and dashboards",
+            "Custom business apps and dashboards",
             "Process review every quarter"
           ]
         },
         {
-          "label": "Run",
+          "label": "Ops",
           "items": [
             "Everything in Growth",
             "Security hardening, GDPR documentation · same-day reply"

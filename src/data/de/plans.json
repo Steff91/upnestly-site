@@ -1,6 +1,6 @@
 {
-  "title": "Ein Team, ein Monatsplan. Website, Marketing und Prozesse.",
-  "intro": "Jeder Plan umfasst alle vier Disziplinen – betreut von denselben vier Senior-Spezialisten. Sie bezahlen für das Ergebnis, nicht für Stunden.",
+  "title": "Ein Team, ein Monatsplan. Website, Marketing und Apps.",
+  "intro": "Jeder Plan umfasst alle vier Disziplinen – umgesetzt von denselben vier Senior-Spezialisten, mit einem Projektmanager. Sie bezahlen für das Ergebnis, nicht für Stunden.",
   "footnote": "Die Preise sind Startpreise, zzgl. MwSt. Der genaue Monatspreis folgt nach einem kostenlosen Analysegespräch – abhängig von Ihrer Website, Ihren Prozessen und Ihren Zielen. Werbebudgets rechnen Google und Meta direkt ab, Softwarelizenzen (z. B. CRM) der jeweilige Anbieter. Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
   "plans": [
     {
@@ -12,28 +12,28 @@
       "cta": "Mit Essentials starten",
       "groups": [
         {
-          "label": "Build",
+          "label": "Web",
           "items": [
             "Website-Pflege, Fixes und kleine Verbesserungen",
             "Inhaltspflege jeden Monat"
           ]
         },
         {
-          "label": "Grow",
+          "label": "Growth",
           "items": [
             "1 Artikel pro Monat, auf Deutsch oder Englisch",
             "Technisches SEO-Monitoring, monatlicher Report"
           ]
         },
         {
-          "label": "Automate",
+          "label": "Apps",
           "items": [
             "Ein Routineprozess automatisiert",
             "z. B. Website-Anfragen direkt in Ihr CRM"
           ]
         },
         {
-          "label": "Run",
+          "label": "Ops",
           "items": [
             "Managed Hosting in der EU oder Plattform-Betreuung",
             "Updates, Backups, Uptime · Antwort in 2 Werktagen"
@@ -50,27 +50,27 @@
       "cta": "Mit Growth starten",
       "groups": [
         {
-          "label": "Build",
+          "label": "Web",
           "items": [
             "Laufende Verbesserungen und neue Landingpages"
           ]
         },
         {
-          "label": "Grow",
+          "label": "Growth",
           "items": [
             "2 Artikel pro Monat, SEO & KI-Suche (GEO)",
             "Google Ads oder Meta Ads, 1 CRO-Test pro Monat"
           ]
         },
         {
-          "label": "Automate",
+          "label": "Apps",
           "items": [
             "CRM eingerichtet und mit Website, Shop und E-Mail verbunden",
             "Laufende KI-Automatisierungen"
           ]
         },
         {
-          "label": "Run",
+          "label": "Ops",
           "items": [
             "Alles aus Essentials",
             "Performance, Staging · Antwort am nächsten Werktag"
@@ -87,27 +87,27 @@
       "cta": "Mit Scale starten",
       "groups": [
         {
-          "label": "Build",
+          "label": "Web",
           "items": [
             "Feature-Roadmap, quartalsweise geplant"
           ]
         },
         {
-          "label": "Grow",
+          "label": "Growth",
           "items": [
             "4 Artikel pro Monat, Google Ads und Meta Ads",
             "2 CRO-Tests pro Monat, quartalsweises Strategie-Review"
           ]
         },
         {
-          "label": "Automate",
+          "label": "Apps",
           "items": [
-            "Individuelle interne Tools und Dashboards",
+            "Individuelle Business-Apps und Dashboards",
             "Prozess-Review jedes Quartal"
           ]
         },
         {
-          "label": "Run",
+          "label": "Ops",
           "items": [
             "Alles aus Growth",
             "Security-Hardening, DSGVO-Dokumentation · Antwort am selben Werktag"

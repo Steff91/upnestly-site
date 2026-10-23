@@ -1,7 +1,7 @@
 ---
 title: "Hosting & Betreuung"
 order: 6
-discipline: Run
+discipline: Ops
 excerpt: "Managed Hosting in der EU oder Plattform-Betreuung, Updates, Backups und Monitoring."
 metaTitle: "Managed Hosting in der EU & Website-Betreuung | Upnestly"
 metaDescription: "Managed Hosting in der EU für selbst gehostete Websites und Plattform-Betreuung für Shopify und Webflow – Updates, Backups, Monitoring und Sicherheit, betreut von einem Senior Systems Engineer."

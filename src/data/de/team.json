@@ -2,8 +2,8 @@
   "members": [
     {
       "name": "[Vorname Nachname]",
-      "role": "Entwicklung, Design & KI",
-      "discipline": "Build",
+      "role": "Entwicklung, KI & Automatisierung",
+      "discipline": "Web",
       "years": "8+ Jahre",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
@@ -11,7 +11,7 @@
         "WordPress & WooCommerce",
         "Shopify & Webflow",
         "Custom Code (Astro)",
-        "KI-Automatisierung",
+        "KI-Automatisierung (Claude API, n8n)",
         "Technisches SEO"
       ],
       "linkedin": ""
@@ -19,7 +19,7 @@
     {
       "name": "[Vorname Nachname]",
       "role": "Content & Marketing",
-      "discipline": "Grow",
+      "discipline": "Growth",
       "years": "8+ Jahre",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
@@ -33,14 +33,14 @@
     },
     {
       "name": "[Vorname Nachname]",
-      "role": "Prozesse, Anwendungen & Projektsteuerung",
-      "discipline": "Automate",
+      "role": "Produkt- & Projektmanager",
+      "discipline": "Apps",
       "years": "[X]+ Jahre",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
       "focus": [
-        "Prozessanalyse",
-        "CRM & interne Tools",
+        "Ihr fester Ansprechpartner",
+        "Business-Apps & CRM",
         "Scrum & Projektsteuerung",
         "Anforderungen & Recherche"
       ],
@@ -49,7 +49,7 @@
     {
       "name": "[Vorname Nachname]",
       "role": "Infrastruktur & DevOps",
-      "discipline": "Run",
+      "discipline": "Ops",
       "years": "25+ Jahre",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",

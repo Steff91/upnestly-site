@@ -6,7 +6,7 @@ featured: false
 industry: "Education"
 platform: "Magento"
 plan: "Scale"
-disciplines: [Run, Build]
+disciplines: [Ops, Web]
 meta: "Education · Magento"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 headline: "Lorem ipsum platform migration — lorem ipsum dolor sit amet"
@@ -16,8 +16,8 @@ results:
   - { value: "-XX%", label: "Hosting cost" }
 challenge: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 approach:
-  - { discipline: Run, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
-  - { discipline: Build, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Ops, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Web, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
 gallery:
   - { alt: "Screenshot 1" }
   - { alt: "Screenshot 2" }

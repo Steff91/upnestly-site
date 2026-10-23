@@ -1,11 +1,11 @@
 ---
-title: "CRM & interne Tools"
+title: "Business-Apps & CRM"
 order: 4
-discipline: Automate
-excerpt: "CRM-Einführung, verbundene Systeme und interne Tools, die zu Ihrer tatsächlichen Arbeitsweise passen."
-metaTitle: "CRM-Einführung, Integrationen & individuelle interne Tools | Upnestly"
+discipline: Apps
+excerpt: "Individuelle Business-Apps, CRM-Einführung und verbundene Systeme, die zu Ihrer tatsächlichen Arbeitsweise passen."
+metaTitle: "Individuelle Business-Apps, CRM & Integrationen | Upnestly"
 metaDescription: "CRM-Einführung, Systemintegrationen und individuelle interne Tools für kleine und mittlere Unternehmen – passend zu Ihren Prozessen, betreut in einem Monatsplan."
-heroTitle: "CRM und interne Tools, die zu Ihrem Team passen"
+heroTitle: "Business-Apps und CRM, die zu Ihrem Team passen"
 heroText: "Wir bilden Ihre Prozesse ab, richten die passenden Tools ein oder entwickeln sie und verbinden sie mit Website, Shop und Buchhaltung – damit Leads, Bestellungen und Daten nicht länger in Tabellen und Postfächern liegen."
 painsTitle: "Kommt Ihnen das bekannt vor?"
 pains:

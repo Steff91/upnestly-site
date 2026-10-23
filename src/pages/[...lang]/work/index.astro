@@ -12,7 +12,7 @@ export function getStaticPaths() {
 
 const lang = getLang(Astro.url);
 const work = (await getLocalized('work', lang)).sort((a, b) => a.data.order - b.data.order);
-const filters = ['All', 'Build', 'Grow', 'Run'] as const;
+const filters = ['All', 'Web', 'Growth', 'Apps', 'Ops'] as const;
 const t = {
   en: {
     metaTitle: 'Work — Case Studies | Upnestly', metaDescription: 'Case studies from Upnestly: websites, shops, SEO, CRO, AI automation and hosting projects — with the results they brought.',

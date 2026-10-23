@@ -6,7 +6,7 @@ featured: true
 industry: "E-commerce"
 platform: "WooCommerce"
 plan: "Growth"
-disciplines: [Build, Grow, Run]
+disciplines: [Web, Growth, Apps, Ops]
 meta: "E-commerce · WooCommerce"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 headline: "Lorem ipsum shop relaunch — lorem ipsum dolor sit amet"
@@ -16,9 +16,9 @@ results:
   - { value: "X wks", label: "To launch" }
 challenge: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 approach:
-  - { discipline: Build, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
-  - { discipline: Grow, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
-  - { discipline: Run, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Web, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Growth, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Ops, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
 gallery:
   - { alt: "Screenshot 1" }
   - { alt: "Screenshot 2" }

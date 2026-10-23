@@ -70,7 +70,7 @@ collections:
                 label: Included
                 widget: list
                 fields:
-                  - { name: label, label: Label (Build / Grow / Automate / Run), widget: string }
+                  - { name: label, label: Label (Web / Growth / Apps / Ops), widget: string }
                   - { name: items, label: Items, widget: list }
       - name: plans_de
         label: Plans & pricing (DE)
@@ -121,7 +121,7 @@ collections:
             fields:
               - { name: name, label: Name, widget: string }
               - { name: role, label: Role, widget: string }
-              - { name: discipline, label: Discipline, widget: select, options: [Build, Grow, Automate, Run] }
+              - { name: discipline, label: Discipline, widget: select, options: [Web, Growth, Apps, Ops] }
               - { name: years, label: Experience, widget: string }
               - { name: photo, label: Portrait, widget: image, required: false }
               - { name: bio, label: Bio, widget: text }
@@ -154,7 +154,7 @@ collections:
     fields: &service_fields
       - { name: title, label: Title, widget: string }
       - { name: order, label: Order, widget: number, value_type: int }
-      - { name: discipline, label: Discipline, widget: select, options: [Build, Grow, Automate, Run] }
+      - { name: discipline, label: Discipline, widget: select, options: [Web, Growth, Apps, Ops] }
       - { name: excerpt, label: Short description (cards), widget: text }
       - { name: metaTitle, label: Meta title, widget: string }
       - { name: metaDescription, label: Meta description, widget: text }
@@ -225,7 +225,7 @@ collections:
       - { name: industry, label: Industry, widget: string }
       - { name: platform, label: Platform, widget: string }
       - { name: plan, label: Plan, widget: string, required: false }
-      - { name: disciplines, label: Disciplines, widget: select, multiple: true, options: [Build, Grow, Automate, Run] }
+      - { name: disciplines, label: Disciplines, widget: select, multiple: true, options: [Web, Growth, Apps, Ops] }
       - { name: meta, label: "Meta line (industry · platform)", widget: string }
       - { name: summary, label: Card summary, widget: text }
       - { name: headline, label: Case study H1, widget: string }
@@ -240,7 +240,7 @@ collections:
       - name: approach
         label: What we did
         widget: list
-        fields: [{ name: discipline, label: Discipline, widget: select, options: [Build, Grow, Automate, Run] }, { name: text, label: Text, widget: text }]
+        fields: [{ name: discipline, label: Discipline, widget: select, options: [Web, Growth, Apps, Ops] }, { name: text, label: Text, widget: text }]
       - name: gallery
         label: Gallery
         widget: list

@@ -1,11 +1,11 @@
 ---
-title: "CRM & internal tools"
+title: "Business apps & CRM"
 order: 4
-discipline: Automate
-excerpt: "CRM setup, connected systems and internal tools built around how your team actually works."
-metaTitle: "CRM Setup, Integrations & Custom Internal Tools | Upnestly"
+discipline: Apps
+excerpt: "Custom business apps, CRM setup and connected systems built around how your team actually works."
+metaTitle: "Custom Business Apps, CRM & Integrations | Upnestly"
 metaDescription: "CRM implementation, system integrations and custom internal tools for small and mid-sized businesses — mapped to your processes, maintained on one monthly plan."
-heroTitle: "CRM and internal tools that fit how your team works"
+heroTitle: "Business apps and CRM that fit how your team works"
 heroText: "We map your processes, set up or build the tools behind them and connect them to your website, shop and accounting — so leads, orders and data stop living in spreadsheets and inboxes."
 painsTitle: "Sound familiar?"
 pains:

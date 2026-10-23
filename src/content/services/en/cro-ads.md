@@ -1,7 +1,7 @@
 ---
 title: "CRO & paid ads"
 order: 3
-discipline: Grow
+discipline: Growth
 excerpt: "A/B tests, landing pages and Google & Meta campaigns tied to revenue."
 metaTitle: "CRO & Google / Meta Ads Management | Upnestly"
 metaDescription: "Conversion optimization, A/B testing and Google & Meta ads management on one monthly plan — measured against leads and revenue, not clicks."

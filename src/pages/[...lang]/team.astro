@@ -14,11 +14,11 @@ export function getStaticPaths() {
 const lang = getLang(Astro.url);
 const team = getTeam(lang);
 const site = getSite(lang);
-const serviceFor: Record<string, string> = { Build: '/services/development/', Grow: '/services/seo-content/', Automate: '/services/crm-internal-tools/', Run: '/services/hosting-care/' };
+const serviceFor: Record<string, string> = { Web: '/services/development/', Growth: '/services/seo-content/', Apps: '/services/crm-internal-tools/', Ops: '/services/hosting-care/' };
 const t = {
   en: {
     metaTitle: 'Team — Four Senior Specialists | Upnestly',
-    metaDescription: 'Meet the Upnestly team: senior specialists in development, content and marketing, processes and applications, and infrastructure — one team, one point of contact, in your time zone.',
+    metaDescription: 'Meet the Upnestly team: senior specialists in development and AI, content and marketing, product and project management, and infrastructure — one team, one point of contact, in your time zone.',
     eyebrow: 'Team', title: 'Four senior specialists. No juniors, no handoffs.',
     text: 'Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work — in English or German, in your time zone.',
     portrait: 'Portrait', onLinkedin: 'on LinkedIn',
@@ -28,7 +28,7 @@ const t = {
   },
   de: {
     metaTitle: 'Team — Vier Senior-Spezialisten | Upnestly',
-    metaDescription: 'Lernen Sie das Upnestly-Team kennen: Senior-Spezialisten für Entwicklung, Content und Marketing, Prozesse und Anwendungen sowie Infrastruktur – ein Team, ein Ansprechpartner, in Ihrer Zeitzone.',
+    metaDescription: 'Lernen Sie das Upnestly-Team kennen: Senior-Spezialisten für Entwicklung und KI, Content und Marketing, Produkt- und Projektmanagement sowie Infrastruktur – ein Team, ein Ansprechpartner, in Ihrer Zeitzone.',
     eyebrow: 'Team', title: 'Vier Senior-Spezialisten. Keine Juniors, keine Übergaben.',
     text: 'Jede Disziplin wird von jemandem mit langjähriger Praxiserfahrung geleitet. Sie sprechen direkt mit den Menschen, die die Arbeit machen – auf Deutsch oder Englisch, in Ihrer Zeitzone.',
     portrait: 'Porträt', onLinkedin: 'auf LinkedIn',

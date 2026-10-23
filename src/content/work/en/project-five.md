@@ -6,7 +6,7 @@ featured: false
 industry: "Manufacturing"
 platform: "Custom code"
 plan: "Custom"
-disciplines: [Build]
+disciplines: [Apps]
 meta: "Manufacturing · Custom code"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 headline: "Lorem ipsum AI document pipeline — lorem ipsum dolor sit amet"
@@ -16,7 +16,7 @@ results:
   - { value: "X", label: "Systems connected" }
 challenge: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 approach:
-  - { discipline: Build, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Apps, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
 gallery:
   - { alt: "Screenshot 1" }
   - { alt: "Screenshot 2" }

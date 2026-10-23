@@ -1,7 +1,7 @@
 ---
 title: "KI-Automatisierung"
 order: 5
-discipline: Automate
+discipline: Apps
 excerpt: "Content-Pipelines, Katalogpflege und Integrationen auf Basis von LLMs und n8n."
 metaTitle: "KI-Automatisierung für Websites & Shops | Upnestly"
 metaDescription: "KI-Workflows, die Ihrem Team manuelle Arbeit abnehmen – Katalogpflege, Content-Pipelines, Übersetzungen und Integrationen, mit menschlicher Prüfung in jedem Schritt."

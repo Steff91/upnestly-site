@@ -1,7 +1,7 @@
 ---
 title: "AI automation"
 order: 5
-discipline: Automate
+discipline: Apps
 excerpt: "Content pipelines, catalogue enrichment and integrations built on LLMs and n8n."
 metaTitle: "AI Automation for Websites & Shops | Upnestly"
 metaDescription: "AI workflows that take manual work off your team — catalogue enrichment, content pipelines, translations and integrations, with a human checkpoint in every step."

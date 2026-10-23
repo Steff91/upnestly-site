@@ -6,7 +6,7 @@ featured: false
 industry: "Einzelhandel"
 platform: "Shopify"
 plan: "Growth"
-disciplines: [Grow]
+disciplines: [Growth]
 meta: "Einzelhandel · Shopify"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 headline: "Lorem ipsum Werbeanzeigen & CRO — lorem ipsum dolor sit amet"
@@ -16,7 +16,7 @@ results:
   - { value: "+XX%", label: "Umsatz" }
 challenge: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 approach:
-  - { discipline: Grow, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Growth, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
 gallery:
   - { alt: "Screenshot 1" }
   - { alt: "Screenshot 2" }

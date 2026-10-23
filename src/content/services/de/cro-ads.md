@@ -1,7 +1,7 @@
 ---
 title: "CRO & Werbeanzeigen"
 order: 3
-discipline: Grow
+discipline: Growth
 excerpt: "A/B-Tests, Landingpages und Google- & Meta-Kampagnen mit Bezug zum Umsatz."
 metaTitle: "CRO & Betreuung von Google / Meta Ads | Upnestly"
 metaDescription: "Conversion-Optimierung, A/B-Tests und Betreuung von Google Ads und Meta Ads in einem Monatsplan – gemessen an Leads und Umsatz, nicht an Klicks."

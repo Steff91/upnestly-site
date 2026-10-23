@@ -6,7 +6,7 @@ featured: true
 industry: "Professional services"
 platform: "Webflow"
 plan: "Essentials"
-disciplines: [Build, Run]
+disciplines: [Web, Ops]
 meta: "Professional services · Webflow"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 headline: "Lorem ipsum lead generation site — lorem ipsum dolor sit amet"
@@ -16,8 +16,8 @@ results:
   - { value: "XX", label: "Pages" }
 challenge: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 approach:
-  - { discipline: Build, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
-  - { discipline: Run, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Web, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+  - { discipline: Ops, text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
 gallery:
   - { alt: "Screenshot 1" }
   - { alt: "Screenshot 2" }
