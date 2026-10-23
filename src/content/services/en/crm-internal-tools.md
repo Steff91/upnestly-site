@@ -1,0 +1,55 @@
+---
+title: "CRM & internal tools"
+order: 4
+discipline: Automate
+excerpt: "CRM setup, connected systems and internal tools built around how your team actually works."
+metaTitle: "CRM Setup, Integrations & Custom Internal Tools | Upnestly"
+metaDescription: "CRM implementation, system integrations and custom internal tools for small and mid-sized businesses — mapped to your processes, maintained on one monthly plan."
+heroTitle: "CRM and internal tools that fit how your team works"
+heroText: "We map your processes, set up or build the tools behind them and connect them to your website, shop and accounting — so leads, orders and data stop living in spreadsheets and inboxes."
+painsTitle: "Sound familiar?"
+pains:
+  - title: "Leads get lost between inbox and spreadsheet"
+    text: "Enquiries arrive by form, email and phone, and nobody has one view of who was contacted and what happens next."
+  - title: "The same data is typed in three times"
+    text: "Orders, customers and invoices are copied by hand between the shop, the CRM and accounting."
+  - title: "A tool for everything, a process for nothing"
+    text: "Five subscriptions that don't talk to each other, and a team that works around them instead of with them."
+deliverablesTitle: "What we do"
+deliverables:
+  - title: "Process mapping"
+    text: "We sit with your team, map how work actually flows today and agree on what the target process looks like."
+  - title: "CRM setup & migration"
+    text: "HubSpot, Pipedrive, Odoo or a lean custom CRM — configured to your pipeline, with your existing data moved over."
+  - title: "Integrations"
+    text: "Website forms, shop, email, calendar and accounting (e.g. DATEV, Lexoffice) connected so data flows on its own."
+  - title: "Custom internal tools"
+    text: "Client portals, quote and order tools, dashboards and admin panels where off-the-shelf software doesn’t fit."
+  - title: "AI in your workflows"
+    text: "Document processing, enquiry sorting and reporting built into the tools your team already uses — with a human checkpoint."
+  - title: "Training & documentation"
+    text: "Your team learns the new process, and every workflow is documented and handed over."
+inPlans:
+  essentials: "One routine process automated — for example website enquiries going straight into your CRM."
+  growth: "CRM set up and connected to your website, shop and email, plus ongoing automations."
+  scale: "Custom internal tools and dashboards, with a process review every quarter."
+steps:
+  - title: "Discovery"
+    text: "Interviews with your team and a map of today’s process, with the biggest time sinks marked."
+  - title: "Build or buy"
+    text: "We recommend existing software where it covers the job, and build only what it can’t."
+  - title: "Rollout"
+    text: "Set up, migrate, connect and train — in stages, so daily work never stops."
+  - title: "Improve"
+    text: "Monthly check on what the team uses, what slows it down and what to automate next."
+tools: ["HubSpot", "Pipedrive", "Odoo", "n8n", "Make", "Supabase", "Directus", "Google Workspace", "Microsoft 365"]
+faq:
+  - q: "Do you build a custom CRM or set up an existing one?"
+    a: "Usually an existing one. If HubSpot, Pipedrive or Odoo covers most of what you need, we configure it and build only the missing pieces. A fully custom tool makes sense when your process is your advantage."
+  - q: "Who owns the tools and the data?"
+    a: "You do. Software runs in accounts in your name or on infrastructure we host for you in the EU, and everything is documented and handed over."
+  - q: "[Can you work with the software we already have?]"
+    a: "[Answer.]"
+  - q: "[How long does a CRM rollout take?]"
+    a: "[Answer.]"
+---

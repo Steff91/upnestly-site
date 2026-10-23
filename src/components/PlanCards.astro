@@ -1,5 +1,5 @@
 ---
-// Three monthly plans + the Custom CTA. With `toggle`, shows a Monthly / Annual switch (annual = discounted monthly price, billed yearly).
+// Three monthly plans (priced "from" — the exact price follows the discovery call) + the Custom CTA. With `toggle`, shows a Monthly / Annual switch (annual = discounted monthly price, billed yearly).
 import Icon from './Icon.astro';
 import { getPlans, getPricing } from '../i18n/data';
 import { planHref } from '../data/inquiry';
@@ -13,8 +13,8 @@ const lang = getLang(Astro.url);
 const data = getPlans(lang);
 const pricing = getPricing(lang);
 const t = {
-  en: { period: 'Billing period', monthly: 'Monthly', annual: 'Annual', save: `Save ${pricing.annualDiscount}% with annual billing`, swipe: 'Swipe to compare plans →', featured: 'Most chosen', yearly: 'Billed yearly', billedMonthly: 'Billed monthly', show: 'Show' },
-  de: { period: 'Abrechnungszeitraum', monthly: 'Monatlich', annual: 'Jährlich', save: `${pricing.annualDiscount} % sparen bei jährlicher Zahlung`, swipe: 'Wischen, um Pläne zu vergleichen →', featured: 'Am beliebtesten', yearly: 'Jährliche Abrechnung', billedMonthly: 'Monatliche Abrechnung', show: 'Zeige' },
+  en: { period: 'Billing period', monthly: 'Monthly', annual: 'Annual', save: `Save ${pricing.annualDiscount}% with annual billing`, swipe: 'Swipe to compare plans →', featured: 'Most chosen', from: 'From', yearly: 'Billed yearly', billedMonthly: 'Billed monthly', show: 'Show' },
+  de: { period: 'Abrechnungszeitraum', monthly: 'Monatlich', annual: 'Jährlich', save: `${pricing.annualDiscount} % sparen bei jährlicher Zahlung`, swipe: 'Wischen, um Pläne zu vergleichen →', featured: 'Am beliebtesten', from: 'Ab', yearly: 'Jährliche Abrechnung', billedMonthly: 'Monatliche Abrechnung', show: 'Zeige' },
 }[lang];
 
 
@@ -52,6 +52,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
           <p class:list={['m-0 text-[15px] leading-normal', plan.featured ? 'text-night-text' : 'text-body']}>{plan.blurb}</p>
         </div>
         <div class="flex flex-col gap-1">
+          <p class:list={['label m-0', plan.featured ? 'text-night-accent' : 'text-dim']}>{t.from}</p>
           <p class="m-0 flex items-baseline gap-2">
             <span class="price-monthly text-[44px] font-extrabold leading-none tracking-[-0.02em]">{plan.price}</span>
             {toggle && <span class="price-annual text-[44px] font-extrabold leading-none tracking-[-0.02em]">{annualPrice(plan.price)}</span>}

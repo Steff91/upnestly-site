@@ -1,37 +1,42 @@
 {
-  "title": "One team, one monthly fee. Pick the pace.",
-  "intro": "Every plan includes all three disciplines — development, growth and hosting — handled by the same three senior people.",
-  "footnote": "Prices excl. VAT. Ad spend is billed directly by Google or Meta. On Shopify and Webflow, hosting is provided by the platform — we take care of apps, themes, monitoring and backups instead. Minimum term 3 months, then cancel monthly. Unused development hours roll over for one month.",
+  "title": "One team, one monthly plan. Website, marketing and processes.",
+  "intro": "Every plan includes all four disciplines — handled by the same four senior people. You pay for the result, not for hours.",
+  "footnote": "Prices are starting points, excl. VAT. The exact monthly price follows a free discovery call, based on your site, your processes and your goals. Ad spend is billed directly by Google or Meta; software licences (e.g. CRM) are billed by the vendor. Minimum term 3 months, then cancel monthly.",
   "plans": [
     {
       "name": "Essentials",
       "price": "€990",
       "period": "/ month",
-      "blurb": "For a company site that needs to stay fast, secure and up to date.",
+      "blurb": "For businesses that need a reliable website and their first processes in order.",
       "featured": false,
       "cta": "Start with Essentials",
       "groups": [
         {
           "label": "Build",
           "items": [
-            "8 h development & design per month",
-            "Fixes, small features, content updates"
+            "Site care, fixes and small improvements",
+            "Content updates every month"
           ]
         },
         {
           "label": "Grow",
           "items": [
             "1 article per month, in English or German",
-            "Technical SEO monitoring",
-            "Monthly report"
+            "Technical SEO monitoring, monthly report"
+          ]
+        },
+        {
+          "label": "Automate",
+          "items": [
+            "One routine process automated",
+            "e.g. website enquiries straight into your CRM"
           ]
         },
         {
           "label": "Run",
           "items": [
             "Managed EU hosting or platform care",
-            "Updates, daily backups, uptime monitoring",
-            "Response within 2 business days"
+            "Updates, backups, uptime · reply within 2 business days"
           ]
         }
       ]
@@ -40,32 +45,35 @@
       "name": "Growth",
       "price": "€1,990",
       "period": "/ month",
-      "blurb": "For businesses that use their site to win leads or sales.",
+      "blurb": "For businesses that want more leads and a team that spends less time on admin.",
       "featured": true,
       "cta": "Start with Growth",
       "groups": [
         {
           "label": "Build",
           "items": [
-            "16 h development & design per month",
-            "Includes AI automations"
+            "Ongoing improvements and new landing pages"
           ]
         },
         {
           "label": "Grow",
           "items": [
-            "2 articles per month, in English or German",
-            "SEO & AI search (GEO)",
-            "Google or Meta ads management",
-            "1 CRO test per month"
+            "2 articles per month, SEO & AI search (GEO)",
+            "Google or Meta ads, 1 CRO test per month"
+          ]
+        },
+        {
+          "label": "Automate",
+          "items": [
+            "CRM set up and connected to site, shop and email",
+            "Ongoing AI automations"
           ]
         },
         {
           "label": "Run",
           "items": [
             "Everything in Essentials",
-            "Performance optimization, staging site",
-            "Next-business-day response"
+            "Performance, staging · next-business-day reply"
           ]
         }
       ]
@@ -74,32 +82,35 @@
       "name": "Scale",
       "price": "€3,490",
       "period": "/ month",
-      "blurb": "For shops and multi-market sites with an ongoing roadmap.",
+      "blurb": "For growing companies with several markets, teams or systems to connect.",
       "featured": false,
       "cta": "Start with Scale",
       "groups": [
         {
           "label": "Build",
           "items": [
-            "32 h development, design & AI per month",
             "Feature roadmap, planned quarterly"
           ]
         },
         {
           "label": "Grow",
           "items": [
-            "4 articles per month, in English or German",
-            "Google and Meta ads",
-            "2 CRO tests per month",
-            "Quarterly strategy review"
+            "4 articles per month, Google and Meta ads",
+            "2 CRO tests per month, quarterly strategy review"
+          ]
+        },
+        {
+          "label": "Automate",
+          "items": [
+            "Custom internal tools and dashboards",
+            "Process review every quarter"
           ]
         },
         {
           "label": "Run",
           "items": [
             "Everything in Growth",
-            "Security hardening, GDPR documentation",
-            "Same-business-day response"
+            "Security hardening, GDPR documentation · same-day reply"
           ]
         }
       ]
@@ -108,7 +119,7 @@
       "name": "Custom",
       "price": "Let’s talk",
       "period": "",
-      "blurb": "New builds, migrations, large shops or AI projects — as a fixed-price project or a tailored retainer.",
+      "blurb": "New websites, migrations, CRM rollouts, internal apps or larger AI projects — as a fixed-price project or a tailored plan.",
       "featured": false,
       "cta": "Get a quote",
       "groups": [
@@ -116,9 +127,9 @@
           "label": "Examples",
           "items": [
             "New website or shop, redesign",
-            "Migration between platforms",
-            "Custom AI pipelines & integrations",
-            "More hours, languages or markets"
+            "CRM rollout and data migration",
+            "Custom internal app or client portal",
+            "Larger AI pipelines & integrations"
           ]
         }
       ]

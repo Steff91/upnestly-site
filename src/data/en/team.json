@@ -7,7 +7,13 @@
       "years": "8+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-      "focus": ["WordPress & WooCommerce", "Shopify & Webflow", "Custom code (Astro)", "AI automation", "Technical SEO"],
+      "focus": [
+        "WordPress & WooCommerce",
+        "Shopify & Webflow",
+        "Custom code (Astro)",
+        "AI automation",
+        "Technical SEO"
+      ],
       "linkedin": ""
     },
     {
@@ -17,7 +23,27 @@
       "years": "8+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-      "focus": ["Content in English & German", "SEO & AI search", "Google & Meta ads", "Conversion optimization"],
+      "focus": [
+        "Content in English & German",
+        "SEO & AI search",
+        "Google & Meta ads",
+        "Conversion optimization"
+      ],
+      "linkedin": ""
+    },
+    {
+      "name": "[Name Surname]",
+      "role": "Processes, applications & delivery",
+      "discipline": "Automate",
+      "years": "[X]+ yrs",
+      "photo": "",
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "focus": [
+        "Process mapping",
+        "CRM & internal tools",
+        "Scrum & project delivery",
+        "Requirements & research"
+      ],
       "linkedin": ""
     },
     {
@@ -27,24 +53,58 @@
       "years": "25+ yrs",
       "photo": "",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-      "focus": ["Linux servers", "Managed EU hosting", "Security hardening", "Backups & monitoring"],
+      "focus": [
+        "Linux servers",
+        "Managed EU hosting",
+        "Security hardening",
+        "Backups & monitoring"
+      ],
       "linkedin": ""
     }
   ],
   "howWeWork": [
-    { "title": "One project lead", "text": "One person owns your account, plans the month and is your single point of contact." },
-    { "title": "Weekly sync, monthly call", "text": "The three of us align every week. Once a month, you get a report and a call with the whole team." },
-    { "title": "Everything documented", "text": "Decisions, access and workflows are written down, so nothing depends on one person’s memory." },
-    { "title": "Your time zone", "text": "We work CET hours — the same day as Berlin, Vienna and Zurich." }
+    {
+      "title": "One project lead",
+      "text": "One person owns your account, plans the month and is your single point of contact."
+    },
+    {
+      "title": "Weekly sync, monthly call",
+      "text": "We align as a team every week. Once a month, you get a report and a call with the whole team."
+    },
+    {
+      "title": "Everything documented",
+      "text": "Decisions, access and workflows are written down, so nothing depends on one person’s memory."
+    },
+    {
+      "title": "Your time zone",
+      "text": "We work CET hours — the same day as Berlin, Vienna and Zurich."
+    }
   ],
   "values": [
-    { "title": "Senior only", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." },
-    { "title": "Honest advice", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." },
-    { "title": "Measured results", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." },
-    { "title": "No lock-in", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." }
+    {
+      "title": "Senior only",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "Honest advice",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "Measured results",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "No lock-in",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    }
   ],
   "network": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. When a project needs more, we bring in trusted specialists we have worked with before — under our lead, on our invoice.",
-    "items": ["[Photography & video]", "[Brand & identity design]", "[Copywriting in other languages]", "[Specialist]"]
+    "items": [
+      "[Photography & video]",
+      "[Brand & identity design]",
+      "[Copywriting in other languages]",
+      "[Specialist]"
+    ]
   }
 }

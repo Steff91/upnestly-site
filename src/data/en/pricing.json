@@ -4,67 +4,284 @@
     {
       "group": "Build",
       "rows": [
-        { "label": "Development & design hours per month", "values": ["8 h", "16 h", "32 h"] },
-        { "label": "Fixes, small features, content updates", "values": [true, true, true] },
-        { "label": "AI automations", "values": [false, true, true] },
-        { "label": "Staging site", "values": [false, true, true] },
-        { "label": "Feature roadmap, planned quarterly", "values": [false, false, true] }
+        {
+          "label": "Site care, fixes and content updates",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "New landing pages and features",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Staging site",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Feature roadmap, planned quarterly",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
       ]
     },
     {
       "group": "Grow",
       "rows": [
-        { "label": "Articles per month (English or German)", "values": ["1", "2", "4"] },
-        { "label": "Technical SEO monitoring", "values": [true, true, true] },
-        { "label": "SEO & AI search (GEO)", "values": [false, true, true] },
-        { "label": "Ads management", "values": [false, "Google or Meta", "Google and Meta"] },
-        { "label": "CRO tests per month", "values": [false, "1", "2"] },
-        { "label": "Monthly report", "values": [true, true, true] },
-        { "label": "Quarterly strategy review", "values": [false, false, true] }
+        {
+          "label": "Articles per month (English or German)",
+          "values": [
+            "1",
+            "2",
+            "4"
+          ]
+        },
+        {
+          "label": "Technical SEO monitoring",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "SEO & AI search (GEO)",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Ads management",
+          "values": [
+            false,
+            "Google or Meta",
+            "Google and Meta"
+          ]
+        },
+        {
+          "label": "CRO tests per month",
+          "values": [
+            false,
+            "1",
+            "2"
+          ]
+        },
+        {
+          "label": "Quarterly strategy review",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Automate",
+      "rows": [
+        {
+          "label": "Routine processes automated",
+          "values": [
+            "1",
+            "Ongoing",
+            "Ongoing"
+          ]
+        },
+        {
+          "label": "CRM set up and connected",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "AI automations",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Custom internal tools & dashboards",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        },
+        {
+          "label": "Process review",
+          "values": [
+            false,
+            false,
+            "Quarterly"
+          ]
+        }
       ]
     },
     {
       "group": "Run",
       "rows": [
-        { "label": "Managed EU hosting or platform care", "values": [true, true, true] },
-        { "label": "Updates, daily backups, uptime monitoring", "values": [true, true, true] },
-        { "label": "Performance optimization", "values": [false, true, true] },
-        { "label": "Security hardening", "values": [false, false, true] },
-        { "label": "GDPR documentation", "values": [false, false, true] }
+        {
+          "label": "Managed EU hosting or platform care",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Updates, daily backups, uptime monitoring",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Performance optimization",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Security hardening & GDPR documentation",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
       ]
     },
     {
       "group": "Support",
       "rows": [
-        { "label": "Response time", "values": ["2 business days", "Next business day", "Same business day"] },
-        { "label": "Monthly call with the whole team", "values": [true, true, true] }
+        {
+          "label": "Response time",
+          "values": [
+            "2 business days",
+            "Next business day",
+            "Same business day"
+          ]
+        },
+        {
+          "label": "Monthly report and call with the whole team",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        }
       ]
     }
   ],
   "examples": [
-    { "plan": "Essentials", "hours": "8 h", "text": "Refresh a page section, connect a contact form to your CRM, fix layout issues on mobile and apply the month’s content changes." },
-    { "plan": "Growth", "hours": "16 h", "text": "Design and build a new landing page for a campaign, and set up one AI automation — for example, routing form leads to the right person." },
-    { "plan": "Scale", "hours": "32 h", "text": "Add a B2B price list or product configurator to your shop, and redesign a checkout step backed by a CRO test." }
+    {
+      "plan": "Essentials",
+      "title": "A tidy base",
+      "text": "The site stays fast and up to date, one article goes live, and website enquiries now land in your CRM instead of an inbox."
+    },
+    {
+      "plan": "Growth",
+      "title": "More leads, less admin",
+      "text": "A new campaign landing page, a CRO test on your contact form, and leads automatically qualified and assigned to the right person."
+    },
+    {
+      "plan": "Scale",
+      "title": "Connected systems",
+      "text": "A B2B price list in the shop, both ad channels optimised, and a dashboard that shows sales, leads and open orders in one place."
+    }
   ],
   "addons": [
-    { "title": "Development, design & AI", "price": "€50", "unit": "/ hour", "text": "Extra hours on top of your plan, for a busy month or a bigger feature." },
-    { "title": "Content, SEO & ads", "price": "€40", "unit": "/ hour", "text": "Extra articles, landing page copy, campaign setup or SEO work." },
-    { "title": "Hosting & maintenance", "price": "€30", "unit": "/ hour", "text": "Migrations, server tasks, extra monitoring or one-off maintenance." }
+    {
+      "title": "New website or shop",
+      "price": "Fixed price",
+      "unit": "",
+      "text": "Design and build, migration from your current platform, launch — then into a monthly plan."
+    },
+    {
+      "title": "CRM rollout or internal app",
+      "price": "Fixed price",
+      "unit": "",
+      "text": "Discovery, setup or custom build, data migration and team training."
+    },
+    {
+      "title": "Larger AI project",
+      "price": "From €X,XXX",
+      "unit": "",
+      "text": "Catalogue pipelines, document processing and multi-system integrations, scoped up front."
+    }
   ],
   "terms": [
-    { "title": "Minimum 3 months, then monthly", "text": "After the first three months you can cancel any time, effective at the end of the month." },
-    { "title": "Save on annual billing", "text": "Pay for 12 months upfront and save {discount}% on any plan." },
-    { "title": "Hours roll over", "text": "Unused development hours carry over to the next month, once." },
-    { "title": "Switch plans any month", "text": "Move up or down from the next billing month — no new contract." },
-    { "title": "Ad spend stays yours", "text": "You pay Google and Meta directly, from your own accounts." },
-    { "title": "Prices excl. VAT", "text": "All prices are in euros and exclude VAT. [Confirm VAT handling for EU clients with your accountant.]" }
+    {
+      "title": "Discovery first",
+      "text": "A free call to understand your site, processes and goals. You get a fixed monthly price before anything starts."
+    },
+    {
+      "title": "Priced by result, not hours",
+      "text": "Each month we agree priorities with you. No timesheets, no surprise invoices."
+    },
+    {
+      "title": "Minimum 3 months, then monthly",
+      "text": "After the first three months you can cancel any time, effective at the end of the month."
+    },
+    {
+      "title": "Save on annual billing",
+      "text": "Pay for 12 months upfront and save {discount}% on any plan."
+    },
+    {
+      "title": "Ad spend and licences stay yours",
+      "text": "You pay Google, Meta and software vendors directly, from your own accounts."
+    },
+    {
+      "title": "Prices excl. VAT",
+      "text": "All prices are in euros and exclude VAT. [Confirm VAT handling for EU clients with your accountant.]"
+    }
   ],
   "faq": [
-    { "q": "Which plan should we start with?", "a": "If your site mainly needs to stay fast, secure and up to date, start with Essentials. If it should bring in leads or sales, Growth is the usual starting point. Not sure? The free audit ends with a plan recommendation." },
-    { "q": "Can we switch plans later?", "a": "Yes. You can move up or down from the next billing month, without a new contract." },
-    { "q": "What if we need more hours in one month?", "a": "Add extra hours at the add-on rates, or move up a plan if it happens regularly — that is usually cheaper." },
-    { "q": "What happens when we cancel?", "a": "After the minimum three months, the plan ends at the end of the month you cancel. You keep everything: code, content, accounts and documentation." },
-    { "q": "Do you sign an NDA and a data processing agreement?", "a": "Yes. We sign your NDA on request, and a data processing agreement (DPA) is part of every plan." },
-    { "q": "Do you take one-off projects?", "a": "Yes — new websites, shops, migrations and larger AI projects run as a Custom project with a fixed quote, and can move to a monthly plan after launch." }
+    {
+      "q": "Why “from” prices?",
+      "a": "Because no two businesses have the same site and processes. The plan sets the scope; the discovery call sets the exact monthly price, which then stays fixed."
+    },
+    {
+      "q": "Which plan should we start with?",
+      "a": "If you mainly need a reliable website and a first process in order, start with Essentials. If you want more leads and less admin, Growth is the usual starting point. The free audit ends with a recommendation."
+    },
+    {
+      "q": "Do you bill by the hour?",
+      "a": "No. You pay a monthly price for an agreed scope. We plan priorities with you every month and report on results, not timesheets."
+    },
+    {
+      "q": "What if we need more in one month?",
+      "a": "Larger pieces of work — a new site, a CRM rollout, an internal app — run as a fixed-price project next to your plan. If it keeps happening, moving up a plan is usually the better deal."
+    },
+    {
+      "q": "What happens when we cancel?",
+      "a": "After the minimum three months, the plan ends at the end of the month you cancel. You keep everything: code, content, tools, accounts and documentation."
+    },
+    {
+      "q": "Do you sign an NDA and a data processing agreement?",
+      "a": "Yes. We sign your NDA on request, and a data processing agreement (DPA) is part of every plan."
+    }
   ]
 }

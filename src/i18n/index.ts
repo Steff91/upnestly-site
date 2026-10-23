@@ -38,3 +38,6 @@ export const formatPrice = (n: number, lang: Lang) => (lang === 'de' ? `${format
 
 /** Digits of a price string: "€1,990" / "1.990 €" → 1990 */
 export const priceNumber = (price: string) => Number(price.replace(/[^\d]/g, ''));
+
+/** Plans are priced "from" — the exact price follows the discovery call: "from €990" / "ab 990 €". */
+export const fromPrice = (price: string, lang: Lang) => (/\d/.test(price) ? `${lang === 'de' ? 'ab' : 'from'} ${price}` : price);

@@ -5,7 +5,7 @@ import Icon from '../../components/Icon.astro';
 import PlanCards from '../../components/PlanCards.astro';
 import Contact from '../../components/sections/Contact.astro';
 import { getPlans, getPricing, getSite } from '../../i18n/data';
-import { getLang, langParams } from '../../i18n';
+import { fromPrice, getLang, langParams } from '../../i18n';
 
 export function getStaticPaths() {
   return langParams();
@@ -27,21 +27,21 @@ const faqSchema = {
 
 const t = {
   en: {
-    metaTitle: 'Pricing — Monthly Plans for Development, SEO, CRO & Hosting | Upnestly',
-    metaDescription: `Three monthly plans from ${cols[0]?.price} — development, content, SEO, CRO and managed hosting from one senior team. Save ${pricing.annualDiscount}% with annual billing.`,
-    eyebrow: 'Pricing', title: 'Simple monthly plans. One senior team.', text: 'Every plan includes development, growth and hosting. Minimum 3 months, then cancel monthly.',
+    metaTitle: 'Pricing — Monthly Plans for Web, Marketing, CRM & Hosting | Upnestly',
+    metaDescription: `Monthly plans from ${cols[0]?.price} — website, marketing, CRM and automation, and managed hosting from one senior team. Priced by result, not hours.`,
+    eyebrow: 'Pricing', title: 'Simple monthly plans. One senior team.', text: 'Every plan includes your website, marketing, processes and hosting. Priced by result, not hours — the exact price follows a free discovery call.',
     compare: 'Compare plans in detail', caption: 'Feature comparison of the Essentials, Growth and Scale plans', feature: 'Feature', perMonth: '/ month', included: 'Included', notIncluded: 'Not included',
-    hoursTitle: 'What can we do with your hours?', hoursLead: 'Examples of a typical month of development and design work in each plan.',
-    addonsTitle: 'Need more in a busy month?', addonsLead: 'Add hours on top of any plan. If it happens every month, moving up a plan is usually cheaper.',
+    hoursTitle: 'What a month can look like', hoursLead: 'Examples of what one month brings in each plan — across website, marketing and processes.',
+    addonsTitle: 'Bigger projects, next to your plan', addonsLead: 'Larger pieces of work run as a fixed-price project — scoped up front, then maintained through your monthly plan.',
     billing: 'How billing works', faq: 'Pricing questions', faqLead: 'Not sure which plan fits? Book the free audit and we’ll recommend one.', audit: 'Book a free audit',
   },
   de: {
-    metaTitle: 'Preise — Monatspläne für Entwicklung, SEO, CRO & Hosting | Upnestly',
-    metaDescription: `Drei Monatspläne ab ${cols[0]?.price} – Entwicklung, Content, SEO, CRO und Managed Hosting aus einem Senior-Team. ${pricing.annualDiscount} % sparen bei jährlicher Zahlung.`,
-    eyebrow: 'Preise', title: 'Einfache Monatspläne. Ein Senior-Team.', text: 'Jeder Plan umfasst Entwicklung, Wachstum und Hosting. Mindestlaufzeit 3 Monate, danach monatlich kündbar.',
+    metaTitle: 'Preise — Monatspläne für Web, Marketing, CRM & Hosting | Upnestly',
+    metaDescription: `Monatspläne ab ${cols[0]?.price} – Website, Marketing, CRM und Automatisierung sowie Managed Hosting aus einem Senior-Team. Preis nach Ergebnis, nicht nach Stunden.`,
+    eyebrow: 'Preise', title: 'Einfache Monatspläne. Ein Senior-Team.', text: 'Jeder Plan umfasst Website, Marketing, Prozesse und Hosting. Preis nach Ergebnis, nicht nach Stunden – der genaue Preis folgt nach einem kostenlosen Analysegespräch.',
     compare: 'Pläne im Detail vergleichen', caption: 'Leistungsvergleich der Pläne Essentials, Growth und Scale', feature: 'Leistung', perMonth: '/ Monat', included: 'Enthalten', notIncluded: 'Nicht enthalten',
-    hoursTitle: 'Was wir mit Ihren Stunden machen können', hoursLead: 'Beispiele für einen typischen Monat Entwicklungs- und Designarbeit in jedem Plan.',
-    addonsTitle: 'Mehr Bedarf in einem vollen Monat?', addonsLead: 'Buchen Sie Stunden zu jedem Plan dazu. Kommt das jeden Monat vor, ist der nächsthöhere Plan meist günstiger.',
+    hoursTitle: 'So kann ein Monat aussehen', hoursLead: 'Beispiele, was ein Monat in jedem Plan bringt – über Website, Marketing und Prozesse hinweg.',
+    addonsTitle: 'Größere Projekte neben Ihrem Plan', addonsLead: 'Größere Vorhaben laufen als Festpreisprojekt – vorab definiert und danach über Ihren Monatsplan betreut.',
     billing: 'So funktioniert die Abrechnung', faq: 'Fragen zu den Preisen', faqLead: 'Unsicher, welcher Plan passt? Buchen Sie den kostenlosen Audit – wir empfehlen Ihnen einen.', audit: 'Kostenlosen Audit buchen',
   },
 }[lang];
@@ -78,7 +78,7 @@ const t = {
               {cols.map((p) => (
                 <th scope="col" class:list={['p-6 align-bottom', p.featured && 'bg-tint-soft']}>
                   <span class="block text-[19px] font-extrabold text-ink">{p.name}</span>
-                  <span class="text-[14px] font-semibold text-muted">{p.price} {t.perMonth}</span>
+                  <span class="text-[14px] font-semibold text-muted">{fromPrice(p.price, lang)} {t.perMonth}</span>
                 </th>
               ))}
             </tr>
@@ -121,9 +121,9 @@ const t = {
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5">
         {pricing.examples.map((e, i) => (
           <div class="flex flex-col gap-3 rounded-[20px] bg-white p-8" data-reveal style={`--i:${i}`}>
-            <p class="m-0 flex items-baseline justify-between gap-3">
+            <p class="m-0 flex flex-col gap-2">
               <span class="label text-brand">{e.plan}</span>
-              <span class="text-[32px] font-extrabold leading-none tracking-[-0.02em] text-ink">{e.hours}</span>
+              <span class="text-[20px] font-extrabold leading-tight text-ink">{e.title}</span>
             </p>
             <p class="m-0 text-[15px] leading-[1.6] text-body">{e.text}</p>
           </div>
@@ -144,7 +144,7 @@ const t = {
           <div class="flex flex-col gap-3 rounded-[20px] border border-line p-8" data-reveal style={`--i:${i}`}>
             <h3 class="m-0 text-[19px] font-bold">{a.title}</h3>
             <p class="m-0 flex items-baseline gap-2">
-              <span class="text-[36px] font-extrabold leading-none tracking-[-0.02em] text-brand">{a.price}</span>
+              <span class="text-[24px] font-extrabold leading-none tracking-[-0.01em] text-brand">{a.price}</span>
               <span class="text-[15px] text-muted">{a.unit}</span>
             </p>
             <p class="m-0 text-[15px] leading-[1.6] text-body">{a.text}</p>

@@ -11,27 +11,27 @@ const year = new Date().getFullYear();
 const t = {
   en: {
     home: 'Upnestly — home',
-    about: 'Websites, search and AI automation on WordPress, Shopify, Webflow, Magento or custom code — built, grown and run by one senior team.',
+    about: 'Websites, marketing, CRM, internal tools and AI automation — built, grown and run by one senior team.',
     services: 'Services', company: 'Company', contact: 'Contact', worldwide: 'working worldwide', audit: 'Book a free audit',
     legal: 'Legal', imprint: 'Imprint', privacy: 'Privacy policy', cookies: 'Cookies', settings: 'Cookie settings', top: 'Back to top',
     links: {
-      services: ['Development & design', 'SEO & content', 'CRO & paid ads', 'AI automation', 'Hosting & care'],
+      services: ['Development & design', 'SEO & content', 'CRO & paid ads', 'CRM & internal tools', 'AI automation', 'Hosting & care'],
       company: ['Plans & pricing', 'Selected work', 'Team', 'Free audit', 'Contact'],
     },
   },
   de: {
     home: 'Upnestly — Startseite',
-    about: 'Websites, Suchmaschinen und KI-Automatisierung auf WordPress, Shopify, Webflow, Magento oder Custom Code – entwickelt, weiterentwickelt und betrieben von einem Senior-Team.',
+    about: 'Websites, Marketing, CRM, interne Tools und KI-Automatisierung – entwickelt, weiterentwickelt und betrieben von einem Senior-Team.',
     services: 'Leistungen', company: 'Unternehmen', contact: 'Kontakt', worldwide: 'weltweit tätig', audit: 'Kostenlosen Audit buchen',
     legal: 'Rechtliches', imprint: 'Impressum', privacy: 'Datenschutz', cookies: 'Cookies', settings: 'Cookie-Einstellungen', top: 'Nach oben',
     links: {
-      services: ['Entwicklung & Design', 'SEO & Content', 'CRO & Werbeanzeigen', 'KI-Automatisierung', 'Hosting & Betreuung'],
+      services: ['Entwicklung & Design', 'SEO & Content', 'CRO & Werbeanzeigen', 'CRM & interne Tools', 'KI-Automatisierung', 'Hosting & Betreuung'],
       company: ['Pläne & Preise', 'Ausgewählte Projekte', 'Team', 'Kostenloser Audit', 'Kontakt'],
     },
   },
 }[lang];
 
-const serviceHrefs = ['/services/development/', '/services/seo-content/', '/services/cro-ads/', '/services/ai-automation/', '/services/hosting-care/'];
+const serviceHrefs = ['/services/development/', '/services/seo-content/', '/services/cro-ads/', '/services/crm-internal-tools/', '/services/ai-automation/', '/services/hosting-care/'];
 const companyHrefs = ['/pricing/', '/work/', '/team/', '/audit/', '/contact/'];
 const columns = [
   { title: t.services, links: serviceHrefs.map((h, i) => ({ href: localize(h, lang), label: t.links.services[i] })) },

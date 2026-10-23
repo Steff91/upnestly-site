@@ -1,6 +1,6 @@
 ---
 title: "Hosting & Betreuung"
-order: 5
+order: 6
 discipline: Run
 excerpt: "Managed Hosting in der EU oder Plattform-Betreuung, Updates, Backups und Monitoring."
 metaTitle: "Managed Hosting in der EU & Website-Betreuung | Upnestly"

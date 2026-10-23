@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 const { entry, next, after } = Astro.props;
 const w = entry.data;
 const lang = getLang(Astro.url);
-const serviceFor = { Build: '/services/development/', Grow: '/services/seo-content/', Run: '/services/hosting-care/' } as const;
+const serviceFor = { Build: '/services/development/', Grow: '/services/seo-content/', Automate: '/services/crm-internal-tools/', Run: '/services/hosting-care/' } as const;
 const t = {
   en: { home: 'Home', work: 'Work', breadcrumb: 'Breadcrumb', caseStudy: 'Case Study', plan: 'plan', screenshot: 'Main project screenshot', challenge: 'The challenge', visit: 'Visit the site', did: 'What we did', more: 'More work', all: 'All projects →' },
   de: { home: 'Startseite', work: 'Projekte', breadcrumb: 'Brotkrümelnavigation', caseStudy: 'Fallstudie', plan: 'Plan', screenshot: 'Haupt-Screenshot des Projekts', challenge: 'Die Herausforderung', visit: 'Zur Website', did: 'Was wir gemacht haben', more: 'Weitere Projekte', all: 'Alle Projekte →' },

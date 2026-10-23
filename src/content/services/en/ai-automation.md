@@ -1,7 +1,7 @@
 ---
 title: "AI automation"
-order: 4
-discipline: Build
+order: 5
+discipline: Automate
 excerpt: "Content pipelines, catalogue enrichment and integrations built on LLMs and n8n."
 metaTitle: "AI Automation for Websites & Shops | Upnestly"
 metaDescription: "AI workflows that take manual work off your team — catalogue enrichment, content pipelines, translations and integrations, with a human checkpoint in every step."
@@ -26,9 +26,9 @@ deliverables:
   - title: "Documentation & handover"
     text: "Every workflow documented and handed over — no lock-in."
 inPlans:
-  essentials: "[What AI work fits in Essentials — e.g. small automations within the 8 monthly hours.]"
-  growth: "AI automations included in your 16 monthly development hours."
-  scale: "Larger AI workflows within 32 monthly hours, planned in the quarterly roadmap."
+  essentials: "One routine task automated, such as sorting enquiries or a weekly report."
+  growth: "Ongoing AI automations for content, leads and reporting."
+  scale: "Larger AI workflows across your systems, planned in the quarterly roadmap."
 steps:
   - title: "Map the process"
     text: "[Text.]"

@@ -18,7 +18,7 @@ deliverables:
   - title: "New pages & features"
     text: "Landing pages, sections, forms, integrations — designed and built by the same team."
   - title: "UX & design improvements"
-    text: "[Describe how design work is handled within the monthly hours.]"
+    text: "[Describe how design work is planned and reviewed each month.]"
   - title: "Platform maintenance"
     text: "Core, plugin, app and theme updates tested on staging before they go live."
   - title: "Bug fixes"
@@ -28,9 +28,9 @@ deliverables:
   - title: "Multilingual sites"
     text: "[Describe WPML / Weglot / platform-native setups you support.]"
 inPlans:
-  essentials: "8 hours of development and design per month — fixes, small features, content updates."
-  growth: "16 hours per month, including AI automations."
-  scale: "32 hours per month and a feature roadmap planned quarterly."
+  essentials: "Site care, fixes, small features and content updates every month."
+  growth: "Ongoing improvements, new landing pages and features as your marketing needs them."
+  scale: "A feature roadmap planned quarterly — larger features, integrations and redesigns."
 steps:
   - title: "[Step 1 — e.g. backlog]"
     text: "[How requests are collected.]"
@@ -41,8 +41,8 @@ steps:
 tools: ["WordPress", "WooCommerce", "Shopify", "Webflow", "Magento", "Astro", "Git"]
 relatedWork: project-two
 faq:
-  - q: "[What happens to unused hours?]"
-    a: "[Answer — plans currently say unused hours roll over for one month.]"
+  - q: "[How do you decide what gets done each month?]"
+    a: "[Answer — monthly priorities agreed with the client.]"
   - q: "[Can you work on a site another agency built?]"
     a: "[Answer.]"
   - q: "[Who owns the code?]"

@@ -4,67 +4,284 @@
     {
       "group": "Build",
       "rows": [
-        { "label": "Stunden für Entwicklung & Design pro Monat", "values": ["8 Std.", "16 Std.", "32 Std."] },
-        { "label": "Fehlerbehebungen, kleine Features, Inhaltspflege", "values": [true, true, true] },
-        { "label": "KI-Automatisierungen", "values": [false, true, true] },
-        { "label": "Staging-Umgebung", "values": [false, true, true] },
-        { "label": "Feature-Roadmap, quartalsweise geplant", "values": [false, false, true] }
+        {
+          "label": "Website-Pflege, Fixes und Inhaltspflege",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Neue Landingpages und Features",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Staging-Umgebung",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Feature-Roadmap, quartalsweise geplant",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
       ]
     },
     {
       "group": "Grow",
       "rows": [
-        { "label": "Artikel pro Monat (Deutsch oder Englisch)", "values": ["1", "2", "4"] },
-        { "label": "Technisches SEO-Monitoring", "values": [true, true, true] },
-        { "label": "SEO & KI-Suche (GEO)", "values": [false, true, true] },
-        { "label": "Ads-Betreuung", "values": [false, "Google oder Meta", "Google und Meta"] },
-        { "label": "CRO-Tests pro Monat", "values": [false, "1", "2"] },
-        { "label": "Monatlicher Report", "values": [true, true, true] },
-        { "label": "Quartalsweises Strategie-Review", "values": [false, false, true] }
+        {
+          "label": "Artikel pro Monat (Deutsch oder Englisch)",
+          "values": [
+            "1",
+            "2",
+            "4"
+          ]
+        },
+        {
+          "label": "Technisches SEO-Monitoring",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "SEO & KI-Suche (GEO)",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Ads-Betreuung",
+          "values": [
+            false,
+            "Google oder Meta",
+            "Google und Meta"
+          ]
+        },
+        {
+          "label": "CRO-Tests pro Monat",
+          "values": [
+            false,
+            "1",
+            "2"
+          ]
+        },
+        {
+          "label": "Quartalsweises Strategie-Review",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Automate",
+      "rows": [
+        {
+          "label": "Automatisierte Routineprozesse",
+          "values": [
+            "1",
+            "Laufend",
+            "Laufend"
+          ]
+        },
+        {
+          "label": "CRM eingerichtet und verbunden",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "KI-Automatisierungen",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Individuelle interne Tools & Dashboards",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        },
+        {
+          "label": "Prozess-Review",
+          "values": [
+            false,
+            false,
+            "Quartalsweise"
+          ]
+        }
       ]
     },
     {
       "group": "Run",
       "rows": [
-        { "label": "Managed Hosting in der EU oder Plattform-Betreuung", "values": [true, true, true] },
-        { "label": "Updates, tägliche Backups, Uptime-Monitoring", "values": [true, true, true] },
-        { "label": "Performance-Optimierung", "values": [false, true, true] },
-        { "label": "Security-Hardening", "values": [false, false, true] },
-        { "label": "DSGVO-Dokumentation", "values": [false, false, true] }
+        {
+          "label": "Managed Hosting in der EU oder Plattform-Betreuung",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Updates, tägliche Backups, Uptime-Monitoring",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Performance-Optimierung",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Security-Hardening & DSGVO-Dokumentation",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
       ]
     },
     {
       "group": "Support",
       "rows": [
-        { "label": "Reaktionszeit", "values": ["2 Werktage", "Nächster Werktag", "Selber Werktag"] },
-        { "label": "Monatlicher Call mit dem ganzen Team", "values": [true, true, true] }
+        {
+          "label": "Reaktionszeit",
+          "values": [
+            "2 Werktage",
+            "Nächster Werktag",
+            "Selber Werktag"
+          ]
+        },
+        {
+          "label": "Monatlicher Report und Call mit dem ganzen Team",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        }
       ]
     }
   ],
   "examples": [
-    { "plan": "Essentials", "hours": "8 Std.", "text": "Einen Seitenbereich überarbeiten, das Kontaktformular an Ihr CRM anbinden, Darstellungsfehler auf dem Smartphone beheben und die Inhaltsänderungen des Monats einpflegen." },
-    { "plan": "Growth", "hours": "16 Std.", "text": "Eine neue Landingpage für eine Kampagne gestalten und umsetzen – plus eine KI-Automatisierung, die zum Beispiel Formular-Leads an die richtige Person weiterleitet." },
-    { "plan": "Scale", "hours": "32 Std.", "text": "Eine B2B-Preisliste oder einen Produktkonfigurator in Ihren Shop integrieren und einen Checkout-Schritt neu gestalten – abgesichert durch einen CRO-Test." }
+    {
+      "plan": "Essentials",
+      "title": "Eine saubere Basis",
+      "text": "Die Website bleibt schnell und aktuell, ein Artikel geht live, und Website-Anfragen landen jetzt in Ihrem CRM statt im Postfach."
+    },
+    {
+      "plan": "Growth",
+      "title": "Mehr Leads, weniger Verwaltung",
+      "text": "Eine neue Kampagnen-Landingpage, ein CRO-Test am Kontaktformular und Leads, die automatisch qualifiziert und der richtigen Person zugewiesen werden."
+    },
+    {
+      "plan": "Scale",
+      "title": "Verbundene Systeme",
+      "text": "Eine B2B-Preisliste im Shop, beide Werbekanäle optimiert und ein Dashboard, das Umsatz, Leads und offene Bestellungen an einem Ort zeigt."
+    }
   ],
   "addons": [
-    { "title": "Entwicklung, Design & KI", "price": "50 €", "unit": "/ Stunde", "text": "Zusätzliche Stunden zu Ihrem Plan – für einen vollen Monat oder ein größeres Feature." },
-    { "title": "Content, SEO & Ads", "price": "40 €", "unit": "/ Stunde", "text": "Zusätzliche Artikel, Texte für Landingpages, Kampagnen-Setup oder SEO-Arbeit." },
-    { "title": "Hosting & Wartung", "price": "30 €", "unit": "/ Stunde", "text": "Migrationen, Serveraufgaben, zusätzliches Monitoring oder einmalige Wartung." }
+    {
+      "title": "Neue Website oder neuer Shop",
+      "price": "Festpreis",
+      "unit": "",
+      "text": "Design und Entwicklung, Migration von Ihrer aktuellen Plattform, Launch – danach in einen Monatsplan."
+    },
+    {
+      "title": "CRM-Einführung oder interne App",
+      "price": "Festpreis",
+      "unit": "",
+      "text": "Analyse, Einrichtung oder individuelle Entwicklung, Datenmigration und Schulung des Teams."
+    },
+    {
+      "title": "Größeres KI-Projekt",
+      "price": "Ab X.XXX €",
+      "unit": "",
+      "text": "Katalog-Pipelines, Dokumentenverarbeitung und Integrationen über mehrere Systeme, vorab klar definiert."
+    }
   ],
   "terms": [
-    { "title": "3 Monate Mindestlaufzeit, dann monatlich", "text": "Nach den ersten drei Monaten können Sie jederzeit zum Monatsende kündigen." },
-    { "title": "Sparen mit jährlicher Zahlung", "text": "Zahlen Sie 12 Monate im Voraus und sparen Sie {discount} % auf jeden Plan." },
-    { "title": "Stunden werden übertragen", "text": "Nicht genutzte Entwicklungsstunden werden einmalig in den nächsten Monat übernommen." },
-    { "title": "Planwechsel jeden Monat", "text": "Wechseln Sie ab dem nächsten Abrechnungsmonat nach oben oder unten – ohne neuen Vertrag." },
-    { "title": "Das Werbebudget bleibt Ihres", "text": "Sie zahlen Google und Meta direkt, über Ihre eigenen Konten." },
-    { "title": "Preise zzgl. MwSt.", "text": "Alle Preise in Euro, zuzüglich Mehrwertsteuer. [MwSt.-Behandlung für EU-Kunden mit der Steuerberatung abklären.]" }
+    {
+      "title": "Zuerst die Analyse",
+      "text": "Ein kostenloses Gespräch, um Ihre Website, Prozesse und Ziele zu verstehen. Sie erhalten einen festen Monatspreis, bevor etwas startet."
+    },
+    {
+      "title": "Preis nach Ergebnis, nicht nach Stunden",
+      "text": "Jeden Monat stimmen wir die Prioritäten mit Ihnen ab. Keine Stundenzettel, keine Überraschungsrechnungen."
+    },
+    {
+      "title": "3 Monate Mindestlaufzeit, dann monatlich",
+      "text": "Nach den ersten drei Monaten können Sie jederzeit zum Monatsende kündigen."
+    },
+    {
+      "title": "Sparen mit jährlicher Zahlung",
+      "text": "Zahlen Sie 12 Monate im Voraus und sparen Sie {discount} % auf jeden Plan."
+    },
+    {
+      "title": "Werbebudget und Lizenzen bleiben Ihre",
+      "text": "Sie zahlen Google, Meta und Softwareanbieter direkt, über Ihre eigenen Konten."
+    },
+    {
+      "title": "Preise zzgl. MwSt.",
+      "text": "Alle Preise in Euro, zuzüglich Mehrwertsteuer. [MwSt.-Behandlung für EU-Kunden mit der Steuerberatung abklären.]"
+    }
   ],
   "faq": [
-    { "q": "Mit welchem Plan sollten wir starten?", "a": "Wenn Ihre Website vor allem schnell, sicher und aktuell bleiben soll, starten Sie mit Essentials. Soll sie Leads oder Umsatz bringen, ist Growth der übliche Einstieg. Unsicher? Der kostenlose Audit endet mit einer Planempfehlung." },
-    { "q": "Können wir den Plan später wechseln?", "a": "Ja. Sie können ab dem nächsten Abrechnungsmonat nach oben oder unten wechseln, ohne neuen Vertrag." },
-    { "q": "Was, wenn wir in einem Monat mehr Stunden brauchen?", "a": "Buchen Sie Zusatzstunden zu den Add-on-Preisen – oder wechseln Sie in den nächsthöheren Plan, wenn das regelmäßig vorkommt. Das ist meist günstiger." },
-    { "q": "Was passiert, wenn wir kündigen?", "a": "Nach der Mindestlaufzeit von drei Monaten endet der Plan zum Ende des Monats, in dem Sie kündigen. Alles bleibt bei Ihnen: Code, Inhalte, Konten und Dokumentation." },
-    { "q": "Unterschreiben Sie eine NDA und einen AV-Vertrag?", "a": "Ja. Ihre NDA unterschreiben wir auf Wunsch, und ein Auftragsverarbeitungsvertrag (AVV) ist Teil jedes Plans." },
-    { "q": "Übernehmen Sie auch einmalige Projekte?", "a": "Ja – neue Websites, Shops, Migrationen und größere KI-Projekte laufen als Custom-Projekt mit Festpreisangebot und können nach dem Launch in einen Monatsplan übergehen." }
+    {
+      "q": "Warum „ab“-Preise?",
+      "a": "Weil keine zwei Unternehmen dieselbe Website und dieselben Prozesse haben. Der Plan legt den Umfang fest, das Analysegespräch den genauen Monatspreis – der danach fix bleibt."
+    },
+    {
+      "q": "Mit welchem Plan sollten wir starten?",
+      "a": "Brauchen Sie vor allem eine verlässliche Website und einen ersten geordneten Prozess, starten Sie mit Essentials. Wollen Sie mehr Leads und weniger Verwaltung, ist Growth der übliche Einstieg. Der kostenlose Audit endet mit einer Empfehlung."
+    },
+    {
+      "q": "Rechnen Sie nach Stunden ab?",
+      "a": "Nein. Sie zahlen einen Monatspreis für einen vereinbarten Umfang. Wir planen die Prioritäten jeden Monat mit Ihnen und berichten über Ergebnisse, nicht über Stundenzettel."
+    },
+    {
+      "q": "Was, wenn wir in einem Monat mehr brauchen?",
+      "a": "Größere Vorhaben – eine neue Website, eine CRM-Einführung, eine interne App – laufen als Festpreisprojekt neben Ihrem Plan. Kommt das regelmäßig vor, lohnt sich meist der nächsthöhere Plan."
+    },
+    {
+      "q": "Was passiert, wenn wir kündigen?",
+      "a": "Nach der Mindestlaufzeit von drei Monaten endet der Plan zum Ende des Monats, in dem Sie kündigen. Alles bleibt bei Ihnen: Code, Inhalte, Tools, Konten und Dokumentation."
+    },
+    {
+      "q": "Unterschreiben Sie eine NDA und einen AV-Vertrag?",
+      "a": "Ja. Ihre NDA unterschreiben wir auf Wunsch, und ein Auftragsverarbeitungsvertrag (AVV) ist Teil jedes Plans."
+    }
   ]
 }

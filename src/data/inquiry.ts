@@ -1,17 +1,18 @@
 // Options for the inquiry form's "What are you interested in?" select.
 // The value is what links pass as ?plan=… (e.g. /contact/?plan=growth&billing=annual). Values are the same in every language.
 import { getPlans } from '../i18n/data';
-import { localize, type Lang } from '../i18n';
+import { fromPrice, localize, type Lang } from '../i18n';
 
 export const interestOptions = (lang: Lang) => [
   { value: 'audit', label: lang === 'de' ? 'Kostenloser 20-Minuten-Audit' : 'Free 20-minute audit' },
   { value: 'ai', label: lang === 'de' ? 'KI-Potenzial-Check' : 'AI opportunity check' },
+  { value: 'processes', label: lang === 'de' ? 'Prozesse, CRM oder interne Tools' : 'Processes, CRM or internal tools' },
   ...getPlans(lang).plans.map((p) => ({
     value: p.name.toLowerCase(),
     label:
       p.name === 'Custom'
         ? lang === 'de' ? 'Individuelles Projekt oder Retainer' : 'Custom project or retainer'
-        : lang === 'de' ? `${p.name}-Plan — ${p.price} ${p.period}` : `${p.name} plan — ${p.price} ${p.period}`,
+        : lang === 'de' ? `${p.name}-Plan — ${fromPrice(p.price, lang)} ${p.period}` : `${p.name} plan — ${fromPrice(p.price, lang)} ${p.period}`,
   })),
 ];
 

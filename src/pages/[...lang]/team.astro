@@ -14,25 +14,25 @@ export function getStaticPaths() {
 const lang = getLang(Astro.url);
 const team = getTeam(lang);
 const site = getSite(lang);
-const serviceFor: Record<string, string> = { Build: '/services/development/', Grow: '/services/seo-content/', Run: '/services/hosting-care/' };
+const serviceFor: Record<string, string> = { Build: '/services/development/', Grow: '/services/seo-content/', Automate: '/services/crm-internal-tools/', Run: '/services/hosting-care/' };
 const t = {
   en: {
-    metaTitle: 'Team — Three Senior Specialists | Upnestly',
-    metaDescription: 'Meet the Upnestly team: senior specialists in development and AI, content and marketing, and infrastructure — one team, one point of contact, in your time zone.',
-    eyebrow: 'Team', title: 'Three senior specialists. No juniors, no handoffs.',
+    metaTitle: 'Team — Four Senior Specialists | Upnestly',
+    metaDescription: 'Meet the Upnestly team: senior specialists in development, content and marketing, processes and applications, and infrastructure — one team, one point of contact, in your time zone.',
+    eyebrow: 'Team', title: 'Four senior specialists. No juniors, no handoffs.',
     text: 'Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work — in English or German, in your time zone.',
     portrait: 'Portrait', onLinkedin: 'on LinkedIn',
-    howEyebrow: 'How we work together', howTitle: 'One team, one point of contact.', howText: 'You never have to coordinate three freelancers. We do that between ourselves.',
+    howEyebrow: 'How we work together', howTitle: 'One team, one point of contact.', howText: 'You never have to coordinate four freelancers. We do that between ourselves.',
     values: 'What we stand for', networkEyebrow: 'Extended network', networkTitle: 'When a project needs more',
     whereEyebrow: 'Where we are', whereTitle: `Based in ${site.city}, working worldwide`, whereText: 'Remote by default, on site when a project needs it. Lorem ipsum dolor sit amet.',
   },
   de: {
-    metaTitle: 'Team — Drei Senior-Spezialisten | Upnestly',
-    metaDescription: 'Lernen Sie das Upnestly-Team kennen: Senior-Spezialisten für Entwicklung und KI, Content und Marketing sowie Infrastruktur – ein Team, ein Ansprechpartner, in Ihrer Zeitzone.',
-    eyebrow: 'Team', title: 'Drei Senior-Spezialisten. Keine Juniors, keine Übergaben.',
+    metaTitle: 'Team — Vier Senior-Spezialisten | Upnestly',
+    metaDescription: 'Lernen Sie das Upnestly-Team kennen: Senior-Spezialisten für Entwicklung, Content und Marketing, Prozesse und Anwendungen sowie Infrastruktur – ein Team, ein Ansprechpartner, in Ihrer Zeitzone.',
+    eyebrow: 'Team', title: 'Vier Senior-Spezialisten. Keine Juniors, keine Übergaben.',
     text: 'Jede Disziplin wird von jemandem mit langjähriger Praxiserfahrung geleitet. Sie sprechen direkt mit den Menschen, die die Arbeit machen – auf Deutsch oder Englisch, in Ihrer Zeitzone.',
     portrait: 'Porträt', onLinkedin: 'auf LinkedIn',
-    howEyebrow: 'So arbeiten wir zusammen', howTitle: 'Ein Team, ein Ansprechpartner.', howText: 'Sie müssen nie drei Freelancer koordinieren. Das erledigen wir untereinander.',
+    howEyebrow: 'So arbeiten wir zusammen', howTitle: 'Ein Team, ein Ansprechpartner.', howText: 'Sie müssen nie vier Freelancer koordinieren. Das erledigen wir untereinander.',
     values: 'Wofür wir stehen', networkEyebrow: 'Erweitertes Netzwerk', networkTitle: 'Wenn ein Projekt mehr braucht',
     whereEyebrow: 'Wo wir sind', whereTitle: `Sitz in ${site.city}, weltweit tätig`, whereText: 'Standardmäßig remote, vor Ort, wenn ein Projekt es erfordert. Lorem ipsum dolor sit amet.',
   },
@@ -54,7 +54,7 @@ const t = {
 
   <!-- Members -->
   <section>
-    <div class="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 py-20">
+    <div class="container-site grid gap-6 py-20 md:grid-cols-2">
       {team.members.map((m, i) => (
         <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
           {m.photo ? (

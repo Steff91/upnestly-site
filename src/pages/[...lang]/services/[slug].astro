@@ -6,7 +6,7 @@ import Placeholder from '../../../components/Placeholder.astro';
 import Contact from '../../../components/sections/Contact.astro';
 import { getPlans, getSite } from '../../../i18n/data';
 import type { CollectionEntry } from 'astro:content';
-import { defaultLang, getLang, langs, localize } from '../../../i18n';
+import { defaultLang, fromPrice, getLang, langs, localize } from '../../../i18n';
 import { getLocalized, slugOf } from '../../../i18n/content';
 
 export async function getStaticPaths() {
@@ -33,13 +33,13 @@ const others = (await getLocalized('services', lang))
 const t = {
   en: {
     home: 'Home', services: 'Services', breadcrumb: 'Breadcrumb', audit: 'Book a free audit', fits: 'How it fits your plan',
-    plansTitle: 'Included in every plan — at a different pace.', plansLead: 'You don’t buy this on its own. It runs alongside development, growth and hosting on one monthly plan.',
+    plansTitle: 'Included in every plan — at a different scope.', plansLead: 'You don’t buy this on its own. It runs alongside your website, marketing, processes and hosting on one monthly plan.',
     perMonth: '/ month', compareAll: 'Compare all plans →', how: 'How we work', step: 'Step', tools: 'Tools we use',
     screenshot: 'Project screenshot', related: 'Related work', readCase: 'Read the case study →', faq: 'Questions we get', also: 'Also in every plan',
   },
   de: {
     home: 'Startseite', services: 'Leistungen', breadcrumb: 'Brotkrümelnavigation', audit: 'Kostenlosen Audit buchen', fits: 'So passt es in Ihren Plan',
-    plansTitle: 'In jedem Plan enthalten – in unterschiedlichem Tempo.', plansLead: 'Diese Leistung kaufen Sie nicht einzeln. Sie läuft zusammen mit Entwicklung, Wachstum und Hosting in einem Monatsplan.',
+    plansTitle: 'In jedem Plan enthalten – in unterschiedlichem Umfang.', plansLead: 'Diese Leistung kaufen Sie nicht einzeln. Sie läuft zusammen mit Website, Marketing, Prozessen und Hosting in einem Monatsplan.',
     perMonth: '/ Monat', compareAll: 'Alle Pläne vergleichen →', how: 'So arbeiten wir', step: 'Schritt', tools: 'Unsere Tools',
     screenshot: 'Projekt-Screenshot', related: 'Passendes Projekt', readCase: 'Zur Fallstudie →', faq: 'Häufige Fragen', also: 'Ebenfalls in jedem Plan',
   },
@@ -153,7 +153,7 @@ const schema = [
           <div class:list={['flex flex-col gap-3 rounded-[20px] p-8', p.featured ? 'bg-ink text-white' : 'bg-white']} data-reveal style={`--i:${i}`}>
             <p class="m-0 flex items-baseline justify-between gap-3">
               <span class="text-[20px] font-extrabold">{p.name}</span>
-              <span class:list={['text-[15px] font-semibold', p.featured ? 'text-night-text' : 'text-muted']}>{p.price} {t.perMonth}</span>
+              <span class:list={['text-[15px] font-semibold', p.featured ? 'text-night-text' : 'text-muted']}>{fromPrice(p.price, lang)} {t.perMonth}</span>
             </p>
             <p class:list={['m-0 text-[15px] leading-[1.6]', p.featured ? 'text-night-text' : 'text-body']}>{p.text}</p>
           </div>

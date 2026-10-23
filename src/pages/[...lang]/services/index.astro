@@ -5,7 +5,7 @@ import Icon from '../../../components/Icon.astro';
 import Platforms from '../../../components/sections/Platforms.astro';
 import Contact from '../../../components/sections/Contact.astro';
 import { getPlans, getSite } from '../../../i18n/data';
-import { getLang, langParams, localize } from '../../../i18n';
+import { fromPrice, getLang, langParams, localize } from '../../../i18n';
 import { getLocalized, slugOf } from '../../../i18n/content';
 
 export function getStaticPaths() {
@@ -20,30 +20,32 @@ const href = (s: (typeof services)[number]) => localize(`/services/${slugOf(s)}/
 
 const t = {
   en: {
-    metaTitle: 'Services — Development, SEO, CRO, AI & Hosting | Upnestly',
-    metaDescription: 'Website development, SEO and content, CRO and paid ads, AI automation and managed hosting — all included in one monthly plan from one senior team.',
-    eyebrow: 'Services', title: 'Everything your website needs, from one team.',
-    text: 'Five services, three disciplines, one monthly plan. Every plan includes all of them — what changes is the pace.',
+    metaTitle: 'Services — Web, Marketing, CRM, AI & Hosting | Upnestly',
+    metaDescription: 'Website development, SEO and content, CRO and paid ads, CRM and internal tools, AI automation and managed hosting — all included in one monthly plan from one senior team.',
+    eyebrow: 'Services', title: 'Your website, marketing and processes — from one team.',
+    text: 'Six services, four disciplines, one monthly plan. Every plan includes all of them — what changes is the scope.',
     audit: 'Book a free audit', inPlan: 'What’s in each plan', more: 'Learn more',
-    aiEyebrow: 'AI across all three', aiText: 'AI writes the first draft, enriches the catalogue and runs the checks. People review, decide and own the result.', aiCta: 'AI automation',
-    compareLead: 'Every service is in every plan. The plan sets how much of it you get each month.', caption: 'Services included in each plan', service: 'Service', perMonth: '/ month', full: 'See full plans & pricing →',
+    aiEyebrow: 'AI across everything', aiText: 'AI writes the first draft, enriches the catalogue and runs the checks. People review, decide and own the result.', aiCta: 'AI automation',
+    compareLead: 'Every service is in every plan. The plan sets the scope you get each month.', caption: 'Services included in each plan', service: 'Service', perMonth: '/ month', full: 'See full plans & pricing →',
     disciplines: [
-      { name: 'Build', title: 'Development, design & AI', text: 'Your site keeps improving every month — new pages, features, fixes and automations.' },
+      { name: 'Build', title: 'Website & shop development', text: 'Your site keeps improving every month — new pages, features and fixes.' },
       { name: 'Grow', title: 'Search, content & conversion', text: 'More of the right visitors, and more of them turning into leads and sales.' },
+      { name: 'Automate', title: 'Processes, CRM & AI', text: 'The work behind the website — CRM, internal tools and automations that save your team hours every week.' },
       { name: 'Run', title: 'Hosting, security & care', text: 'Fast, secure and up to date, without you having to ask.' },
     ],
   },
   de: {
-    metaTitle: 'Leistungen — Entwicklung, SEO, CRO, KI & Hosting | Upnestly',
-    metaDescription: 'Website-Entwicklung, SEO und Content, CRO und Werbeanzeigen, KI-Automatisierung und Managed Hosting – alles in einem Monatsplan aus einem Senior-Team.',
-    eyebrow: 'Leistungen', title: 'Alles, was Ihre Website braucht – aus einem Team.',
-    text: 'Fünf Leistungen, drei Disziplinen, ein Monatsplan. Jeder Plan enthält alle – was sich ändert, ist das Tempo.',
+    metaTitle: 'Leistungen — Web, Marketing, CRM, KI & Hosting | Upnestly',
+    metaDescription: 'Website-Entwicklung, SEO und Content, CRO und Werbeanzeigen, CRM und interne Tools, KI-Automatisierung und Managed Hosting – alles in einem Monatsplan aus einem Senior-Team.',
+    eyebrow: 'Leistungen', title: 'Website, Marketing und Prozesse – aus einem Team.',
+    text: 'Sechs Leistungen, vier Disziplinen, ein Monatsplan. Jeder Plan enthält alle – was sich ändert, ist der Umfang.',
     audit: 'Kostenlosen Audit buchen', inPlan: 'Was in jedem Plan steckt', more: 'Mehr erfahren',
-    aiEyebrow: 'KI in allen drei Bereichen', aiText: 'KI schreibt den ersten Entwurf, reichert den Katalog an und führt die Prüfungen durch. Menschen prüfen, entscheiden und verantworten das Ergebnis.', aiCta: 'KI-Automatisierung',
-    compareLead: 'Jede Leistung ist in jedem Plan enthalten. Der Plan legt fest, wie viel davon Sie pro Monat bekommen.', caption: 'Leistungen in jedem Plan', service: 'Leistung', perMonth: '/ Monat', full: 'Alle Pläne & Preise ansehen →',
+    aiEyebrow: 'KI in allen Bereichen', aiText: 'KI schreibt den ersten Entwurf, reichert den Katalog an und führt die Prüfungen durch. Menschen prüfen, entscheiden und verantworten das Ergebnis.', aiCta: 'KI-Automatisierung',
+    compareLead: 'Jede Leistung ist in jedem Plan enthalten. Der Plan legt den Umfang fest, den Sie pro Monat bekommen.', caption: 'Leistungen in jedem Plan', service: 'Leistung', perMonth: '/ Monat', full: 'Alle Pläne & Preise ansehen →',
     disciplines: [
-      { name: 'Build', title: 'Entwicklung, Design & KI', text: 'Ihre Website wird jeden Monat besser – neue Seiten, Features, Fixes und Automatisierungen.' },
+      { name: 'Build', title: 'Website- & Shop-Entwicklung', text: 'Ihre Website wird jeden Monat besser – neue Seiten, Features und Fixes.' },
       { name: 'Grow', title: 'Suche, Content & Conversion', text: 'Mehr passende Besucher – und mehr davon werden zu Leads und Kunden.' },
+      { name: 'Automate', title: 'Prozesse, CRM & KI', text: 'Die Arbeit hinter der Website – CRM, interne Tools und Automatisierungen, die Ihrem Team jede Woche Stunden sparen.' },
       { name: 'Run', title: 'Hosting, Sicherheit & Betreuung', text: 'Schnell, sicher und aktuell, ohne dass Sie nachfragen müssen.' },
     ],
   },
@@ -128,7 +130,7 @@ const planCols = [
               {planCols.map((p) => (
                 <th scope="col" class:list={['p-6 align-bottom', p.key === 'growth' && 'bg-tint-soft']}>
                   <span class="block text-[19px] font-extrabold text-ink">{p.name}</span>
-                  <span class="text-[14px] font-semibold text-muted">{p.price} {t.perMonth}</span>
+                  <span class="text-[14px] font-semibold text-muted">{fromPrice(p.price, lang)} {t.perMonth}</span>
                 </th>
               ))}
             </tr>

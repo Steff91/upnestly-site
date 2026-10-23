@@ -20,7 +20,7 @@ deliverables:
   - title: "Neue Seiten & Features"
     text: "Landingpages, Bereiche, Formulare, Integrationen – gestaltet und umgesetzt vom selben Team."
   - title: "UX- & Design-Verbesserungen"
-    text: "[Beschreiben, wie Designarbeit innerhalb der Monatsstunden abgewickelt wird.]"
+    text: "[Beschreiben, wie Designarbeit jeden Monat geplant und abgestimmt wird.]"
   - title: "Plattform-Wartung"
     text: "Core-, Plugin-, App- und Theme-Updates, auf Staging getestet, bevor sie live gehen."
   - title: "Fehlerbehebung"
@@ -30,9 +30,9 @@ deliverables:
   - title: "Mehrsprachige Websites"
     text: "[Unterstützte Setups mit WPML / Weglot / plattformeigenen Lösungen beschreiben.]"
 inPlans:
-  essentials: "8 Stunden Entwicklung und Design pro Monat – Fixes, kleine Features, Inhaltspflege."
-  growth: "16 Stunden pro Monat, inklusive KI-Automatisierungen."
-  scale: "32 Stunden pro Monat und eine quartalsweise geplante Feature-Roadmap."
+  essentials: "Website-Pflege, Fixes, kleine Features und Inhaltspflege jeden Monat."
+  growth: "Laufende Verbesserungen, neue Landingpages und Features, wenn Ihr Marketing sie braucht."
+  scale: "Eine quartalsweise geplante Feature-Roadmap – größere Features, Integrationen und Redesigns."
 steps:
   - title: "[Schritt 1 – z. B. Backlog]"
     text: "[Wie Anfragen gesammelt werden.]"
@@ -43,8 +43,8 @@ steps:
 tools: ["WordPress", "WooCommerce", "Shopify", "Webflow", "Magento", "Astro", "Git"]
 relatedWork: project-two
 faq:
-  - q: "[Was passiert mit nicht genutzten Stunden?]"
-    a: "[Antwort – laut Plänen werden nicht genutzte Stunden einen Monat übertragen.]"
+  - q: "[Wie wird entschieden, was jeden Monat umgesetzt wird?]"
+    a: "[Antwort – monatliche Prioritäten mit dem Kunden abgestimmt.]"
   - q: "[Können Sie an einer Website arbeiten, die eine andere Agentur gebaut hat?]"
     a: "[Antwort.]"
   - q: "[Wem gehört der Code?]"

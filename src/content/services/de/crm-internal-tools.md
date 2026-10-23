@@ -1,0 +1,55 @@
+---
+title: "CRM & interne Tools"
+order: 4
+discipline: Automate
+excerpt: "CRM-Einführung, verbundene Systeme und interne Tools, die zu Ihrer tatsächlichen Arbeitsweise passen."
+metaTitle: "CRM-Einführung, Integrationen & individuelle interne Tools | Upnestly"
+metaDescription: "CRM-Einführung, Systemintegrationen und individuelle interne Tools für kleine und mittlere Unternehmen – passend zu Ihren Prozessen, betreut in einem Monatsplan."
+heroTitle: "CRM und interne Tools, die zu Ihrem Team passen"
+heroText: "Wir bilden Ihre Prozesse ab, richten die passenden Tools ein oder entwickeln sie und verbinden sie mit Website, Shop und Buchhaltung – damit Leads, Bestellungen und Daten nicht länger in Tabellen und Postfächern liegen."
+painsTitle: "Kommt Ihnen das bekannt vor?"
+pains:
+  - title: "Leads gehen zwischen Postfach und Tabelle verloren"
+    text: "Anfragen kommen per Formular, E-Mail und Telefon, und niemand hat den Überblick, wer kontaktiert wurde und was als Nächstes passiert."
+  - title: "Dieselben Daten werden dreimal eingetippt"
+    text: "Bestellungen, Kunden und Rechnungen werden von Hand zwischen Shop, CRM und Buchhaltung kopiert."
+  - title: "Für alles ein Tool, für nichts ein Prozess"
+    text: "Fünf Abos, die nicht miteinander sprechen – und ein Team, das um sie herum arbeitet statt mit ihnen."
+deliverablesTitle: "Was wir machen"
+deliverables:
+  - title: "Prozessanalyse"
+    text: "Wir setzen uns mit Ihrem Team zusammen, bilden ab, wie die Arbeit heute wirklich läuft, und legen gemeinsam den Zielprozess fest."
+  - title: "CRM-Einführung & Migration"
+    text: "HubSpot, Pipedrive, Odoo oder ein schlankes individuelles CRM – passend zu Ihrer Pipeline eingerichtet, mit Übernahme Ihrer bestehenden Daten."
+  - title: "Integrationen"
+    text: "Website-Formulare, Shop, E-Mail, Kalender und Buchhaltung (z. B. DATEV, Lexoffice) verbunden, damit Daten von selbst fließen."
+  - title: "Individuelle interne Tools"
+    text: "Kundenportale, Angebots- und Bestelltools, Dashboards und Admin-Bereiche – dort, wo Standardsoftware nicht passt."
+  - title: "KI in Ihren Abläufen"
+    text: "Dokumentenverarbeitung, Sortierung von Anfragen und Reporting direkt in den Tools, die Ihr Team schon nutzt – mit menschlichem Prüfschritt."
+  - title: "Schulung & Dokumentation"
+    text: "Ihr Team lernt den neuen Prozess kennen, und jeder Workflow wird dokumentiert und übergeben."
+inPlans:
+  essentials: "Ein Routineprozess automatisiert – zum Beispiel Website-Anfragen, die direkt in Ihrem CRM landen."
+  growth: "CRM eingerichtet und mit Website, Shop und E-Mail verbunden, plus laufende Automatisierungen."
+  scale: "Individuelle interne Tools und Dashboards, mit einem Prozess-Review jedes Quartal."
+steps:
+  - title: "Analyse"
+    text: "Gespräche mit Ihrem Team und eine Übersicht des heutigen Prozesses, mit den größten Zeitfressern markiert."
+  - title: "Kaufen oder bauen"
+    text: "Wir empfehlen bestehende Software, wo sie die Aufgabe abdeckt, und entwickeln nur, was sie nicht kann."
+  - title: "Einführung"
+    text: "Einrichten, migrieren, verbinden und schulen – in Etappen, damit das Tagesgeschäft nie stillsteht."
+  - title: "Verbessern"
+    text: "Monatlicher Check, was das Team nutzt, was es bremst und was als Nächstes automatisiert wird."
+tools: ["HubSpot", "Pipedrive", "Odoo", "n8n", "Make", "Supabase", "Directus", "Google Workspace", "Microsoft 365"]
+faq:
+  - q: "Entwickeln Sie ein eigenes CRM oder richten Sie ein bestehendes ein?"
+    a: "Meist ein bestehendes. Wenn HubSpot, Pipedrive oder Odoo den Großteil abdeckt, richten wir es ein und entwickeln nur die fehlenden Teile. Ein komplett individuelles Tool lohnt sich, wenn Ihr Prozess Ihr Wettbewerbsvorteil ist."
+  - q: "Wem gehören die Tools und die Daten?"
+    a: "Ihnen. Die Software läuft in Konten auf Ihren Namen oder auf Infrastruktur, die wir für Sie in der EU hosten – und alles wird dokumentiert und übergeben."
+  - q: "[Können Sie mit unserer bestehenden Software arbeiten?]"
+    a: "[Antwort.]"
+  - q: "[Wie lange dauert eine CRM-Einführung?]"
+    a: "[Antwort.]"
+---

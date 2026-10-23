@@ -4,19 +4,19 @@ import { getLang, localize } from '../../i18n';
 
 const lang = getLang(Astro.url);
 
-// The three disciplines. All of them are ongoing monthly work — none is a one-off.
+// The four disciplines. All of them are ongoing monthly work — none is a one-off.
 const t = {
   en: {
-    title: 'Build. Grow. Run. Every month, from one team.',
-    lead: 'Most businesses juggle a developer, a marketing agency and a hosting company. We are all three — and all three keep working on your site, month after month.',
-    included: 'Included in every plan', includedText: 'All three disciplines, every month.', seePlans: 'See plans', all: 'All services',
+    title: 'Build. Grow. Automate. Run. Every month, from one team.',
+    lead: 'Most businesses juggle a developer, a marketing agency, an IT freelancer and a hosting company. We are all four — and we keep working on your site and your processes, month after month.',
+    included: 'Included in every plan', includedText: 'All four disciplines, every month.', seePlans: 'See plans', all: 'All services',
     services: [
       {
         n: '01 — Build',
-        title: 'Development, design & AI automation',
+        title: 'Website & shop development',
         text: 'Your site is never “done”. We keep shipping new pages and features, fix what breaks and maintain the platform — WordPress, Shopify, Webflow, Magento or custom code.',
-        items: ['New pages, features & UX improvements', 'Platform maintenance & bug fixes', 'AI automations & integrations'],
-        links: [{ href: '/services/development/', label: 'Development & design' }, { href: '/services/ai-automation/', label: 'AI automation' }],
+        items: ['New pages, features & UX improvements', 'Platform maintenance & bug fixes', 'Landing pages for campaigns'],
+        links: [{ href: '/services/development/', label: 'Development & design' }],
       },
       {
         n: '02 — Grow',
@@ -26,25 +26,32 @@ const t = {
         links: [{ href: '/services/seo-content/', label: 'SEO & content' }, { href: '/services/cro-ads/', label: 'CRO & paid ads' }],
       },
       {
-        n: '03 — Run',
+        n: '03 — Automate',
+        title: 'Processes, CRM & AI',
+        text: 'The work behind the website: we map how your team works, set up or build the CRM and internal tools behind it, and automate the busywork with AI.',
+        items: ['CRM setup & integrations', 'Custom internal tools & dashboards', 'AI automation with a human checkpoint'],
+        links: [{ href: '/services/crm-internal-tools/', label: 'CRM & internal tools' }, { href: '/services/ai-automation/', label: 'AI automation' }],
+      },
+      {
+        n: '04 — Run',
         title: 'Hosting, security & care',
-        text: 'Managed EU hosting for self-hosted sites; on Shopify and Webflow we look after apps, themes and backups. Handled by a senior systems engineer, not a ticket queue.',
+        text: 'Managed EU hosting for websites and internal tools; on Shopify and Webflow we look after apps, themes and backups. Handled by a senior systems engineer, not a ticket queue.',
         items: ['Managed EU hosting or platform care', 'Updates, backups, uptime monitoring', 'Security & GDPR documentation'],
         links: [{ href: '/services/hosting-care/', label: 'Hosting & care' }],
       },
     ],
   },
   de: {
-    title: 'Build. Grow. Run. Jeden Monat, aus einem Team.',
-    lead: 'Die meisten Unternehmen jonglieren mit einem Entwickler, einer Marketingagentur und einem Hoster. Wir sind alle drei – und alle drei arbeiten Monat für Monat an Ihrer Website weiter.',
-    included: 'In jedem Plan enthalten', includedText: 'Alle drei Disziplinen, jeden Monat.', seePlans: 'Pläne ansehen', all: 'Alle Leistungen',
+    title: 'Build. Grow. Automate. Run. Jeden Monat, aus einem Team.',
+    lead: 'Die meisten Unternehmen jonglieren mit einem Entwickler, einer Marketingagentur, einem IT-Freelancer und einem Hoster. Wir sind alle vier – und arbeiten Monat für Monat an Ihrer Website und Ihren Prozessen weiter.',
+    included: 'In jedem Plan enthalten', includedText: 'Alle vier Disziplinen, jeden Monat.', seePlans: 'Pläne ansehen', all: 'Alle Leistungen',
     services: [
       {
         n: '01 — Build',
-        title: 'Entwicklung, Design & KI-Automatisierung',
+        title: 'Website- & Shop-Entwicklung',
         text: 'Eine Website ist nie „fertig“. Wir liefern laufend neue Seiten und Features, beheben, was kaputtgeht, und pflegen die Plattform – WordPress, Shopify, Webflow, Magento oder Custom Code.',
-        items: ['Neue Seiten, Features & UX-Verbesserungen', 'Plattform-Wartung & Fehlerbehebung', 'KI-Automatisierungen & Integrationen'],
-        links: [{ href: '/services/development/', label: 'Entwicklung & Design' }, { href: '/services/ai-automation/', label: 'KI-Automatisierung' }],
+        items: ['Neue Seiten, Features & UX-Verbesserungen', 'Plattform-Wartung & Fehlerbehebung', 'Landingpages für Kampagnen'],
+        links: [{ href: '/services/development/', label: 'Entwicklung & Design' }],
       },
       {
         n: '02 — Grow',
@@ -54,9 +61,16 @@ const t = {
         links: [{ href: '/services/seo-content/', label: 'SEO & Content' }, { href: '/services/cro-ads/', label: 'CRO & Werbeanzeigen' }],
       },
       {
-        n: '03 — Run',
+        n: '03 — Automate',
+        title: 'Prozesse, CRM & KI',
+        text: 'Die Arbeit hinter der Website: Wir bilden ab, wie Ihr Team arbeitet, richten das passende CRM und interne Tools ein oder entwickeln sie und automatisieren Routinearbeit mit KI.',
+        items: ['CRM-Einführung & Integrationen', 'Individuelle interne Tools & Dashboards', 'KI-Automatisierung mit menschlichem Prüfschritt'],
+        links: [{ href: '/services/crm-internal-tools/', label: 'CRM & interne Tools' }, { href: '/services/ai-automation/', label: 'KI-Automatisierung' }],
+      },
+      {
+        n: '04 — Run',
         title: 'Hosting, Sicherheit & Betreuung',
-        text: 'Managed Hosting in der EU für selbst gehostete Websites; bei Shopify und Webflow kümmern wir uns um Apps, Themes und Backups. Betreut von einem Senior Systems Engineer, nicht von einer Ticket-Warteschlange.',
+        text: 'Managed Hosting in der EU für Websites und interne Tools; bei Shopify und Webflow kümmern wir uns um Apps, Themes und Backups. Betreut von einem Senior Systems Engineer, nicht von einer Ticket-Warteschlange.',
         items: ['Managed Hosting in der EU oder Plattform-Betreuung', 'Updates, Backups, Uptime-Monitoring', 'Sicherheit & DSGVO-Dokumentation'],
         links: [{ href: '/services/hosting-care/', label: 'Hosting & Betreuung' }],
       },
@@ -72,7 +86,7 @@ const t = {
       <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.lead}</p>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
+    <div class="grid gap-5 md:grid-cols-2">
       {t.services.map((s, i) => (
         <article class="flex flex-col gap-4.5 rounded-[20px] border border-line p-9" data-reveal style={`--i:${i}`}>
           <p class="m-0 label text-brand">{s.n}</p>

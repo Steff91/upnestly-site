@@ -1,37 +1,42 @@
 {
-  "title": "Ein Team, ein Monatspreis. Sie bestimmen das Tempo.",
-  "intro": "Jeder Plan umfasst alle drei Disziplinen – Entwicklung, Wachstum und Hosting – betreut von denselben drei Senior-Spezialisten.",
-  "footnote": "Preise zzgl. MwSt. Werbebudgets rechnen Google und Meta direkt mit Ihnen ab. Bei Shopify und Webflow stellt die Plattform das Hosting – wir kümmern uns stattdessen um Apps, Themes, Monitoring und Backups. Mindestlaufzeit 3 Monate, danach monatlich kündbar. Nicht genutzte Entwicklungsstunden werden einen Monat übertragen.",
+  "title": "Ein Team, ein Monatsplan. Website, Marketing und Prozesse.",
+  "intro": "Jeder Plan umfasst alle vier Disziplinen – betreut von denselben vier Senior-Spezialisten. Sie bezahlen für das Ergebnis, nicht für Stunden.",
+  "footnote": "Die Preise sind Startpreise, zzgl. MwSt. Der genaue Monatspreis folgt nach einem kostenlosen Analysegespräch – abhängig von Ihrer Website, Ihren Prozessen und Ihren Zielen. Werbebudgets rechnen Google und Meta direkt ab, Softwarelizenzen (z. B. CRM) der jeweilige Anbieter. Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
   "plans": [
     {
       "name": "Essentials",
       "price": "990 €",
       "period": "/ Monat",
-      "blurb": "Für Unternehmenswebsites, die schnell, sicher und aktuell bleiben sollen.",
+      "blurb": "Für Unternehmen, die eine verlässliche Website und erste geordnete Prozesse brauchen.",
       "featured": false,
       "cta": "Mit Essentials starten",
       "groups": [
         {
           "label": "Build",
           "items": [
-            "8 Std. Entwicklung & Design pro Monat",
-            "Fehlerbehebungen, kleine Features, Inhaltspflege"
+            "Website-Pflege, Fixes und kleine Verbesserungen",
+            "Inhaltspflege jeden Monat"
           ]
         },
         {
           "label": "Grow",
           "items": [
             "1 Artikel pro Monat, auf Deutsch oder Englisch",
-            "Technisches SEO-Monitoring",
-            "Monatlicher Report"
+            "Technisches SEO-Monitoring, monatlicher Report"
+          ]
+        },
+        {
+          "label": "Automate",
+          "items": [
+            "Ein Routineprozess automatisiert",
+            "z. B. Website-Anfragen direkt in Ihr CRM"
           ]
         },
         {
           "label": "Run",
           "items": [
             "Managed Hosting in der EU oder Plattform-Betreuung",
-            "Updates, tägliche Backups, Uptime-Monitoring",
-            "Antwort innerhalb von 2 Werktagen"
+            "Updates, Backups, Uptime · Antwort in 2 Werktagen"
           ]
         }
       ]
@@ -40,32 +45,35 @@
       "name": "Growth",
       "price": "1.990 €",
       "period": "/ Monat",
-      "blurb": "Für Unternehmen, die über ihre Website Leads oder Umsatz gewinnen.",
+      "blurb": "Für Unternehmen, die mehr Leads wollen und ein Team, das weniger Zeit mit Verwaltung verbringt.",
       "featured": true,
       "cta": "Mit Growth starten",
       "groups": [
         {
           "label": "Build",
           "items": [
-            "16 Std. Entwicklung & Design pro Monat",
-            "Inklusive KI-Automatisierungen"
+            "Laufende Verbesserungen und neue Landingpages"
           ]
         },
         {
           "label": "Grow",
           "items": [
-            "2 Artikel pro Monat, auf Deutsch oder Englisch",
-            "SEO & KI-Suche (GEO)",
-            "Betreuung von Google Ads oder Meta Ads",
-            "1 CRO-Test pro Monat"
+            "2 Artikel pro Monat, SEO & KI-Suche (GEO)",
+            "Google Ads oder Meta Ads, 1 CRO-Test pro Monat"
+          ]
+        },
+        {
+          "label": "Automate",
+          "items": [
+            "CRM eingerichtet und mit Website, Shop und E-Mail verbunden",
+            "Laufende KI-Automatisierungen"
           ]
         },
         {
           "label": "Run",
           "items": [
             "Alles aus Essentials",
-            "Performance-Optimierung, Staging-Umgebung",
-            "Antwort am nächsten Werktag"
+            "Performance, Staging · Antwort am nächsten Werktag"
           ]
         }
       ]
@@ -74,32 +82,35 @@
       "name": "Scale",
       "price": "3.490 €",
       "period": "/ Monat",
-      "blurb": "Für Shops und mehrsprachige Websites mit laufender Roadmap.",
+      "blurb": "Für wachsende Unternehmen mit mehreren Märkten, Teams oder Systemen, die verbunden werden sollen.",
       "featured": false,
       "cta": "Mit Scale starten",
       "groups": [
         {
           "label": "Build",
           "items": [
-            "32 Std. Entwicklung, Design & KI pro Monat",
             "Feature-Roadmap, quartalsweise geplant"
           ]
         },
         {
           "label": "Grow",
           "items": [
-            "4 Artikel pro Monat, auf Deutsch oder Englisch",
-            "Google Ads und Meta Ads",
-            "2 CRO-Tests pro Monat",
-            "Quartalsweises Strategie-Review"
+            "4 Artikel pro Monat, Google Ads und Meta Ads",
+            "2 CRO-Tests pro Monat, quartalsweises Strategie-Review"
+          ]
+        },
+        {
+          "label": "Automate",
+          "items": [
+            "Individuelle interne Tools und Dashboards",
+            "Prozess-Review jedes Quartal"
           ]
         },
         {
           "label": "Run",
           "items": [
             "Alles aus Growth",
-            "Security-Hardening, DSGVO-Dokumentation",
-            "Antwort am selben Werktag"
+            "Security-Hardening, DSGVO-Dokumentation · Antwort am selben Werktag"
           ]
         }
       ]
@@ -108,7 +119,7 @@
       "name": "Custom",
       "price": "Auf Anfrage",
       "period": "",
-      "blurb": "Neue Websites, Migrationen, große Shops oder KI-Projekte – als Festpreisprojekt oder individueller Retainer.",
+      "blurb": "Neue Websites, Migrationen, CRM-Einführungen, interne Anwendungen oder größere KI-Projekte – als Festpreisprojekt oder individueller Plan.",
       "featured": false,
       "cta": "Angebot anfragen",
       "groups": [
@@ -116,9 +127,9 @@
           "label": "Beispiele",
           "items": [
             "Neue Website oder neuer Shop, Redesign",
-            "Migration zwischen Plattformen",
-            "Individuelle KI-Pipelines & Integrationen",
-            "Mehr Stunden, Sprachen oder Märkte"
+            "CRM-Einführung und Datenmigration",
+            "Individuelle interne App oder Kundenportal",
+            "Größere KI-Pipelines & Integrationen"
           ]
         }
       ]

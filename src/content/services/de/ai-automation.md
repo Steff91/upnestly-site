@@ -1,7 +1,7 @@
 ---
 title: "KI-Automatisierung"
-order: 4
-discipline: Build
+order: 5
+discipline: Automate
 excerpt: "Content-Pipelines, Katalogpflege und Integrationen auf Basis von LLMs und n8n."
 metaTitle: "KI-Automatisierung für Websites & Shops | Upnestly"
 metaDescription: "KI-Workflows, die Ihrem Team manuelle Arbeit abnehmen – Katalogpflege, Content-Pipelines, Übersetzungen und Integrationen, mit menschlicher Prüfung in jedem Schritt."
@@ -28,9 +28,9 @@ deliverables:
   - title: "Dokumentation & Übergabe"
     text: "Jeder Workflow wird dokumentiert und übergeben – ohne Lock-in."
 inPlans:
-  essentials: "[Welche KI-Arbeit in Essentials passt – z. B. kleine Automatisierungen innerhalb der 8 Monatsstunden.]"
-  growth: "KI-Automatisierungen in Ihren 16 monatlichen Entwicklungsstunden enthalten."
-  scale: "Größere KI-Workflows innerhalb von 32 Monatsstunden, in der Quartals-Roadmap geplant."
+  essentials: "Eine Routineaufgabe automatisiert, etwa das Sortieren von Anfragen oder ein Wochenreport."
+  growth: "Laufende KI-Automatisierungen für Content, Leads und Reporting."
+  scale: "Größere KI-Workflows über Ihre Systeme hinweg, in der Quartals-Roadmap geplant."
 steps:
   - title: "Prozess abbilden"
     text: "[Text.]"
