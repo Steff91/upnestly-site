@@ -13,8 +13,8 @@ const lang = getLang(Astro.url);
 const data = getPlans(lang);
 const pricing = getPricing(lang);
 const t = {
-  en: { period: 'Billing period', monthly: 'Monthly', annual: 'Annual', save: `Save ${pricing.annualDiscount}% with annual billing`, swipe: 'Swipe to compare plans →', featured: 'Most chosen', from: 'From', yearly: 'Billed yearly', billedMonthly: 'Billed monthly', show: 'Show' },
-  de: { period: 'Abrechnungszeitraum', monthly: 'Monatlich', annual: 'Jährlich', save: `${pricing.annualDiscount} % sparen bei jährlicher Zahlung`, swipe: 'Wischen, um Pläne zu vergleichen →', featured: 'Am beliebtesten', from: 'Ab', yearly: 'Jährliche Abrechnung', billedMonthly: 'Monatliche Abrechnung', show: 'Zeige' },
+  en: { period: 'Billing period', monthly: 'Monthly', annual: 'Annual', save: `Save ${pricing.annualDiscount}% with annual billing`, swipe: 'Swipe to compare plans', featured: 'Most chosen', from: 'From', yearly: 'Billed yearly', billedMonthly: 'Billed monthly', show: 'Show' },
+  de: { period: 'Abrechnungszeitraum', monthly: 'Monatlich', annual: 'Jährlich', save: `${pricing.annualDiscount} % sparen bei jährlicher Zahlung`, swipe: 'Wischen, um Pläne zu vergleichen', featured: 'Am beliebtesten', from: 'Ab', yearly: 'Jährliche Abrechnung', billedMonthly: 'Monatliche Abrechnung', show: 'Zeige' },
 }[lang];
 
 
@@ -36,7 +36,7 @@ const custom = data.plans.find((p) => p.name === 'Custom');
     </div>
   )}
 
-  <p class="m-0 -mb-2 text-[13px] font-medium text-dim lg:hidden">{t.swipe}</p>
+  <p class="m-0 -mb-2 inline-flex items-center gap-1.5 text-[13px] font-medium text-dim lg:hidden">{t.swipe} <Icon name="arrow" size={11} /></p>
   <div class="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-3 pt-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0" data-plan-track>
     {plans.map((plan, i) => (
       <article

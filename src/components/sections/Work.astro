@@ -1,18 +1,19 @@
 ---
+import Icon from '../Icon.astro';
 import WorkCard from '../WorkCard.astro';
 import { getLang, localize } from '../../i18n';
 import { getLocalized } from '../../i18n/content';
 
 const lang = getLang(Astro.url);
 const work = (await getLocalized('work', lang)).filter((e) => e.data.featured).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
-const t = lang === 'de' ? { title: 'Ausgewählte Projekte', all: 'Alle Projekte →' } : { title: 'Selected work', all: 'All work →' };
+const t = lang === 'de' ? { title: 'Ausgewählte Projekte', all: 'Alle Projekte' } : { title: 'Selected work', all: 'All work' };
 ---
 
 <section id="work">
   <div class="container-site flex flex-col gap-10 py-24 lg:py-26">
     <div class="flex flex-wrap items-end justify-between gap-4">
       <h2 class="h-section" data-reveal>{t.title}</h2>
-      <a href={localize('/work/', lang)} class="font-semibold" data-reveal>{t.all}</a>
+      <a href={localize('/work/', lang)} class="group inline-flex items-center gap-1.5 font-semibold" data-reveal>{t.all} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
     </div>
     <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6">
       {work.map((entry, i) => <WorkCard entry={entry} index={i} />)}

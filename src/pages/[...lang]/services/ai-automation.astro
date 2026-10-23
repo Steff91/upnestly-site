@@ -32,7 +32,7 @@ const t = {
     check: 'Free AI opportunity check', payoff: 'See where it pays off',
     useTitle: 'Where AI pays off first', useLead: 'Repetitive work with clear inputs and a clear result. That’s where automation saves hours without risking quality.',
     pipeEyebrow: 'How a pipeline works', pipeTitle: 'From supplier spreadsheet to live product pages', pipeLead: 'A real workflow from a 650-product outdoor shop. The human step is not optional — it’s the part that keeps quality up.',
-    result: 'Result', resultStrong: '650 products', resultText: 'with descriptions, translations and SEO fields.', project: 'See the project →',
+    result: 'Result', resultStrong: '650 products', resultText: 'with descriptions, translations and SEO fields.', project: 'See the project',
     buildEyebrow: 'How we build', buildTitle: 'AI does the volume. People own the result.',
     principles: [
       { title: 'Human-reviewed', text: 'Nothing generated goes live without an editor’s sign-off.' },
@@ -55,7 +55,7 @@ const t = {
     check: 'Kostenloser KI-Potenzial-Check', payoff: 'Wo es sich lohnt',
     useTitle: 'Wo sich KI zuerst lohnt', useLead: 'Wiederkehrende Arbeit mit klaren Eingaben und einem klaren Ergebnis. Genau dort spart Automatisierung Stunden, ohne die Qualität zu gefährden.',
     pipeEyebrow: 'So funktioniert eine Pipeline', pipeTitle: 'Von der Lieferantentabelle zur fertigen Produktseite', pipeLead: 'Ein echter Workflow aus einem Outdoor-Shop mit 650 Produkten. Der menschliche Schritt ist nicht optional – er sorgt für die Qualität.',
-    result: 'Ergebnis', resultStrong: '650 Produkte', resultText: 'mit Beschreibungen, Übersetzungen und SEO-Feldern.', project: 'Zum Projekt →',
+    result: 'Ergebnis', resultStrong: '650 Produkte', resultText: 'mit Beschreibungen, Übersetzungen und SEO-Feldern.', project: 'Zum Projekt',
     buildEyebrow: 'So bauen wir', buildTitle: 'KI liefert die Menge. Menschen verantworten das Ergebnis.',
     principles: [
       { title: 'Menschlich geprüft', text: 'Nichts Generiertes geht ohne Freigabe einer Redakteurin live.' },
@@ -177,7 +177,7 @@ const schema = [
         <p class="m-0 flex-[1_1_480px] text-[16px] leading-[1.6] text-body">
           <strong class="text-ink">{t.resultStrong}</strong> {t.resultText} {ai.result}
         </p>
-        <a href={localize('/work/project-one/', lang)} class="shrink-0 font-semibold">{t.project}</a>
+        <a href={localize('/work/project-one/', lang)} class="group inline-flex shrink-0 items-center gap-1.5 font-semibold">{t.project} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
       </div>
     </div>
   </section>

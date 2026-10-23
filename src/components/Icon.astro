@@ -1,7 +1,15 @@
 ---
 // Stroke icons (Lucide-style, ISC) as inline SVG.
+// "arrow" is the Font Awesome "chevron-right" (Free, CC BY 4.0 — fontawesome.com/license/free), a filled glyph.
+const filled: Record<string, { viewBox: string; d: string }> = {
+  arrow: {
+    viewBox: '-96 0 512 512',
+    d: 'M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z',
+  },
+};
+
 const paths = {
-  arrow: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  arrow: '',
   menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
   close: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
   chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
@@ -23,6 +31,11 @@ interface Props {
 const { name, size = 20, class: className } = Astro.props;
 ---
 
+{filled[name] ? (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox={filled[name].viewBox} fill="currentColor" aria-hidden="true" class={className}>
+    <path d={filled[name].d} />
+  </svg>
+) : (
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width={size}
@@ -37,3 +50,4 @@ const { name, size = 20, class: className } = Astro.props;
   class={className}
   set:html={paths[name]}
 />
+)}

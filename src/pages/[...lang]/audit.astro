@@ -17,7 +17,7 @@ const t = {
     eyebrow: 'Free audit', title: 'Get a free 20-minute audit.',
     text: 'We review your site and send you a short written report with what to fix first. No obligation, no sales pressure.',
     lookAt: 'What we look at', formTitle: 'Request your audit', submit: 'Request the audit', how: 'How it works', step: 'Step',
-    already: 'Already know what you need?', plans: 'See plans & pricing →',
+    already: 'Already know what you need?', plans: 'See plans & pricing',
     includes: [
       { title: 'Conversion funnel review', text: 'Where visitors drop off on the way to an enquiry or order, and the quickest fixes.' },
       { title: 'Search visibility check', text: 'Technical SEO health, how you rank, and whether AI search mentions you.' },
@@ -36,7 +36,7 @@ const t = {
     eyebrow: 'Kostenloser Audit', title: 'Ihr kostenloser 20-Minuten-Audit.',
     text: 'Wir prüfen Ihre Website und schicken Ihnen einen kurzen schriftlichen Bericht mit den wichtigsten ersten Schritten. Unverbindlich, ohne Verkaufsdruck.',
     lookAt: 'Was wir prüfen', formTitle: 'Audit anfragen', submit: 'Audit anfragen', how: 'So funktioniert es', step: 'Schritt',
-    already: 'Sie wissen schon, was Sie brauchen?', plans: 'Pläne & Preise ansehen →',
+    already: 'Sie wissen schon, was Sie brauchen?', plans: 'Pläne & Preise ansehen',
     includes: [
       { title: 'Analyse des Conversion-Funnels', text: 'Wo Besucher auf dem Weg zur Anfrage oder Bestellung abspringen – und die schnellsten Lösungen.' },
       { title: 'Check der Sichtbarkeit in Suchmaschinen', text: 'Technischer SEO-Zustand, Ihre Rankings und ob KI-Suchen Sie erwähnen.' },
@@ -102,7 +102,7 @@ const t = {
           </li>
         ))}
       </ol>
-      <p class="m-0 text-[15px] text-body" data-reveal>{t.already} <a href={localize('/pricing/', lang)} class="font-semibold">{t.plans}</a></p>
+      <p class="m-0 text-[15px] text-body" data-reveal>{t.already} <a href={localize('/pricing/', lang)} class="group inline-flex items-center gap-1.5 font-semibold">{t.plans} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a></p>
     </div>
   </section>
 </Base>

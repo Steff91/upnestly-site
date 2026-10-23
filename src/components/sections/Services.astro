@@ -101,7 +101,7 @@ const t = {
             ))}
           </ul>
           <p class="m-0 mt-auto flex flex-wrap gap-x-5 gap-y-1 border-t border-line-soft pt-4 text-[15px] font-semibold">
-            {s.links.map((l) => <a href={localize(l.href, lang)} class="inline-flex items-center gap-1.5">{l.label} <span aria-hidden="true">→</span></a>)}
+            {s.links.map((l) => <a href={localize(l.href, lang)} class="group inline-flex items-center gap-1.5">{l.label} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>)}
           </p>
         </article>
       ))}

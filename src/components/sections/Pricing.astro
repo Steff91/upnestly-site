@@ -1,4 +1,5 @@
 ---
+import Icon from '../Icon.astro';
 // Homepage pricing section: monthly plans only, links to the full /pricing/ page.
 import PlanCards from '../PlanCards.astro';
 import { getPlans } from '../../i18n/data';
@@ -6,7 +7,7 @@ import { getLang, localize } from '../../i18n';
 
 const lang = getLang(Astro.url);
 const data = getPlans(lang);
-const t = lang === 'de' ? { eyebrow: 'Pläne & Preise', compare: 'Pläne im Detail vergleichen →' } : { eyebrow: 'Plans & pricing', compare: 'Compare plans in detail →' };
+const t = lang === 'de' ? { eyebrow: 'Pläne & Preise', compare: 'Pläne im Detail vergleichen' } : { eyebrow: 'Plans & pricing', compare: 'Compare plans in detail' };
 ---
 
 <section id="pricing" class="bg-tint">
@@ -23,7 +24,7 @@ const t = lang === 'de' ? { eyebrow: 'Pläne & Preise', compare: 'Pläne im Deta
 
     <div class="flex flex-wrap items-center justify-between gap-x-10 gap-y-4" data-reveal>
       <p class="m-0 max-w-[820px] text-[14px] leading-relaxed text-muted">{data.footnote}</p>
-      <a href={localize('/pricing/', lang)} class="shrink-0 font-semibold">{t.compare}</a>
+      <a href={localize('/pricing/', lang)} class="group inline-flex shrink-0 items-center gap-1.5 font-semibold">{t.compare} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
     </div>
   </div>
 </section>

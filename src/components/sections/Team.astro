@@ -15,7 +15,7 @@ const t = {
     ],
     contactStrong: 'One point of contact for everything.',
     contactText: 'One project lead, one invoice, one contract — in English or German, in your time zone.',
-    meet: 'Meet the team →',
+    meet: 'Meet the team',
   },
   de: {
     title: 'Vier Senior-Spezialisten. Keine Juniors, keine Übergaben.',
@@ -28,7 +28,7 @@ const t = {
     ],
     contactStrong: 'Ein Ansprechpartner für alles.',
     contactText: 'Eine Projektleitung, eine Rechnung, ein Vertrag – auf Deutsch oder Englisch, in Ihrer Zeitzone.',
-    meet: 'Das Team kennenlernen →',
+    meet: 'Das Team kennenlernen',
   },
 }[lang];
 ---
@@ -51,7 +51,7 @@ const t = {
     <div class="flex flex-wrap items-center gap-4 rounded-2xl border border-line px-7 py-6" data-reveal>
       <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-white"><Icon name="chat" /></span>
       <p class="m-0 min-w-0 flex-[1_1_320px] text-[16px] leading-normal"><strong>{t.contactStrong}</strong> {t.contactText}</p>
-      <a href={localize('/team/', lang)} class="shrink-0 font-semibold">{t.meet}</a>
+      <a href={localize('/team/', lang)} class="group inline-flex shrink-0 items-center gap-1.5 font-semibold">{t.meet} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
     </div>
   </div>
 </section>

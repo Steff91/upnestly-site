@@ -34,14 +34,14 @@ const t = {
   en: {
     home: 'Home', services: 'Services', breadcrumb: 'Breadcrumb', audit: 'Book a free audit', fits: 'How it fits your plan',
     plansTitle: 'Included in every plan — at a different scope.', plansLead: 'You don’t buy this on its own. It runs alongside your website, marketing, processes and hosting on one monthly plan.',
-    perMonth: '/ month', compareAll: 'Compare all plans →', how: 'How we work', step: 'Step', tools: 'Tools we use',
-    screenshot: 'Project screenshot', related: 'Related work', readCase: 'Read the case study →', faq: 'Questions we get', also: 'Also in every plan',
+    perMonth: '/ month', compareAll: 'Compare all plans', how: 'How we work', step: 'Step', tools: 'Tools we use',
+    screenshot: 'Project screenshot', related: 'Related work', readCase: 'Read the case study', faq: 'Questions we get', also: 'Also in every plan',
   },
   de: {
     home: 'Startseite', services: 'Leistungen', breadcrumb: 'Brotkrümelnavigation', audit: 'Kostenlosen Audit buchen', fits: 'So passt es in Ihren Plan',
     plansTitle: 'In jedem Plan enthalten – in unterschiedlichem Umfang.', plansLead: 'Diese Leistung kaufen Sie nicht einzeln. Sie läuft zusammen mit Website, Marketing, Prozessen und Hosting in einem Monatsplan.',
-    perMonth: '/ Monat', compareAll: 'Alle Pläne vergleichen →', how: 'So arbeiten wir', step: 'Schritt', tools: 'Unsere Tools',
-    screenshot: 'Projekt-Screenshot', related: 'Passendes Projekt', readCase: 'Zur Fallstudie →', faq: 'Häufige Fragen', also: 'Ebenfalls in jedem Plan',
+    perMonth: '/ Monat', compareAll: 'Alle Pläne vergleichen', how: 'So arbeiten wir', step: 'Schritt', tools: 'Unsere Tools',
+    screenshot: 'Projekt-Screenshot', related: 'Passendes Projekt', readCase: 'Zur Fallstudie', faq: 'Häufige Fragen', also: 'Ebenfalls in jedem Plan',
   },
 }[lang];
 
@@ -159,7 +159,7 @@ const schema = [
           </div>
         ))}
       </div>
-      <a href={localize('/pricing/', lang)} class="w-fit font-semibold" data-reveal>{t.compareAll}</a>
+      <a href={localize('/pricing/', lang)} class="group inline-flex w-fit items-center gap-1.5 font-semibold" data-reveal>{t.compareAll} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
     </div>
   </section>
 
@@ -197,7 +197,7 @@ const schema = [
           <p class="label m-0 text-dim">{work.data.meta}</p>
           <h2 class="m-0 text-[28px] font-extrabold leading-tight">{work.data.title}</h2>
           <p class="lead">{work.data.summary}</p>
-          <a href={localize(`/work/${slugOf(work)}/`, lang)} class="mt-2 w-fit font-semibold">{t.readCase}</a>
+          <a href={localize(`/work/${slugOf(work)}/`, lang)} class="group mt-2 inline-flex w-fit items-center gap-1.5 font-semibold">{t.readCase} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
         </div>
       </div>
     </section>

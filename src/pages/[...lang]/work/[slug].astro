@@ -29,8 +29,8 @@ const w = entry.data;
 const lang = getLang(Astro.url);
 const serviceFor = { Build: '/services/development/', Grow: '/services/seo-content/', Automate: '/services/crm-internal-tools/', Run: '/services/hosting-care/' } as const;
 const t = {
-  en: { home: 'Home', work: 'Work', breadcrumb: 'Breadcrumb', caseStudy: 'Case Study', plan: 'plan', screenshot: 'Main project screenshot', challenge: 'The challenge', visit: 'Visit the site', did: 'What we did', more: 'More work', all: 'All projects →' },
-  de: { home: 'Startseite', work: 'Projekte', breadcrumb: 'Brotkrümelnavigation', caseStudy: 'Fallstudie', plan: 'Plan', screenshot: 'Haupt-Screenshot des Projekts', challenge: 'Die Herausforderung', visit: 'Zur Website', did: 'Was wir gemacht haben', more: 'Weitere Projekte', all: 'Alle Projekte →' },
+  en: { home: 'Home', work: 'Work', breadcrumb: 'Breadcrumb', caseStudy: 'Case Study', plan: 'plan', screenshot: 'Main project screenshot', challenge: 'The challenge', visit: 'Visit the site', did: 'What we did', more: 'More work', all: 'All projects' },
+  de: { home: 'Startseite', work: 'Projekte', breadcrumb: 'Brotkrümelnavigation', caseStudy: 'Fallstudie', plan: 'Plan', screenshot: 'Haupt-Screenshot des Projekts', challenge: 'Die Herausforderung', visit: 'Zur Website', did: 'Was wir gemacht haben', more: 'Weitere Projekte', all: 'Alle Projekte' },
 }[lang];
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
@@ -151,7 +151,7 @@ const schema = {
     <div class="container-site flex flex-col gap-8 py-20">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <h2 class="h-section" data-reveal>{t.more}</h2>
-        <a href={localize('/work/', lang)} class="font-semibold" data-reveal>{t.all}</a>
+        <a href={localize('/work/', lang)} class="group inline-flex items-center gap-1.5 font-semibold" data-reveal>{t.all} <Icon name="arrow" size={13} class="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
       </div>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
         {[next, after].filter((e) => e && e.id !== entry.id).map((e, i) => <WorkCard entry={e!} index={i} />)}
