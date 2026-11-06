@@ -35,11 +35,11 @@
       "linkedin": "https://www.linkedin.com/in/novak-guslov-961a7216b/"
     },
     {
-      "name": "[Name Surname]",
+      "name": "Saša Babić",
       "role": "Product & project manager",
       "discipline": "Apps",
       "years": "[X]+ yrs",
-      "photo": "",
+      "photo": "/team/sasa-babic.jpg",
       "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
       "focus": [
         "Your main point of contact",
@@ -47,7 +47,7 @@
         "Scrum & project delivery",
         "Requirements & research"
       ],
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/in/sasababic/"
     },
     {
       "name": "[Name Surname]",
