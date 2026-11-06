@@ -3,11 +3,35 @@ import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import { getNav, getSite } from '../i18n/data';
 import { getLang, langs, langMeta, localize, stripLang, switchLang } from '../i18n';
+import { getLocalized, slugOf } from '../i18n/content';
 
 const lang = getLang(Astro.url);
 const site = getSite(lang);
 const nav = getNav(lang);
-const t = { en: { home: 'Upnestly — home', open: 'Open menu', audit: 'Book a free audit', auditShort: 'Book a free audit', language: 'Language', mobile: 'Mobile', main: 'Main' }, de: { home: 'Upnestly — Startseite', open: 'Menü öffnen', audit: 'Kostenlosen Audit buchen', auditShort: 'Kostenloser Audit', language: 'Sprache', mobile: 'Mobil', main: 'Hauptnavigation' } }[lang];
+const t = {
+  en: {
+    home: 'Upnestly — home', open: 'Open menu', audit: 'Book a free audit', auditShort: 'Book a free audit', language: 'Language', mobile: 'Mobile', main: 'Main',
+    showServices: 'Show services', allServices: 'All services', promoTitle: 'Not sure where to start?',
+    promoText: 'A free 20-minute audit of your website, marketing and processes — with a short written report.',
+    disciplines: { Web: 'Website & shop', Growth: 'Content, search & ads', Apps: 'Business apps & AI', Ops: 'Hosting & care' },
+  },
+  de: {
+    home: 'Upnestly — Startseite', open: 'Menü öffnen', audit: 'Kostenlosen Audit buchen', auditShort: 'Kostenloser Audit', language: 'Sprache', mobile: 'Mobil', main: 'Hauptnavigation',
+    showServices: 'Leistungen anzeigen', allServices: 'Alle Leistungen', promoTitle: 'Unsicher, wo Sie anfangen sollen?',
+    promoText: 'Ein kostenloser 20-Minuten-Audit Ihrer Website, Ihres Marketings und Ihrer Prozesse – mit kurzem schriftlichem Bericht.',
+    disciplines: { Web: 'Website & Shop', Growth: 'Content, Suche & Ads', Apps: 'Business-Apps & KI', Ops: 'Hosting & Betreuung' },
+  },
+}[lang];
+
+// Mega menu: services grouped by discipline, in the site's order.
+const services = (await getLocalized('services', lang)).sort((a, b) => a.data.order - b.data.order);
+const groups = (['Web', 'Growth', 'Apps', 'Ops'] as const).map((d, i) => ({
+  key: d,
+  label: `0${i + 1} — ${d}`,
+  title: t.disciplines[d],
+  items: services.filter((s) => s.data.discipline === d).map((s) => ({ href: localize(`/services/${slugOf(s)}/`, lang), title: s.data.title, text: s.data.excerpt })),
+}));
+const isServices = (href: string) => stripLang(href) === '/services/';
 
 // Highlight the current section. "Services" is not active on the AI page, which has its own nav item.
 const path = stripLang(Astro.url.pathname);
@@ -25,9 +49,18 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
     </a>
 
     <nav aria-label={t.main} class="hidden items-center gap-5 whitespace-nowrap text-[15px] font-medium lg:flex xl:gap-7">
-      {nav.map((item) => (
-        <a href={item.href} class="nav-link text-ink no-underline hover:text-brand" aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
-      ))}
+      {nav.map((item) =>
+        isServices(item.href) ? (
+          <div class="flex items-center gap-1" data-mega-trigger>
+            <a href={item.href} class="nav-link text-ink no-underline hover:text-brand" aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+            <button type="button" class="mega-toggle flex size-7 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-ink hover:bg-tint hover:text-brand" aria-expanded="false" aria-controls="mega-services" aria-label={t.showServices} data-mega-toggle>
+              <Icon name="arrow" size={10} class="mega-chevron" />
+            </button>
+          </div>
+        ) : (
+          <a href={item.href} class="nav-link text-ink no-underline hover:text-brand" aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+        ),
+      )}
     </nav>
 
     <div class="flex items-center gap-3">
@@ -42,9 +75,18 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
         <summary class="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-line text-ink [&::-webkit-details-marker]:hidden" aria-label={t.open}>
           <Icon name="menu" />
         </summary>
-        <nav aria-label={t.mobile} class="absolute right-0 top-14 flex w-64 flex-col gap-1 rounded-2xl border border-line bg-white p-3 shadow-lg">
+        <nav aria-label={t.mobile} class="absolute right-0 top-14 flex max-h-[calc(100dvh-140px)] w-72 flex-col gap-1 overflow-y-auto rounded-2xl border border-line bg-white p-3 shadow-lg">
           {nav.map((item) => (
-            <a href={item.href} class="rounded-xl px-4 py-3 font-medium text-ink no-underline hover:bg-tint-soft">{item.label}</a>
+            <>
+              <a href={item.href} class="rounded-xl px-4 py-3 font-medium text-ink no-underline hover:bg-tint-soft">{item.label}</a>
+              {isServices(item.href) && (
+                <div class="-mt-1 mb-1 ml-4 flex flex-col border-l border-line-soft pl-2">
+                  {services.filter((s) => slugOf(s) !== 'ai-automation').map((s) => (
+                    <a href={localize(`/services/${slugOf(s)}/`, lang)} class="rounded-lg px-3 py-2 text-[14px] text-body no-underline hover:bg-tint-soft hover:text-brand">{s.data.title}</a>
+                  ))}
+                </div>
+              )}
+            </>
           ))}
           <a href={site.auditUrl} class="btn btn-primary mt-2">{t.audit}</a>
           <div class="mt-2 flex items-center justify-between gap-3 border-t border-line-soft px-1 pt-3" role="group" aria-label={t.language}>
@@ -59,7 +101,69 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
       </details>
     </div>
   </div>
+
+  <div id="mega-services" class="mega-panel absolute inset-x-0 top-full hidden border-b border-line bg-white shadow-[0_24px_48px_-24px_rgb(23_22_58/0.25)] lg:block" data-open="false" data-mega-panel>
+    <div class="container-site flex gap-8 py-8">
+      <div class="grid flex-1 grid-cols-2 gap-x-6 gap-y-7 xl:grid-cols-4">
+        {groups.map((g) => (
+          <div class="flex flex-col gap-2">
+            <p class="label m-0 px-3 text-brand">{g.label}</p>
+            <p class="m-0 mb-1 px-3 text-[13px] font-semibold text-muted">{g.title}</p>
+            {g.items.map((it) => (
+              <a href={it.href} class="mega-link group flex flex-col gap-1 rounded-xl px-3 py-2.5 no-underline">
+                <span class="inline-flex items-center gap-1.5 text-[15px] font-bold text-ink group-hover:text-brand">{it.title} <Icon name="arrow" size={10} class="opacity-0 transition-[opacity,translate] duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" /></span>
+                <span class="line-clamp-2 text-[13px] leading-snug text-muted">{it.text}</span>
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div class="flex w-[280px] shrink-0 flex-col gap-4 rounded-2xl bg-ink p-6 text-white">
+        <p class="m-0 text-[18px] font-extrabold leading-snug">{t.promoTitle}</p>
+        <p class="m-0 text-[14px] leading-relaxed text-night-text">{t.promoText}</p>
+        <a href={site.auditUrl} class="btn btn-light mt-auto w-full whitespace-nowrap !px-4 !py-3 !text-[14px]">{t.audit}</a>
+        <a href={localize('/services/', lang)} class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-white no-underline hover:text-night-accent">{t.allServices} <Icon name="arrow" size={10} /></a>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  // Mega menu: opens on hover (with a short delay so it doesn't flicker), on the chevron button and on keyboard focus.
+  const trigger = document.querySelector<HTMLElement>('[data-mega-trigger]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-mega-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-mega-panel]');
+  if (trigger && toggle && panel) {
+    let timer: number | undefined;
+    const set = (open: boolean) => {
+      window.clearTimeout(timer);
+      panel.dataset.open = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    const later = (open: boolean, ms: number) => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => set(open), ms);
+    };
+    const hover = window.matchMedia('(hover: hover)');
+    [trigger, panel].forEach((el) => {
+      el.addEventListener('mouseenter', () => hover.matches && later(true, 90));
+      el.addEventListener('mouseleave', () => hover.matches && later(false, 180));
+    });
+    toggle.addEventListener('click', (e) => {
+      const open = panel.dataset.open !== 'true';
+      set(open);
+      // Opened with the keyboard: move focus into the panel.
+      if (open && e.detail === 0) panel.querySelector<HTMLElement>('a')?.focus();
+    });
+    panel.addEventListener('focusout', (e) => { if (!panel.contains(e.relatedTarget as Node) && !trigger.contains(e.relatedTarget as Node)) set(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.dataset.open === 'true') { set(false); toggle.focus(); }
+    });
+    document.addEventListener('pointerdown', (e) => {
+      if (panel.dataset.open === 'true' && !panel.contains(e.target as Node) && !trigger.contains(e.target as Node)) set(false);
+    });
+  }
+</script>
 
 <style>
   .lang-link { color: var(--color-body); transition: background-color .3s ease-out, color .3s ease-out; }
@@ -85,4 +189,22 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
   .nav-link[aria-current='page']::after { transform: scaleX(1); }
   .nav-link[aria-current='page'] { color: var(--color-brand); }
   @media (prefers-reduced-motion: reduce) { .nav-link::after { transition: none; } }
+
+  .mega-panel {
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 -6px;
+    transition: opacity .25s ease-out, translate .25s ease-out, visibility 0s linear .25s;
+  }
+  .mega-panel[data-open='true'] {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+    transition: opacity .25s ease-out, translate .25s ease-out, visibility 0s;
+  }
+  .mega-link { transition: background-color .3s ease-out; }
+  .mega-link:hover, .mega-link:focus-visible { background: var(--color-tint-soft); }
+  .mega-toggle :global(.mega-chevron) { rotate: 90deg; transition: rotate .25s ease-out; }
+  .mega-toggle[aria-expanded='true'] :global(.mega-chevron) { rotate: -90deg; }
+  @media (prefers-reduced-motion: reduce) { .mega-panel, .mega-panel[data-open='true'], .mega-toggle :global(.mega-chevron) { transition: none; translate: none; } }
 </style>
