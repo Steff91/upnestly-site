@@ -1,20 +1,21 @@
 {
   "members": [
     {
-      "name": "[Name Surname]",
+      "name": "Stefan Pazin",
       "role": "Development, AI & automation",
       "discipline": "Web",
-      "years": "8+ yrs",
+      "years": "9+ yrs",
       "photo": "",
-      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "bio": "Stefan builds and maintains websites, shops and the automations behind them. Over nine years he has worked across WordPress, WooCommerce, Shopify and custom code — including as the sole developer of seobility.net at saas.group, where he built the theme from scratch, and in client-facing roles at GoDaddy and Meks. Today his focus is AI automation: content and catalogue pipelines with the Claude API and n8n, technical SEO and integrations that save teams hours every week.",
       "focus": [
         "WordPress & WooCommerce",
         "Shopify & Webflow",
         "Custom code (Astro)",
         "AI automation (Claude API, n8n)",
-        "Technical SEO"
+        "Technical SEO",
+        "Integrations & APIs"
       ],
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/in/stefanpazin/"
     },
     {
       "name": "Novak Guslov",
