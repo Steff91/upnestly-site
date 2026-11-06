@@ -114,7 +114,7 @@ Without `SSH_HOST` the workflow only builds (useful as a CI check).
 ## TODO
 
 - [ ] Real numbers: case study results; confirm "from" plan prices in `src/data/{en,de}/plans.json`
-- [ ] Team: years of experience for the product & project manager (`[X]+ yrs` in `src/data/{en,de}/team.json` and `src/components/sections/Team.astro`)
+
 - [ ] Team page: names, portraits, bios, LinkedIn URLs, values and network (`src/data/team.json`)
 - [ ] Replace the six lorem-ipsum case studies in `src/content/work/` with real projects and screenshots
 - [ ] AI page: Custom AI project price (`ai.json → customFrom`), catalogue results, FAQ on model training and the EU AI Act

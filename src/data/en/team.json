@@ -38,14 +38,16 @@
       "name": "Saša Babić",
       "role": "Product & project manager",
       "discipline": "Apps",
-      "years": "[X]+ yrs",
+      "years": "15+ yrs",
       "photo": "/team/sasa-babic.jpg",
-      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "bio": "Saša has more than 15 years of experience in the IT industry, spanning eCommerce, WordPress development and product management. For the last five years he has focused on Oracle APEX and SQL development, enterprise system integration and consulting for public-sector clients, and he currently works as a software developer on a large data warehouse project. He is known for strong communication skills, a fast-learning mindset and a disciplined, standards-focused approach to problem solving.",
       "focus": [
         "Your main point of contact",
+        "Product & project management",
         "Business apps & CRM",
-        "Scrum & project delivery",
-        "Requirements & research"
+        "Oracle APEX & SQL",
+        "Enterprise system integration",
+        "Data warehousing"
       ],
       "linkedin": "https://www.linkedin.com/in/sasababic/"
     },
