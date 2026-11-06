@@ -5,7 +5,7 @@
     { "title": "Mehrsprachiger Content", "text": "Erste Entwürfe und Übersetzungen zwischen Deutsch und Englisch, von einer Redakteurin im richtigen Ton finalisiert.", "tag": "Content" },
     { "title": "Lead-Bearbeitung", "text": "Formularanfragen werden qualifiziert, angereichert und an die richtige Person in Ihrem CRM weitergeleitet – in Minuten statt Tagen.", "tag": "Vertrieb" },
     { "title": "Posteingang & Support", "text": "Eingehende Nachrichten nach Thema und Dringlichkeit sortiert, mit Antwortentwürfen, die Ihr Team prüft und versendet.", "tag": "Support" },
-    { "title": "Reporting", "text": "Eine wöchentliche Zusammenfassung von Traffic, Ads und Umsatz aus GA4 und Ihren Werbekonten – per E-Mail oder Slack.", "tag": "Operations" },
+    { "title": "Reporting", "text": "Eine wöchentliche Zusammenfassung von Traffic, Leads und Umsatz aus GA4, Ihrem Shop und Ihrem CRM – per E-Mail oder Slack.", "tag": "Operations" },
     { "title": "Dokumente zu Daten", "text": "PDFs, Datenblätter und Rechnungen werden zu strukturierten Daten, mit denen Ihre Systeme arbeiten können.", "tag": "Backoffice" }
   ],
   "pipeline": [

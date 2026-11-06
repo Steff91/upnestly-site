@@ -145,7 +145,7 @@ collections:
         fields: *team_fields
 
   # Content collections: one folder per language. Use the same file name in both
-  # languages (e.g. en/cro-ads.md and de/cro-ads.md) — it is the URL slug.
+  # languages (e.g. en/cro.md and de/cro.md) — it is the URL slug.
   - name: services
     label: Services (EN)
     folder: src/content/services/en

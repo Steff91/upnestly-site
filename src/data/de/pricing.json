@@ -66,14 +66,6 @@
           ]
         },
         {
-          "label": "Ads-Betreuung",
-          "values": [
-            false,
-            "Google oder Meta",
-            "Google und Meta"
-          ]
-        },
-        {
           "label": "CRO-Tests pro Monat",
           "values": [
             false,
@@ -204,12 +196,12 @@
     {
       "plan": "Growth",
       "title": "Mehr Leads, weniger Verwaltung",
-      "text": "Eine neue Kampagnen-Landingpage, ein CRO-Test am Kontaktformular und Leads, die automatisch qualifiziert und der richtigen Person zugewiesen werden."
+      "text": "Eine neue Landingpage, ein CRO-Test am Kontaktformular und Leads, die automatisch qualifiziert und der richtigen Person zugewiesen werden."
     },
     {
       "plan": "Scale",
       "title": "Verbundene Systeme",
-      "text": "Eine B2B-Preisliste im Shop, beide Werbekanäle optimiert und ein Dashboard, das Umsatz, Leads und offene Bestellungen an einem Ort zeigt."
+      "text": "Eine B2B-Preisliste im Shop, Conversion-Tests auf den wichtigsten Seiten und ein Dashboard, das Umsatz, Leads und offene Bestellungen an einem Ort zeigt."
     }
   ],
   "addons": [
@@ -250,8 +242,8 @@
       "text": "Zahlen Sie 12 Monate im Voraus und sparen Sie {discount} % auf jeden Plan."
     },
     {
-      "title": "Werbebudget und Lizenzen bleiben Ihre",
-      "text": "Sie zahlen Google, Meta und Softwareanbieter direkt, über Ihre eigenen Konten."
+      "title": "Lizenzen und Konten bleiben Ihre",
+      "text": "Sie zahlen Softwareanbieter direkt, über Ihre eigenen Konten."
     },
     {
       "title": "Preise zzgl. MwSt.",

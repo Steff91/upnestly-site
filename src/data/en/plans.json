@@ -1,7 +1,7 @@
 {
   "title": "One team, one monthly plan. Website, marketing and apps.",
   "intro": "Every plan includes all four disciplines — delivered by the same four senior people, with one project manager. You pay for the result, not for hours.",
-  "footnote": "Prices are starting points, excl. VAT. The exact monthly price follows a free discovery call, based on your site, your processes and your goals. Ad spend is billed directly by Google or Meta; software licences (e.g. CRM) are billed by the vendor. Minimum term 3 months, then cancel monthly.",
+  "footnote": "Prices are starting points, excl. VAT. The exact monthly price follows a free discovery call, based on your site, your processes and your goals. Software licences (e.g. CRM) are billed directly by the vendor. Minimum term 3 months, then cancel monthly.",
   "plans": [
     {
       "name": "Essentials",
@@ -59,7 +59,7 @@
           "label": "Growth",
           "items": [
             "2 articles per month, SEO & AI search (GEO)",
-            "Google or Meta ads, 1 CRO test per month"
+            "1 CRO test per month, heatmaps & funnel analysis"
           ]
         },
         {
@@ -95,7 +95,7 @@
         {
           "label": "Growth",
           "items": [
-            "4 articles per month, Google and Meta ads",
+            "4 articles per month, content strategy",
             "2 CRO tests per month, quarterly strategy review"
           ]
         },

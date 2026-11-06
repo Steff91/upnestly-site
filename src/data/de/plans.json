@@ -1,7 +1,7 @@
 {
   "title": "Ein Team, ein Monatsplan. Website, Marketing und Apps.",
   "intro": "Jeder Plan umfasst alle vier Disziplinen – umgesetzt von denselben vier Senior-Spezialisten, mit einem Projektmanager. Sie bezahlen für das Ergebnis, nicht für Stunden.",
-  "footnote": "Die Preise sind Startpreise, zzgl. MwSt. Der genaue Monatspreis folgt nach einem kostenlosen Analysegespräch – abhängig von Ihrer Website, Ihren Prozessen und Ihren Zielen. Werbebudgets rechnen Google und Meta direkt ab, Softwarelizenzen (z. B. CRM) der jeweilige Anbieter. Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
+  "footnote": "Die Preise sind Startpreise, zzgl. MwSt. Der genaue Monatspreis folgt nach einem kostenlosen Analysegespräch – abhängig von Ihrer Website, Ihren Prozessen und Ihren Zielen. Softwarelizenzen (z. B. CRM) rechnet der jeweilige Anbieter direkt ab. Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
   "plans": [
     {
       "name": "Essentials",
@@ -59,7 +59,7 @@
           "label": "Growth",
           "items": [
             "2 Artikel pro Monat, SEO & KI-Suche (GEO)",
-            "Google Ads oder Meta Ads, 1 CRO-Test pro Monat"
+            "1 CRO-Test pro Monat, Heatmaps & Funnel-Analyse"
           ]
         },
         {
@@ -95,7 +95,7 @@
         {
           "label": "Growth",
           "items": [
-            "4 Artikel pro Monat, Google Ads und Meta Ads",
+            "4 Artikel pro Monat, Content-Strategie",
             "2 CRO-Tests pro Monat, quartalsweises Strategie-Review"
           ]
         },

@@ -66,14 +66,6 @@
           ]
         },
         {
-          "label": "Ads management",
-          "values": [
-            false,
-            "Google or Meta",
-            "Google and Meta"
-          ]
-        },
-        {
           "label": "CRO tests per month",
           "values": [
             false,
@@ -204,12 +196,12 @@
     {
       "plan": "Growth",
       "title": "More leads, less admin",
-      "text": "A new campaign landing page, a CRO test on your contact form, and leads automatically qualified and assigned to the right person."
+      "text": "A new landing page, a CRO test on your contact form, and leads automatically qualified and assigned to the right person."
     },
     {
       "plan": "Scale",
       "title": "Connected systems",
-      "text": "A B2B price list in the shop, both ad channels optimised, and a dashboard that shows sales, leads and open orders in one place."
+      "text": "A B2B price list in the shop, conversion tests on the key pages, and a dashboard that shows sales, leads and open orders in one place."
     }
   ],
   "addons": [
@@ -250,8 +242,8 @@
       "text": "Pay for 12 months upfront and save {discount}% on any plan."
     },
     {
-      "title": "Ad spend and licences stay yours",
-      "text": "You pay Google, Meta and software vendors directly, from your own accounts."
+      "title": "Licences and accounts stay yours",
+      "text": "You pay software vendors directly, from your own accounts."
     },
     {
       "title": "Prices excl. VAT",

@@ -2,7 +2,7 @@
 import { getCollection, type CollectionKey } from 'astro:content';
 import type { Lang } from './index';
 
-/** File name without the language folder: "de/cro-ads" → "cro-ads" (used as the URL slug). */
+/** File name without the language folder: "de/cro" → "cro" (used as the URL slug). */
 export const slugOf = (entry: { id: string }) => entry.id.split('/').slice(1).join('/');
 
 /** All entries of a collection in one language. */

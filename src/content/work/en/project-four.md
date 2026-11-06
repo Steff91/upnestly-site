@@ -1,5 +1,5 @@
 ---
-title: "Lorem ipsum paid ads & CRO"
+title: "Lorem ipsum CRO & analytics"
 client: "[Client name]"
 order: 4
 featured: false
@@ -9,7 +9,7 @@ plan: "Growth"
 disciplines: [Growth]
 meta: "Retail · Shopify"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-headline: "Lorem ipsum paid ads & CRO — lorem ipsum dolor sit amet"
+headline: "Lorem ipsum CRO & analytics — lorem ipsum dolor sit amet"
 results:
   - { value: "-XX%", label: "Cost per acquisition" }
   - { value: "X", label: "CRO tests" }
@@ -25,5 +25,5 @@ testimonial:
   quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   name: "[Name Surname]"
   role: "[Role, Company]"
-tools: ["Shopify", "Google Ads", "Meta Ads", "GA4"]
+tools: ["Shopify", "GA4", "Google Tag Manager", "Microsoft Clarity"]
 ---

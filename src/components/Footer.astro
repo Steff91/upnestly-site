@@ -15,7 +15,7 @@ const t = {
     services: 'Services', company: 'Company', contact: 'Contact', worldwide: 'working worldwide', audit: 'Book a free audit',
     legal: 'Legal', imprint: 'Imprint', privacy: 'Privacy policy', cookies: 'Cookies', settings: 'Cookie settings', top: 'Back to top',
     links: {
-      services: ['Development & design', 'SEO & content', 'CRO & paid ads', 'Business apps & CRM', 'AI automation', 'Hosting & care'],
+      services: ['Development & design', 'SEO & content', 'Conversion optimization', 'Business apps & CRM', 'AI automation', 'Hosting & care'],
       company: ['Plans & pricing', 'Selected work', 'Team', 'Free audit', 'Contact'],
     },
   },
@@ -25,13 +25,13 @@ const t = {
     services: 'Leistungen', company: 'Unternehmen', contact: 'Kontakt', worldwide: 'weltweit tätig', audit: 'Kostenlosen Audit buchen',
     legal: 'Rechtliches', imprint: 'Impressum', privacy: 'Datenschutz', cookies: 'Cookies', settings: 'Cookie-Einstellungen', top: 'Nach oben',
     links: {
-      services: ['Entwicklung & Design', 'SEO & Content', 'CRO & Werbeanzeigen', 'Business-Apps & CRM', 'KI-Automatisierung', 'Hosting & Betreuung'],
+      services: ['Entwicklung & Design', 'SEO & Content', 'Conversion-Optimierung', 'Business-Apps & CRM', 'KI-Automatisierung', 'Hosting & Betreuung'],
       company: ['Pläne & Preise', 'Ausgewählte Projekte', 'Team', 'Kostenloser Audit', 'Kontakt'],
     },
   },
 }[lang];
 
-const serviceHrefs = ['/services/development/', '/services/seo-content/', '/services/cro-ads/', '/services/crm-internal-tools/', '/services/ai-automation/', '/services/hosting-care/'];
+const serviceHrefs = ['/services/development/', '/services/seo-content/', '/services/cro/', '/services/crm-internal-tools/', '/services/ai-automation/', '/services/hosting-care/'];
 const companyHrefs = ['/pricing/', '/work/', '/team/', '/audit/', '/contact/'];
 const columns = [
   { title: t.services, links: serviceHrefs.map((h, i) => ({ href: localize(h, lang), label: t.links.services[i] })) },

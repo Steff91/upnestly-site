@@ -82,7 +82,7 @@ The navy in the logo files (`#090E50`) is darker than the standards' RGB value u
 
 - Text in `[BRACKETS]` is placeholder content to replace.
 - The CMS has an (EN) and a (DE) entry for every collection and data file. When you change one language, update the other too.
-- Services: CMS → *Services (EN/DE)*, or edit `src/content/services/{en,de}/*.md`. `cro-ads.md` is the fully written example; the others still contain `[bracketed]` placeholders.
+- Services: CMS → *Services (EN/DE)*, or edit `src/content/services/{en,de}/*.md`. `cro.md` is the fully written example; the others still contain `[bracketed]` placeholders.
 - Case studies: CMS → *Case studies (EN/DE)*, or add a Markdown file to `src/content/work/en/` **and** `src/content/work/de/` with the same name.
 - Plans and prices: CMS → *Settings → Plans & pricing (EN/DE)*. German prices use the German format (`1.990 €`).
 - Forms: `/audit/` and `/contact/` share `InquiryForm.astro`. Links preselect the interest with `?plan=audit|ai|essentials|growth|scale|custom` and `&billing=annual`.
