@@ -83,6 +83,8 @@ const t = {
               <a href={localize(serviceFor[m.discipline], lang)} class="group label inline-flex items-center gap-1.5 no-underline">{m.discipline} <Icon name="arrow" size={11} class="transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
               <a
                 href={m.linkedin.startsWith('http') ? m.linkedin : '#'}
+                target={m.linkedin.startsWith('http') ? '_blank' : undefined}
+                rel={m.linkedin.startsWith('http') ? 'noopener' : undefined}
                 aria-label={`${m.name} ${t.onLinkedin}`}
                 class="flex size-11 items-center justify-center rounded-full border border-line text-ink hover:border-brand hover:text-brand"
               >
