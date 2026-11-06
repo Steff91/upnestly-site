@@ -17,17 +17,19 @@
       "linkedin": ""
     },
     {
-      "name": "[Vorname Nachname]",
+      "name": "Novak Guslov",
       "role": "Content & Marketing",
       "discipline": "Growth",
       "years": "8+ Jahre",
-      "photo": "",
-      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "photo": "/team/novak-guslov.jpg",
+      "bio": "Novak verbindet strategische Marketingplanung mit der Umsetzung großer Retail-Kampagnen. Seine Schwerpunkte sind Preisimage-Kampagnen, Agentursteuerung und internationales Marketing-Projektmanagement. Im digitalen Marketing konzentriert er sich auf E-Commerce, Content-Strategie, SEO und die Analyse des Kundenverhaltens – mit besonderer Branchenkenntnis in Beauty, Körperpflege und Gesundheit sowie Erfahrung in der gesamten DACH-Region.",
       "focus": [
-        "Content auf Deutsch & Englisch",
-        "SEO & KI-Suche",
-        "Google Ads & Meta Ads",
-        "Conversion-Optimierung"
+        "E-Commerce & Content-Strategie",
+        "SEO",
+        "Analyse des Kundenverhaltens",
+        "Retail- & Preisimage-Kampagnen",
+        "Internationale Marketingprojekte",
+        "Beauty, Körperpflege & Gesundheit"
       ],
       "linkedin": ""
     },

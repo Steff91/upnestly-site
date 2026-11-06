@@ -2,7 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import BrandMark from '../../components/BrandMark.astro';
 import Icon from '../../components/Icon.astro';
-import Placeholder from '../../components/Placeholder.astro';
 import Contact from '../../components/sections/Contact.astro';
 import { getSite, getTeam } from '../../i18n/data';
 import { getLang, langParams, localize } from '../../i18n';
@@ -21,7 +20,7 @@ const t = {
     metaDescription: 'Meet the Upnestly team: senior specialists in development and AI, content and marketing, product and project management, and infrastructure — one team, one point of contact, in your time zone.',
     eyebrow: 'Team', title: 'Four senior specialists. No juniors, no handoffs.',
     text: 'Each discipline is led by someone with years of hands-on experience. You talk directly to the people doing the work — in English or German, in your time zone.',
-    portrait: 'Portrait', onLinkedin: 'on LinkedIn',
+    onLinkedin: 'on LinkedIn',
     howEyebrow: 'How we work together', howTitle: 'One team, one point of contact.', howText: 'You never have to coordinate four freelancers. We do that between ourselves.',
     values: 'What we stand for', networkEyebrow: 'Extended network', networkTitle: 'When a project needs more',
     whereEyebrow: 'Where we are', whereTitle: `Based in ${site.city}, working worldwide`, whereText: 'Remote by default, on site when a project needs it. Lorem ipsum dolor sit amet.',
@@ -31,7 +30,7 @@ const t = {
     metaDescription: 'Lernen Sie das Upnestly-Team kennen: Senior-Spezialisten für Entwicklung und KI, Content und Marketing, Produkt- und Projektmanagement sowie Infrastruktur – ein Team, ein Ansprechpartner, in Ihrer Zeitzone.',
     eyebrow: 'Team', title: 'Vier Senior-Spezialisten. Keine Juniors, keine Übergaben.',
     text: 'Jede Disziplin wird von jemandem mit langjähriger Praxiserfahrung geleitet. Sie sprechen direkt mit den Menschen, die die Arbeit machen – auf Deutsch oder Englisch, in Ihrer Zeitzone.',
-    portrait: 'Porträt', onLinkedin: 'auf LinkedIn',
+    onLinkedin: 'auf LinkedIn',
     howEyebrow: 'So arbeiten wir zusammen', howTitle: 'Ein Team, ein Ansprechpartner.', howText: 'Sie müssen nie vier Freelancer koordinieren. Das erledigen wir untereinander.',
     values: 'Wofür wir stehen', networkEyebrow: 'Erweitertes Netzwerk', networkTitle: 'Wenn ein Projekt mehr braucht',
     whereEyebrow: 'Wo wir sind', whereTitle: `Sitz in ${site.city}, weltweit tätig`, whereText: 'Standardmäßig remote, vor Ort, wenn ein Projekt es erfordert. Lorem ipsum dolor sit amet.',
@@ -57,14 +56,17 @@ const t = {
     <div class="container-site grid gap-6 py-20 md:grid-cols-2">
       {team.members.map((m, i) => (
         <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
-          {m.photo ? (
-            <Placeholder label={t.portrait} src={m.photo} alt={m.name} class="aspect-[4/5] w-full" />
-          ) : (
-            <div class="flex items-center gap-4 bg-tint px-8 pt-8 pb-6" aria-hidden="true">
-              <span class="flex size-16 items-center justify-center rounded-full bg-brand text-[20px] font-extrabold text-white">{m.discipline.slice(0, 1)}</span>
-              <span class="label text-brand">{m.discipline}</span>
-            </div>
-          )}
+          <div class="flex items-center gap-4 bg-tint px-8 pt-8 pb-6">
+            {m.photo ? (
+              <picture class="block size-20 shrink-0 overflow-hidden rounded-full ring-4 ring-white">
+                {m.photo.endsWith('.jpg') && <source srcset={m.photo.replace(/\.jpg$/, '.webp')} type="image/webp" />}
+                <img src={m.photo} alt={m.name} width="80" height="80" loading="lazy" class="h-full w-full object-cover" />
+              </picture>
+            ) : (
+              <span class="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand text-[24px] font-extrabold text-white ring-4 ring-white" aria-hidden="true">{m.discipline.slice(0, 1)}</span>
+            )}
+            <span class="label text-brand">{m.discipline}</span>
+          </div>
           <div class="flex flex-1 flex-col gap-4 p-8">
             <div class="flex items-start justify-between gap-4">
               <div class="flex flex-col gap-1">
