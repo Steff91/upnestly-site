@@ -38,4 +38,4 @@ Skripte der Kategorien Analyse und Marketing werden erst geladen, nachdem Sie si
 
 ## Fragen
 
-Fragen zu Cookies senden Sie bitte an [info@upnestly.net](mailto:info@upnestly.net). Mehr dazu, wie wir mit personenbezogenen Daten umgehen, lesen Sie in unserer [Datenschutzerklärung](/de/privacy/).
+Fragen zu Cookies senden Sie bitte an [info@upnestly.com](mailto:info@upnestly.com). Mehr dazu, wie wir mit personenbezogenen Daten umgehen, lesen Sie in unserer [Datenschutzerklärung](/de/privacy/).

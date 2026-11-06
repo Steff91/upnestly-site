@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 const live = process.env.PUBLIC_SITE_LIVE === 'true';
 
 export default defineConfig({
-  site: 'https://upnestly.net',
+  site: 'https://upnestly.com',
   integrations: [
     sitemap({
       filter: (page) => live && !page.includes('/admin/') && !page.includes('/thank-you/'),

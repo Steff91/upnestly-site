@@ -7,13 +7,13 @@ noindex: true
 
 > **Example text.** This policy is a structured draft. Replace everything in [brackets] and have the final version reviewed for GDPR compliance before the site goes live.
 
-This privacy policy explains what personal data we process when you visit upnestly.net or contact us, why we process it, and which rights you have. We process personal data in line with the EU General Data Protection Regulation (GDPR) and the Serbian Law on Personal Data Protection.
+This privacy policy explains what personal data we process when you visit upnestly.com or contact us, why we process it, and which rights you have. We process personal data in line with the EU General Data Protection Regulation (GDPR) and the Serbian Law on Personal Data Protection.
 
 ## 1. Controller
 
 [Legal entity name]\
 [Street and number], [Postal code] Belgrade, Serbia\
-Email: [info@upnestly.net](mailto:info@upnestly.net)
+Email: [info@upnestly.com](mailto:info@upnestly.com)
 
 [EU representative under Art. 27 GDPR, if required: name, address, email.]
 
@@ -66,7 +66,7 @@ You have the right to:
 - object to processing based on legitimate interests (Art. 21 GDPR);
 - withdraw consent at any time, without affecting earlier processing (Art. 7(3) GDPR).
 
-To exercise these rights, write to [info@upnestly.net](mailto:info@upnestly.net). You also have the right to lodge a complaint with a supervisory authority — in Serbia the Commissioner for Information of Public Importance and Personal Data Protection, or the authority in your EU country of residence.
+To exercise these rights, write to [info@upnestly.com](mailto:info@upnestly.com). You also have the right to lodge a complaint with a supervisory authority — in Serbia the Commissioner for Information of Public Importance and Personal Data Protection, or the authority in your EU country of residence.
 
 ## 6. Security
 

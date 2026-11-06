@@ -38,4 +38,4 @@ Use the **Cookie settings** link in the footer of any page to change or withdraw
 
 ## Questions
 
-Send questions about cookies to [info@upnestly.net](mailto:info@upnestly.net). More about how we handle personal data is in our [privacy policy](/privacy/).
+Send questions about cookies to [info@upnestly.com](mailto:info@upnestly.com). More about how we handle personal data is in our [privacy policy](/privacy/).

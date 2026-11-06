@@ -7,13 +7,13 @@ noindex: true
 
 > **Beispieltext.** Diese Erklärung ist ein strukturierter Entwurf. Ersetzen Sie alle Angaben in [Klammern] und lassen Sie die endgültige Fassung vor dem Livegang auf DSGVO-Konformität prüfen.
 
-Diese Datenschutzerklärung erläutert, welche personenbezogenen Daten wir verarbeiten, wenn Sie upnestly.net besuchen oder uns kontaktieren, warum wir sie verarbeiten und welche Rechte Sie haben. Wir verarbeiten personenbezogene Daten im Einklang mit der Datenschutz-Grundverordnung der EU (DSGVO) und dem serbischen Gesetz über den Schutz personenbezogener Daten.
+Diese Datenschutzerklärung erläutert, welche personenbezogenen Daten wir verarbeiten, wenn Sie upnestly.com besuchen oder uns kontaktieren, warum wir sie verarbeiten und welche Rechte Sie haben. Wir verarbeiten personenbezogene Daten im Einklang mit der Datenschutz-Grundverordnung der EU (DSGVO) und dem serbischen Gesetz über den Schutz personenbezogener Daten.
 
 ## 1. Verantwortlicher
 
 [Name des Unternehmens]\
 [Straße und Hausnummer], [PLZ] Belgrad, Serbien\
-E-Mail: [info@upnestly.net](mailto:info@upnestly.net)
+E-Mail: [info@upnestly.com](mailto:info@upnestly.com)
 
 [Vertreter in der EU nach Art. 27 DSGVO, falls erforderlich: Name, Anschrift, E-Mail.]
 
@@ -66,7 +66,7 @@ Sie haben das Recht auf:
 - Widerspruch gegen eine Verarbeitung auf Grundlage berechtigter Interessen (Art. 21 DSGVO);
 - jederzeitigen Widerruf einer Einwilligung, ohne dass die Rechtmäßigkeit der bisherigen Verarbeitung berührt wird (Art. 7 Abs. 3 DSGVO).
 
-Um diese Rechte auszuüben, schreiben Sie an [info@upnestly.net](mailto:info@upnestly.net). Sie haben außerdem das Recht, sich bei einer Aufsichtsbehörde zu beschweren – in Serbien beim Beauftragten für Informationen von öffentlicher Bedeutung und den Schutz personenbezogener Daten oder bei der Behörde in Ihrem EU-Wohnsitzland.
+Um diese Rechte auszuüben, schreiben Sie an [info@upnestly.com](mailto:info@upnestly.com). Sie haben außerdem das Recht, sich bei einer Aufsichtsbehörde zu beschweren – in Serbien beim Beauftragten für Informationen von öffentlicher Bedeutung und den Schutz personenbezogener Daten oder bei der Behörde in Ihrem EU-Wohnsitzland.
 
 ## 6. Sicherheit
 
