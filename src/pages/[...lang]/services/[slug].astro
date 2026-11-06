@@ -6,7 +6,7 @@ import Placeholder from '../../../components/Placeholder.astro';
 import Contact from '../../../components/sections/Contact.astro';
 import { getPlans, getSite } from '../../../i18n/data';
 import type { CollectionEntry } from 'astro:content';
-import { defaultLang, fromPrice, getLang, langs, localize } from '../../../i18n';
+import { defaultLang, disciplineLabel, fromPrice, getLang, langs, localize } from '../../../i18n';
 import { getLocalized, slugOf } from '../../../i18n/content';
 
 export async function getStaticPaths() {
@@ -92,7 +92,7 @@ const schema = [
       <nav aria-label={t.breadcrumb} class="label text-dim" data-reveal>
         <a href={localize('/services/', lang)} class="text-dim no-underline hover:text-brand">{t.services}</a>
         <span aria-hidden="true" class="mx-2">/</span>
-        <span class="text-brand">{s.discipline}</span>
+        <span class="text-brand">{disciplineLabel(s.discipline, lang)}</span>
       </nav>
       <h1 class="h-hero max-w-[860px]" data-reveal style="--i:1">{s.heroTitle}</h1>
       <p class="m-0 max-w-[660px] text-[19px] leading-[1.55] text-body" data-reveal style="--i:2">{s.heroText}</p>
@@ -231,7 +231,7 @@ const schema = [
         {others.map((o) => (
           <li>
             <a href={localize(`/services/${slugOf(o)}/`, lang)} class="card-hover group flex h-full flex-col gap-2 rounded-2xl border border-line bg-white p-6 no-underline">
-              <span class="label text-brand">{o.data.discipline}</span>
+              <span class="label text-brand">{disciplineLabel(o.data.discipline, lang)}</span>
               <span class="flex items-center justify-between gap-3 text-[17px] font-bold text-ink">
                 {o.data.title}
                 <Icon name="arrow" size={18} class="shrink-0 text-brand transition-transform duration-300 ease-out group-hover:translate-x-1" />

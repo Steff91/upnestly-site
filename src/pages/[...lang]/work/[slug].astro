@@ -6,7 +6,7 @@ import Placeholder from '../../../components/Placeholder.astro';
 import WorkCard from '../../../components/WorkCard.astro';
 import Contact from '../../../components/sections/Contact.astro';
 import type { CollectionEntry } from 'astro:content';
-import { defaultLang, getLang, langs, localize } from '../../../i18n';
+import { defaultLang, disciplineLabel, getLang, langs, localize } from '../../../i18n';
 import { getLocalized, slugOf } from '../../../i18n/content';
 
 export async function getStaticPaths() {
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 const { entry, next, after } = Astro.props;
 const w = entry.data;
 const lang = getLang(Astro.url);
-const serviceFor = { Web: '/services/development/', Growth: '/services/seo-content/', Apps: '/services/crm-internal-tools/', Ops: '/services/hosting-care/' } as const;
+const serviceFor = { Web: '/services/development/', AI: '/services/ai-automation/', Growth: '/services/seo-content/', Apps: '/services/crm-internal-tools/', Ops: '/services/hosting-care/' } as const;
 const t = {
   en: { home: 'Home', work: 'Work', breadcrumb: 'Breadcrumb', caseStudy: 'Case Study', plan: 'plan', screenshot: 'Main project screenshot', challenge: 'The challenge', visit: 'Visit the site', did: 'What we did', more: 'More work', all: 'All projects' },
   de: { home: 'Startseite', work: 'Projekte', breadcrumb: 'Brotkrümelnavigation', caseStudy: 'Fallstudie', plan: 'Plan', screenshot: 'Haupt-Screenshot des Projekts', challenge: 'Die Herausforderung', visit: 'Zur Website', did: 'Was wir gemacht haben', more: 'Weitere Projekte', all: 'Alle Projekte' },
@@ -59,7 +59,7 @@ const schema = {
       </nav>
       <h1 class="h-hero max-w-[900px]" data-reveal style="--i:1">{w.headline}</h1>
       <ul class="m-0 flex list-none flex-wrap gap-2 p-0" data-reveal style="--i:2">
-        {[w.industry, w.platform, ...(w.plan ? [`${w.plan} ${t.plan}`] : []), ...w.disciplines].map((tag) => (
+        {[w.industry, w.platform, ...(w.plan ? [`${w.plan} ${t.plan}`] : []), ...w.disciplines.map((d) => disciplineLabel(d, lang))].map((tag) => (
           <li class="rounded-full border border-line bg-white px-3.5 py-1.5 text-[14px] font-semibold text-body">{tag}</li>
         ))}
       </ul>
@@ -99,7 +99,7 @@ const schema = {
         <p class="eyebrow m-0" data-reveal>{t.did}</p>
         {w.approach.map((a, i) => (
           <div class="flex flex-col gap-2 rounded-[20px] bg-tint-soft p-7" data-reveal style={`--i:${i}`}>
-            <a href={localize(serviceFor[a.discipline], lang)} class="label w-fit text-brand no-underline">{a.discipline}</a>
+            <a href={localize(serviceFor[a.discipline], lang)} class="label w-fit text-brand no-underline">{disciplineLabel(a.discipline, lang)}</a>
             <p class="m-0 text-[15px] leading-[1.65] text-body">{a.text}</p>
           </div>
         ))}

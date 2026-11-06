@@ -5,7 +5,7 @@ import Icon from '../../../components/Icon.astro';
 import SavingsCalculator from '../../../components/SavingsCalculator.astro';
 import Contact from '../../../components/sections/Contact.astro';
 import { getAi, getPlans, getSite } from '../../../i18n/data';
-import { getLang, langParams, localize } from '../../../i18n';
+import { disciplineLabel, getLang, langParams, localize } from '../../../i18n';
 import { getLocalized, slugOf } from '../../../i18n/content';
 
 export function getStaticPaths() {
@@ -42,7 +42,7 @@ const t = {
     ],
     calcTitle: 'What could one automation be worth?', calcLead: 'Pick a task your team repeats every week and move the sliders.',
     waysTitle: 'Two ways to get started',
-    inPlan: 'Inside your plan', inPlanTitle: 'Automations as part of your monthly plan', inPlanText: 'Lead routing, reporting, content drafts and similar workflows are part of the Apps discipline in every plan.',
+    inPlan: 'Inside your plan', inPlanTitle: 'Automations as part of your monthly plan', inPlanText: 'Lead routing, reporting, content drafts and similar workflows are part of every plan.',
     growthLine: (p: string) => `(from ${p}/month): ongoing AI automations, CRM connected`, scaleLine: (p: string) => `(from ${p}/month): larger workflows and business apps, planned quarterly`, seePlans: 'See plans',
     custom: 'Custom AI project', customTitle: 'Bigger pipelines, at a fixed price', customText: 'Catalogue pipelines, document processing and multi-system integrations, scoped and quoted up front. After launch, the workflow is maintained through a monthly plan.', from: 'From', quote: 'Get a quote',
     processTitle: 'From idea to running workflow', step: 'Step', tools: 'Tools we use',
@@ -65,7 +65,7 @@ const t = {
     ],
     calcTitle: 'Was könnte eine Automatisierung wert sein?', calcLead: 'Wählen Sie eine Aufgabe, die Ihr Team jede Woche wiederholt, und bewegen Sie die Regler.',
     waysTitle: 'Zwei Wege zum Start',
-    inPlan: 'In Ihrem Plan', inPlanTitle: 'Automatisierungen als Teil Ihres Monatsplans', inPlanText: 'Lead-Routing, Reporting, Content-Entwürfe und ähnliche Workflows gehören in jedem Plan zur Disziplin Apps.',
+    inPlan: 'In Ihrem Plan', inPlanTitle: 'Automatisierungen als Teil Ihres Monatsplans', inPlanText: 'Lead-Routing, Reporting, Content-Entwürfe und ähnliche Workflows sind Teil jedes Plans.',
     growthLine: (p: string) => `(ab ${p}/Monat): laufende KI-Automatisierungen, CRM verbunden`, scaleLine: (p: string) => `(ab ${p}/Monat): größere Workflows und Business-Apps, quartalsweise geplant`, seePlans: 'Pläne ansehen',
     custom: 'Individuelles KI-Projekt', customTitle: 'Größere Pipelines zum Festpreis', customText: 'Katalog-Pipelines, Dokumentenverarbeitung und Integrationen über mehrere Systeme – vorab definiert und mit Festpreis angeboten. Nach dem Launch wird der Workflow über einen Monatsplan betreut.', from: 'Ab', quote: 'Angebot anfragen',
     processTitle: 'Von der Idee zum laufenden Workflow', step: 'Schritt', tools: 'Unsere Tools',
@@ -290,7 +290,7 @@ const schema = [
         {others.map((o) => (
           <li>
             <a href={localize(`/services/${slugOf(o)}/`, lang)} class="card-hover group flex h-full flex-col gap-2 rounded-2xl border border-line bg-white p-6 no-underline">
-              <span class="label text-brand">{o.data.discipline}</span>
+              <span class="label text-brand">{disciplineLabel(o.data.discipline, lang)}</span>
               <span class="flex items-center justify-between gap-3 text-[17px] font-bold text-ink">
                 {o.data.title}
                 <Icon name="arrow" size={18} class="shrink-0 text-brand transition-transform duration-300 ease-out group-hover:translate-x-1" />

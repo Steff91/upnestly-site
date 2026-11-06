@@ -4,12 +4,12 @@ import { getLang, localize } from '../../i18n';
 
 const lang = getLang(Astro.url);
 
-// The four disciplines. All of them are ongoing monthly work — none is a one-off.
+// The five disciplines — grouped by the kind of work, not by person. All of them are ongoing monthly work.
 const t = {
   en: {
-    title: 'Web, growth, apps and operations. Every month, from one team.',
-    lead: 'Most businesses juggle a developer, a marketing agency, a software vendor and a hosting company. We are all four — with one project manager, working on your site and your apps month after month.',
-    included: 'Included in every plan', includedText: 'All four disciplines, every month.', seePlans: 'See plans', all: 'All services',
+    title: 'Web, AI, growth, apps and operations. Every month, from one team.',
+    lead: 'Most businesses juggle a developer, an automation freelancer, a marketing agency, a software vendor and a hosting company. We cover all of it — with one project manager, month after month.',
+    included: 'Included in every plan', includedText: 'All five disciplines, every month.', seePlans: 'See plans', all: 'All services',
     services: [
       {
         n: '01 — Web',
@@ -19,21 +19,28 @@ const t = {
         links: [{ href: '/services/development/', label: 'Development & design' }],
       },
       {
-        n: '02 — Growth',
+        n: '02 — AI & Automation',
+        title: 'AI automation',
+        text: 'Content and catalogue pipelines, lead handling and reporting — automated with LLMs and n8n, with a human checkpoint before anything goes live.',
+        items: ['Content & catalogue pipelines', 'Lead routing & weekly reporting', 'Integrations between your tools'],
+        links: [{ href: '/services/ai-automation/', label: 'AI automation' }],
+      },
+      {
+        n: '03 — Growth',
         title: 'Content, search & conversion',
         text: 'Multilingual content, SEO that ranks in Google and gets cited by AI search — and a site that turns that traffic into leads and sales.',
-        items: ['Content in English & German', 'SEO & AI search (GEO)', 'Conversion optimization (CRO) & A/B testing', 'Analytics & reporting'],
+        items: ['Content in English & German', 'SEO & AI search (GEO)', 'Conversion optimization (CRO) & A/B testing'],
         links: [{ href: '/services/seo-content/', label: 'SEO & content' }, { href: '/services/cro/', label: 'Conversion optimization' }],
       },
       {
-        n: '03 — Apps',
-        title: 'Business apps, CRM & AI',
-        text: 'The software behind the business: we work out what your team needs, set up or build the apps and CRM for it, and automate the busywork with AI.',
-        items: ['Custom business apps & dashboards', 'CRM setup & integrations', 'AI automation with a human checkpoint'],
-        links: [{ href: '/services/crm-internal-tools/', label: 'Business apps & CRM' }, { href: '/services/ai-automation/', label: 'AI automation' }],
+        n: '04 — Apps',
+        title: 'Business apps & CRM',
+        text: 'The software behind the business: we work out what your team needs, then set up or build the apps and CRM for it.',
+        items: ['Custom business apps & dashboards', 'CRM setup & integrations', 'Process mapping & requirements'],
+        links: [{ href: '/services/crm-internal-tools/', label: 'Business apps & CRM' }],
       },
       {
-        n: '04 — Ops',
+        n: '05 — Ops',
         title: 'Hosting, security & care',
         text: 'Managed EU hosting for websites and business apps; on Shopify and Webflow we look after apps, themes and backups. Handled by a senior systems engineer, not a ticket queue.',
         items: ['Managed EU hosting or platform care', 'Updates, backups, uptime monitoring', 'Security & GDPR documentation'],
@@ -42,9 +49,9 @@ const t = {
     ],
   },
   de: {
-    title: 'Web, Growth, Apps und Betrieb. Jeden Monat, aus einem Team.',
-    lead: 'Die meisten Unternehmen jonglieren mit einem Entwickler, einer Marketingagentur, einem Softwareanbieter und einem Hoster. Wir sind alle vier – mit einem Projektmanager, der Monat für Monat an Ihrer Website und Ihren Apps arbeitet.',
-    included: 'In jedem Plan enthalten', includedText: 'Alle vier Disziplinen, jeden Monat.', seePlans: 'Pläne ansehen', all: 'Alle Leistungen',
+    title: 'Web, KI, Growth, Apps und Betrieb. Jeden Monat, aus einem Team.',
+    lead: 'Die meisten Unternehmen jonglieren mit einem Entwickler, einem Automatisierungs-Freelancer, einer Marketingagentur, einem Softwareanbieter und einem Hoster. Wir decken alles ab – mit einem Projektmanager, Monat für Monat.',
+    included: 'In jedem Plan enthalten', includedText: 'Alle fünf Disziplinen, jeden Monat.', seePlans: 'Pläne ansehen', all: 'Alle Leistungen',
     services: [
       {
         n: '01 — Web',
@@ -54,21 +61,28 @@ const t = {
         links: [{ href: '/services/development/', label: 'Entwicklung & Design' }],
       },
       {
-        n: '02 — Growth',
+        n: '02 — KI & Automatisierung',
+        title: 'KI-Automatisierung',
+        text: 'Content- und Katalog-Pipelines, Lead-Bearbeitung und Reporting – automatisiert mit LLMs und n8n, mit menschlichem Prüfschritt, bevor etwas live geht.',
+        items: ['Content- & Katalog-Pipelines', 'Lead-Routing & Wochenreports', 'Integrationen zwischen Ihren Tools'],
+        links: [{ href: '/services/ai-automation/', label: 'KI-Automatisierung' }],
+      },
+      {
+        n: '03 — Growth',
         title: 'Content, Suche & Conversion',
         text: 'Mehrsprachiger Content, SEO, das in Google rankt und von KI-Suchen zitiert wird – und eine Website, die aus diesem Traffic Leads und Verkäufe macht.',
-        items: ['Content auf Deutsch & Englisch', 'SEO & KI-Suche (GEO)', 'Conversion-Optimierung (CRO) & A/B-Tests', 'Analytics & Reporting'],
+        items: ['Content auf Deutsch & Englisch', 'SEO & KI-Suche (GEO)', 'Conversion-Optimierung (CRO) & A/B-Tests'],
         links: [{ href: '/services/seo-content/', label: 'SEO & Content' }, { href: '/services/cro/', label: 'Conversion-Optimierung' }],
       },
       {
-        n: '03 — Apps',
-        title: 'Business-Apps, CRM & KI',
-        text: 'Die Software hinter dem Unternehmen: Wir klären, was Ihr Team braucht, richten die passenden Apps und das CRM dafür ein oder entwickeln sie und automatisieren Routinearbeit mit KI.',
-        items: ['Individuelle Business-Apps & Dashboards', 'CRM-Einführung & Integrationen', 'KI-Automatisierung mit menschlichem Prüfschritt'],
-        links: [{ href: '/services/crm-internal-tools/', label: 'Business-Apps & CRM' }, { href: '/services/ai-automation/', label: 'KI-Automatisierung' }],
+        n: '04 — Apps',
+        title: 'Business-Apps & CRM',
+        text: 'Die Software hinter dem Unternehmen: Wir klären, was Ihr Team braucht, und richten die passenden Apps und das CRM ein oder entwickeln sie.',
+        items: ['Individuelle Business-Apps & Dashboards', 'CRM-Einführung & Integrationen', 'Prozessanalyse & Anforderungen'],
+        links: [{ href: '/services/crm-internal-tools/', label: 'Business-Apps & CRM' }],
       },
       {
-        n: '04 — Ops',
+        n: '05 — Ops',
         title: 'Hosting, Sicherheit & Betreuung',
         text: 'Managed Hosting in der EU für Websites und Business-Apps; bei Shopify und Webflow kümmern wir uns um Apps, Themes und Backups. Betreut von einem Senior Systems Engineer, nicht von einer Ticket-Warteschlange.',
         items: ['Managed Hosting in der EU oder Plattform-Betreuung', 'Updates, Backups, Uptime-Monitoring', 'Sicherheit & DSGVO-Dokumentation'],
@@ -86,11 +100,12 @@ const t = {
       <p class="lead max-w-[440px]" data-reveal style="--i:1">{t.lead}</p>
     </div>
 
-    <div class="grid gap-5 md:grid-cols-2">
+    <!-- 2 + 3 layout on wide screens: Web and AI on top, Growth, Apps and Ops below. -->
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-6">
       {t.services.map((s, i) => (
-        <article class="flex flex-col gap-4.5 rounded-[20px] border border-line p-9" data-reveal style={`--i:${i}`}>
+        <article class:list={['flex flex-col gap-4.5 rounded-[20px] border border-line p-8 lg:p-9', i < 2 ? 'xl:col-span-3' : 'xl:col-span-2', i === 4 && 'md:col-span-2 xl:col-span-2']} data-reveal style={`--i:${i % 3}`}>
           <p class="m-0 label text-brand">{s.n}</p>
-          <h3 class="m-0 text-[26px] font-extrabold leading-tight tracking-[-0.01em]">{s.title}</h3>
+          <h3 class="m-0 text-[24px] font-extrabold leading-tight tracking-[-0.01em]">{s.title}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-body">{s.text}</p>
           <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[15px] leading-snug">
             {s.items.map((item) => (

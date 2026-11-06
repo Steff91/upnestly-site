@@ -1,6 +1,6 @@
 # upnestly-site
 
-Website for Upnestly, an AI-native digital team (Web · Growth · Apps · Ops on one monthly plan). Astro + Tailwind, Sveltia CMS, deployed via GitHub Actions.
+Website for Upnestly, an AI-native digital team (Web · AI & Automation · Growth · Apps · Ops on one monthly plan). Astro + Tailwind, Sveltia CMS, deployed via GitHub Actions.
 
 ## Stack
 

@@ -1,6 +1,6 @@
 {
   "title": "Ein Team, ein Monatsplan. Website, Marketing und Apps.",
-  "intro": "Jeder Plan umfasst alle vier Disziplinen – umgesetzt von denselben vier Senior-Spezialisten, mit einem Projektmanager. Sie bezahlen für das Ergebnis, nicht für Stunden.",
+  "intro": "Jeder Plan umfasst alle fünf Disziplinen – umgesetzt von denselben vier Senior-Spezialisten, mit einem Projektmanager. Sie bezahlen für das Ergebnis, nicht für Stunden.",
   "footnote": "Die Preise sind Startpreise, zzgl. MwSt. Der genaue Monatspreis folgt nach einem kostenlosen Analysegespräch – abhängig von Ihrer Website, Ihren Prozessen und Ihren Zielen. Softwarelizenzen (z. B. CRM) rechnet der jeweilige Anbieter direkt ab. Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
   "plans": [
     {
@@ -19,6 +19,13 @@
           ]
         },
         {
+          "label": "KI & Automatisierung",
+          "items": [
+            "Eine Routineaufgabe automatisiert",
+            "z. B. Website-Anfragen direkt in Ihr CRM"
+          ]
+        },
+        {
           "label": "Growth",
           "items": [
             "1 Artikel pro Monat, auf Deutsch oder Englisch",
@@ -28,8 +35,7 @@
         {
           "label": "Apps",
           "items": [
-            "Ein Routineprozess automatisiert",
-            "z. B. Website-Anfragen direkt in Ihr CRM"
+            "Betreuung Ihrer bestehenden Apps und Ihres CRM"
           ]
         },
         {
@@ -56,6 +62,12 @@
           ]
         },
         {
+          "label": "KI & Automatisierung",
+          "items": [
+            "Laufende KI-Automatisierungen für Content, Leads und Reporting"
+          ]
+        },
+        {
           "label": "Growth",
           "items": [
             "2 Artikel pro Monat, SEO & KI-Suche (GEO)",
@@ -65,8 +77,7 @@
         {
           "label": "Apps",
           "items": [
-            "CRM eingerichtet und mit Website, Shop und E-Mail verbunden",
-            "Laufende KI-Automatisierungen"
+            "CRM eingerichtet und mit Website, Shop und E-Mail verbunden"
           ]
         },
         {
@@ -90,6 +101,12 @@
           "label": "Web",
           "items": [
             "Feature-Roadmap, quartalsweise geplant"
+          ]
+        },
+        {
+          "label": "KI & Automatisierung",
+          "items": [
+            "KI-Workflows über Ihre Systeme hinweg, quartalsweise geplant"
           ]
         },
         {

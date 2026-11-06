@@ -39,6 +39,27 @@
       ]
     },
     {
+      "group": "KI & Automatisierung",
+      "rows": [
+        {
+          "label": "Automatisierte Routineprozesse",
+          "values": [
+            "1",
+            "Laufend",
+            "Laufend"
+          ]
+        },
+        {
+          "label": "KI-Automatisierungen",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
       "group": "Growth",
       "rows": [
         {
@@ -87,23 +108,7 @@
       "group": "Apps",
       "rows": [
         {
-          "label": "Automatisierte Routineprozesse",
-          "values": [
-            "1",
-            "Laufend",
-            "Laufend"
-          ]
-        },
-        {
           "label": "CRM eingerichtet und verbunden",
-          "values": [
-            false,
-            true,
-            true
-          ]
-        },
-        {
-          "label": "KI-Automatisierungen",
           "values": [
             false,
             true,

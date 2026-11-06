@@ -4,7 +4,7 @@ import BrandMark from '../../components/BrandMark.astro';
 import Icon from '../../components/Icon.astro';
 import Contact from '../../components/sections/Contact.astro';
 import { getSite, getTeam } from '../../i18n/data';
-import { getLang, langParams, localize } from '../../i18n';
+import { getLang, langParams } from '../../i18n';
 
 export function getStaticPaths() {
   return langParams();
@@ -13,7 +13,8 @@ export function getStaticPaths() {
 const lang = getLang(Astro.url);
 const team = getTeam(lang);
 const site = getSite(lang);
-const serviceFor: Record<string, string> = { Web: '/services/development/', Growth: '/services/seo-content/', Apps: '/services/crm-internal-tools/', Ops: '/services/hosting-care/' };
+// Initials for members without a photo (placeholders in [brackets] show a neutral mark).
+const initials = (name: string) => (name.startsWith('[') ? '·' : name.split(' ').map((w) => w[0]).join('').slice(0, 2));
 const t = {
   en: {
     metaTitle: 'Team — Four Senior Specialists | Upnestly',
@@ -56,31 +57,27 @@ const t = {
     <div class="container-site grid gap-6 py-20 md:grid-cols-2">
       {team.members.map((m, i) => (
         <article class="flex flex-col overflow-hidden rounded-[20px] border border-line" data-reveal style={`--i:${i}`}>
-          <div class="flex items-center gap-4 bg-tint px-8 pt-8 pb-6">
+          <div class="flex items-center gap-5 bg-tint px-8 py-7">
             {m.photo ? (
               <picture class="block size-20 shrink-0 overflow-hidden rounded-full ring-4 ring-white">
                 {m.photo.endsWith('.jpg') && <source srcset={m.photo.replace(/\.jpg$/, '.webp')} type="image/webp" />}
                 <img src={m.photo} alt={m.name} width="80" height="80" loading="lazy" class="h-full w-full object-cover" />
               </picture>
             ) : (
-              <span class="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand text-[24px] font-extrabold text-white ring-4 ring-white" aria-hidden="true">{m.discipline.slice(0, 1)}</span>
+              <span class="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand text-[24px] font-extrabold text-white ring-4 ring-white" aria-hidden="true">{initials(m.name)}</span>
             )}
-            <span class="label text-brand">{m.discipline}</span>
+            <div class="flex min-w-0 flex-1 flex-col gap-1">
+              <h2 class="m-0 text-[24px] font-extrabold leading-tight">{m.name}</h2>
+              <p class="m-0 text-[15px] font-semibold text-brand">{m.role}</p>
+            </div>
+            <span class="shrink-0 self-start rounded-full bg-white px-3 py-1 text-[14px] font-bold text-brand">{m.years}</span>
           </div>
           <div class="flex flex-1 flex-col gap-4 p-8">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex flex-col gap-1">
-                <h2 class="m-0 text-[24px] font-extrabold leading-tight">{m.name}</h2>
-                <p class="m-0 text-[15px] font-semibold text-brand">{m.role}</p>
-              </div>
-              <span class="shrink-0 rounded-full bg-tint px-3 py-1 text-[14px] font-bold text-brand">{m.years}</span>
-            </div>
             <p class="m-0 text-[15px] leading-[1.6] text-body">{m.bio}</p>
             <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
               {m.focus.map((f) => <li class="rounded-full border border-line px-3 py-1 text-[13px] font-semibold text-body">{f}</li>)}
             </ul>
-            <div class="mt-auto flex items-center justify-between gap-4 border-t border-line-soft pt-4">
-              <a href={localize(serviceFor[m.discipline], lang)} class="group label inline-flex items-center gap-1.5 no-underline">{m.discipline} <Icon name="arrow" size={11} class="transition-transform duration-300 ease-out group-hover:translate-x-0.5" /></a>
+            <div class="mt-auto flex items-center justify-end border-t border-line-soft pt-4">
               <a
                 href={m.linkedin.startsWith('http') ? m.linkedin : '#'}
                 target={m.linkedin.startsWith('http') ? '_blank' : undefined}

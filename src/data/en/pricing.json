@@ -39,6 +39,27 @@
       ]
     },
     {
+      "group": "AI & Automation",
+      "rows": [
+        {
+          "label": "Routine processes automated",
+          "values": [
+            "1",
+            "Ongoing",
+            "Ongoing"
+          ]
+        },
+        {
+          "label": "AI automations",
+          "values": [
+            false,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
       "group": "Growth",
       "rows": [
         {
@@ -87,23 +108,7 @@
       "group": "Apps",
       "rows": [
         {
-          "label": "Routine processes automated",
-          "values": [
-            "1",
-            "Ongoing",
-            "Ongoing"
-          ]
-        },
-        {
           "label": "CRM set up and connected",
-          "values": [
-            false,
-            true,
-            true
-          ]
-        },
-        {
-          "label": "AI automations",
           "values": [
             false,
             true,

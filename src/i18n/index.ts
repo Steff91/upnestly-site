@@ -41,3 +41,9 @@ export const priceNumber = (price: string) => Number(price.replace(/[^\d]/g, '')
 
 /** Plans are priced "from" — the exact price follows the discovery call: "from €990" / "ab 990 €". */
 export const fromPrice = (price: string, lang: Lang) => (/\d/.test(price) ? `${lang === 'de' ? 'ab' : 'from'} ${price}` : price);
+
+/** Display name of a discipline key (Web, AI, Growth, Apps, Ops). */
+export const disciplineLabel = (d: string, lang: Lang) => (d === 'AI' ? (lang === 'de' ? 'KI & Automatisierung' : 'AI & Automation') : d);
+
+/** Disciplines in display order. */
+export const disciplineOrder = ['Web', 'AI', 'Growth', 'Apps', 'Ops'] as const;

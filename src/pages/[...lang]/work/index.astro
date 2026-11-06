@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import BrandMark from '../../../components/BrandMark.astro';
 import WorkCard from '../../../components/WorkCard.astro';
 import Contact from '../../../components/sections/Contact.astro';
-import { getLang, langParams } from '../../../i18n';
+import { disciplineLabel, getLang, langParams } from '../../../i18n';
 import { getLocalized } from '../../../i18n/content';
 
 export function getStaticPaths() {
@@ -12,7 +12,7 @@ export function getStaticPaths() {
 
 const lang = getLang(Astro.url);
 const work = (await getLocalized('work', lang)).sort((a, b) => a.data.order - b.data.order);
-const filters = ['All', 'Web', 'Growth', 'Apps', 'Ops'] as const;
+const filters = ['All', 'Web', 'AI', 'Growth', 'Apps', 'Ops'] as const;
 const t = {
   en: {
     metaTitle: 'Work — Case Studies | Upnestly', metaDescription: 'Case studies from Upnestly: websites, shops, SEO, CRO, AI automation and hosting projects — with the results they brought.',
@@ -44,7 +44,7 @@ const t = {
       <div class="flex flex-wrap items-center gap-2" role="group" aria-label={t.filter} data-work-filters>
         {filters.map((f, i) => (
           <button type="button" class="filter-btn min-h-11 rounded-full border border-line px-5 text-[15px] font-semibold" data-filter={f} aria-pressed={i === 0 ? 'true' : 'false'}>
-            {f === 'All' ? t.all : f}
+            {f === 'All' ? t.all : disciplineLabel(f, lang)}
           </button>
         ))}
         <span class="ml-auto text-[14px] text-muted" aria-live="polite" data-work-count data-one={t.one} data-many={t.many}>{work.length} {t.many}</span>

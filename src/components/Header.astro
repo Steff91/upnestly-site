@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import { getNav, getSite } from '../i18n/data';
-import { getLang, langs, langMeta, localize, stripLang, switchLang } from '../i18n';
+import { disciplineLabel, disciplineOrder, getLang, langs, langMeta, localize, stripLang, switchLang } from '../i18n';
 import { getLocalized, slugOf } from '../i18n/content';
 
 const lang = getLang(Astro.url);
@@ -13,21 +13,21 @@ const t = {
     home: 'Upnestly — home', open: 'Open menu', audit: 'Book a free audit', auditShort: 'Book a free audit', language: 'Language', mobile: 'Mobile', main: 'Main',
     showServices: 'Show services', allServices: 'All services', promoTitle: 'Not sure where to start?',
     promoText: 'A free 20-minute audit of your website, marketing and processes — with a short written report.',
-    disciplines: { Web: 'Website & shop', Growth: 'Content, search & CRO', Apps: 'Business apps & AI', Ops: 'Hosting & care' },
+    disciplines: { Web: 'Website & shop', AI: 'Pipelines & integrations', Growth: 'Content, search & CRO', Apps: 'Business apps & CRM', Ops: 'Hosting & care' },
   },
   de: {
     home: 'Upnestly — Startseite', open: 'Menü öffnen', audit: 'Kostenlosen Audit buchen', auditShort: 'Kostenloser Audit', language: 'Sprache', mobile: 'Mobil', main: 'Hauptnavigation',
     showServices: 'Leistungen anzeigen', allServices: 'Alle Leistungen', promoTitle: 'Unsicher, wo Sie anfangen sollen?',
     promoText: 'Ein kostenloser 20-Minuten-Audit Ihrer Website, Ihres Marketings und Ihrer Prozesse – mit kurzem schriftlichem Bericht.',
-    disciplines: { Web: 'Website & Shop', Growth: 'Content, Suche & CRO', Apps: 'Business-Apps & KI', Ops: 'Hosting & Betreuung' },
+    disciplines: { Web: 'Website & Shop', AI: 'Pipelines & Integrationen', Growth: 'Content, Suche & CRO', Apps: 'Business-Apps & CRM', Ops: 'Hosting & Betreuung' },
   },
 }[lang];
 
 // Mega menu: services grouped by discipline, in the site's order.
 const services = (await getLocalized('services', lang)).sort((a, b) => a.data.order - b.data.order);
-const groups = (['Web', 'Growth', 'Apps', 'Ops'] as const).map((d, i) => ({
+const groups = disciplineOrder.map((d, i) => ({
   key: d,
-  label: `0${i + 1} — ${d}`,
+  label: `0${i + 1} — ${disciplineLabel(d, lang)}`,
   title: t.disciplines[d],
   items: services.filter((s) => s.data.discipline === d).map((s) => ({ href: localize(`/services/${slugOf(s)}/`, lang), title: s.data.title, text: s.data.excerpt })),
 }));
@@ -103,8 +103,8 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
   </div>
 
   <div id="mega-services" class="mega-panel absolute inset-x-0 top-full hidden border-b border-line bg-white shadow-[0_24px_48px_-24px_rgb(23_22_58/0.25)] lg:block" data-open="false" data-mega-panel>
-    <div class="container-site flex gap-8 py-8">
-      <div class="grid flex-1 grid-cols-2 gap-x-6 gap-y-7 xl:grid-cols-4">
+    <div class="container-site flex flex-col gap-6 py-8">
+      <div class="grid grid-cols-3 gap-x-6 gap-y-7 xl:grid-cols-5">
         {groups.map((g) => (
           <div class="flex flex-col gap-2">
             <p class="label m-0 px-3 text-brand">{g.label}</p>
@@ -118,11 +118,13 @@ const switcher = langs.map((l) => ({ lang: l, href: switchLang(Astro.url.pathnam
           </div>
         ))}
       </div>
-      <div class="flex w-[280px] shrink-0 flex-col gap-4 rounded-2xl bg-ink p-6 text-white">
-        <p class="m-0 text-[18px] font-extrabold leading-snug">{t.promoTitle}</p>
-        <p class="m-0 text-[14px] leading-relaxed text-night-text">{t.promoText}</p>
-        <a href={site.auditUrl} class="btn btn-light mt-auto w-full whitespace-nowrap !px-4 !py-3 !text-[14px]">{t.audit}</a>
-        <a href={localize('/services/', lang)} class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-white no-underline hover:text-night-accent">{t.allServices} <Icon name="arrow" size={10} /></a>
+      <div class="flex items-center gap-6 rounded-2xl bg-ink px-6 py-5 text-white">
+        <div class="flex min-w-0 flex-1 flex-col gap-1">
+          <p class="m-0 text-[16px] font-extrabold leading-snug">{t.promoTitle}</p>
+          <p class="m-0 text-[14px] leading-relaxed text-night-text">{t.promoText}</p>
+        </div>
+        <a href={localize('/services/', lang)} class="inline-flex shrink-0 items-center gap-1.5 text-[14px] font-semibold text-white no-underline hover:text-night-accent">{t.allServices} <Icon name="arrow" size={10} /></a>
+        <a href={site.auditUrl} class="btn btn-light shrink-0 whitespace-nowrap !px-5 !py-3 !text-[14px]">{t.audit}</a>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 {
   "title": "One team, one monthly plan. Website, marketing and apps.",
-  "intro": "Every plan includes all four disciplines — delivered by the same four senior people, with one project manager. You pay for the result, not for hours.",
+  "intro": "Every plan includes all five disciplines — delivered by the same four senior people, with one project manager. You pay for the result, not for hours.",
   "footnote": "Prices are starting points, excl. VAT. The exact monthly price follows a free discovery call, based on your site, your processes and your goals. Software licences (e.g. CRM) are billed directly by the vendor. Minimum term 3 months, then cancel monthly.",
   "plans": [
     {
@@ -19,6 +19,13 @@
           ]
         },
         {
+          "label": "AI & Automation",
+          "items": [
+            "One routine task automated",
+            "e.g. website enquiries straight into your CRM"
+          ]
+        },
+        {
           "label": "Growth",
           "items": [
             "1 article per month, in English or German",
@@ -28,8 +35,7 @@
         {
           "label": "Apps",
           "items": [
-            "One routine process automated",
-            "e.g. website enquiries straight into your CRM"
+            "Support for your existing apps and CRM"
           ]
         },
         {
@@ -56,6 +62,12 @@
           ]
         },
         {
+          "label": "AI & Automation",
+          "items": [
+            "Ongoing AI automations for content, leads and reporting"
+          ]
+        },
+        {
           "label": "Growth",
           "items": [
             "2 articles per month, SEO & AI search (GEO)",
@@ -65,8 +77,7 @@
         {
           "label": "Apps",
           "items": [
-            "CRM set up and connected to site, shop and email",
-            "Ongoing AI automations"
+            "CRM set up and connected to site, shop and email"
           ]
         },
         {
@@ -90,6 +101,12 @@
           "label": "Web",
           "items": [
             "Feature roadmap, planned quarterly"
+          ]
+        },
+        {
+          "label": "AI & Automation",
+          "items": [
+            "AI workflows across your systems, planned quarterly"
           ]
         },
         {
