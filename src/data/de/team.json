@@ -18,23 +18,6 @@
       "linkedin": "https://www.linkedin.com/in/stefanpazin/"
     },
     {
-      "name": "Nemanja Pažin",
-      "role": "Shopify- & Frontend-Entwicklung",
-      "discipline": "Web",
-      "years": "6+ Jahre",
-      "photo": "/team/nemanja-pazin.jpg",
-      "bio": "Nemanja arbeitet seit sechs Jahren in der Webentwicklung, davon über vier mit Shopify. Er baut und betreut Shops für E-Commerce-Marken aus den USA und der EU: Online-Store-2.0-Sections und -Templates in Liquid, Produkt- und Landingpages, Kampagnen-Updates und App-Einrichtung. Er setzt Figma-Designs in schnelle, responsive Seiten um und baut jede Section so, dass Marketing-Teams Inhalte ohne Entwickler ändern können. Die meisten seiner Kunden sind US-Marken – die tägliche Überschneidung mit der US-Ostküstenzeit ist für ihn Routine.",
-      "focus": [
-        "Shopify & Liquid (OS 2.0)",
-        "Produkt- & Landingpages",
-        "Figma zu Shopify",
-        "Page Builder (Replo, Webflow)",
-        "Ladezeit & On-Page-SEO",
-        "JavaScript, Vue.js & React"
-      ],
-      "linkedin": "https://www.linkedin.com/in/nemanja-pazin/"
-    },
-    {
       "name": "Novak Guslov",
       "role": "Content & Marketing",
       "discipline": "Growth",
@@ -50,6 +33,23 @@
         "Beauty, Körperpflege & Gesundheit"
       ],
       "linkedin": "https://www.linkedin.com/in/novak-guslov-961a7216b/"
+    },
+    {
+      "name": "Nemanja Pažin",
+      "role": "Shopify- & Frontend-Entwicklung",
+      "discipline": "Web",
+      "years": "6+ Jahre",
+      "photo": "/team/nemanja-pazin.jpg",
+      "bio": "Nemanja arbeitet seit sechs Jahren in der Webentwicklung, davon über vier mit Shopify. Er baut und betreut Shops für E-Commerce-Marken aus den USA und der EU: Online-Store-2.0-Sections und -Templates in Liquid, Produkt- und Landingpages, Kampagnen-Updates und App-Einrichtung. Er setzt Figma-Designs in schnelle, responsive Seiten um und baut jede Section so, dass Marketing-Teams Inhalte ohne Entwickler ändern können. Die meisten seiner Kunden sind US-Marken – die tägliche Überschneidung mit der US-Ostküstenzeit ist für ihn Routine.",
+      "focus": [
+        "Shopify & Liquid (OS 2.0)",
+        "Produkt- & Landingpages",
+        "Figma zu Shopify",
+        "Page Builder (Replo, Webflow)",
+        "Ladezeit & On-Page-SEO",
+        "JavaScript, Vue.js & React"
+      ],
+      "linkedin": "https://www.linkedin.com/in/nemanja-pazin/"
     },
     {
       "name": "Saša Babić",
