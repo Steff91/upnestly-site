@@ -18,6 +18,23 @@
       "linkedin": "https://www.linkedin.com/in/stefanpazin/"
     },
     {
+      "name": "Nemanja Pažin",
+      "role": "Shopify & front-end development",
+      "discipline": "Web",
+      "years": "6+ yrs",
+      "photo": "/team/nemanja-pazin.jpg",
+      "bio": "Nemanja has spent six years in web development, more than four of them on Shopify. He builds and maintains stores for US and EU e-commerce brands: Online Store 2.0 sections and templates in Liquid, product and landing pages, campaign updates and app setup. He turns designers' Figma files into fast, responsive pages and builds every section so marketing teams can change content without a developer. Most of his clients are US brands, so he is used to a daily overlap with US Eastern time.",
+      "focus": [
+        "Shopify & Liquid (OS 2.0)",
+        "Product & landing pages",
+        "Figma to Shopify",
+        "Page builders (Replo, Webflow)",
+        "Page speed & on-page SEO",
+        "JavaScript, Vue.js & React"
+      ],
+      "linkedin": "https://www.linkedin.com/in/nemanja-pazin/"
+    },
+    {
       "name": "Novak Guslov",
       "role": "Content & marketing",
       "discipline": "Growth",
