@@ -69,17 +69,19 @@
       "linkedin": "https://www.linkedin.com/in/sasababic/"
     },
     {
-      "name": "[Name Surname]",
+      "name": "Vladan",
       "role": "Infrastructure & DevOps",
       "discipline": "Ops",
-      "years": "25+ yrs",
-      "photo": "",
-      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "years": "30 yrs",
+      "photo": "/team/vladan.jpg",
+      "bio": "Vladan is a senior IT administrator with 30 years of hands-on experience in building, running and securing infrastructure. He is an expert in Linux systems and web hosting and a seasoned PHP and Python developer, managing production servers and custom applications for clients across government, e-commerce, media and business. He is also an A-tier broadcast engineer for radio and TV, specialising in transmission and network engineering (FM, DAB, NDI), signal distribution, broadcast automation and Wheatstone AoIP systems. Alongside his technical work, he is a senior voiceover artist: a station voice for radio brands and a commercial voice for advertising campaigns.",
       "focus": [
-        "Linux servers",
-        "Managed EU hosting",
-        "Security hardening",
-        "Backups & monitoring"
+        "Linux servers & web hosting",
+        "Security & backups",
+        "PHP & Python development",
+        "Broadcast engineering (FM, DAB, NDI)",
+        "Wheatstone AoIP systems",
+        "Voiceover"
       ],
       "linkedin": ""
     }
