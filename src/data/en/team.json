@@ -6,12 +6,12 @@
       "discipline": "Web",
       "years": "8+ yrs",
       "photo": "/team/stefan-pazin.jpg",
-      "bio": "Stefan builds and maintains websites, shops and the automations behind them. For over eight years he has worked across WordPress, WooCommerce, Shopify and custom code, from small business sites to SaaS platforms built from scratch. Today his focus is AI automation: content and catalogue pipelines with the Claude API and n8n, technical SEO and integrations that save teams hours every week.",
+      "bio": "Stefan builds and maintains websites, shops and the automations behind them. For over eight years he has worked across WordPress, WooCommerce, Shopify and custom code, from small business sites to SaaS platforms built from scratch. Today his focus is AI: agents and automations built on the Claude API, n8n and self-hosted open-source models, content and catalogue pipelines, technical SEO and integrations that save teams hours every week.",
       "focus": [
         "WordPress & WooCommerce",
         "Shopify & Webflow",
         "Custom code (Astro)",
-        "AI automation (Claude API, n8n)",
+        "AI agents & automation (Claude API, n8n)",
         "Technical SEO",
         "Integrations & APIs"
       ],

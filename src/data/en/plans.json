@@ -64,7 +64,8 @@
         {
           "label": "AI & Automation",
           "items": [
-            "Ongoing AI automations for content, leads and reporting"
+            "Ongoing AI automations for content, leads and reporting",
+            "A first AI agent for your team or customers"
           ]
         },
         {
@@ -106,7 +107,8 @@
         {
           "label": "AI & Automation",
           "items": [
-            "AI workflows across your systems, planned quarterly"
+            "AI agents and workflows across your systems",
+            "Private AI on our servers if your data requires it"
           ]
         },
         {
@@ -146,7 +148,7 @@
             "New website or shop, redesign",
             "CRM rollout and data migration",
             "Custom internal app or client portal",
-            "Larger AI pipelines & integrations"
+            "AI agents, private LLM setup, larger AI pipelines"
           ]
         }
       ]

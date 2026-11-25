@@ -64,7 +64,8 @@
         {
           "label": "KI & Automatisierung",
           "items": [
-            "Laufende KI-Automatisierungen für Content, Leads und Reporting"
+            "Laufende KI-Automatisierungen für Content, Leads und Reporting",
+            "Ein erster KI-Agent für Ihr Team oder Ihre Kunden"
           ]
         },
         {
@@ -106,7 +107,8 @@
         {
           "label": "KI & Automatisierung",
           "items": [
-            "KI-Workflows über Ihre Systeme hinweg, quartalsweise geplant"
+            "KI-Agenten und Workflows über Ihre Systeme hinweg",
+            "Private KI auf unseren Servern, wenn Ihre Daten es erfordern"
           ]
         },
         {
@@ -146,7 +148,7 @@
             "Neue Website oder neuer Shop, Redesign",
             "CRM-Einführung und Datenmigration",
             "Individuelle interne App oder Kundenportal",
-            "Größere KI-Pipelines & Integrationen"
+            "KI-Agenten, privates LLM-Setup, größere KI-Pipelines"
           ]
         }
       ]

@@ -6,12 +6,12 @@
       "discipline": "Web",
       "years": "8+ Jahre",
       "photo": "/team/stefan-pazin.jpg",
-      "bio": "Stefan entwickelt und betreut Websites, Shops und die Automatisierungen dahinter. In über acht Jahren hat er mit WordPress, WooCommerce, Shopify und Custom Code gearbeitet – von Websites kleiner Unternehmen bis zu SaaS-Plattformen, die er von Grund auf gebaut hat. Heute liegt sein Schwerpunkt auf KI-Automatisierung: Content- und Katalog-Pipelines mit der Claude API und n8n, technisches SEO und Integrationen, die Teams jede Woche Stunden sparen.",
+      "bio": "Stefan entwickelt und betreut Websites, Shops und die Automatisierungen dahinter. In über acht Jahren hat er mit WordPress, WooCommerce, Shopify und Custom Code gearbeitet – von Websites kleiner Unternehmen bis zu SaaS-Plattformen, die er von Grund auf gebaut hat. Heute liegt sein Schwerpunkt auf KI: Agenten und Automatisierungen mit der Claude API, n8n und selbst gehosteten Open-Source-Modellen, Content- und Katalog-Pipelines, technisches SEO und Integrationen, die Teams jede Woche Stunden sparen.",
       "focus": [
         "WordPress & WooCommerce",
         "Shopify & Webflow",
         "Custom Code (Astro)",
-        "KI-Automatisierung (Claude API, n8n)",
+        "KI-Agenten & Automatisierung (Claude API, n8n)",
         "Technisches SEO",
         "Integrationen & APIs"
       ],

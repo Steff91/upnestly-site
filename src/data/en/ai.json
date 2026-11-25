@@ -17,14 +17,14 @@
       "tag": "Sales"
     },
     {
-      "title": "Inbox & support",
-      "text": "Incoming messages sorted by topic and urgency, with reply drafts your team checks and sends.",
-      "tag": "Support"
+      "title": "AI agents",
+      "text": "An assistant that answers customers or your team from your own documents, takes simple actions in your tools and hands over to a person when it should.",
+      "tag": "Agents"
     },
     {
-      "title": "Reporting",
-      "text": "A weekly summary of traffic, leads and sales pulled from GA4, your shop and your CRM, delivered by email or Slack.",
-      "tag": "Operations"
+      "title": "Private AI",
+      "text": "Open-source models running on our own servers or yours — for contracts, customer data and internal documents that can't go to a public AI.",
+      "tag": "Private"
     },
     {
       "title": "Documents to data",
@@ -77,21 +77,25 @@
     "Claude API",
     "OpenAI API",
     "n8n",
-    "Make",
-    "Zapier",
+    "Ollama",
+    "vLLM",
+    "Llama, Mistral, Qwen",
     "WooCommerce API",
     "Shopify API",
-    "Google Workspace",
     "HubSpot"
   ],
   "faq": [
     {
       "q": "Is our data used to train AI models?",
-      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam."
+      "a": "No. With the commercial APIs we use (Anthropic, OpenAI), your data is not used for training by default. For sensitive data we run open-source models on our own servers or yours, so nothing leaves that environment."
     },
     {
       "q": "What does the EU AI Act mean for these automations?",
-      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam."
+      "a": "Most business automations — content drafts, lead routing, document processing — fall into the low-risk categories. The main duties are transparency (for example, telling people when they are talking to an AI agent) and keeping a person in control. We build both in and document every workflow; for a formal legal assessment, please talk to your lawyer."
+    },
+    {
+      "q": "Can we use AI without sending data to OpenAI or Anthropic?",
+      "a": "Yes. We host open-source models on our own hardware or on your infrastructure. They work well for document processing, internal search and assistants; for the most demanding writing, the large cloud models are still ahead, and we tell you where the trade-off lies."
     },
     {
       "q": "What if the AI gets something wrong?",
