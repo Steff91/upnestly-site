@@ -5,7 +5,7 @@ import Icon from '../../components/Icon.astro';
 import PlanCards from '../../components/PlanCards.astro';
 import Contact from '../../components/sections/Contact.astro';
 import { getPlans, getPricing, getSite } from '../../i18n/data';
-import { fromPrice, getLang, langParams } from '../../i18n';
+import { fromPrice, getLang, langParams, localize } from '../../i18n';
 
 export function getStaticPaths() {
   return langParams();
@@ -65,11 +65,32 @@ const t = {
     </div>
   </section>
 
+  <!-- Founding clients offer -->
+  {pricing.founding && (
+    <section aria-labelledby="founding-title">
+      <div class="container-site pt-16 lg:pt-20">
+        <div class="relative flex flex-col gap-8 overflow-hidden rounded-[24px] bg-ink p-8 text-white sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14 lg:p-12" data-reveal>
+          <div aria-hidden="true" class="pointer-events-none absolute inset-0 hidden sm:block"><BrandMark class="-bottom-24 -right-20 w-[340px] opacity-[0.07]" /></div>
+          <div class="relative flex max-w-[720px] flex-col gap-3.5">
+            <p class="label m-0 text-night-accent">{pricing.founding.eyebrow}</p>
+            <h2 id="founding-title" class="m-0 text-[clamp(26px,2.8vw,34px)] font-extrabold leading-[1.15] tracking-[-0.02em]">{pricing.founding.title}</h2>
+            <p class="m-0 text-[16px] leading-[1.65] text-night-text">{pricing.founding.text}</p>
+            <p class="m-0 text-[14px] text-night-accent">{pricing.founding.note}</p>
+          </div>
+          <a href={localize('/contact/?plan=founding', lang)} class="btn btn-light relative shrink-0 self-start lg:self-center">
+            {pricing.founding.cta}
+            <Icon name="arrow" size={15} />
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Compare -->
   <section id="compare">
     <div class="container-site flex flex-col gap-10 py-22">
       <h2 class="h-section" data-reveal>{t.compare}</h2>
-      <div class="overflow-x-auto rounded-[20px] border border-line" data-reveal>
+      <div class="relative overflow-x-auto rounded-[20px] border border-line" data-reveal>
         <table class="w-full min-w-[760px] border-collapse text-left text-[15px]">
           <caption class="sr-only">{t.caption}</caption>
           <thead>

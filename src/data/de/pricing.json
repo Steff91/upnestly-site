@@ -56,6 +56,22 @@
             true,
             true
           ]
+        },
+        {
+          "label": "KI-Agenten",
+          "values": [
+            false,
+            "1",
+            "Mehrere"
+          ]
+        },
+        {
+          "label": "Private KI auf unseren Servern",
+          "values": [
+            false,
+            false,
+            true
+          ]
         }
       ]
     },
@@ -137,7 +153,7 @@
       "group": "Ops",
       "rows": [
         {
-          "label": "Managed Hosting in der EU oder Plattform-Betreuung",
+          "label": "Managed Hosting oder Plattform-Betreuung",
           "values": [
             true,
             true,
@@ -211,22 +227,52 @@
   ],
   "addons": [
     {
-      "title": "Neue Website oder neuer Shop",
-      "price": "Festpreis",
+      "title": "KI-Discovery-Workshop",
+      "price": "750 €",
       "unit": "",
-      "text": "Design und Entwicklung, Migration von Ihrer aktuellen Plattform, Launch – danach in einen Monatsplan."
+      "text": "Wir erfassen Ihre Prozesse, wählen die Automatisierungen, die sich lohnen, und schätzen die gesparten Stunden. Wird vollständig auf das Projekt angerechnet."
+    },
+    {
+      "title": "KI-Agent",
+      "price": "ab 3.500 €",
+      "unit": "",
+      "text": "Ein Assistent für Ihr Team oder Ihre Kunden, verbunden mit Ihren Dokumenten und Tools, mit eingebauter Übergabe an einen Menschen."
+    },
+    {
+      "title": "Private KI – Einrichtung",
+      "price": "ab 2.500 €",
+      "unit": "",
+      "text": "Ein Open-Source-Modell auf unseren oder Ihren Servern, verbunden mit Ihren Daten. Hosting ab 490 € / Monat, je nach Modell."
+    },
+    {
+      "title": "Größere KI-Pipeline",
+      "price": "ab 5.000 €",
+      "unit": "",
+      "text": "Katalog-Pipelines, Dokumentenverarbeitung und Integrationen über mehrere Systeme – vorab definiert."
+    },
+    {
+      "title": "Neue Website",
+      "price": "ab 6.000 €",
+      "unit": "",
+      "text": "Design und Entwicklung, Migration von Ihrer bisherigen Plattform, Launch – danach in einen Monatsplan."
+    },
+    {
+      "title": "Shopify-Shop oder -Theme",
+      "price": "ab 4.900 €",
+      "unit": "",
+      "text": "Online-Store-2.0-Theme, Sections und Templates, die Ihr Team selbst pflegen kann, Produkt- und Landingpages, Apps und Launch."
     },
     {
       "title": "CRM-Einführung oder interne App",
-      "price": "Festpreis",
+      "price": "ab 4.000 €",
       "unit": "",
-      "text": "Analyse, Einrichtung oder individuelle Entwicklung, Datenmigration und Schulung des Teams."
+      "text": "Analyse, Einrichtung oder Eigenentwicklung, Datenmigration und Schulung des Teams."
     },
     {
-      "title": "Größeres KI-Projekt",
-      "price": "Ab X.XXX €",
-      "unit": "",
-      "text": "Katalog-Pipelines, Dokumentenverarbeitung und Integrationen über mehrere Systeme, vorab klar definiert."
+      "title": "KI-Agent-Betreuung",
+      "price": "ab 290 €",
+      "unit": "/ Monat",
+      "text": "Monitoring, Pflege von Prompts und Wissensbasis und Verbesserungen, wenn Ihr Agent mehr übernimmt."
     }
   ],
   "terms": [
@@ -261,6 +307,10 @@
       "a": "Weil keine zwei Unternehmen dieselbe Website und dieselben Prozesse haben. Der Plan legt den Umfang fest, das Analysegespräch den genauen Monatspreis – der danach fix bleibt."
     },
     {
+      "q": "Gibt es einen Rabatt für neue Kunden?",
+      "a": "Ja – unsere ersten fünf Kunden erhalten 25 % Rabatt auf jeden Monatsplan für die ersten sechs Monate, im Gegenzug für eine Fallstudie und ein kurzes Testimonial."
+    },
+    {
       "q": "Mit welchem Plan sollten wir starten?",
       "a": "Brauchen Sie vor allem eine verlässliche Website und einen ersten geordneten Prozess, starten Sie mit Essentials. Wollen Sie mehr Leads und weniger Verwaltung, ist Growth der übliche Einstieg. Der kostenlose Audit endet mit einer Empfehlung."
     },
@@ -280,5 +330,12 @@
       "q": "Unterschreiben Sie eine NDA und einen AV-Vertrag?",
       "a": "Ja. Ihre NDA unterschreiben wir auf Wunsch, und ein Auftragsverarbeitungsvertrag (AVV) ist Teil jedes Plans."
     }
-  ]
+  ],
+  "founding": {
+    "eyebrow": "Gründungskunden",
+    "title": "25 % Rabatt für unsere ersten fünf Kunden",
+    "text": "Wir sind ein neues Team aus Senior-Spezialisten und haben noch wenige öffentliche Fallstudien. Unsere ersten fünf Kunden erhalten 25 % Rabatt auf jeden Monatsplan für die ersten sechs Monate – im Gegenzug dürfen wir die Ergebnisse als Fallstudie veröffentlichen und erhalten ein kurzes Testimonial.",
+    "cta": "Nach einem Gründungsplatz fragen",
+    "note": "Begrenzt auf fünf Kunden. Gilt für Monatspläne, nicht für Festpreisprojekte."
+  }
 }

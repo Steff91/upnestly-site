@@ -5,7 +5,7 @@
   "plans": [
     {
       "name": "Essentials",
-      "price": "€990",
+      "price": "$1,490",
       "period": "/ month",
       "blurb": "For businesses that need a reliable website and their first processes in order.",
       "featured": false,
@@ -41,7 +41,7 @@
         {
           "label": "Ops",
           "items": [
-            "Managed EU hosting or platform care",
+            "Managed hosting or platform care",
             "Updates, backups, uptime · reply within 2 business days"
           ]
         }
@@ -49,7 +49,7 @@
     },
     {
       "name": "Growth",
-      "price": "€1,990",
+      "price": "$2,900",
       "period": "/ month",
       "blurb": "For businesses that want more leads and a team that spends less time on admin.",
       "featured": true,
@@ -92,7 +92,7 @@
     },
     {
       "name": "Scale",
-      "price": "€3,490",
+      "price": "$5,500",
       "period": "/ month",
       "blurb": "For growing companies with several markets, teams or systems to connect.",
       "featured": false,

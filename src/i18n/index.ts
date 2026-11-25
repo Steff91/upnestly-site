@@ -33,13 +33,13 @@ export const pick = <T>(lang: Lang, values: Record<Lang, T>): T => values[lang];
 /** Locale-aware number formatting for prices (1,990 vs. 1.990). */
 export const formatNumber = (n: number, lang: Lang) => n.toLocaleString(lang === 'de' ? 'de-DE' : 'en-US');
 
-/** Euro price in the local format: €1,990 (en) / 1.990 € (de). */
-export const formatPrice = (n: number, lang: Lang) => (lang === 'de' ? `${formatNumber(n, lang)} €` : `€${formatNumber(n, lang)}`);
+/** Price in the local currency and format: $1,990 (en, US dollars) / 1.990 € (de, euros). */
+export const formatPrice = (n: number, lang: Lang) => (lang === 'de' ? `${formatNumber(n, lang)} €` : `$${formatNumber(n, lang)}`);
 
-/** Digits of a price string: "€1,990" / "1.990 €" → 1990 */
+/** Digits of a price string: "$1,990" / "1.990 €" → 1990 */
 export const priceNumber = (price: string) => Number(price.replace(/[^\d]/g, ''));
 
-/** Plans are priced "from" — the exact price follows the discovery call: "from €990" / "ab 990 €". */
+/** Plans are priced "from" — the exact price follows the discovery call: "from $1,490" / "ab 1.290 €". */
 export const fromPrice = (price: string, lang: Lang) => (/\d/.test(price) ? `${lang === 'de' ? 'ab' : 'from'} ${price}` : price);
 
 /** Display name of a discipline key (Web, AI, Growth, Apps, Ops). */

@@ -3,7 +3,7 @@
 import { getLang } from '../i18n';
 const lang = getLang(Astro.url);
 const t = {
-  en: { hours: 'Hours your team spends on the task per week', rate: 'Cost of one hour of their time', share: 'Share of the work AI can take over', back: 'Hours back per month', value: 'Value per month', note: 'A rough estimate based on 4.33 weeks per month. The free opportunity check replaces it with real numbers for your process.', h: 'h', rate0: '€45', saved0: '26 h', value0: '€1,170' },
+  en: { hours: 'Hours your team spends on the task per week', rate: 'Cost of one hour of their time', share: 'Share of the work AI can take over', back: 'Hours back per month', value: 'Value per month', note: 'A rough estimate based on 4.33 weeks per month. The free opportunity check replaces it with real numbers for your process.', h: 'h', rate0: '$45', saved0: '26 h', value0: '$1,170' },
   de: { hours: 'Stunden, die Ihr Team pro Woche für die Aufgabe aufwendet', rate: 'Kosten einer Arbeitsstunde', share: 'Anteil, den KI übernehmen kann', back: 'Gewonnene Stunden pro Monat', value: 'Wert pro Monat', note: 'Eine grobe Schätzung auf Basis von 4,33 Wochen pro Monat. Der kostenlose Potenzial-Check ersetzt sie durch echte Zahlen für Ihren Prozess.', h: 'Std.', rate0: '45 €', saved0: '26 Std.', value0: '1.170 €' },
 }[lang];
 ---
@@ -58,7 +58,7 @@ const t = {
     const out = (key: string) => root.querySelector<HTMLElement>(`[data-out="${key}"]`);
     const de = root.dataset.lang === 'de';
     const fmt = (n: number) => n.toLocaleString(de ? 'de-DE' : 'en-US', { maximumFractionDigits: 0 });
-    const eur = (n: number) => (de ? `${fmt(n)} €` : `€${fmt(n)}`);
+    const eur = (n: number) => (de ? `${fmt(n)} €` : `$${fmt(n)}`);
     const update = () => {
       if (!form) return;
       const data = new FormData(form);

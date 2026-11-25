@@ -6,6 +6,7 @@ import { fromPrice, localize, type Lang } from '../i18n';
 export const interestOptions = (lang: Lang) => [
   { value: 'audit', label: lang === 'de' ? 'Kostenloser 20-Minuten-Audit' : 'Free 20-minute audit' },
   { value: 'ai', label: lang === 'de' ? 'KI-Potenzial-Check' : 'AI opportunity check' },
+  { value: 'founding', label: lang === 'de' ? 'Gründungskunden-Angebot (25 % Rabatt)' : 'Founding client offer (25% off)' },
   { value: 'processes', label: lang === 'de' ? 'Business-App, CRM oder Prozesse' : 'Business app, CRM or processes' },
   ...getPlans(lang).plans.map((p) => ({
     value: p.name.toLowerCase(),

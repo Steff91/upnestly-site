@@ -56,6 +56,22 @@
             true,
             true
           ]
+        },
+        {
+          "label": "AI agents",
+          "values": [
+            false,
+            "1",
+            "Several"
+          ]
+        },
+        {
+          "label": "Private AI on our servers",
+          "values": [
+            false,
+            false,
+            true
+          ]
         }
       ]
     },
@@ -137,7 +153,7 @@
       "group": "Ops",
       "rows": [
         {
-          "label": "Managed EU hosting or platform care",
+          "label": "Managed hosting or platform care",
           "values": [
             true,
             true,
@@ -211,22 +227,52 @@
   ],
   "addons": [
     {
-      "title": "New website or shop",
-      "price": "Fixed price",
+      "title": "AI discovery workshop",
+      "price": "$850",
+      "unit": "",
+      "text": "We map your processes, pick the automations worth building and estimate the hours they save. Credited in full against the project."
+    },
+    {
+      "title": "AI agent",
+      "price": "From $3,900",
+      "unit": "",
+      "text": "An assistant for your team or customers, connected to your documents and tools, with a human hand-over built in."
+    },
+    {
+      "title": "Private AI setup",
+      "price": "From $2,900",
+      "unit": "",
+      "text": "An open-source model on our servers or yours, connected to your data. Hosting from $550 / month, depending on the model."
+    },
+    {
+      "title": "Larger AI pipeline",
+      "price": "From $5,500",
+      "unit": "",
+      "text": "Catalogue pipelines, document processing and multi-system integrations, scoped up front."
+    },
+    {
+      "title": "New website",
+      "price": "From $6,900",
       "unit": "",
       "text": "Design and build, migration from your current platform, launch — then into a monthly plan."
     },
     {
+      "title": "Shopify store or theme",
+      "price": "From $5,500",
+      "unit": "",
+      "text": "Online Store 2.0 theme, sections and templates your team can edit, product and landing pages, apps and launch."
+    },
+    {
       "title": "CRM rollout or internal app",
-      "price": "Fixed price",
+      "price": "From $4,500",
       "unit": "",
       "text": "Discovery, setup or custom build, data migration and team training."
     },
     {
-      "title": "Larger AI project",
-      "price": "From €X,XXX",
-      "unit": "",
-      "text": "Catalogue pipelines, document processing and multi-system integrations, scoped up front."
+      "title": "AI agent care",
+      "price": "From $350",
+      "unit": "/ month",
+      "text": "Monitoring, prompt and knowledge updates, and improvements as your agent handles more work."
     }
   ],
   "terms": [
@@ -252,13 +298,17 @@
     },
     {
       "title": "Prices excl. VAT",
-      "text": "All prices are in euros and exclude VAT. [Confirm VAT handling for EU clients with your accountant.]"
+      "text": "Prices are shown in US dollars and exclude any applicable VAT or sales tax. Clients in the EU and UK can be invoiced in euros. [Confirm VAT handling with your accountant.]"
     }
   ],
   "faq": [
     {
       "q": "Why “from” prices?",
       "a": "Because no two businesses have the same site and processes. The plan sets the scope; the discovery call sets the exact monthly price, which then stays fixed."
+    },
+    {
+      "q": "Why are prices in dollars on the English site?",
+      "a": "Because the English site is mainly for clients in the US. Clients in the EU and UK can be invoiced in euros — the euro prices are on the German version of this page."
     },
     {
       "q": "Which plan should we start with?",
@@ -280,5 +330,12 @@
       "q": "Do you sign an NDA and a data processing agreement?",
       "a": "Yes. We sign your NDA on request, and a data processing agreement (DPA) is part of every plan."
     }
-  ]
+  ],
+  "founding": {
+    "eyebrow": "Founding clients",
+    "title": "25% off for our first five clients",
+    "text": "We're a new team with senior people and few public case studies yet. Our first five clients get 25% off any monthly plan for the first six months — in return for permission to publish the results as a case study and a short testimonial.",
+    "cta": "Ask about a founding spot",
+    "note": "Limited to five clients. Applies to monthly plans, not to fixed-price projects."
+  }
 }
